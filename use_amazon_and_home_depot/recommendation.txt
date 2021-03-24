@@ -13,3 +13,17 @@ Recommendation system part II: Model-based collaborative filtering system based 
 Recommendation system part III: When a business is setting up its e-commerce website for the first time withou any product rating
 
 When a new customer without any previous purchase history visits the e-commerce website for the first time, he/she is recommended the most popular products sold on the company's website. Once, he/she makes a purchase, the recommendation system updates and recommends other products based on the purchase history and ratings provided by other users on the website. The latter part is done using collaborative filtering techniques.
+
+
+Recommendation System - Part II¶
+Model-based collaborative filtering system
+
+Recommend items to users based on purchase history and similarity of ratings provided by other users who bought items to that of a particular customer.
+
+A model based collaborative filtering technique is closen here as it helps in making predictinfg products for a particular user by identifying patterns based on preferences from multiple user data.
+Utility Matrix based on products sold and user reviews
+
+Utility Matrix
+
+An utlity matrix is consists of all possible user-item preferences (ratings) details represented as a matrix. The utility matrix is sparce as none of the users would buy all teh items in the list, hence, most of the values are unknown.
+
