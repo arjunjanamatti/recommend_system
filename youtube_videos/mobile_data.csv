@@ -1,0 +1,226 @@
+,model_name
+0,Huawei nova 8 5G
+1,Huawei nova 8 Pro 5G
+2,Honor V40
+3,Oppo Find X3 Neo
+4,Oppo Find X3
+5,Oppo Find X3 Pro
+6,OnePlus 9
+7,OnePlus 9 Pro
+8,Realme GT 5G
+9,Moto G100
+10,Samsung Galaxy S21
+11,Samsung Galaxy S21+
+12,Samsung Galaxy S21 Ultra
+13,Xiaomi Mi 11
+14,Xiaomi Mi 11 Pro
+15,Xiaomi Mi 11 Ultra
+16,Redmi K40
+17,Redmi K40 Pro
+18,Redmi K40 Pro+
+19,Redmi Note 10
+20,Redmi Note 10S
+21,Redmi Note 10 5G
+22,Redmi Note 10 Pro
+23,Realme 8
+24,Realme 8 Pro
+25,Meizu 18
+26,Meizu 18 Pro
+27,Vivo iQOO Neo5
+28,Vivo iQOO 7
+29,Vivo X60
+30,Vivo X60 Pro
+31,Vivo X60 Pro+
+32,Asus ROG Phone 5
+33,Asus ROG Phone 5 Pro
+34,Asus ROG Phone 5 Ultimate
+35,Xiaomi Black Shark 4
+36,Xiaomi Black Shark 4 Pro
+37,ZTE Nubia Red Magic 6
+38,ZTE Nubia Red Magic 6 Pro
+39,Meizu 17 Pro
+40,Meizu 17
+41,Huawei nova 7 Pro 5G
+42,Huawei nova 7 5G
+43,Huawei nova 7 SE
+44,Honor 30 Pro+
+45,Honor 30 Pro
+46,Honor 30
+47,Honor 30S
+48,Huawei P40
+49,Huawei P40 Pro
+50,Huawei P40 Pro+
+51,Huawei Mate 40
+52,Huawei Mate 40 Pro
+53,Huawei Mate 40 Pro+
+54,Oppo Ace2
+55,Oppo Find X2 Pro
+56,Oppo Find X2
+57,Oppo Reno3 Pro (Global)
+58,Realme X50 Pro
+59,Realme X50m
+60,Realme X50
+61,Realme 6
+62,Realme 6 Pro
+63,Vivo S6
+64,Vivo Z6
+65,Vivo iQOO Neo3
+66,Vivo iQOO 3 5G
+67,Vivo NEX 3S
+68,Vivo X50
+69,Vivo X50 Pro
+70,Vivo X50 Pro+
+71,Vivo iQOO 5
+72,Vivo iQOO 5 Pro
+73,Xiaomi Mi 10 Youth 5G
+74,Xiaomi Mi 10 Lite
+75,Xiaomi Mi 10T Lite
+76,Xiaomi Mi 10T
+77,Xiaomi Mi 10T Pro
+78,Xiaomi Mi 10
+79,Xiaomi Mi 10 Pro
+80,Xiaomi Mi 10 Ultra
+81,Xiaomi Black Shark 3 Pro
+82,Xiaomi Black Shark 3
+83,Xiaomi Black Shark 3S
+84,Redmi K30 Pro
+85,Redmi K30 Pro Zoom
+86,Redmi K30 Ultra
+87,Redmi Note 9 Pro/Note 9S
+88,Redmi Note 9 Pro Max
+89,Asus ZenFone 7 Pro
+90,Asus ZenFone 7
+91,Asus ROG Phone 3
+92,Asus ROG Phone 3 Strix
+93,LG V60 ThinQ
+94,LG Velvet 5G
+95,LG Velvet
+96,Apple iPhone 12 mini
+97,Apple iPhone 12
+98,Apple iPhone 12 Pro
+99,Apple iPhone 12 Pro Max
+100,Google Pixel 4a
+101,Google Pixel 4a (5G)
+102,Google Pixel 5
+103,Samsung Galaxy S10 Lite
+104,Samsung Galaxy Note 10 Lite
+105,Samsung Galaxy S20 FE
+106,Samsung Galaxy S20
+107,Samsung Galaxy S20+
+108,Samsung Galaxy S20 Ultra
+109,Samsung Galaxy Note 20
+110,Samsung Galaxy Note 20 Ultra
+111,ZTE Axon 11 5G
+112,ZTE Nubia Red Magic 5G
+113,ZTE Nubia Play
+114,Sony Xperia 10 II
+115,Sony Xperia 5 II
+116,Sony Xperia 1 II
+117,Motorola Edge
+118,Motorola Edge+
+119,Nokia 8.3 5G
+120,TCL 10L
+121,TCL 10 Pro
+122,TCL 10 5G
+123,Lenovo Legion Duel
+124,Lenovo Legion Pro
+125,OnePlus Nord
+126,OnePlus 8
+127,OnePlus 8 Pro
+128,OnePlus 8T
+129,Apple iPhone 11
+130,Apple iPhone 11 Pro
+131,Apple iPhone 11 Pro Max
+132,Asus ROG Phone II
+133,Asus ZenFone 6
+134,Fairphone 3[1]
+135,Google Pixel 3a
+136,Google Pixel 3a XL
+137,Google Pixel 4
+138,Google Pixel 4 XL
+139,Honor 20
+140,Honor 20 Pro
+141,Honor 20S
+142,Honor V30
+143,Honor V30 Pro
+144,Huawei Mate 20 X 5G
+145,Huawei Mate 30
+146,Huawei Mate 30 Pro
+147,Huawei Nova 5
+148,Huawei Nova 5 Pro
+149,Huawei Nova 5i Pro
+150,Huawei Nova 6
+151,Huawei Nova 6 5G
+152,Huawei P30
+153,Huawei P30 Pro
+154,Lenovo Z6
+155,Lenovo Z6 Pro
+156,LG G8 ThinQ
+157,LG G8s ThinQ
+158,LG G8x ThinQ
+159,LG V50 ThinQ
+160,Meizu 16s
+161,Meizu 16s Pro
+162,Meizu 16T
+163,Nokia 6.2
+164,Nokia 7.2
+165,Nokia 9 PureView
+166,OnePlus 7
+167,OnePlus 7 Pro
+168,OnePlus 7T
+169,OnePlus 7T Pro
+170,Oppo K5
+171,Oppo Reno
+172,Oppo Reno 3 5G
+173,Oppo Reno 3 Pro 5G
+174,(China)
+175,Oppo Reno 3 Youth 5G
+176,Oppo Reno 10x Zoom
+177,Oppo Reno A
+178,Oppo Reno Ace
+179,Oppo Reno Z
+180,Oppo Reno2
+181,Oppo Reno2 F
+182,Oppo Reno2 Z
+183,Realme 5 Pro
+184,Realme X
+185,Realme X2
+186,Realme X2 Pro
+187,Realme XT
+188,Redmi K20 Pro Prime Version
+189,Redmi K20 Pro/Xiaomi Mi 9T Pro
+190,Redmi K20/Xiaomi Mi 9T
+191,Redmi K30 5G
+192,Redmi K30/Poco X2
+193,Samsung Galaxy Note 10
+194,Samsung Galaxy Note 10+
+195,Samsung Galaxy S10
+196,Samsung Galaxy S10 5G
+197,Samsung Galaxy S10+
+198,Samsung Galaxy S10e
+199,Sharp Aquos Zero
+200,Sony Xperia 1
+201,Sony Xperia 5
+202,Sony Xperia 10
+203,Sony Xperia 10 Plus
+204,Sony Xperia L3
+205,Vivo iQOO
+206,Vivo iQOO Neo
+207,Vivo iQOO Neo 855
+208,Vivo iQOO Neo 855s
+209,Vivo iQOO Pro
+210,Vivo iQOO Pro 5G
+211,Vivo NEX 3
+212,Vivo NEX 3 5G
+213,Vivo X30
+214,Vivo X30 Pro
+215,Xiaomi Black Shark 2
+216,Xiaomi CC9
+217,Xiaomi Mi 9
+218,Xiaomi Mi 9 Pro/Mi 9 Pro 5G
+219,Xiaomi Mi 9 SE
+220,Xiaomi Mi CC9 Pro
+221,ZTE Axon 10 Pro
+222,ZTE Nubia Red Magic 3
+223,ZTE Nubia Red Magic 3S
+224,ZTE Nubia Z20
