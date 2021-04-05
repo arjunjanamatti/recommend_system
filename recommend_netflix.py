@@ -88,3 +88,18 @@ print(test_sparse_data)
 ### GLOBAL AVERAGE RATING
 global_average_rating = train_sparse_data.sum()/train_sparse_data.count_nonzero()
 print(f'Global average rating: {global_average_rating}')
+
+def get_average_rating(sparse_matrix, is_user):
+    if is_user:
+        ax=1
+    else:
+        ax=0
+    sum_of_ratings = sparse_matrix.sum(axis=ax).A1
+    no_of_ratings = (sparse_matrix != 0).sum(axis=ax).A1
+    rows, cols = sparse_matrix.shape
+    average_ratings = {i: sum_of_ratings[i]/no_of_ratings[i] for i in range(rows if is_user else cols) if no_of_ratings[i] != 0}
+    return average_ratings
+
+average_ratings = get_average_rating(train_sparse_data, True)
+
+
