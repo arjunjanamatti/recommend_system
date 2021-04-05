@@ -100,6 +100,17 @@ def get_average_rating(sparse_matrix, is_user):
     average_ratings = {i: sum_of_ratings[i]/no_of_ratings[i] for i in range(rows if is_user else cols) if no_of_ratings[i] != 0}
     return average_ratings
 
-average_ratings = get_average_rating(train_sparse_data, True)
+average_ratings_user = get_average_rating(train_sparse_data, True)
+
+average_rating_movie = get_average_rating(train_sparse_data, False)
+
+### CHECK COOLD START PROBLEM: USER
+total_users = len(np.unique(netflix_df["customer_id"]))
+train_users = len(average_ratings_user)
+uncommonUsers = total_users - train_users
+
+print("Total no. of Users = {}".format(total_users))
+print("No. of Users in train data= {}".format(train_users))
+print("No. of Users not present in train data = {}({}%)".format(uncommonUsers, np.round((uncommonUsers/total_users)*100), 2))
 
 
