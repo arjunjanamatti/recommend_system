@@ -43,3 +43,7 @@ def load_data():
 netflix_df = load_data()
 
 print(netflix_df.head())
+
+### FIND DUPLICATED RATINGS
+print(netflix_df.duplicated(['movie_id', 'customer_id', 'rating', 'date']).sum())
+
