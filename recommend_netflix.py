@@ -84,3 +84,7 @@ print(train_sparse_data)
 
 test_sparse_data = get_user_item_sparse_matrix(test_data)
 print(test_sparse_data)
+
+### GLOBAL AVERAGE RATING
+global_average_rating = train_sparse_data.sum()/train_sparse_data.count_nonzero()
+print(f'Global average rating: {global_average_rating}')
