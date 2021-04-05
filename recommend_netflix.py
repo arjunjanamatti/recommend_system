@@ -104,7 +104,7 @@ average_ratings_user = get_average_rating(train_sparse_data, True)
 
 average_rating_movie = get_average_rating(train_sparse_data, False)
 
-### CHECK COOLD START PROBLEM: USER
+### CHECK COLD START PROBLEM: USER
 total_users = len(np.unique(netflix_df["customer_id"]))
 train_users = len(average_ratings_user)
 uncommonUsers = total_users - train_users
@@ -112,5 +112,14 @@ uncommonUsers = total_users - train_users
 print("Total no. of Users = {}".format(total_users))
 print("No. of Users in train data= {}".format(train_users))
 print("No. of Users not present in train data = {}({}%)".format(uncommonUsers, np.round((uncommonUsers/total_users)*100), 2))
+
+### CHECK COLD START PROBLEM: MOVIE
+total_movies = len(np.unique(netflix_df["movie_id"]))
+train_movies = len(average_rating_movie)
+uncommonMovies = total_movies - train_movies
+
+print("Total no. of Movies = {}".format(total_movies))
+print("No. of Movies in train data= {}".format(train_movies))
+print("No. of Movies not present in train data = {}({}%)".format(uncommonMovies, np.round((uncommonMovies/total_movies)*100), 2))
 
 
