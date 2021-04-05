@@ -53,3 +53,15 @@ train_data = netflix_df[:split_value]
 test_data = netflix_df[split_value:]
 
 
+### COUNT NUMBER OF RATINGS IN TRAINING DATASET
+plt.figure(figsize = (12, 8))
+ax = sns.countplot(x="rating", data=train_data)
+
+ax.set_yticklabels([num for num in ax.get_yticks()])
+
+plt.tick_params(labelsize = 15)
+plt.title("Count Ratings in train data", fontsize = 20)
+plt.xlabel("Ratings", fontsize = 20)
+plt.ylabel("Number of Ratings", fontsize = 20)
+plt.show()
+
