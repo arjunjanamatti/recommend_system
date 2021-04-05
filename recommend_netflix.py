@@ -65,3 +65,10 @@ plt.xlabel("Ratings", fontsize = 20)
 plt.ylabel("Number of Ratings", fontsize = 20)
 plt.show()
 
+### NUMBER OF RATED MOVIES PER USER
+def rated_movies_groupby(variable):
+    return (train_data.groupby(by=variable)['rating'].count().sort_values(ascending=False)).head()
+ratings_movie_per_user = rated_movies_groupby('customer_id')
+print(ratings_movie_per_user)
+ratings_per_movie = rated_movies_groupby('movie_id')
+print(ratings_per_movie)
