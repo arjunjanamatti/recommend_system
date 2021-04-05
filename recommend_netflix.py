@@ -47,3 +47,9 @@ print(netflix_df.head())
 ### FIND DUPLICATED RATINGS
 print(netflix_df.duplicated(['movie_id', 'customer_id', 'rating', 'date']).sum())
 
+### SPLIT TRAIN AND TEST DATA
+split_value = int(len(netflix_df)*0.8)
+train_data = netflix_df[:split_value]
+test_data = netflix_df[split_value:]
+
+
