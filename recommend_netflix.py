@@ -72,3 +72,15 @@ ratings_movie_per_user = rated_movies_groupby('customer_id')
 print(ratings_movie_per_user)
 ratings_per_movie = rated_movies_groupby('movie_id')
 print(ratings_per_movie)
+
+
+### CREATE USER_ITEM SPARSE MATRIX
+def get_user_item_sparse_matrix(df):
+    sparse_data = sparse.csr_matrix((df['rating'], (df['customer_id'], df['movie_id'])))
+    return sparse_data
+
+train_sparse_data = get_user_item_sparse_matrix(train_data)
+print(train_sparse_data)
+
+test_sparse_data = get_user_item_sparse_matrix(test_data)
+print(test_sparse_data)
