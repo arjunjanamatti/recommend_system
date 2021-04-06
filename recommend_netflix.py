@@ -236,3 +236,17 @@ x_test = test_new_similar_features.drop(["user_id", "movie_id", "rating"], axis 
 y_train = train_new_similar_features["rating"]
 
 y_test = test_new_similar_features["rating"]
+
+
+### CHECK ACCURACY
+def error_metrics(y_true, y_pred):
+    rmse = np.sqrt(mean_squared_error(y_true, y_pred))
+    return rmse
+
+clf = xgb.XGBRegressor(n_estimators = 100, silent = False, n_jobs  = 10)
+clf.fit(x_train, y_train)
+
+y_pred_test = clf.predict(x_test)
+
+rmse_test = error_metrics(y_test, y_pred_test)
+print("RMSE = {}".format(rmse_test))
