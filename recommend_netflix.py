@@ -140,7 +140,7 @@ similar_user_matrix = compute_user_similarity(train_sparse_data, 100)
 print(similar_user_matrix[0])
 
 ### LOAD MOVIES TITLE
-movie_titles_df = pd.read_csv("movie_titles.txt",sep = ",",
+movie_titles_df = pd.read_csv("Data/movie_titles.txt",sep = ",",
                               header = None, names=['movie_id', 'year_of_release', 'movie_title'],
                               index_col = "movie_id", encoding = "iso8859_2")
 print(movie_titles_df.head())
@@ -153,3 +153,21 @@ def compute_movie_similarity_count(sparse_matrix, movie_titles_df, movie_id):
 
 similar_movies = compute_movie_similarity_count(train_sparse_data, movie_titles_df, 1775)
 print("Similar Movies = {}".format(similar_movies))
+
+### BUILD MACHINE LEARNING MODEL
+#### CREATION OF SAMPLE SPARSE MATRIX
+def get_sample_sparse_matrix(sparse_matrix, no_of_users, no_of_movies):
+    users, movies, ratings = sparse.find(sparse_matrix)
+    uniq_users = np.unique(users)
+    uniq_movies = np.unique(movies)
+    np.random.seed(15)
+    user = np.random.choice(uniq_users, no_of_users, replace = False)
+    movie = np.random.choice(uniq_movies, no_of_movies, replace = True)
+    mask = np.logical_and(np.isin(users, user), np.isin(movies, movie))
+    sparse_matrix = sparse.csr_matrix((ratings[mask], (users[mask], movies[mask])),
+                                                     shape = (max(user)+1, max(movie)+1))
+    return sparse_matrix
+
+train_sample_sparse_matrix = get_sample_sparse_matrix(train_sparse_data, 400, 40)
+
+test_sparse_matrix_matrix = get_sample_sparse_matrix(test_sparse_data, 200, 20)
