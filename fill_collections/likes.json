@@ -1,0 +1,47 @@
+[
+  {
+    "_id": "605e017098305a7a376ccd24",
+    "resourceId": "604cf485c4e5fa0b7f699386",
+    "resourceType": "REVIEW",
+    "fromUserId": "5fdf6bbcfe08e8c0191a7805",
+    "createdAt": "2021-03-26T15:44:48.209Z",
+    "updatedAt": "2021-03-26T15:44:48.209Z",
+    "__v": 0
+  },
+  {
+    "_id": "605e065ca698547c26a3e2e4",
+    "resourceId": "6056050e097fb658e7bdd579",
+    "resourceType": "REVIEW",
+    "fromUserId": "5fdf6bbcfe08e8c0191a7805",
+    "createdAt": "2021-03-26T16:05:48.017Z",
+    "updatedAt": "2021-03-26T16:05:48.017Z",
+    "__v": 0
+  },
+  {
+    "_id": "605e1917124e407fd2da070e",
+    "resourceId": "604cfa4fc4e5fa0b7f699388",
+    "resourceType": "REVIEW",
+    "fromUserId": "605dd8c826e482412f150f3e",
+    "createdAt": "2021-03-26T17:25:43.075Z",
+    "updatedAt": "2021-03-26T17:25:43.075Z",
+    "__v": 0
+  },
+  {
+    "_id": "605e1e9c7a2e77810c1369df",
+    "resourceId": "605ddb2426e482412f150f4e",
+    "resourceType": "REVIEW",
+    "fromUserId": "5fdf6bbcfe08e8c0191a7805",
+    "createdAt": "2021-03-26T17:49:16.205Z",
+    "updatedAt": "2021-03-26T17:49:16.205Z",
+    "__v": 0
+  },
+  {
+    "_id": "605e317e93dddd839ea211c0",
+    "resourceId": "605ddb6826e482412f150f50",
+    "resourceType": "REVIEW",
+    "fromUserId": "5fdf6bbcfe08e8c0191a7805",
+    "createdAt": "2021-03-26T19:09:50.814Z",
+    "updatedAt": "2021-03-26T19:09:50.814Z",
+    "__v": 0
+  }
+]

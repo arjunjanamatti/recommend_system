@@ -1,0 +1,29 @@
+[
+  {
+    "_id": "605de7b7fef33c72e8a88940",
+    "resourceId": "601848a6d7eeabfa7cc261cb",
+    "resourceType": "PRODUCT",
+    "fromUserId": "5fdf6bbcfe08e8c0191a7805",
+    "createdAt": "2021-03-26T13:55:03.982Z",
+    "updatedAt": "2021-03-26T13:55:03.982Z",
+    "__v": 0
+  },
+  {
+    "_id": "605de7bdfef33c72e8a88941",
+    "resourceId": "601848a6d7eeabfa7cc261cb",
+    "resourceType": "REVIEW",
+    "fromUserId": "5fdf6bbcfe08e8c0191a7805",
+    "createdAt": "2021-03-26T13:55:09.835Z",
+    "updatedAt": "2021-03-26T13:55:09.835Z",
+    "__v": 0
+  },
+  {
+    "_id": "605e1dee7a2e77810c1369dd",
+    "resourceId": "605ddadc26e482412f150f4c",
+    "resourceType": "REVIEW",
+    "fromUserId": "5fdf6bbcfe08e8c0191a7805",
+    "createdAt": "2021-03-26T17:46:22.878Z",
+    "updatedAt": "2021-03-26T17:46:22.878Z",
+    "__v": 0
+  }
+]
