@@ -221,3 +221,9 @@ train_new_similar_features = create_new_similar_features(train_sample_sparse_mat
 
 train_new_similar_features = train_new_similar_features.fillna(0)
 print(train_new_similar_features.head())
+
+
+test_new_similar_features = create_new_similar_features(test_sparse_matrix_matrix)
+
+test_new_similar_features = test_new_similar_features.fillna(0)
+print(test_new_similar_features.head())
