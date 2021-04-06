@@ -144,3 +144,12 @@ movie_titles_df = pd.read_csv("movie_titles.txt",sep = ",",
                               header = None, names=['movie_id', 'year_of_release', 'movie_title'],
                               index_col = "movie_id", encoding = "iso8859_2")
 print(movie_titles_df.head())
+
+### COMPUTE SIMILAR MOVIES
+def compute_movie_similarity_count(sparse_matrix, movie_titles_df, movie_id):
+    similarity = cosine_similarity(sparse_matrix.T, dense_output = False)
+    no_of_similar_movies = movie_titles_df.loc[movie_id][1], similarity[movie_id].count_nonzero()
+    return no_of_similar_movies
+
+similar_movies = compute_movie_similarity_count(train_sparse_data, movie_titles_df, 1775)
+print("Similar Movies = {}".format(similar_movies))
