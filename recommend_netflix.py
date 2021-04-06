@@ -138,3 +138,9 @@ def compute_user_similarity(sparse_matrix, limit=100):
 
 similar_user_matrix = compute_user_similarity(train_sparse_data, 100)
 print(similar_user_matrix[0])
+
+### LOAD MOVIES TITLE
+movie_titles_df = pd.read_csv("movie_titles.txt",sep = ",",
+                              header = None, names=['movie_id', 'year_of_release', 'movie_title'],
+                              index_col = "movie_id", encoding = "iso8859_2")
+print(movie_titles_df.head())
