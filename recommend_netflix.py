@@ -250,3 +250,17 @@ y_pred_test = clf.predict(x_test)
 
 rmse_test = error_metrics(y_test, y_pred_test)
 print("RMSE = {}".format(rmse_test))
+
+### PLOT RESULTS
+def plot_importance(model, clf):
+    fig = plt.figure(figsize = (8, 6))
+    ax = fig.add_axes([0,0,1,1])
+    model.plot_importance(clf, ax = ax, height = 0.3)
+    plt.xlabel("F Score", fontsize = 20)
+    plt.ylabel("Features", fontsize = 20)
+    plt.title("Feature Importance", fontsize = 20)
+    plt.tick_params(labelsize = 15)
+
+    plt.show()
+
+ plot_importance(xgb, clf)
