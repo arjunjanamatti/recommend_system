@@ -227,3 +227,12 @@ test_new_similar_features = create_new_similar_features(test_sparse_matrix_matri
 
 test_new_similar_features = test_new_similar_features.fillna(0)
 print(test_new_similar_features.head())
+
+### FROM SIMILAR DATASET DIVIDE TRAINING AND TESTING
+x_train = train_new_similar_features.drop(["user_id", "movie_id", "rating"], axis = 1)
+
+x_test = test_new_similar_features.drop(["user_id", "movie_id", "rating"], axis = 1)
+
+y_train = train_new_similar_features["rating"]
+
+y_test = test_new_similar_features["rating"]
