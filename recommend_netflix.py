@@ -122,4 +122,19 @@ print("Total no. of Movies = {}".format(total_movies))
 print("No. of Movies in train data= {}".format(train_movies))
 print("No. of Movies not present in train data = {}({}%)".format(uncommonMovies, np.round((uncommonMovies/total_movies)*100), 2))
 
+### COMPUTE USER SIMILARITY MATRIX
+def compute_user_similarity(sparse_matrix, limit=100):
+    row_index, col_index = sparse_matrix.nonzero()
+    rows = np.unique(row_index)
+    similar_arr = np.zeros(61700).reshape(617,100)
 
+    for row in rows[:limit]:
+        sim = cosine_similarity(sparse_matrix.getrow(row), train_sparse_data).ravel()
+        similar_indices = sim.argsort()[-limit:]
+        similar = sim[similar_indices]
+        similar_arr[row] = similar
+
+    return similar_arr
+
+similar_user_matrix = compute_user_similarity(train_sparse_data, 100)
+print(similar_user_matrix[0])
