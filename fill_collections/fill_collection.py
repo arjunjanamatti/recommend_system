@@ -126,5 +126,10 @@ df_1_approve=df_1_approve.rename(columns={"_id": "resourceId"})
 df_merge = df_1_approve.merge(df_2,how='left', on='resourceId')
 print(df_merge.columns)
 df_merge_1 = df_merge[['resourceId', 'loc', 'createdAt_x', 'updatedAt_x','fromUserId_x']]
-df_merge.to_csv('df_merge.csv')
-df_merge_1.to_csv('df_merge_1.csv')
+longitude = [_['coordinates'][0] for _ in df_merge_1['loc']]
+latitude = [_['coordinates'][1] for _ in df_merge_1['loc']]
+df_merge_1['longitude'] = longitude
+df_merge_1['latitude'] = latitude
+df_merge_1.drop(labels='loc', inplace=True, axis=1)
+# df_merge.to_csv('df_merge.csv')
+# df_merge_1.to_csv('df_merge_1.csv')
