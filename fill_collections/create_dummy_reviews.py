@@ -2,6 +2,7 @@ import json
 import random
 import time
 from datetime import datetime
+import pickle
 
 def randomDate(start, end):
     frmt = '%d-%m-%Y %H:%M:%S'
@@ -36,10 +37,15 @@ for i in range(100):
 with open("reviews_1.json", "w") as fp:
     json.dump(nested_dict , fp, indent=4)
 
-with open("reviews_1.json") as fp:
-    data = json.load(fp)
+user_id = []
+with open("reviews_1.json") as file:
+    data = json.load(file)
+for dic in data:
+    user_id.append(dic['_id'])
+print(user_id)
+with open('user_id.pickle', 'wb') as us:
+    pickle.dump(user_id, us)
 
-for index in range(len(data)):
-    print(data[index])
-    # for key in data[index]:
-    #     print(data[index][key])
+with open('user_id.pickle', 'rb') as f:
+    mynewlist = pickle.load(f)
+print(mynewlist)
