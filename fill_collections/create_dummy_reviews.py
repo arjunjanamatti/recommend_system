@@ -34,13 +34,20 @@ for i in range(100):
     print(nested_dict)
 print(len(nested_dict))
 
+
+# r = json.dumps(nested_dict)
+# loaded_r = json.dumps(r)
+#
+# print(loaded_r)
+
+
 with open("reviews_1.json", "w") as fp:
-    json.dump(nested_dict , fp)
-#
-# with open("reviews_1.json") as fp:
-#     data = json.load(fp)
-#
-# for index in range(len(data)):
-#     print(data[index])
-#     # for key in data[index]:
-#     #     print(data[index][key])
+    json.dump(nested_dict , fp, indent=4)
+
+with open("reviews_1.json") as fp:
+    data = json.load(fp)
+
+for index in range(len(data)):
+    print(data[index])
+    # for key in data[index]:
+    #     print(data[index][key])
