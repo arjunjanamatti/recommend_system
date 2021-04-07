@@ -121,5 +121,5 @@ df_1 = tables_dictionary['reviews']
 df_1_approve = (df_1[df_1['isApprove']=='approved'])
 df_2 = tables_dictionary['likes']
 df_1_approve=df_1_approve.rename(columns={"_id": "resourceId"})
-df_merge = pd.merge(df_1_approve,df_2, on='resourceId')
+df_merge = df_1_approve.merge(df_2,how='left', on='resourceId')
 df_merge.to_csv('df_merge.csv')
