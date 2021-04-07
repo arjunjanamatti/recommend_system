@@ -42,7 +42,7 @@ with open("reviews_1.json") as file:
     data = json.load(file)
 for dic in data:
     user_id.append(dic['_id'])
-print(user_id)
+
 with open('user_id.pickle', 'wb') as us:
     pickle.dump(user_id, us)
 
