@@ -25,20 +25,12 @@ for i in range(100):
 for i in range(100):
     new_dict = sample_dict.copy()
     new_dict['_id'] = new_dict['_id'][:19]+str(799386+i)
-    new_dict['loc']['coordinates'] = cordinates_nested[i]
+    new_dict['loc'] = {'coordinates':cordinates_nested[i], 'type': 'Point'}
     new_dict['rating'] = random.uniform(1,10)
     new_dict['createdAt'] = (randomDate("20-01-2021 13:30:00", "23-04-2021 04:50:34")).strftime('%d-%m-%YT%H:%M:%S')
     new_dict['updatedAt'] = (randomDate("20-01-2021 13:30:00", "23-04-2021 04:50:34")).strftime('%d-%m-%YT%H:%M:%S')
     # new_dict = sample_dict.copy()
     nested_dict.append(new_dict)
-    print(nested_dict)
-print(len(nested_dict))
-
-
-# r = json.dumps(nested_dict)
-# loaded_r = json.dumps(r)
-#
-# print(loaded_r)
 
 
 with open("reviews_1.json", "w") as fp:
