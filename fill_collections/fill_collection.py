@@ -116,6 +116,7 @@ print(tables_dictionary)
 #     # print(df.head())
 #     df = pd.DataFrame(list(list_data))
 #     print(df.head())
+# 
 
 df_1 = tables_dictionary['reviews']
 df_1_approve = (df_1[df_1['isApprove']=='approved'])
