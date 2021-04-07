@@ -4,6 +4,7 @@ from pymongo.errors import ConnectionFailure
 from collections import defaultdict
 import json
 import pandas as pd
+from datetime import timedelta
 
 def looping_json_files(files_list):
     list_1 = []
@@ -131,5 +132,29 @@ latitude = [_['coordinates'][1] for _ in df_merge_1['loc']]
 df_merge_1['longitude'] = longitude
 df_merge_1['latitude'] = latitude
 df_merge_1.drop(labels='loc', inplace=True, axis=1)
-# df_merge.to_csv('df_merge.csv')
-# df_merge_1.to_csv('df_merge_1.csv')
+created_dates = ([_.split('T')[0] for _ in df_merge_1['createdAt_x']])
+updated_dates = ([_.split('T')[0] for _ in df_merge_1['updatedAt_x']])
+df_merge_1['created_dates'] = created_dates
+df_merge_1['updated_dates'] = updated_dates
+df_merge_1['created_dates'] = pd.to_datetime(df_merge_1['created_dates'])
+df_merge_1['updated_dates'] = pd.to_datetime(df_merge_1['updated_dates'])
+
+df_merge_1.drop(labels=['createdAt_x', 'updatedAt_x'], inplace=True, axis=1)
+df_merge.to_csv('df_merge.csv')
+df_merge_1.to_csv('df_merge_1.csv')
+
+
+
+### DATAFRAME FOR LAST WEEK
+today = pd.to_datetime('today').floor('D')
+week_prior =  today - timedelta(weeks=1)
+df_last_week = df_merge_1[(df_merge_1['updated_dates'] <= today) & (df_merge_1['updated_dates'] >= week_prior)]
+df_last_week.to_csv('df_last_week.csv')
+print(df_last_week.groupby(['resourceId'])['updated_dates'].count().reset_index().rename(columns = {'updated_dates': 'ReviewViewCount'}))
+
+### DATAFRAME FOR LAST MONTH
+last_month = today - timedelta(days=30)
+df_last_month = df_merge_1[(df_merge_1['updated_dates'] <= today) & (df_merge_1['updated_dates'] >= last_month)]
+df_last_month.to_csv('df_last_month.csv')
+print()
+print(df_last_month.groupby(['resourceId'])['updated_dates'].count().reset_index().rename(columns = {'updated_dates': 'ReviewViewCount'}))
