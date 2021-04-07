@@ -76,7 +76,7 @@ def get_data():
     except ConnectionFailure:
         print('Failed to connect to mongo DB database')
 
-files_list = ['reviews_1.json']
+files_list = ['likes_1.json']
 main()
 get_data()
 

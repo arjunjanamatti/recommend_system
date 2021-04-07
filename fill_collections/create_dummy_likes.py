@@ -4,6 +4,8 @@ import time
 from datetime import datetime
 import pickle
 from create_dummy_reviews import randomDate
+from pymongo import MongoClient
+import pandas as pd
 
 with open('user_id.pickle', 'rb') as f:
     user_id = pickle.load(f)
@@ -19,7 +21,7 @@ sample_dict =   {
     "__v": 0
   }
 
-for i in range(1000000):
+for i in range(10000):
     new_dict = sample_dict.copy()
     new_dict['_id'] = new_dict['_id'][:23]+str(24+i)
     new_dict['resourceId'] = random.choice(user_id)
@@ -30,3 +32,6 @@ for i in range(1000000):
 
 with open("likes_1.json", "w") as fp:
     json.dump(nested_dict , fp, indent=4)
+
+df = pd.read_json("likes_1.json")
+print(df['resourceId'].value_counts())

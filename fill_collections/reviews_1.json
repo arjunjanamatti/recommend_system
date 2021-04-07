@@ -3,8 +3,8 @@
         "_id": "604cf485c4e5fa0b7f7799386",
         "loc": {
             "coordinates": [
-                -89.93701531185984,
-                39.132822970213624
+                -90.09621004230713,
+                39.07178780556726
             ],
             "type": "Point"
         },
@@ -16,7 +16,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 8.155135722883504,
+        "rating": 8.603756800491736,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -35,8 +35,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "15-04-2021T04:01:44",
-        "updatedAt": "31-01-2021T14:39:11",
+        "createdAt": "21-01-2021T12:20:19",
+        "updatedAt": "03-02-2021T16:08:32",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -52,8 +52,8 @@
         "_id": "604cf485c4e5fa0b7f7799387",
         "loc": {
             "coordinates": [
-                -89.72981721735901,
-                39.98958304688965
+                -89.44638328699716,
+                39.64010491227006
             ],
             "type": "Point"
         },
@@ -65,7 +65,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 1.2333655001113364,
+        "rating": 6.139723389846092,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -84,8 +84,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "01-03-2021T22:41:36",
-        "updatedAt": "02-04-2021T09:05:25",
+        "createdAt": "06-03-2021T06:48:09",
+        "updatedAt": "21-02-2021T00:10:46",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -101,8 +101,8 @@
         "_id": "604cf485c4e5fa0b7f7799388",
         "loc": {
             "coordinates": [
-                -89.3230043178474,
-                41.05450649887993
+                -88.81417079883,
+                40.174212131996796
             ],
             "type": "Point"
         },
@@ -114,7 +114,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 4.199048716657913,
+        "rating": 4.385434956767792,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -133,8 +133,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "28-01-2021T03:35:28",
-        "updatedAt": "28-03-2021T13:42:25",
+        "createdAt": "24-03-2021T11:23:54",
+        "updatedAt": "24-01-2021T23:20:13",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -150,8 +150,8 @@
         "_id": "604cf485c4e5fa0b7f7799389",
         "loc": {
             "coordinates": [
-                -88.12349601801685,
-                41.711921444415154
+                -87.92441472125174,
+                40.675929375448966
             ],
             "type": "Point"
         },
@@ -163,7 +163,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 9.366588542747072,
+        "rating": 7.56704133715789,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -182,8 +182,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "03-04-2021T04:19:13",
-        "updatedAt": "19-03-2021T13:39:40",
+        "createdAt": "04-02-2021T03:28:20",
+        "updatedAt": "09-04-2021T01:58:38",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -199,8 +199,8 @@
         "_id": "604cf485c4e5fa0b7f7799390",
         "loc": {
             "coordinates": [
-                -87.09121643932093,
-                42.59740871371189
+                -86.87365820051996,
+                40.93689699484452
             ],
             "type": "Point"
         },
@@ -212,7 +212,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 7.236976022755224,
+        "rating": 8.883542798188243,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -231,8 +231,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "12-03-2021T13:58:48",
-        "updatedAt": "15-02-2021T22:26:52",
+        "createdAt": "07-04-2021T17:40:12",
+        "updatedAt": "14-04-2021T23:50:27",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -248,8 +248,8 @@
         "_id": "604cf485c4e5fa0b7f7799391",
         "loc": {
             "coordinates": [
-                -86.39852039824581,
-                43.7368539314178
+                -86.74476070795836,
+                41.12416394252278
             ],
             "type": "Point"
         },
@@ -261,7 +261,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 9.048233376432407,
+        "rating": 2.354961768765006,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -280,8 +280,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "14-02-2021T13:04:39",
-        "updatedAt": "17-03-2021T17:19:52",
+        "createdAt": "30-03-2021T14:07:29",
+        "updatedAt": "10-02-2021T10:05:41",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -297,8 +297,8 @@
         "_id": "604cf485c4e5fa0b7f7799392",
         "loc": {
             "coordinates": [
-                -85.65922366603652,
-                44.61445902245169
+                -85.92993424986204,
+                41.387004629528626
             ],
             "type": "Point"
         },
@@ -310,7 +310,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 6.964711352311687,
+        "rating": 4.3332865887052066,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -329,8 +329,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "06-04-2021T10:01:53",
-        "updatedAt": "15-02-2021T14:54:03",
+        "createdAt": "31-01-2021T12:36:42",
+        "updatedAt": "18-02-2021T06:10:22",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -346,8 +346,8 @@
         "_id": "604cf485c4e5fa0b7f7799393",
         "loc": {
             "coordinates": [
-                -85.05910783377051,
-                45.215910284383384
+                -85.04449037761009,
+                42.164029729765446
             ],
             "type": "Point"
         },
@@ -359,7 +359,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 8.48347844584719,
+        "rating": 3.1897547827652817,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -378,8 +378,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "01-03-2021T20:51:26",
-        "updatedAt": "22-04-2021T22:33:59",
+        "createdAt": "23-02-2021T10:52:49",
+        "updatedAt": "10-04-2021T23:09:58",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -395,8 +395,8 @@
         "_id": "604cf485c4e5fa0b7f7799394",
         "loc": {
             "coordinates": [
-                -84.36334401908513,
-                46.175471171843455
+                -84.19385777588943,
+                42.89678680916544
             ],
             "type": "Point"
         },
@@ -408,7 +408,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 8.559095267282228,
+        "rating": 9.740468614939179,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -427,8 +427,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "07-04-2021T18:21:00",
-        "updatedAt": "30-03-2021T15:52:03",
+        "createdAt": "30-01-2021T11:37:29",
+        "updatedAt": "17-02-2021T20:22:09",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -444,8 +444,8 @@
         "_id": "604cf485c4e5fa0b7f7799395",
         "loc": {
             "coordinates": [
-                -83.71226225485925,
-                46.9958595777348
+                -83.47183722896024,
+                43.587116845362395
             ],
             "type": "Point"
         },
@@ -457,7 +457,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 3.808522737498513,
+        "rating": 9.428922874373892,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -476,8 +476,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "11-04-2021T07:46:16",
-        "updatedAt": "08-02-2021T18:58:17",
+        "createdAt": "04-04-2021T11:31:33",
+        "updatedAt": "02-03-2021T10:18:06",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -493,8 +493,8 @@
         "_id": "604cf485c4e5fa0b7f7799396",
         "loc": {
             "coordinates": [
-                -83.27442682848451,
-                47.607220635854944
+                -82.2977187242934,
+                44.5159400450017
             ],
             "type": "Point"
         },
@@ -506,7 +506,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 4.326160294671679,
+        "rating": 3.043742857604567,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -525,8 +525,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "04-02-2021T20:54:23",
-        "updatedAt": "05-02-2021T13:29:55",
+        "createdAt": "24-02-2021T03:46:14",
+        "updatedAt": "10-03-2021T18:14:31",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -542,8 +542,8 @@
         "_id": "604cf485c4e5fa0b7f7799397",
         "loc": {
             "coordinates": [
-                -82.8156909946312,
-                48.250596897045334
+                -81.54497250220068,
+                45.012510611033484
             ],
             "type": "Point"
         },
@@ -555,7 +555,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 2.7197228395742687,
+        "rating": 5.982495718171246,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -574,8 +574,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "07-04-2021T01:47:14",
-        "updatedAt": "12-04-2021T08:16:12",
+        "createdAt": "14-02-2021T21:50:41",
+        "updatedAt": "22-04-2021T07:21:46",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -591,8 +591,8 @@
         "_id": "604cf485c4e5fa0b7f7799398",
         "loc": {
             "coordinates": [
-                -81.65054327409554,
-                48.487179243172164
+                -80.35451257464874,
+                45.86150703493143
             ],
             "type": "Point"
         },
@@ -604,7 +604,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 9.381598104620272,
+        "rating": 9.133456617570282,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -623,8 +623,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "08-04-2021T04:30:47",
-        "updatedAt": "25-02-2021T12:16:42",
+        "createdAt": "07-03-2021T09:30:03",
+        "updatedAt": "29-01-2021T01:35:58",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -640,8 +640,8 @@
         "_id": "604cf485c4e5fa0b7f7799399",
         "loc": {
             "coordinates": [
-                -81.54804102580842,
-                48.95475492774899
+                -79.74341690471866,
+                46.56138285935492
             ],
             "type": "Point"
         },
@@ -653,7 +653,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 2.5854376795989715,
+        "rating": 1.9001625124491286,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -672,8 +672,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "07-04-2021T05:20:09",
-        "updatedAt": "02-02-2021T12:17:51",
+        "createdAt": "31-01-2021T08:27:21",
+        "updatedAt": "25-03-2021T12:17:22",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -689,8 +689,8 @@
         "_id": "604cf485c4e5fa0b7f7799400",
         "loc": {
             "coordinates": [
-                -81.31130536212316,
-                49.08529920668514
+                -78.73733242187701,
+                47.09895477222905
             ],
             "type": "Point"
         },
@@ -702,7 +702,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 1.9409924496315671,
+        "rating": 3.3273485432383447,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -721,8 +721,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "11-02-2021T20:04:19",
-        "updatedAt": "02-02-2021T13:45:14",
+        "createdAt": "22-03-2021T05:43:10",
+        "updatedAt": "23-02-2021T06:53:00",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -738,8 +738,8 @@
         "_id": "604cf485c4e5fa0b7f7799401",
         "loc": {
             "coordinates": [
-                -80.7705099273769,
-                50.15134083061899
+                -78.44602770119243,
+                47.34926349323649
             ],
             "type": "Point"
         },
@@ -751,7 +751,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 3.852714860046486,
+        "rating": 9.038152514110658,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -770,8 +770,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "05-03-2021T21:39:27",
-        "updatedAt": "14-04-2021T01:58:50",
+        "createdAt": "31-03-2021T21:27:57",
+        "updatedAt": "01-02-2021T01:31:55",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -787,8 +787,8 @@
         "_id": "604cf485c4e5fa0b7f7799402",
         "loc": {
             "coordinates": [
-                -80.11449934325253,
-                51.21801923170246
+                -78.10933742044392,
+                47.60221903104389
             ],
             "type": "Point"
         },
@@ -800,7 +800,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 7.115289714528709,
+        "rating": 5.58264103864796,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -819,8 +819,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "04-02-2021T04:21:28",
-        "updatedAt": "09-02-2021T23:33:45",
+        "createdAt": "19-04-2021T07:08:10",
+        "updatedAt": "22-04-2021T13:02:41",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -836,8 +836,8 @@
         "_id": "604cf485c4e5fa0b7f7799403",
         "loc": {
             "coordinates": [
-                -79.94482531473496,
-                52.2021450595897
+                -76.91154092983302,
+                47.86312566160008
             ],
             "type": "Point"
         },
@@ -849,7 +849,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 7.035484474271423,
+        "rating": 7.883365966095969,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -868,8 +868,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "28-02-2021T04:50:40",
-        "updatedAt": "27-01-2021T00:44:45",
+        "createdAt": "18-02-2021T16:04:46",
+        "updatedAt": "09-02-2021T09:29:50",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -885,8 +885,8 @@
         "_id": "604cf485c4e5fa0b7f7799404",
         "loc": {
             "coordinates": [
-                -79.60304562038827,
-                52.943488902973975
+                -76.10792204054032,
+                48.94320224972938
             ],
             "type": "Point"
         },
@@ -898,7 +898,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 1.3544768106099752,
+        "rating": 6.580315339553867,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -917,8 +917,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "18-04-2021T22:07:05",
-        "updatedAt": "15-03-2021T02:43:44",
+        "createdAt": "13-03-2021T15:08:34",
+        "updatedAt": "21-02-2021T14:42:23",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -934,8 +934,8 @@
         "_id": "604cf485c4e5fa0b7f7799405",
         "loc": {
             "coordinates": [
-                -79.27915870928621,
-                53.15328625484664
+                -75.14673035690832,
+                49.77756081315542
             ],
             "type": "Point"
         },
@@ -947,7 +947,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 4.464388008959377,
+        "rating": 3.566031846612591,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -966,8 +966,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "27-01-2021T23:51:25",
-        "updatedAt": "31-01-2021T02:54:44",
+        "createdAt": "23-01-2021T23:50:32",
+        "updatedAt": "18-03-2021T08:46:53",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -983,8 +983,8 @@
         "_id": "604cf485c4e5fa0b7f7799406",
         "loc": {
             "coordinates": [
-                -78.39791843538349,
-                53.8274584274756
+                -73.99199927143874,
+                50.7946343271946
             ],
             "type": "Point"
         },
@@ -996,7 +996,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 2.6714151465665923,
+        "rating": 7.1573220393686245,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -1015,8 +1015,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "10-03-2021T17:59:51",
-        "updatedAt": "19-02-2021T10:44:59",
+        "createdAt": "28-01-2021T15:02:24",
+        "updatedAt": "23-03-2021T20:44:40",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -1032,8 +1032,8 @@
         "_id": "604cf485c4e5fa0b7f7799407",
         "loc": {
             "coordinates": [
-                -77.95580750927921,
-                54.34068361739038
+                -73.14674862362072,
+                51.065952000396784
             ],
             "type": "Point"
         },
@@ -1045,7 +1045,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 9.058859384648455,
+        "rating": 4.1206191311364755,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -1064,8 +1064,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "26-01-2021T06:12:45",
-        "updatedAt": "07-02-2021T08:52:24",
+        "createdAt": "18-03-2021T16:18:51",
+        "updatedAt": "10-03-2021T19:31:04",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -1081,8 +1081,8 @@
         "_id": "604cf485c4e5fa0b7f7799408",
         "loc": {
             "coordinates": [
-                -77.42414973110222,
-                55.51066593790835
+                -72.15862983822389,
+                51.577506999347136
             ],
             "type": "Point"
         },
@@ -1094,7 +1094,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 2.2596781146830636,
+        "rating": 2.591532625197889,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -1113,8 +1113,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "05-02-2021T13:19:32",
-        "updatedAt": "15-02-2021T09:28:12",
+        "createdAt": "12-03-2021T02:54:46",
+        "updatedAt": "24-03-2021T21:44:01",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -1130,8 +1130,8 @@
         "_id": "604cf485c4e5fa0b7f7799409",
         "loc": {
             "coordinates": [
-                -76.84713720392568,
-                55.8808635230786
+                -71.96625128507793,
+                51.97084487240797
             ],
             "type": "Point"
         },
@@ -1143,7 +1143,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 1.2778849240004513,
+        "rating": 4.694961943617841,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -1162,8 +1162,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "14-04-2021T10:30:49",
-        "updatedAt": "28-03-2021T01:13:19",
+        "createdAt": "05-02-2021T13:01:42",
+        "updatedAt": "21-01-2021T03:35:54",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -1179,8 +1179,8 @@
         "_id": "604cf485c4e5fa0b7f7799410",
         "loc": {
             "coordinates": [
-                -76.20050103926327,
-                56.91791057288202
+                -71.48467785286286,
+                53.10096620242372
             ],
             "type": "Point"
         },
@@ -1192,7 +1192,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 9.513021662852188,
+        "rating": 3.2683170050888632,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -1211,8 +1211,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "17-03-2021T07:39:41",
-        "updatedAt": "17-02-2021T00:27:24",
+        "createdAt": "08-02-2021T18:59:32",
+        "updatedAt": "04-04-2021T02:38:16",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -1228,8 +1228,8 @@
         "_id": "604cf485c4e5fa0b7f7799411",
         "loc": {
             "coordinates": [
-                -75.92113311300488,
-                57.531935927444465
+                -70.82629048471374,
+                53.909315857523715
             ],
             "type": "Point"
         },
@@ -1241,7 +1241,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 9.886377864641346,
+        "rating": 4.764726730898076,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -1260,8 +1260,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "21-01-2021T02:15:25",
-        "updatedAt": "04-02-2021T22:39:29",
+        "createdAt": "29-03-2021T06:42:26",
+        "updatedAt": "23-02-2021T23:12:57",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -1277,8 +1277,8 @@
         "_id": "604cf485c4e5fa0b7f7799412",
         "loc": {
             "coordinates": [
-                -74.79201594257391,
-                57.903946394407754
+                -70.47099220811494,
+                54.908548087624226
             ],
             "type": "Point"
         },
@@ -1290,7 +1290,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 1.9932158228958934,
+        "rating": 6.970413724271409,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -1309,8 +1309,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "27-03-2021T10:32:54",
-        "updatedAt": "12-04-2021T22:58:05",
+        "createdAt": "01-03-2021T21:50:28",
+        "updatedAt": "15-03-2021T13:46:21",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -1326,8 +1326,8 @@
         "_id": "604cf485c4e5fa0b7f7799413",
         "loc": {
             "coordinates": [
-                -73.61766064909082,
-                58.16669732041218
+                -69.99106023136414,
+                55.59041379327545
             ],
             "type": "Point"
         },
@@ -1339,7 +1339,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 1.1640104320047064,
+        "rating": 6.503160621792172,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -1358,8 +1358,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "19-04-2021T15:21:04",
-        "updatedAt": "11-03-2021T17:35:36",
+        "createdAt": "23-01-2021T19:18:49",
+        "updatedAt": "29-01-2021T16:13:41",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -1375,8 +1375,8 @@
         "_id": "604cf485c4e5fa0b7f7799414",
         "loc": {
             "coordinates": [
-                -73.03046155889022,
-                58.29813367995435
+                -68.80747079006963,
+                56.55764433498291
             ],
             "type": "Point"
         },
@@ -1388,7 +1388,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 6.00292954467173,
+        "rating": 9.437119535993489,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -1407,8 +1407,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "21-03-2021T07:26:07",
-        "updatedAt": "20-04-2021T20:02:52",
+        "createdAt": "08-03-2021T08:41:45",
+        "updatedAt": "17-02-2021T20:49:49",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -1424,8 +1424,8 @@
         "_id": "604cf485c4e5fa0b7f7799415",
         "loc": {
             "coordinates": [
-                -72.11877285270315,
-                58.94580124841532
+                -68.51491001258628,
+                57.41847524181723
             ],
             "type": "Point"
         },
@@ -1437,7 +1437,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 3.07596156153903,
+        "rating": 5.969810406213558,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -1456,8 +1456,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "18-04-2021T20:15:49",
-        "updatedAt": "16-02-2021T09:53:08",
+        "createdAt": "12-02-2021T13:06:20",
+        "updatedAt": "11-03-2021T18:41:33",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -1473,8 +1473,8 @@
         "_id": "604cf485c4e5fa0b7f7799416",
         "loc": {
             "coordinates": [
-                -71.7639288418505,
-                59.54980375359994
+                -67.46848108685994,
+                58.11754461699174
             ],
             "type": "Point"
         },
@@ -1486,7 +1486,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 6.7049952724957835,
+        "rating": 3.6540836730378894,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -1505,8 +1505,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "28-02-2021T03:00:36",
-        "updatedAt": "24-01-2021T14:03:17",
+        "createdAt": "15-03-2021T13:52:17",
+        "updatedAt": "23-01-2021T16:31:51",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -1522,8 +1522,8 @@
         "_id": "604cf485c4e5fa0b7f7799417",
         "loc": {
             "coordinates": [
-                -70.75996072046861,
-                60.12269478914141
+                -67.22301189422383,
+                58.81091138789833
             ],
             "type": "Point"
         },
@@ -1535,7 +1535,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 2.5452569542071264,
+        "rating": 8.259896851047866,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -1554,8 +1554,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "17-03-2021T09:38:04",
-        "updatedAt": "24-01-2021T23:02:54",
+        "createdAt": "13-02-2021T23:04:26",
+        "updatedAt": "16-02-2021T16:27:32",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -1571,8 +1571,8 @@
         "_id": "604cf485c4e5fa0b7f7799418",
         "loc": {
             "coordinates": [
-                -69.92897267944946,
-                60.646627037887114
+                -66.86096727953428,
+                59.28945597827761
             ],
             "type": "Point"
         },
@@ -1584,7 +1584,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 3.1313194383831697,
+        "rating": 2.7803136379529723,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -1603,8 +1603,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "13-02-2021T20:17:44",
-        "updatedAt": "21-02-2021T15:54:10",
+        "createdAt": "21-03-2021T20:36:59",
+        "updatedAt": "23-02-2021T01:06:11",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -1620,8 +1620,8 @@
         "_id": "604cf485c4e5fa0b7f7799419",
         "loc": {
             "coordinates": [
-                -69.30410133798452,
-                61.32754712459493
+                -66.10067680189917,
+                59.84897615066295
             ],
             "type": "Point"
         },
@@ -1633,7 +1633,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 4.305956387020963,
+        "rating": 9.164617658321545,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -1652,8 +1652,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "18-02-2021T19:14:10",
-        "updatedAt": "18-02-2021T23:53:23",
+        "createdAt": "14-04-2021T15:09:50",
+        "updatedAt": "08-04-2021T00:20:29",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -1669,8 +1669,8 @@
         "_id": "604cf485c4e5fa0b7f7799420",
         "loc": {
             "coordinates": [
-                -69.0620461042505,
-                62.31613641368805
+                -65.53815962631921,
+                60.26961958461469
             ],
             "type": "Point"
         },
@@ -1682,7 +1682,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 5.864496240770457,
+        "rating": 3.8603391046986886,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -1701,8 +1701,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "23-04-2021T01:50:43",
-        "updatedAt": "22-03-2021T00:13:52",
+        "createdAt": "23-02-2021T01:08:22",
+        "updatedAt": "24-01-2021T10:55:44",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -1718,8 +1718,8 @@
         "_id": "604cf485c4e5fa0b7f7799421",
         "loc": {
             "coordinates": [
-                -68.80144924932515,
-                63.318441549521005
+                -65.13429943826695,
+                60.61944583141473
             ],
             "type": "Point"
         },
@@ -1731,7 +1731,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 6.459661661700462,
+        "rating": 4.486469175747643,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -1750,8 +1750,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "21-02-2021T10:13:23",
-        "updatedAt": "22-01-2021T01:28:50",
+        "createdAt": "07-03-2021T05:58:57",
+        "updatedAt": "18-02-2021T14:08:21",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -1767,8 +1767,8 @@
         "_id": "604cf485c4e5fa0b7f7799422",
         "loc": {
             "coordinates": [
-                -68.22819334434271,
-                63.604793546243634
+                -64.50455459242242,
+                61.64100356538794
             ],
             "type": "Point"
         },
@@ -1780,7 +1780,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 3.7539417171548095,
+        "rating": 5.3637160309683445,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -1799,8 +1799,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "22-04-2021T04:18:38",
-        "updatedAt": "29-03-2021T04:12:21",
+        "createdAt": "02-04-2021T19:33:32",
+        "updatedAt": "24-03-2021T01:53:23",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -1816,8 +1816,8 @@
         "_id": "604cf485c4e5fa0b7f7799423",
         "loc": {
             "coordinates": [
-                -68.04597566553898,
-                64.78024041065461
+                -63.386478430371945,
+                62.4441606648368
             ],
             "type": "Point"
         },
@@ -1829,7 +1829,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 1.4178724235510536,
+        "rating": 1.7312347126009557,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -1848,8 +1848,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "25-02-2021T14:07:38",
-        "updatedAt": "05-03-2021T12:56:06",
+        "createdAt": "20-02-2021T10:05:47",
+        "updatedAt": "25-01-2021T00:53:48",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -1865,8 +1865,8 @@
         "_id": "604cf485c4e5fa0b7f7799424",
         "loc": {
             "coordinates": [
-                -67.90583100718625,
-                65.07359475622803
+                -62.570431142647735,
+                62.55388662151987
             ],
             "type": "Point"
         },
@@ -1878,7 +1878,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 5.534350183434177,
+        "rating": 5.1287126383935835,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -1897,8 +1897,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "23-03-2021T04:09:50",
-        "updatedAt": "29-03-2021T10:55:40",
+        "createdAt": "01-02-2021T04:28:33",
+        "updatedAt": "31-01-2021T14:27:26",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -1914,8 +1914,8 @@
         "_id": "604cf485c4e5fa0b7f7799425",
         "loc": {
             "coordinates": [
-                -67.67880966037859,
-                65.7773129144731
+                -62.41703486876918,
+                63.38888922206592
             ],
             "type": "Point"
         },
@@ -1927,7 +1927,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 4.080093226479915,
+        "rating": 1.2996894785257072,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -1946,8 +1946,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "05-02-2021T14:27:33",
-        "updatedAt": "04-03-2021T07:55:57",
+        "createdAt": "31-01-2021T01:21:00",
+        "updatedAt": "12-04-2021T20:33:25",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -1963,8 +1963,8 @@
         "_id": "604cf485c4e5fa0b7f7799426",
         "loc": {
             "coordinates": [
-                -67.52626136809515,
-                66.53649688724924
+                -62.09778966094419,
+                64.01771830282009
             ],
             "type": "Point"
         },
@@ -1976,7 +1976,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 9.23643477832268,
+        "rating": 4.433046454711508,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -1995,8 +1995,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "21-04-2021T01:18:34",
-        "updatedAt": "02-03-2021T19:40:13",
+        "createdAt": "30-03-2021T20:29:59",
+        "updatedAt": "03-04-2021T02:19:32",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -2012,8 +2012,8 @@
         "_id": "604cf485c4e5fa0b7f7799427",
         "loc": {
             "coordinates": [
-                -67.05981863885638,
-                66.99884461143496
+                -61.45882449993276,
+                64.97800741776582
             ],
             "type": "Point"
         },
@@ -2025,7 +2025,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 4.159070333321008,
+        "rating": 7.263782016649201,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -2044,8 +2044,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "25-02-2021T13:50:19",
-        "updatedAt": "18-04-2021T13:47:06",
+        "createdAt": "15-04-2021T18:04:50",
+        "updatedAt": "25-03-2021T12:21:32",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -2061,8 +2061,8 @@
         "_id": "604cf485c4e5fa0b7f7799428",
         "loc": {
             "coordinates": [
-                -66.61247287961645,
-                67.55059114867709
+                -60.83035521129414,
+                65.53558356804464
             ],
             "type": "Point"
         },
@@ -2074,7 +2074,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 2.8104373358700574,
+        "rating": 6.633843155639793,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -2093,8 +2093,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "26-03-2021T05:42:52",
-        "updatedAt": "07-02-2021T15:53:23",
+        "createdAt": "02-04-2021T11:12:02",
+        "updatedAt": "13-04-2021T10:36:51",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -2110,8 +2110,8 @@
         "_id": "604cf485c4e5fa0b7f7799429",
         "loc": {
             "coordinates": [
-                -66.2662019261234,
-                68.4143070623224
+                -59.74326446951437,
+                66.31480981931205
             ],
             "type": "Point"
         },
@@ -2123,7 +2123,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 9.730935266623062,
+        "rating": 7.292773599166473,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -2142,8 +2142,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "26-03-2021T01:45:47",
-        "updatedAt": "22-02-2021T16:08:03",
+        "createdAt": "02-03-2021T07:59:27",
+        "updatedAt": "29-01-2021T01:29:41",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -2159,8 +2159,8 @@
         "_id": "604cf485c4e5fa0b7f7799430",
         "loc": {
             "coordinates": [
-                -65.1405331148949,
-                69.32368019180849
+                -58.974714660127034,
+                67.2648190912274
             ],
             "type": "Point"
         },
@@ -2172,7 +2172,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 4.6630812681925775,
+        "rating": 7.647043396644722,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -2191,8 +2191,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "25-01-2021T22:19:08",
-        "updatedAt": "06-03-2021T23:34:56",
+        "createdAt": "21-04-2021T05:34:44",
+        "updatedAt": "01-04-2021T13:16:36",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -2208,8 +2208,8 @@
         "_id": "604cf485c4e5fa0b7f7799431",
         "loc": {
             "coordinates": [
-                -64.9688400808973,
-                69.49217693547948
+                -58.7924564176005,
+                67.36635683352686
             ],
             "type": "Point"
         },
@@ -2221,7 +2221,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 8.607451652197026,
+        "rating": 5.923972738213104,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -2240,8 +2240,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "27-03-2021T21:34:48",
-        "updatedAt": "23-01-2021T08:02:17",
+        "createdAt": "25-01-2021T02:43:45",
+        "updatedAt": "27-03-2021T20:47:12",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -2257,8 +2257,8 @@
         "_id": "604cf485c4e5fa0b7f7799432",
         "loc": {
             "coordinates": [
-                -63.81652196968222,
-                69.60972247166241
+                -58.26978710237539,
+                67.77990552776791
             ],
             "type": "Point"
         },
@@ -2270,7 +2270,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 5.209399213832428,
+        "rating": 9.98750455592904,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -2289,8 +2289,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "28-03-2021T11:15:59",
-        "updatedAt": "25-02-2021T12:32:04",
+        "createdAt": "14-02-2021T16:27:17",
+        "updatedAt": "13-02-2021T07:59:31",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -2306,8 +2306,8 @@
         "_id": "604cf485c4e5fa0b7f7799433",
         "loc": {
             "coordinates": [
-                -63.12038576700135,
-                70.59257351656092
+                -57.1296505999655,
+                68.61804987566653
             ],
             "type": "Point"
         },
@@ -2319,7 +2319,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 3.9025950484392515,
+        "rating": 2.618592723049643,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -2338,8 +2338,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "15-02-2021T11:56:50",
-        "updatedAt": "05-02-2021T12:05:26",
+        "createdAt": "02-03-2021T07:03:36",
+        "updatedAt": "26-02-2021T10:55:23",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -2355,8 +2355,8 @@
         "_id": "604cf485c4e5fa0b7f7799434",
         "loc": {
             "coordinates": [
-                -62.466801522125294,
-                71.60597659254525
+                -56.43225565113065,
+                69.22000763526083
             ],
             "type": "Point"
         },
@@ -2368,7 +2368,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 1.9422507240025737,
+        "rating": 3.9213226177690608,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -2387,8 +2387,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "05-02-2021T16:39:26",
-        "updatedAt": "18-03-2021T10:22:44",
+        "createdAt": "04-02-2021T09:45:05",
+        "updatedAt": "11-03-2021T21:55:53",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -2404,8 +2404,8 @@
         "_id": "604cf485c4e5fa0b7f7799435",
         "loc": {
             "coordinates": [
-                -62.21203285198739,
-                72.67284802212656
+                -56.246589321739414,
+                69.57840745517302
             ],
             "type": "Point"
         },
@@ -2417,7 +2417,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 8.707201112709614,
+        "rating": 6.864395909332172,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -2436,8 +2436,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "16-03-2021T05:39:41",
-        "updatedAt": "14-02-2021T01:59:56",
+        "createdAt": "15-02-2021T08:47:14",
+        "updatedAt": "08-02-2021T04:29:34",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -2453,8 +2453,8 @@
         "_id": "604cf485c4e5fa0b7f7799436",
         "loc": {
             "coordinates": [
-                -61.50061321781989,
-                72.96874728256155
+                -56.10561609155229,
+                70.0993255725843
             ],
             "type": "Point"
         },
@@ -2466,7 +2466,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 3.021516626155848,
+        "rating": 2.242049152792928,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -2485,8 +2485,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "03-03-2021T04:22:03",
-        "updatedAt": "31-01-2021T13:44:46",
+        "createdAt": "16-04-2021T03:18:20",
+        "updatedAt": "06-02-2021T16:53:48",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -2502,8 +2502,8 @@
         "_id": "604cf485c4e5fa0b7f7799437",
         "loc": {
             "coordinates": [
-                -60.40901402631215,
-                73.34358155806707
+                -54.95798009769034,
+                70.87041316377986
             ],
             "type": "Point"
         },
@@ -2515,7 +2515,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 3.733227364844134,
+        "rating": 3.1107988518265133,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -2534,8 +2534,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "31-03-2021T20:55:41",
-        "updatedAt": "28-03-2021T20:27:11",
+        "createdAt": "22-04-2021T00:21:35",
+        "updatedAt": "25-02-2021T08:30:09",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -2551,8 +2551,8 @@
         "_id": "604cf485c4e5fa0b7f7799438",
         "loc": {
             "coordinates": [
-                -60.00178458794196,
-                74.48025266902646
+                -54.28544677229179,
+                71.59003146715172
             ],
             "type": "Point"
         },
@@ -2564,7 +2564,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 5.743878628966482,
+        "rating": 3.9412860950683215,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -2583,8 +2583,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "05-04-2021T10:24:47",
-        "updatedAt": "07-03-2021T23:43:24",
+        "createdAt": "03-02-2021T13:15:16",
+        "updatedAt": "28-02-2021T05:20:06",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -2600,8 +2600,8 @@
         "_id": "604cf485c4e5fa0b7f7799439",
         "loc": {
             "coordinates": [
-                -59.173795731564006,
-                75.20859414798534
+                -53.21404394733165,
+                72.2147420193619
             ],
             "type": "Point"
         },
@@ -2613,7 +2613,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 4.960635751771147,
+        "rating": 7.909228092821115,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -2632,8 +2632,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "21-04-2021T20:00:32",
-        "updatedAt": "20-02-2021T19:12:42",
+        "createdAt": "31-01-2021T20:34:31",
+        "updatedAt": "10-04-2021T10:59:45",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -2649,8 +2649,8 @@
         "_id": "604cf485c4e5fa0b7f7799440",
         "loc": {
             "coordinates": [
-                -58.145539559005826,
-                75.3701137352794
+                -53.111355635523175,
+                73.36750808830303
             ],
             "type": "Point"
         },
@@ -2662,7 +2662,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 9.31711215632018,
+        "rating": 1.1759632410934753,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -2681,8 +2681,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "19-03-2021T14:11:51",
-        "updatedAt": "17-02-2021T00:40:03",
+        "createdAt": "17-02-2021T22:28:08",
+        "updatedAt": "09-03-2021T00:52:37",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -2698,8 +2698,8 @@
         "_id": "604cf485c4e5fa0b7f7799441",
         "loc": {
             "coordinates": [
-                -57.87902341271119,
-                76.16787040804893
+                -52.30855618405308,
+                73.73717725260045
             ],
             "type": "Point"
         },
@@ -2711,7 +2711,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 2.2308858618218332,
+        "rating": 8.479747359599788,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -2730,8 +2730,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "20-02-2021T07:59:29",
-        "updatedAt": "03-03-2021T20:05:24",
+        "createdAt": "10-03-2021T16:45:10",
+        "updatedAt": "15-02-2021T10:29:59",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -2747,8 +2747,8 @@
         "_id": "604cf485c4e5fa0b7f7799442",
         "loc": {
             "coordinates": [
-                -57.132003733104966,
-                77.05579908205864
+                -51.568815528488834,
+                74.02865505185966
             ],
             "type": "Point"
         },
@@ -2760,7 +2760,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 4.201742674363834,
+        "rating": 5.1943730865002875,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -2779,8 +2779,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "09-02-2021T06:13:45",
-        "updatedAt": "23-02-2021T17:23:10",
+        "createdAt": "05-04-2021T17:55:22",
+        "updatedAt": "28-02-2021T23:29:47",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -2796,8 +2796,8 @@
         "_id": "604cf485c4e5fa0b7f7799443",
         "loc": {
             "coordinates": [
-                -56.44889351821036,
-                77.81026903883773
+                -50.95960378958093,
+                74.66367390788797
             ],
             "type": "Point"
         },
@@ -2809,7 +2809,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 8.178742836162348,
+        "rating": 1.1706204570959087,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -2828,8 +2828,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "07-03-2021T15:19:19",
-        "updatedAt": "09-03-2021T10:06:24",
+        "createdAt": "16-03-2021T06:42:09",
+        "updatedAt": "17-03-2021T13:07:46",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -2845,8 +2845,8 @@
         "_id": "604cf485c4e5fa0b7f7799444",
         "loc": {
             "coordinates": [
-                -56.148832014892164,
-                78.40251179849997
+                -50.47316113766066,
+                75.57251140883047
             ],
             "type": "Point"
         },
@@ -2858,7 +2858,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 7.02055478372957,
+        "rating": 5.7634336659972085,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -2877,8 +2877,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "14-02-2021T15:55:21",
-        "updatedAt": "13-02-2021T01:12:02",
+        "createdAt": "28-02-2021T07:23:58",
+        "updatedAt": "23-02-2021T12:42:15",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -2894,8 +2894,8 @@
         "_id": "604cf485c4e5fa0b7f7799445",
         "loc": {
             "coordinates": [
-                -55.39184554975941,
-                78.75811726293732
+                -49.645572823117945,
+                76.0757404953543
             ],
             "type": "Point"
         },
@@ -2907,7 +2907,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 8.178860824883156,
+        "rating": 4.011117607891723,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -2926,8 +2926,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "27-02-2021T15:42:01",
-        "updatedAt": "20-02-2021T15:15:29",
+        "createdAt": "22-02-2021T03:28:45",
+        "updatedAt": "09-03-2021T00:47:17",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -2943,8 +2943,8 @@
         "_id": "604cf485c4e5fa0b7f7799446",
         "loc": {
             "coordinates": [
-                -54.911147121205715,
-                79.48081885590094
+                -48.727520856511575,
+                76.69253639634185
             ],
             "type": "Point"
         },
@@ -2956,7 +2956,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 7.481975267914502,
+        "rating": 9.942597182152468,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -2975,8 +2975,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "16-02-2021T18:53:16",
-        "updatedAt": "12-02-2021T13:26:41",
+        "createdAt": "13-02-2021T14:14:37",
+        "updatedAt": "15-03-2021T15:17:18",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -2992,8 +2992,8 @@
         "_id": "604cf485c4e5fa0b7f7799447",
         "loc": {
             "coordinates": [
-                -53.94327547097273,
-                79.66900146980969
+                -48.48286222342275,
+                77.47086913565866
             ],
             "type": "Point"
         },
@@ -3005,7 +3005,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 6.261000939569636,
+        "rating": 5.380971564691975,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -3024,8 +3024,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "22-02-2021T23:42:21",
-        "updatedAt": "01-04-2021T09:16:37",
+        "createdAt": "26-02-2021T21:59:45",
+        "updatedAt": "21-02-2021T08:04:24",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -3041,8 +3041,8 @@
         "_id": "604cf485c4e5fa0b7f7799448",
         "loc": {
             "coordinates": [
-                -53.39628623024483,
-                80.65134082565986
+                -48.32502057997277,
+                77.6447973649157
             ],
             "type": "Point"
         },
@@ -3054,7 +3054,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 5.076443957139958,
+        "rating": 9.298954806202103,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -3073,8 +3073,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "13-04-2021T02:50:25",
-        "updatedAt": "19-03-2021T06:39:19",
+        "createdAt": "12-03-2021T19:07:26",
+        "updatedAt": "11-03-2021T05:12:39",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -3090,8 +3090,8 @@
         "_id": "604cf485c4e5fa0b7f7799449",
         "loc": {
             "coordinates": [
-                -53.17497890794804,
-                81.19481030837767
+                -47.85338665200374,
+                78.78597996149422
             ],
             "type": "Point"
         },
@@ -3103,7 +3103,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 1.4611408481626096,
+        "rating": 9.645984188052719,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -3122,8 +3122,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "16-03-2021T16:48:06",
-        "updatedAt": "22-02-2021T16:59:46",
+        "createdAt": "18-02-2021T12:40:02",
+        "updatedAt": "05-04-2021T00:06:00",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -3139,8 +3139,8 @@
         "_id": "604cf485c4e5fa0b7f7799450",
         "loc": {
             "coordinates": [
-                -52.451097104990644,
-                82.202195730414
+                -47.033779402955915,
+                79.79818227680094
             ],
             "type": "Point"
         },
@@ -3152,7 +3152,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 4.709130670939508,
+        "rating": 5.650662888833943,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -3171,8 +3171,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "08-04-2021T21:49:36",
-        "updatedAt": "29-03-2021T06:37:29",
+        "createdAt": "13-02-2021T12:06:50",
+        "updatedAt": "13-02-2021T23:20:22",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -3188,8 +3188,8 @@
         "_id": "604cf485c4e5fa0b7f7799451",
         "loc": {
             "coordinates": [
-                -51.59601779883609,
-                83.02540269160052
+                -46.33047733845428,
+                80.7632234758458
             ],
             "type": "Point"
         },
@@ -3201,7 +3201,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 5.4362308036126805,
+        "rating": 8.87720349663844,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -3220,8 +3220,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "26-03-2021T00:01:37",
-        "updatedAt": "23-03-2021T23:08:19",
+        "createdAt": "04-02-2021T23:04:37",
+        "updatedAt": "08-03-2021T02:25:58",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -3237,8 +3237,8 @@
         "_id": "604cf485c4e5fa0b7f7799452",
         "loc": {
             "coordinates": [
-                -51.35298990965163,
-                83.85719106264358
+                -45.498438175059526,
+                80.97485379463582
             ],
             "type": "Point"
         },
@@ -3250,7 +3250,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 7.951321752973553,
+        "rating": 3.6319580873575608,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -3269,8 +3269,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "01-02-2021T19:22:26",
-        "updatedAt": "31-03-2021T13:28:27",
+        "createdAt": "19-04-2021T17:48:13",
+        "updatedAt": "05-02-2021T13:43:04",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -3286,8 +3286,8 @@
         "_id": "604cf485c4e5fa0b7f7799453",
         "loc": {
             "coordinates": [
-                -50.42471793791719,
-                84.93164378590392
+                -44.299344247577515,
+                81.29032361385296
             ],
             "type": "Point"
         },
@@ -3299,7 +3299,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 3.2457955343474256,
+        "rating": 1.7849752238892018,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -3318,8 +3318,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "02-02-2021T01:47:52",
-        "updatedAt": "06-02-2021T17:00:06",
+        "createdAt": "27-02-2021T14:44:48",
+        "updatedAt": "11-04-2021T20:33:25",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -3335,8 +3335,8 @@
         "_id": "604cf485c4e5fa0b7f7799454",
         "loc": {
             "coordinates": [
-                -49.941780666928565,
-                85.22284492772098
+                -43.94001499991427,
+                82.08470324422468
             ],
             "type": "Point"
         },
@@ -3348,7 +3348,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 5.506671426758376,
+        "rating": 3.9796945131154695,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -3367,8 +3367,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "24-03-2021T12:18:05",
-        "updatedAt": "05-03-2021T15:25:54",
+        "createdAt": "24-01-2021T20:18:51",
+        "updatedAt": "14-04-2021T02:48:58",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -3384,8 +3384,8 @@
         "_id": "604cf485c4e5fa0b7f7799455",
         "loc": {
             "coordinates": [
-                -49.27850293104538,
-                86.08825131079726
+                -43.16557629239174,
+                83.16418446434632
             ],
             "type": "Point"
         },
@@ -3397,7 +3397,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 8.609278625694085,
+        "rating": 6.754562300469419,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -3416,8 +3416,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "05-04-2021T01:48:04",
-        "updatedAt": "31-01-2021T05:24:04",
+        "createdAt": "16-02-2021T21:29:56",
+        "updatedAt": "06-03-2021T01:50:19",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -3433,8 +3433,8 @@
         "_id": "604cf485c4e5fa0b7f7799456",
         "loc": {
             "coordinates": [
-                -49.01537014581509,
-                87.08976059020205
+                -42.8621953750461,
+                83.56842649694737
             ],
             "type": "Point"
         },
@@ -3446,7 +3446,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 2.8466390106111934,
+        "rating": 5.819192111615706,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -3465,8 +3465,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "07-04-2021T10:35:53",
-        "updatedAt": "21-04-2021T17:05:52",
+        "createdAt": "05-03-2021T19:40:06",
+        "updatedAt": "28-02-2021T05:51:10",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -3482,8 +3482,8 @@
         "_id": "604cf485c4e5fa0b7f7799457",
         "loc": {
             "coordinates": [
-                -47.912939963342865,
-                88.17512539102289
+                -42.133984839651426,
+                84.32489699828892
             ],
             "type": "Point"
         },
@@ -3495,7 +3495,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 2.4893858337097274,
+        "rating": 3.142731407086244,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -3514,8 +3514,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "13-02-2021T07:34:51",
-        "updatedAt": "23-01-2021T05:23:53",
+        "createdAt": "10-02-2021T05:31:34",
+        "updatedAt": "21-02-2021T02:18:14",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -3531,8 +3531,8 @@
         "_id": "604cf485c4e5fa0b7f7799458",
         "loc": {
             "coordinates": [
-                -47.24763338937766,
-                88.57007713498058
+                -41.92558106746219,
+                84.74519386910316
             ],
             "type": "Point"
         },
@@ -3544,7 +3544,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 5.975004805037615,
+        "rating": 3.1813385355650836,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -3563,8 +3563,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "25-02-2021T16:48:15",
-        "updatedAt": "22-01-2021T16:14:38",
+        "createdAt": "28-03-2021T02:53:12",
+        "updatedAt": "06-04-2021T20:25:22",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -3580,8 +3580,8 @@
         "_id": "604cf485c4e5fa0b7f7799459",
         "loc": {
             "coordinates": [
-                -46.054208450448385,
-                88.90561305233243
+                -40.74472973086169,
+                85.3902756087368
             ],
             "type": "Point"
         },
@@ -3593,7 +3593,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 6.434688836253563,
+        "rating": 5.778007574702132,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -3612,8 +3612,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "16-02-2021T22:57:44",
-        "updatedAt": "23-03-2021T00:09:23",
+        "createdAt": "24-02-2021T04:54:23",
+        "updatedAt": "20-01-2021T14:21:16",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -3629,8 +3629,8 @@
         "_id": "604cf485c4e5fa0b7f7799460",
         "loc": {
             "coordinates": [
-                -45.60653246357835,
-                89.56221064711934
+                -39.674130123677024,
+                85.85982029047271
             ],
             "type": "Point"
         },
@@ -3642,7 +3642,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 1.836934708350094,
+        "rating": 3.3807308758986885,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -3661,8 +3661,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "07-02-2021T16:33:35",
-        "updatedAt": "05-04-2021T22:03:03",
+        "createdAt": "21-02-2021T19:09:31",
+        "updatedAt": "06-04-2021T02:23:38",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -3678,8 +3678,8 @@
         "_id": "604cf485c4e5fa0b7f7799461",
         "loc": {
             "coordinates": [
-                -45.147241646929515,
-                89.69618446919532
+                -39.556755088444994,
+                86.18456676661273
             ],
             "type": "Point"
         },
@@ -3691,7 +3691,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 1.701318361005492,
+        "rating": 7.52569310563823,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -3710,8 +3710,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "21-02-2021T07:57:36",
-        "updatedAt": "02-04-2021T06:29:25",
+        "createdAt": "10-04-2021T00:14:05",
+        "updatedAt": "12-04-2021T23:34:02",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -3727,8 +3727,8 @@
         "_id": "604cf485c4e5fa0b7f7799462",
         "loc": {
             "coordinates": [
-                -44.07963064314443,
-                89.8405844825499
+                -38.474991118194204,
+                86.79984115226375
             ],
             "type": "Point"
         },
@@ -3740,7 +3740,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 8.77778011010244,
+        "rating": 3.008343931052795,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -3759,8 +3759,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "19-02-2021T10:52:19",
-        "updatedAt": "12-04-2021T20:55:50",
+        "createdAt": "23-03-2021T11:07:32",
+        "updatedAt": "05-03-2021T23:45:19",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -3776,8 +3776,8 @@
         "_id": "604cf485c4e5fa0b7f7799463",
         "loc": {
             "coordinates": [
-                -43.95019300796445,
-                90.94799585517475
+                -37.57120393389647,
+                87.75353412711563
             ],
             "type": "Point"
         },
@@ -3789,7 +3789,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 5.8033190040466085,
+        "rating": 8.95340411264655,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -3808,8 +3808,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "28-01-2021T13:33:32",
-        "updatedAt": "08-02-2021T08:38:26",
+        "createdAt": "08-04-2021T00:54:00",
+        "updatedAt": "20-02-2021T10:24:30",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -3825,8 +3825,8 @@
         "_id": "604cf485c4e5fa0b7f7799464",
         "loc": {
             "coordinates": [
-                -43.100720577650385,
-                91.22308954683109
+                -36.99122363076107,
+                88.39279259725865
             ],
             "type": "Point"
         },
@@ -3838,7 +3838,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 5.587351780407186,
+        "rating": 3.6838616889083555,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -3857,8 +3857,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "19-04-2021T05:09:49",
-        "updatedAt": "16-02-2021T16:56:38",
+        "createdAt": "15-03-2021T15:11:49",
+        "updatedAt": "13-02-2021T18:32:56",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -3874,8 +3874,8 @@
         "_id": "604cf485c4e5fa0b7f7799465",
         "loc": {
             "coordinates": [
-                -42.228183651786196,
-                91.41119255158874
+                -36.20545117432304,
+                89.57913549874567
             ],
             "type": "Point"
         },
@@ -3887,7 +3887,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 2.050681972103919,
+        "rating": 5.920698529216958,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -3906,8 +3906,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "08-02-2021T07:10:55",
-        "updatedAt": "04-02-2021T15:33:32",
+        "createdAt": "24-03-2021T20:32:24",
+        "updatedAt": "17-04-2021T09:42:05",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -3923,8 +3923,8 @@
         "_id": "604cf485c4e5fa0b7f7799466",
         "loc": {
             "coordinates": [
-                -42.10349332078969,
-                91.51499651732627
+                -35.78852422356163,
+                90.19976655260444
             ],
             "type": "Point"
         },
@@ -3936,7 +3936,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 4.513177388047939,
+        "rating": 4.811037456537937,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -3955,8 +3955,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "27-01-2021T01:19:27",
-        "updatedAt": "14-03-2021T05:23:40",
+        "createdAt": "21-04-2021T01:15:03",
+        "updatedAt": "01-02-2021T11:11:24",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -3972,8 +3972,8 @@
         "_id": "604cf485c4e5fa0b7f7799467",
         "loc": {
             "coordinates": [
-                -41.91080802885656,
-                92.2246395105339
+                -34.630318946437185,
+                90.49097162228762
             ],
             "type": "Point"
         },
@@ -3985,7 +3985,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 6.731510236292901,
+        "rating": 9.933138241061334,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -4004,8 +4004,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "27-03-2021T12:31:07",
-        "updatedAt": "05-03-2021T06:26:38",
+        "createdAt": "25-01-2021T10:55:50",
+        "updatedAt": "01-02-2021T01:06:48",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -4021,8 +4021,8 @@
         "_id": "604cf485c4e5fa0b7f7799468",
         "loc": {
             "coordinates": [
-                -41.03185163503095,
-                93.40579037567011
+                -33.83806066709833,
+                91.30514027843061
             ],
             "type": "Point"
         },
@@ -4034,7 +4034,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 1.4588339074921892,
+        "rating": 4.228321439514319,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -4053,8 +4053,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "24-02-2021T05:48:30",
-        "updatedAt": "27-02-2021T15:29:56",
+        "createdAt": "01-02-2021T06:32:50",
+        "updatedAt": "24-01-2021T04:29:05",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -4070,8 +4070,8 @@
         "_id": "604cf485c4e5fa0b7f7799469",
         "loc": {
             "coordinates": [
-                -40.47693122986896,
-                93.77542937587019
+                -33.09300073221098,
+                92.39611052294528
             ],
             "type": "Point"
         },
@@ -4083,7 +4083,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 8.915460930780995,
+        "rating": 7.316351916950956,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -4102,8 +4102,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "31-01-2021T04:15:14",
-        "updatedAt": "26-01-2021T22:41:18",
+        "createdAt": "23-03-2021T19:38:34",
+        "updatedAt": "11-03-2021T21:21:22",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -4119,8 +4119,8 @@
         "_id": "604cf485c4e5fa0b7f7799470",
         "loc": {
             "coordinates": [
-                -39.93431367747454,
-                94.1630838044068
+                -32.36852735047281,
+                92.69430081451746
             ],
             "type": "Point"
         },
@@ -4132,7 +4132,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 2.3635185565398134,
+        "rating": 1.270651131051244,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -4151,8 +4151,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "06-03-2021T05:35:13",
-        "updatedAt": "12-04-2021T22:07:18",
+        "createdAt": "22-04-2021T09:32:12",
+        "updatedAt": "06-02-2021T22:18:00",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -4168,8 +4168,8 @@
         "_id": "604cf485c4e5fa0b7f7799471",
         "loc": {
             "coordinates": [
-                -39.601913522906884,
-                94.6016380128022
+                -31.352042177664156,
+                93.66564835880115
             ],
             "type": "Point"
         },
@@ -4181,7 +4181,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 8.574115679614657,
+        "rating": 6.798169622815978,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -4200,8 +4200,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "21-03-2021T13:44:16",
-        "updatedAt": "20-02-2021T08:53:40",
+        "createdAt": "21-01-2021T07:15:13",
+        "updatedAt": "19-03-2021T04:14:46",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -4217,8 +4217,8 @@
         "_id": "604cf485c4e5fa0b7f7799472",
         "loc": {
             "coordinates": [
-                -38.76607163536863,
-                95.22389416412098
+                -31.189206961349008,
+                94.66545398607374
             ],
             "type": "Point"
         },
@@ -4230,7 +4230,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 7.096122108598861,
+        "rating": 3.9248346515550834,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -4249,8 +4249,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "05-03-2021T21:24:25",
-        "updatedAt": "09-02-2021T03:55:43",
+        "createdAt": "06-02-2021T15:27:07",
+        "updatedAt": "27-01-2021T23:33:03",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -4266,8 +4266,8 @@
         "_id": "604cf485c4e5fa0b7f7799473",
         "loc": {
             "coordinates": [
-                -38.481607118859905,
-                95.35883977915356
+                -30.080636422420817,
+                95.40996262133126
             ],
             "type": "Point"
         },
@@ -4279,7 +4279,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 2.2919810495001465,
+        "rating": 1.2466071989526797,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -4298,8 +4298,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "16-04-2021T07:36:14",
-        "updatedAt": "13-04-2021T02:39:04",
+        "createdAt": "06-02-2021T13:40:57",
+        "updatedAt": "06-03-2021T22:17:18",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -4315,8 +4315,8 @@
         "_id": "604cf485c4e5fa0b7f7799474",
         "loc": {
             "coordinates": [
-                -37.872400187113804,
-                96.34727689648096
+                -29.902322794799044,
+                96.21370641718053
             ],
             "type": "Point"
         },
@@ -4328,7 +4328,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 7.838029255558592,
+        "rating": 9.338596723563777,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -4347,8 +4347,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "01-02-2021T10:21:17",
-        "updatedAt": "12-03-2021T12:08:01",
+        "createdAt": "03-03-2021T02:24:46",
+        "updatedAt": "07-04-2021T00:31:39",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -4364,8 +4364,8 @@
         "_id": "604cf485c4e5fa0b7f7799475",
         "loc": {
             "coordinates": [
-                -37.742382530937384,
-                96.88069013037294
+                -29.546523104933286,
+                96.46025545095593
             ],
             "type": "Point"
         },
@@ -4377,7 +4377,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 4.9090799817630435,
+        "rating": 1.7129554596117391,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -4396,8 +4396,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "23-02-2021T04:03:48",
-        "updatedAt": "27-01-2021T18:59:49",
+        "createdAt": "17-02-2021T14:28:59",
+        "updatedAt": "20-03-2021T20:54:30",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -4413,8 +4413,8 @@
         "_id": "604cf485c4e5fa0b7f7799476",
         "loc": {
             "coordinates": [
-                -36.724733838797704,
-                97.71164147677653
+                -28.57096664517076,
+                96.95338991927058
             ],
             "type": "Point"
         },
@@ -4426,7 +4426,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 9.463002499404686,
+        "rating": 4.7693075585941855,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -4445,8 +4445,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "05-04-2021T09:46:50",
-        "updatedAt": "20-02-2021T17:17:42",
+        "createdAt": "20-02-2021T09:17:08",
+        "updatedAt": "12-03-2021T15:18:01",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -4462,8 +4462,8 @@
         "_id": "604cf485c4e5fa0b7f7799477",
         "loc": {
             "coordinates": [
-                -36.10824055949788,
-                98.88855616286358
+                -27.534073367824647,
+                97.45241146023048
             ],
             "type": "Point"
         },
@@ -4475,7 +4475,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 1.7625904422304282,
+        "rating": 3.5342776186038076,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -4494,8 +4494,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "20-04-2021T04:33:32",
-        "updatedAt": "24-01-2021T15:39:39",
+        "createdAt": "16-02-2021T00:15:20",
+        "updatedAt": "02-02-2021T17:54:43",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -4511,8 +4511,8 @@
         "_id": "604cf485c4e5fa0b7f7799478",
         "loc": {
             "coordinates": [
-                -35.51904575514204,
-                100.05681013552339
+                -26.628359169335997,
+                98.3492023346053
             ],
             "type": "Point"
         },
@@ -4524,7 +4524,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 5.790073521103442,
+        "rating": 4.550012755746188,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -4543,8 +4543,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "21-03-2021T04:10:23",
-        "updatedAt": "11-02-2021T03:24:28",
+        "createdAt": "10-02-2021T19:10:35",
+        "updatedAt": "13-02-2021T00:33:28",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -4560,8 +4560,8 @@
         "_id": "604cf485c4e5fa0b7f7799479",
         "loc": {
             "coordinates": [
-                -35.41713709270642,
-                100.55260904918487
+                -26.243502353831932,
+                99.355385529562
             ],
             "type": "Point"
         },
@@ -4573,7 +4573,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 9.766071802857669,
+        "rating": 5.5625138861526064,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -4592,8 +4592,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "18-04-2021T03:29:49",
-        "updatedAt": "17-03-2021T16:14:21",
+        "createdAt": "13-03-2021T00:31:51",
+        "updatedAt": "09-03-2021T04:35:20",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -4609,8 +4609,8 @@
         "_id": "604cf485c4e5fa0b7f7799480",
         "loc": {
             "coordinates": [
-                -34.95251810287044,
-                101.28283528313045
+                -25.554831388492428,
+                99.85702170366523
             ],
             "type": "Point"
         },
@@ -4622,7 +4622,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 5.474866420413563,
+        "rating": 7.261248719898732,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -4641,8 +4641,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "20-04-2021T05:32:36",
-        "updatedAt": "25-01-2021T08:03:43",
+        "createdAt": "22-01-2021T17:15:06",
+        "updatedAt": "24-02-2021T06:54:57",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -4658,8 +4658,8 @@
         "_id": "604cf485c4e5fa0b7f7799481",
         "loc": {
             "coordinates": [
-                -34.823902962427006,
-                102.05955508317668
+                -24.764364814989488,
+                100.12328570329056
             ],
             "type": "Point"
         },
@@ -4671,7 +4671,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 5.0844883242319945,
+        "rating": 6.9925000843535,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -4690,8 +4690,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "02-03-2021T09:46:07",
-        "updatedAt": "27-02-2021T22:25:04",
+        "createdAt": "27-03-2021T17:37:36",
+        "updatedAt": "08-03-2021T16:28:22",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -4707,8 +4707,8 @@
         "_id": "604cf485c4e5fa0b7f7799482",
         "loc": {
             "coordinates": [
-                -34.18246003501246,
-                102.57987660027446
+                -24.551709543377946,
+                101.30530185084297
             ],
             "type": "Point"
         },
@@ -4720,7 +4720,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 3.45254066635406,
+        "rating": 8.562093192481598,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -4739,8 +4739,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "08-02-2021T12:00:48",
-        "updatedAt": "10-04-2021T09:56:17",
+        "createdAt": "06-02-2021T02:43:47",
+        "updatedAt": "06-03-2021T03:04:47",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -4756,8 +4756,8 @@
         "_id": "604cf485c4e5fa0b7f7799483",
         "loc": {
             "coordinates": [
-                -33.04481664140749,
-                102.74808881219614
+                -24.01456991341742,
+                101.66676853166406
             ],
             "type": "Point"
         },
@@ -4769,7 +4769,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 4.2468992620382515,
+        "rating": 1.1812137303089498,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -4788,8 +4788,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "11-03-2021T15:43:41",
-        "updatedAt": "01-02-2021T10:56:40",
+        "createdAt": "11-02-2021T05:03:12",
+        "updatedAt": "21-03-2021T03:45:41",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -4805,8 +4805,8 @@
         "_id": "604cf485c4e5fa0b7f7799484",
         "loc": {
             "coordinates": [
-                -32.113297504874645,
-                103.70200833173357
+                -23.320137067388647,
+                102.15589321134554
             ],
             "type": "Point"
         },
@@ -4818,7 +4818,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 4.803954229339048,
+        "rating": 9.748111474277385,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -4837,8 +4837,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "10-02-2021T18:06:53",
-        "updatedAt": "17-03-2021T17:52:39",
+        "createdAt": "24-02-2021T02:44:08",
+        "updatedAt": "07-03-2021T09:22:10",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
@@ -4854,8 +4854,8 @@
         "_id": "604cf485c4e5fa0b7f7799485",
         "loc": {
             "coordinates": [
-                -31.172492471916307,
-                104.81793324006033
+                -22.651884331658245,
+                102.77914963180112
             ],
             "type": "Point"
         },
@@ -4867,7 +4867,7 @@
         "isTrending": true,
         "isFeature": false,
         "isApprove": "approved",
-        "rating": 6.594703617402609,
+        "rating": 2.345057523046868,
         "socialMedia": [],
         "title": "Push Notification",
         "fromUserId": "5fdf6bbcfe08e8c0191a7805",
@@ -4886,8 +4886,8 @@
                 "text": "sdfasdfasdfasdfasdfasdfasdfadsf"
             }
         ],
-        "createdAt": "04-03-2021T00:16:15",
-        "updatedAt": "25-03-2021T00:04:17",
+        "createdAt": "12-03-2021T03:33:51",
+        "updatedAt": "19-03-2021T20:15:20",
         "__v": 0,
         "video": "review-1614620841111.mp4",
         "videoUrl": "http://staging.realreviews.org/api/review/video/stream/604cf485c4e5fa0b7f699386",
