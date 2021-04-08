@@ -7,8 +7,8 @@ from create_dummy_reviews import randomDate
 from pymongo import MongoClient
 import pandas as pd
 
-with open('user_id.pickle', 'rb') as f:
-    user_id = pickle.load(f)
+with open('resourceId.pickle', 'rb') as f:
+    resourceId = pickle.load(f)
 
 nested_dict = []
 sample_dict =   {
@@ -24,7 +24,7 @@ sample_dict =   {
 for i in range(10000):
     new_dict = sample_dict.copy()
     new_dict['_id'] = new_dict['_id'][:23]+str(24+i)
-    new_dict['resourceId'] = random.choice(user_id)
+    new_dict['resourceId'] = random.choice(resourceId)
     new_dict['createdAt'] = (randomDate("20-01-2021 13:30:00", "23-04-2021 04:50:34")).strftime('%d-%m-%YT%H:%M:%S')
     new_dict['updatedAt'] = (randomDate("20-01-2021 13:30:00", "23-04-2021 04:50:34")).strftime('%d-%m-%YT%H:%M:%S')
     # new_dict = sample_dict.copy()
