@@ -81,6 +81,8 @@ files_list = ['reviews_1.json','likes_1.json']
 # main()
 # get_data()
 #
+
+
 myclient = MongoClient()
 mydb = myclient['real_reviews']
 list_1 = looping_json_files(files_list)
@@ -120,14 +122,22 @@ print(tables_dictionary)
 #     print(df.head())
 #
 
+# transform the reviews_1 table to df_1 dataframe
 df_1 = tables_dictionary['reviews_1']
+# select reviews which are approved
 df_1_approve = (df_1[df_1['isApprove']=='approved'])
+# transform the likes_1 table to df_1 dataframe
 df_2 = tables_dictionary['likes_1']
+# rename the column name in reviews_1 table to resourceId as per likes_1 table
 df_1_approve=df_1_approve.rename(columns={"_id": "resourceId"})
+# merge both the dataframes based on common column 'resourceId'
 df_merge = df_1_approve.merge(df_2,how='left', on='resourceId')
-print(df_merge.columns)
+
+# extract only required columns from the merged dataframe
 df_merge_1 = df_merge[['resourceId', 'loc', 'createdAt_x', 'updatedAt_x','fromUserId_x']]
+# longititude extraction from the loc
 longitude = [_['coordinates'][0] for _ in df_merge_1['loc']]
+
 latitude = [_['coordinates'][1] for _ in df_merge_1['loc']]
 df_merge_1['longitude'] = longitude
 df_merge_1['latitude'] = latitude
