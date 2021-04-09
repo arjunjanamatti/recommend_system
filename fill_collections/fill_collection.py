@@ -161,7 +161,7 @@ print(df_merge_1.groupby(['fromUserId_x'])['resourceId'].count())
 
 print(df_merge_1.value_counts(subset=['fromUserId_x','resourceId']))
 
-### DATAFRAME FOR NEAREST NEIGHBORS
+### DATAFRAME FOR NEAREST NEIGHBORS FOR REVIEW_ID
 def distance(lon1, lat1, lon2, lat2):
     x = (lon2 - lon1) * cos(0.5*(lat2+lat1))
     y = (lat2 - lat1)
@@ -171,23 +171,26 @@ unique_user_list = list(df_merge_1['fromUserId_x'])
 unique_review_list = list(df_merge_1['resourceId'])
 random_user = random.choice(unique_user_list)
 random_review = random.choice(unique_review_list)
-print(unique_review_list)
-print(random_review)
-# long_list = [_ for _ in df_merge_1.loc[:,'longitude']]
-# lat_list = [_ for _ in df_merge_1.loc[:,'latitude']]
-# index_num = (df_merge_1.index[df_merge_1.resourceId == random_user])
-# print(df_merge_1.loc[index_num, :])
-print()
-# print(index_num)
-# print (df_merge_1[df_merge_1.duplicated()].drop_duplicates())
 df_merge_1_unique = (df_merge_1[df_merge_1.duplicated()].drop_duplicates()).reset_index()
 index_num = (df_merge_1_unique.index[df_merge_1_unique.resourceId == random_review])
-print(index_num)
 long_random_review, lat_random_review = float(df_merge_1_unique.iloc[index_num]['longitude']), (df_merge_1_unique.iloc[index_num]['latitude'])
-print((long_random_review))
-print()
-print(lat_random_review)
+dist_list = []
+for index, lat in enumerate(df_merge_1.loc[:,'latitude']):
+    dist_measured = distance(long_random_review, lat_random_review, df_merge_1.loc[index,'longitude'], lat)
+    dist_list.append(dist_measured)
 
+df_merge_2 = df_merge_1.copy()
+df_merge_2['dist_list'] = dist_list
+df_merge_2 = df_merge_2.sort_values('dist_list')
+df_merge_2_unique = (df_merge_2[df_merge_2.duplicated()].drop_duplicates()).reset_index()
+# print(df_merge_2_unique['resourceId'][:10])
+groupby_like_count = (df_merge_2.groupby(['resourceId'])['updated_dates'].count().reset_index().rename(columns = {'updated_dates': 'ReviewViewCount'}))
+df_merge_2_unique_like_count_merge = (df_merge_2_unique.merge(groupby_like_count,on='resourceId'))
+df_merge_2_unique_like_count_merge = df_merge_2_unique_like_count_merge.sort_values(by='ReviewViewCount', ascending=False)
+print()
+print(df_merge_2_unique_like_count_merge)
+print()
+print(df_merge_2_unique_like_count_merge[df_merge_2_unique_like_count_merge['dist_list'] <= 10][:10])
 
 # ### DATAFRAME FOR LAST WEEK
 # today = pd.to_datetime('today').floor('D')
