@@ -169,31 +169,49 @@ def distance(lon1, lat1, lon2, lat2):
 
 unique_user_list = list(df_merge_1['fromUserId_x'])
 unique_review_list = list(df_merge_1['resourceId'])
+random_user = random.choice(unique_user_list)
+random_review = random.choice(unique_review_list)
+print(unique_review_list)
+print(random_review)
+# long_list = [_ for _ in df_merge_1.loc[:,'longitude']]
+# lat_list = [_ for _ in df_merge_1.loc[:,'latitude']]
+# index_num = (df_merge_1.index[df_merge_1.resourceId == random_user])
+# print(df_merge_1.loc[index_num, :])
+print()
+# print(index_num)
+# print (df_merge_1[df_merge_1.duplicated()].drop_duplicates())
+df_merge_1_unique = (df_merge_1[df_merge_1.duplicated()].drop_duplicates()).reset_index()
+index_num = (df_merge_1_unique.index[df_merge_1_unique.resourceId == random_review])
+print(index_num)
+long_random_review, lat_random_review = float(df_merge_1_unique.iloc[index_num]['longitude']), (df_merge_1_unique.iloc[index_num]['latitude'])
+print((long_random_review))
+print()
+print(lat_random_review)
 
 
-### DATAFRAME FOR LAST WEEK
-today = pd.to_datetime('today').floor('D')
-week_prior =  today - timedelta(weeks=1)
-df_last_week = df_merge_1[(df_merge_1['updated_dates'] <= today) & (df_merge_1['updated_dates'] >= week_prior)]
-df_last_week.to_csv('df_last_week.csv')
-top_10_last_week_df = (df_last_week.groupby(['resourceId'])['updated_dates'].count().reset_index().rename(columns = {'updated_dates': 'ReviewViewCount'}))
-top_10_reviews_last_week = (top_10_last_week_df.sort_values(['ReviewViewCount'], ascending=False))[:10]
-print()
-print('LAST WEEK RESULTS')
-print(top_10_reviews_last_week['resourceId'])
-top_10_last_week_df = (df_last_week.groupby(['fromUserId_x'])['updated_dates'].count().reset_index().rename(columns = {'updated_dates': 'ReviewViewCount'}))
-top_10_reviews_last_week = (top_10_last_week_df.sort_values(['ReviewViewCount'], ascending=False))[:10]
-print(top_10_reviews_last_week['fromUserId_x'])
-### DATAFRAME FOR LAST MONTH
-last_month = today - timedelta(days=30)
-df_last_month = df_merge_1[(df_merge_1['updated_dates'] <= today) & (df_merge_1['updated_dates'] >= last_month)]
-df_last_month.to_csv('df_last_month.csv')
-print()
-print('LAST MONTH RESULTS')
-# print(df_last_month.groupby(['resourceId'])['updated_dates'].count().reset_index().rename(columns = {'updated_dates': 'ReviewViewCount'}))
-top_10_last_month_df = (df_last_month.groupby(['resourceId'])['updated_dates'].count().reset_index().rename(columns = {'updated_dates': 'ReviewViewCount'}))
-top_10_reviews_last_month = (top_10_last_month_df.sort_values(['ReviewViewCount'], ascending=False))[:10]
-print(top_10_reviews_last_month['resourceId'])
-top_10_last_month_df = (df_last_month.groupby(['fromUserId_x'])['updated_dates'].count().reset_index().rename(columns = {'updated_dates': 'ReviewViewCount'}))
-top_10_reviews_last_month = (top_10_last_month_df.sort_values(['ReviewViewCount'], ascending=False))[:10]
-print(top_10_reviews_last_month['fromUserId_x'])
+# ### DATAFRAME FOR LAST WEEK
+# today = pd.to_datetime('today').floor('D')
+# week_prior =  today - timedelta(weeks=1)
+# df_last_week = df_merge_1[(df_merge_1['updated_dates'] <= today) & (df_merge_1['updated_dates'] >= week_prior)]
+# df_last_week.to_csv('df_last_week.csv')
+# top_10_last_week_df = (df_last_week.groupby(['resourceId'])['updated_dates'].count().reset_index().rename(columns = {'updated_dates': 'ReviewViewCount'}))
+# top_10_reviews_last_week = (top_10_last_week_df.sort_values(['ReviewViewCount'], ascending=False))[:10]
+# print()
+# print('LAST WEEK RESULTS')
+# print(top_10_reviews_last_week['resourceId'])
+# top_10_last_week_df = (df_last_week.groupby(['fromUserId_x'])['updated_dates'].count().reset_index().rename(columns = {'updated_dates': 'ReviewViewCount'}))
+# top_10_reviews_last_week = (top_10_last_week_df.sort_values(['ReviewViewCount'], ascending=False))[:10]
+# print(top_10_reviews_last_week['fromUserId_x'])
+# ### DATAFRAME FOR LAST MONTH
+# last_month = today - timedelta(days=30)
+# df_last_month = df_merge_1[(df_merge_1['updated_dates'] <= today) & (df_merge_1['updated_dates'] >= last_month)]
+# df_last_month.to_csv('df_last_month.csv')
+# print()
+# print('LAST MONTH RESULTS')
+# # print(df_last_month.groupby(['resourceId'])['updated_dates'].count().reset_index().rename(columns = {'updated_dates': 'ReviewViewCount'}))
+# top_10_last_month_df = (df_last_month.groupby(['resourceId'])['updated_dates'].count().reset_index().rename(columns = {'updated_dates': 'ReviewViewCount'}))
+# top_10_reviews_last_month = (top_10_last_month_df.sort_values(['ReviewViewCount'], ascending=False))[:10]
+# print(top_10_reviews_last_month['resourceId'])
+# top_10_last_month_df = (df_last_month.groupby(['fromUserId_x'])['updated_dates'].count().reset_index().rename(columns = {'updated_dates': 'ReviewViewCount'}))
+# top_10_reviews_last_month = (top_10_last_month_df.sort_values(['ReviewViewCount'], ascending=False))[:10]
+# print(top_10_reviews_last_month['fromUserId_x'])
