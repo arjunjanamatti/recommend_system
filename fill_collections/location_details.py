@@ -48,6 +48,7 @@
 # print(distance_haversine(p1[::-1], p2[::-1]))
 
 from math import cos, sqrt
+import pandas as pd
 
 R = 6371000 #radius of the Earth in m
 def distance(lon1, lat1, lon2, lat2):
@@ -61,4 +62,6 @@ def distance(lon1, lat1, lon2, lat2):
 # print(sorted(bustops, key= lambda d: distance(d["Longitude"], d["Latitude"], 103.5, 1.2)))
 lon1, lat1 = [-84.62358891086079, 46.784045721242116]
 lon2, lat2 = [-85.3495983399085, 45.67590014485517]
+cities_lat_and_long_df = pd.read_csv('indian_cities_lat_and_long.csv')
+print([_ for _ in cities_lat_and_long_df.iloc[:,1]])
 print(distance(lon1, lat1, lon2, lat2))
