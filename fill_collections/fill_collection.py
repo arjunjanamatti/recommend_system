@@ -17,7 +17,7 @@ def looping_json_files(files_list):
     return list_1
 
 
-def main():
+def SendJsonFilesToMongoDB(files_list):
     'this function will send the json files to MongoDB'
     try:
         myclient = MongoClient()
@@ -30,11 +30,6 @@ def main():
             my_collection = mydb[file.split('.')[0]]
             my_collection.insert(doc_or_docs=list_1[index])
 
-
-        # my_collection = mydb['reviews']
-        #
-        # my_collection.insert(doc_or_docs = my_dictionary)
-        #
         print('Data sent to the database')
 
     except ConnectionFailure:
