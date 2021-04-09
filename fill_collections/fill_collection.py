@@ -5,6 +5,8 @@ from collections import defaultdict
 import json
 import pandas as pd
 from datetime import timedelta
+from math import *
+import random
 
 def looping_json_files(files_list):
     list_1 = []
@@ -158,6 +160,15 @@ df_merge_1.to_csv('df_merge_1.csv')
 print(df_merge_1.groupby(['fromUserId_x'])['resourceId'].count())
 
 print(df_merge_1.value_counts(subset=['fromUserId_x','resourceId']))
+
+### DATAFRAME FOR NEAREST NEIGHBORS
+def distance(lon1, lat1, lon2, lat2):
+    x = (lon2 - lon1) * cos(0.5*(lat2+lat1))
+    y = (lat2 - lat1)
+    return sqrt( x*x + y*y )
+
+unique_user_list = list(df_merge_1['fromUserId_x'])
+unique_review_list = list(df_merge_1['resourceId'])
 
 
 ### DATAFRAME FOR LAST WEEK

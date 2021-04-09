@@ -76,4 +76,4 @@ for index, lat in enumerate(lat_list):
     dist_measured = distance(long1, lat1, long_list[index], lat)
     dist_list.append(dist_measured)
 cities_lat_and_long_df['dist_measured'] = dist_list
-print((cities_lat_and_long_df.sort_values(by=['dist_measured']))[:10])
+print((cities_lat_and_long_df.sort_values(by=['dist_measured']))[:25])
