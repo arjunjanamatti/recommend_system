@@ -88,3 +88,42 @@ def MergedDataframe(files_list):
     df_merge_1.drop(labels=['createdAt_x', 'updatedAt_x'], inplace=True, axis=1)
     return df_merge_1
 
+def distance(lon1, lat1, lon2, lat2):
+    x = (lon2 - lon1) * cos(0.5*(lat2+lat1))
+    y = (lat2 - lat1)
+    return sqrt( x*x + y*y )
+
+def NearestNeighborReviewID():
+    df_merge_1 = MergedDataframe(files_list)
+    # get the list of unique review_id
+    unique_review_list = list(df_merge_1['resourceId'])
+    # select a random review_id from the unique review_id list
+    random_review = random.choice(unique_review_list)
+    # will drop all the duplicates and create a dataframe
+    df_merge_1_unique = (df_merge_1[df_merge_1.duplicated()].drop_duplicates()).reset_index()
+    # get the index number of the random review_id
+    index_num = (df_merge_1_unique.index[df_merge_1_unique.resourceId == random_review])
+    # get the latitude and longitude of the random review_id
+    long_random_review, lat_random_review = float(df_merge_1_unique.iloc[index_num]['longitude']), (
+    df_merge_1_unique.iloc[index_num]['latitude'])
+    dist_list = []
+    for index, lat in enumerate(df_merge_1.loc[:, 'latitude']):
+        dist_measured = distance(long_random_review, lat_random_review, df_merge_1.loc[index, 'longitude'], lat)
+        dist_list.append(dist_measured)
+
+    df_merge_2 = df_merge_1.copy()
+    df_merge_2['dist_list'] = dist_list
+    df_merge_2 = df_merge_2.sort_values('dist_list')
+    df_merge_2_unique = (df_merge_2[df_merge_2.duplicated()].drop_duplicates()).reset_index()
+    # print(df_merge_2_unique['resourceId'][:10])
+    groupby_like_count = (df_merge_2.groupby(['resourceId'])['updated_dates'].count().reset_index().rename(
+        columns={'updated_dates': 'ReviewViewCount'}))
+    df_merge_2_unique_like_count_merge = (df_merge_2_unique.merge(groupby_like_count, on='resourceId'))
+    df_merge_2_unique_like_count_merge = df_merge_2_unique_like_count_merge.sort_values(by='ReviewViewCount',
+                                                                                        ascending=False)
+    print()
+    print(df_merge_2_unique_like_count_merge)
+    print()
+    print(df_merge_2_unique_like_count_merge[df_merge_2_unique_like_count_merge['dist_list'] <= 10][:10])
+
+
