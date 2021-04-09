@@ -49,6 +49,8 @@
 
 from math import cos, sqrt
 import pandas as pd
+import random
+import numpy as np
 
 R = 6371000 #radius of the Earth in m
 def distance(lon1, lat1, lon2, lat2):
@@ -60,8 +62,18 @@ def distance(lon1, lat1, lon2, lat2):
 # {"BusStopCode": "01012", "RoadName": "Victoria St", "Description": "Hotel Grand Pacific", "Latitude": 1.29684825487647, "Longitude": 103.85253591654006}]
 #
 # print(sorted(bustops, key= lambda d: distance(d["Longitude"], d["Latitude"], 103.5, 1.2)))
-lon1, lat1 = [-84.62358891086079, 46.784045721242116]
-lon2, lat2 = [-85.3495983399085, 45.67590014485517]
+# lon1, lat1 = [-84.62358891086079, 46.784045721242116]
+# lon2, lat2 = [-85.3495983399085, 45.67590014485517]
 cities_lat_and_long_df = pd.read_csv('indian_cities_lat_and_long.csv')
-print([_ for _ in cities_lat_and_long_df.iloc[:,1]])
-print(distance(lon1, lat1, lon2, lat2))
+lat_list = [_ for _ in cities_lat_and_long_df.iloc[:,1]]
+long_list = [_ for _ in cities_lat_and_long_df.iloc[:,-1]]
+lat1 = random.choice(lat_list)
+print(lat1, lat_list.index(lat1))
+lat1_index = lat_list.index(lat1)
+long1 = long_list[lat1_index]
+dist_list = []
+for index, lat in enumerate(lat_list):
+    dist_measured = distance(long1, lat1, long_list[index], lat)
+    dist_list.append(dist_measured)
+cities_lat_and_long_df['dist_measured'] = dist_list
+print((cities_lat_and_long_df.sort_values(by=['dist_measured']))[:10])
