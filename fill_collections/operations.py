@@ -93,7 +93,7 @@ def distance(lon1, lat1, lon2, lat2):
     y = (lat2 - lat1)
     return sqrt( x*x + y*y )
 
-def NearestNeighborReviewID():
+def NearestNeighborReviewID(files_list):
     df_merge_1 = MergedDataframe(files_list)
     # get the list of unique review_id
     unique_review_list = list(df_merge_1['resourceId'])
@@ -107,23 +107,72 @@ def NearestNeighborReviewID():
     long_random_review, lat_random_review = float(df_merge_1_unique.iloc[index_num]['longitude']), (
     df_merge_1_unique.iloc[index_num]['latitude'])
     dist_list = []
+    # append the distance of each review with respect to the random review_id
     for index, lat in enumerate(df_merge_1.loc[:, 'latitude']):
         dist_measured = distance(long_random_review, lat_random_review, df_merge_1.loc[index, 'longitude'], lat)
         dist_list.append(dist_measured)
-
+    # create a copy of df_merge_1
     df_merge_2 = df_merge_1.copy()
+    # add a new column for the distance
     df_merge_2['dist_list'] = dist_list
+    # sort the dataframe based on the column = 'dist_list'
     df_merge_2 = df_merge_2.sort_values('dist_list')
+    # get only the duplicates of the dataframe
     df_merge_2_unique = (df_merge_2[df_merge_2.duplicated()].drop_duplicates()).reset_index()
-    # print(df_merge_2_unique['resourceId'][:10])
+    # get the like counts by using the groupby
     groupby_like_count = (df_merge_2.groupby(['resourceId'])['updated_dates'].count().reset_index().rename(
         columns={'updated_dates': 'ReviewViewCount'}))
+    # merge the dataframe of unique and like_count
     df_merge_2_unique_like_count_merge = (df_merge_2_unique.merge(groupby_like_count, on='resourceId'))
+    # sort the merged dataframe in descending order based on 'like_count'
     df_merge_2_unique_like_count_merge = df_merge_2_unique_like_count_merge.sort_values(by='ReviewViewCount',
                                                                                         ascending=False)
-    print()
-    print(df_merge_2_unique_like_count_merge)
-    print()
-    print(df_merge_2_unique_like_count_merge[df_merge_2_unique_like_count_merge['dist_list'] <= 10][:10])
+    return list(df_merge_2_unique_like_count_merge[df_merge_2_unique_like_count_merge['dist_list'] <= 10]['resourceId'][:10])
 
+def WeeklyResults(files_list, week_num = 1):
+    ### DATAFRAME FOR LAST WEEK
+    df_merge_1 = MergedDataframe(files_list)
+    today = pd.to_datetime('today').floor('D')
+    week_prior = today - timedelta(weeks=week_num)
+    df_last_week = df_merge_1[(df_merge_1['updated_dates'] <= today) & (df_merge_1['updated_dates'] >= week_prior)]
+    df_last_week.to_csv('df_last_week.csv')
+    top_10_last_week_df = (df_last_week.groupby(['resourceId'])['updated_dates'].count().reset_index().rename(
+        columns={'updated_dates': 'ReviewViewCount'}))
+    top_10_reviews_last_week = (top_10_last_week_df.sort_values(['ReviewViewCount'], ascending=False))[:10]
+    print()
+    print('LAST WEEK RESULTS')
+    trending_reviews = list(top_10_reviews_last_week['resourceId'])
+    top_10_last_week_df = (df_last_week.groupby(['fromUserId_x'])['updated_dates'].count().reset_index().rename(
+        columns={'updated_dates': 'ReviewViewCount'}))
+    top_10_reviews_last_week = (top_10_last_week_df.sort_values(['ReviewViewCount'], ascending=False))[:10]
+    trending_users = list(top_10_reviews_last_week['fromUserId_x'])
+    while len(trending_reviews) < 10:
+        week_num += 1
+        week_prior = today - timedelta(weeks=week_num)
+        df_last_week = df_merge_1[(df_merge_1['updated_dates'] <= today) & (df_merge_1['updated_dates'] >= week_prior)]
+        df_last_week.to_csv('df_last_week.csv')
+        top_10_last_week_df = (df_last_week.groupby(['resourceId'])['updated_dates'].count().reset_index().rename(
+            columns={'updated_dates': 'ReviewViewCount'}))
+        top_10_reviews_last_week = (top_10_last_week_df.sort_values(['ReviewViewCount'], ascending=False))[:10]
+        print()
+        print('LAST WEEK RESULTS', week_num)
+        trending_reviews = list(top_10_reviews_last_week['resourceId'])
+        print('Length of trending reviews: ', len(trending_reviews))
+    week_num = 1
+    while  len(trending_users) < 10:
+        week_num += 1
+        week_prior = today - timedelta(weeks=week_num)
+        df_last_week = df_merge_1[(df_merge_1['updated_dates'] <= today) & (df_merge_1['updated_dates'] >= week_prior)]
+        df_last_week.to_csv('df_last_week.csv')
+        top_10_last_week_df = (df_last_week.groupby(['resourceId'])['updated_dates'].count().reset_index().rename(
+            columns={'updated_dates': 'ReviewViewCount'}))
+        top_10_reviews_last_week = (top_10_last_week_df.sort_values(['ReviewViewCount'], ascending=False))[:10]
+        print()
+        print('LAST WEEK RESULTS')
+        trending_reviews = list(top_10_reviews_last_week['resourceId'])
+    return trending_reviews, trending_users
 
+    pass
+
+# print(NearestNeighborReviewID(files_list))
+print(WeeklyResults(files_list)[0])
