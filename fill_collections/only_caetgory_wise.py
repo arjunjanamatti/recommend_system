@@ -171,16 +171,47 @@ print(df_merge_cat_1_count_merge['resourceId'].unique())
 
 ### DATAFRAME FOR LAST WEEK
 today = pd.to_datetime('today').floor('D')
-week_prior =  today - timedelta(weeks=1)
+week_num = 1
+week_prior =  today - timedelta(weeks = week_num)
 df_last_week = df_merge_cat[(df_merge_cat['updated_dates'] <= today) & (df_merge_cat['updated_dates'] >= week_prior)]
 df_last_week.to_csv('df_last_week.csv')
 top_10_last_week_df = (df_last_week.groupby(['resourceId'])['updated_dates'].count().reset_index().rename(columns = {'updated_dates': 'ReviewViewCount'}))
 top_10_reviews_last_week = (top_10_last_week_df.sort_values(['ReviewViewCount'], ascending=False))[:10]
 print()
 print('LAST WEEK RESULTS')
+print(df_merge_cat['updated_dates'].min())
+print(week_prior)
+while (len(top_10_reviews_last_week['resourceId'].unique()) < 10):
+    week_num += 1
+    print(week_num)
+    week_prior = today - timedelta(weeks=week_num)
+    if (week_prior < df_merge_cat['updated_dates'].min()):
+        break
+    df_last_week = df_merge_cat[
+        (df_merge_cat['updated_dates'] <= today) & (df_merge_cat['updated_dates'] >= week_prior)]
+    top_10_last_week_df = (df_last_week.groupby(['resourceId'])['updated_dates'].count().reset_index().rename(
+        columns={'updated_dates': 'ReviewViewCount'}))
+    top_10_reviews_last_week = (top_10_last_week_df.sort_values(['ReviewViewCount'], ascending=False))
+
+#
 print(top_10_reviews_last_week['resourceId'].unique())
+
+week_num = 1
 top_10_last_week_df = (df_last_week.groupby(['fromUserId_x'])['updated_dates'].count().reset_index().rename(columns = {'updated_dates': 'ReviewViewCount'}))
 top_10_reviews_last_week = (top_10_last_week_df.sort_values(['ReviewViewCount'], ascending=False))[:10]
+while (len(top_10_reviews_last_week['fromUserId_x'].unique()) < 10):
+    week_num += 1
+    print(week_num)
+    week_prior = today - timedelta(weeks=week_num)
+    if (week_prior < df_merge_cat['updated_dates'].min()):
+        break
+    df_last_week = df_merge_cat[
+        (df_merge_cat['updated_dates'] <= today) & (df_merge_cat['updated_dates'] >= week_prior)]
+    top_10_last_week_df = (df_last_week.groupby(['fromUserId_x'])['updated_dates'].count().reset_index().rename(
+        columns={'updated_dates': 'ReviewViewCount'}))
+    top_10_reviews_last_week = (top_10_last_week_df.sort_values(['ReviewViewCount'], ascending=False))
+# top_10_last_week_df = (df_last_week.groupby(['fromUserId_x'])['updated_dates'].count().reset_index().rename(columns = {'updated_dates': 'ReviewViewCount'}))
+# top_10_reviews_last_week = (top_10_last_week_df.sort_values(['ReviewViewCount'], ascending=False))[:10]
 print(top_10_reviews_last_week['fromUserId_x'].unique())
 #
 # ### DATAFRAME FOR LAST MONTH
