@@ -112,3 +112,8 @@ df_merge_1.drop(labels=['createdAt_x', 'updatedAt_x'], inplace=True, axis=1)
 df_merge.to_csv('df_merge.csv')
 df_merge_1.to_csv('df_merge_1.csv')
 
+cat_dict = {}
+cat_uniq_list = list(df_merge_1['categoryId'].unique())
+
+gb = (df_merge_1.groupby('categoryId'))
+print([gb.get_group(x).reset_index() for x in gb.groups])
