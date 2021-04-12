@@ -42,6 +42,24 @@ except Exception as e:
     print(e)
     pass
 
+def GetTableDictionary(files_list):
+    myclient = MongoClient()
+    mydb = myclient['real_reviews']
+    list_1 = looping_json_files(files_list)
+    print(list_1)
+    tables_dictionary = {}
+    for index, file in enumerate(files_list):
+        print(file)
+        my_collection = mydb[file.split('.')[0]]
+
+        #     ### Find all the data
+        #     print()
+        #     print('Entire dataset: ')
+        list_data = my_collection.find()
+        df = pd.DataFrame(list(list_data))
+        tables_dictionary[file.split('.')[0]] = df
+    return tables_dictionary
+
 myclient = MongoClient()
 mydb = myclient['real_reviews']
 list_1 = looping_json_files(files_list)
@@ -177,7 +195,7 @@ print(df_merge_cat['updated_dates'].min())
 print(week_prior)
 while (len(top_10_reviews_last_week['resourceId'].unique()) < 10):
     week_num += 1
-    # print(week_num)
+    # print(week_num)/
     week_prior = today - timedelta(weeks=week_num)
     if (week_prior < df_merge_cat['updated_dates'].min()):
         break
