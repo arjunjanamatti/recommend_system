@@ -97,6 +97,16 @@ def distance(lon1, lat1, lon2, lat2):
     y = (lat2 - lat1)
     return sqrt( x*x + y*y )
 
+def SubgroupCategoriesToDictionary(files_list):
+    df_merge_1 = MergedDataframe(files_list)
+    gb = (df_merge_1.groupby('categoryId'))
+    cat_dict = {}
+    # print([gb.get_group(x).reset_index() for x in gb.groups])
+    # print([cat_dict[x] = gb.get_group(x).reset_index()  for x in gb.groups])
+    for cat in gb.groups:
+        cat_dict[cat] = gb.get_group(cat).reset_index()
+    return cat_dict
+
 
 myclient = MongoClient()
 mydb = myclient['real_reviews']
