@@ -160,56 +160,28 @@ df_merge_cat_1 = df_merge_cat_1.sort_values('dist_list')
 groupby_like_count = (df_merge_cat_1.groupby(['resourceId'])['updated_dates'].count().reset_index().rename(columns = {'updated_dates': 'ReviewViewCount'}))
 print(groupby_like_count)
 df_merge_cat_1_count_merge = (df_merge_cat_1.merge(groupby_like_count,on='resourceId'))
+# print(df_merge_cat_1_count_merge)
+df_merge_cat_1_count_merge = df_merge_cat_1_count_merge.sort_values(by=['ReviewViewCount', 'dist_list'], ascending=[False, True])
 print(df_merge_cat_1_count_merge)
-# df_merge_2_unique_like_count_merge = df_merge_2_unique_like_count_merge.sort_values(by='ReviewViewCount', ascending=False)
+print(df_merge_cat_1_count_merge['resourceId'].unique())
 # print()
 # print(df_merge_2_unique_like_count_merge)
 # print()
 # print(df_merge_2_unique_like_count_merge[df_merge_2_unique_like_count_merge['dist_list'] <= 10][:10])
 
-# unique_user_list = list(df_merge_cat['fromUserId_x'])
-# unique_review_list = list(df_merge_cat['resourceId'])
-# random_user = random.choice(unique_user_list)
-# random_review = random.choice(unique_review_list)
-# print(random_review)
-# df_merge_1_unique = (df_merge_cat[df_merge_cat.duplicated()].drop_duplicates()).reset_index()
-# index_num = (df_merge_1_unique.index[df_merge_1_unique.resourceId == random_review])
-# print(index_num)
-# print(df_merge_cat)
-# df_merge_cat.to_csv('df_merge_cat.csv')
-# print(df_merge_1_unique)
-# long_random_review, lat_random_review = float(df_merge_1_unique.iloc[index_num]['longitude']), float(df_merge_1_unique.iloc[index_num]['latitude'])
-# dist_list = []
-# for index, lat in enumerate(df_merge_1.loc[:,'latitude']):
-#     dist_measured = distance(long_random_review, lat_random_review, df_merge_1.loc[index,'longitude'], lat)
-#     dist_list.append(dist_measured)
-#
-# df_merge_2 = df_merge_1.copy()
-# df_merge_2['dist_list'] = dist_list
-# df_merge_2 = df_merge_2.sort_values('dist_list')
-# df_merge_2_unique = (df_merge_2[df_merge_2.duplicated()].drop_duplicates()).reset_index()
-# # print(df_merge_2_unique['resourceId'][:10])
-# groupby_like_count = (df_merge_2.groupby(['resourceId'])['updated_dates'].count().reset_index().rename(columns = {'updated_dates': 'ReviewViewCount'}))
-# df_merge_2_unique_like_count_merge = (df_merge_2_unique.merge(groupby_like_count,on='resourceId'))
-# df_merge_2_unique_like_count_merge = df_merge_2_unique_like_count_merge.sort_values(by='ReviewViewCount', ascending=False)
-# print()
-# print(df_merge_2_unique_like_count_merge)
-# print()
-# print(df_merge_2_unique_like_count_merge[df_merge_2_unique_like_count_merge['dist_list'] <= 10][:10])
-#
-# ### DATAFRAME FOR LAST WEEK
-# today = pd.to_datetime('today').floor('D')
-# week_prior =  today - timedelta(weeks=1)
-# df_last_week = df_merge_1[(df_merge_1['updated_dates'] <= today) & (df_merge_1['updated_dates'] >= week_prior)]
-# df_last_week.to_csv('df_last_week.csv')
-# top_10_last_week_df = (df_last_week.groupby(['resourceId'])['updated_dates'].count().reset_index().rename(columns = {'updated_dates': 'ReviewViewCount'}))
-# top_10_reviews_last_week = (top_10_last_week_df.sort_values(['ReviewViewCount'], ascending=False))[:10]
-# print()
-# print('LAST WEEK RESULTS')
-# print(top_10_reviews_last_week['resourceId'])
-# top_10_last_week_df = (df_last_week.groupby(['fromUserId_x'])['updated_dates'].count().reset_index().rename(columns = {'updated_dates': 'ReviewViewCount'}))
-# top_10_reviews_last_week = (top_10_last_week_df.sort_values(['ReviewViewCount'], ascending=False))[:10]
-# print(top_10_reviews_last_week['fromUserId_x'])
+### DATAFRAME FOR LAST WEEK
+today = pd.to_datetime('today').floor('D')
+week_prior =  today - timedelta(weeks=1)
+df_last_week = df_merge_cat[(df_merge_cat['updated_dates'] <= today) & (df_merge_cat['updated_dates'] >= week_prior)]
+df_last_week.to_csv('df_last_week.csv')
+top_10_last_week_df = (df_last_week.groupby(['resourceId'])['updated_dates'].count().reset_index().rename(columns = {'updated_dates': 'ReviewViewCount'}))
+top_10_reviews_last_week = (top_10_last_week_df.sort_values(['ReviewViewCount'], ascending=False))[:10]
+print()
+print('LAST WEEK RESULTS')
+print(top_10_reviews_last_week['resourceId'].unique())
+top_10_last_week_df = (df_last_week.groupby(['fromUserId_x'])['updated_dates'].count().reset_index().rename(columns = {'updated_dates': 'ReviewViewCount'}))
+top_10_reviews_last_week = (top_10_last_week_df.sort_values(['ReviewViewCount'], ascending=False))[:10]
+print(top_10_reviews_last_week['fromUserId_x'].unique())
 #
 # ### DATAFRAME FOR LAST MONTH
 # last_month = today - timedelta(days=30)
