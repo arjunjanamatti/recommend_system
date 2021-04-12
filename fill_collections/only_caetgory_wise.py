@@ -143,7 +143,14 @@ def distance(lon1, lat1, lon2, lat2):
 # comments
 # shares
 index_list = list(df_merge_cat.index)
-print(index_list)
+random_index = random.choice(index_list)
+user_rand, review_rand = str(df_merge_cat.iloc[random_index]['fromUserId_x']), str(df_merge_cat.iloc[random_index]['resourceId'])
+long_rand, lat_rand = float(df_merge_cat.iloc[random_index]['longitude']), float(df_merge_cat.iloc[random_index]['latitude'])
+dist_list = []
+for index, lat in enumerate(df_merge_cat.loc[:,'latitude']):
+    dist_measured = distance(long_rand, lat_rand, df_merge_cat.loc[index,'longitude'], lat)
+    dist_list.append(dist_measured)
+print(dist_list)
 # unique_user_list = list(df_merge_cat['fromUserId_x'])
 # unique_review_list = list(df_merge_cat['resourceId'])
 # random_user = random.choice(unique_user_list)
