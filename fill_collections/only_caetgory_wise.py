@@ -151,6 +151,22 @@ for index, lat in enumerate(df_merge_cat.loc[:,'latitude']):
     dist_measured = distance(long_rand, lat_rand, df_merge_cat.loc[index,'longitude'], lat)
     dist_list.append(dist_measured)
 print(dist_list)
+
+df_merge_cat_1 = df_merge_cat.copy()
+df_merge_cat_1['dist_list'] = dist_list
+df_merge_cat_1 = df_merge_cat_1.sort_values('dist_list')
+# df_merge_2_unique = (df_merge_2[df_merge_2.duplicated()].drop_duplicates()).reset_index()
+# print(df_merge_2_unique['resourceId'][:10])
+groupby_like_count = (df_merge_cat_1.groupby(['resourceId'])['updated_dates'].count().reset_index().rename(columns = {'updated_dates': 'ReviewViewCount'}))
+print(groupby_like_count)
+df_merge_cat_1_count_merge = (df_merge_cat_1.merge(groupby_like_count,on='resourceId'))
+print(df_merge_cat_1_count_merge)
+# df_merge_2_unique_like_count_merge = df_merge_2_unique_like_count_merge.sort_values(by='ReviewViewCount', ascending=False)
+# print()
+# print(df_merge_2_unique_like_count_merge)
+# print()
+# print(df_merge_2_unique_like_count_merge[df_merge_2_unique_like_count_merge['dist_list'] <= 10][:10])
+
 # unique_user_list = list(df_merge_cat['fromUserId_x'])
 # unique_review_list = list(df_merge_cat['resourceId'])
 # random_user = random.choice(unique_user_list)
