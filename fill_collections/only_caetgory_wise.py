@@ -86,8 +86,8 @@ def MergedDataframe(files_list):
     updated_dates = ([_.split('T')[0] for _ in df_merge_1['updatedAt_x']])
     df_merge_1['created_dates'] = created_dates
     df_merge_1['updated_dates'] = updated_dates
-    df_merge_1['created_dates'] = pd.to_datetime(df_merge_1['created_dates'])
-    df_merge_1['updated_dates'] = pd.to_datetime(df_merge_1['updated_dates'])
+    df_merge_1['created_dates'] = pd.to_datetime(df_merge_1['created_dates'],dayfirst=True)
+    df_merge_1['updated_dates'] = pd.to_datetime(df_merge_1['updated_dates'],dayfirst=True)
 
     df_merge_1.drop(labels=['createdAt_x', 'updatedAt_x'], inplace=True, axis=1)
     return df_merge_1
@@ -140,15 +140,14 @@ def TopTrendingResults(df_merge_cat, num_days, column_name):
     week_num = num_days
     while (len(top_10_reviews_last_week[column_name].unique()) < 10):
         week_num += num_days
-        # print(week_num)/
         week_prior = today - timedelta(days=week_num)
-        if (week_prior < df_merge_cat['updated_dates'].min()):
-            break
         df_last_week = df_merge_cat[
             (df_merge_cat['updated_dates'] <= today) & (df_merge_cat['updated_dates'] >= week_prior)]
         top_10_last_week_df = (df_last_week.groupby([column_name])['updated_dates'].count().reset_index().rename(
             columns={'updated_dates': 'ReviewViewCount'}))
         top_10_reviews_last_week = (top_10_last_week_df.sort_values(['ReviewViewCount'], ascending=False))
+        if (week_prior < df_merge_cat['updated_dates'].min()):
+            break
 
     return (top_10_reviews_last_week[column_name].unique())
 
@@ -162,22 +161,33 @@ def AllTrendingResults(df_merge_cat):
 
 
 files_list = ['reviews_1.json','likes_1.json']
-cat_dict = SubgroupCategoriesToDictionary(files_list)
-for keys in cat_dict.keys():
-    df_merge_cat = cat_dict[keys]
 
-    top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month = AllTrendingResults(df_merge_cat)
-    print(f'Results of Category_id: {keys}')
-    print(top_review_last_week)
-    print()
-    print(top_user_last_week)
-    print()
-    print(popular_review_last_month)
-    print()
-    print(popular_user_last_month)
-    print()
+def CategoryWiseResult(files_list):
+    cat_dict = SubgroupCategoriesToDictionary(files_list)
+    cat_result = {}
+    for keys in cat_dict.keys():
+        results_list = []
+        df_merge_cat = cat_dict[keys]
+        top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month = AllTrendingResults(df_merge_cat)
+        print(f'Results of Category_id: {keys}')
+        results_list.append(top_review_last_week.tolist())
+        results_list.append(top_user_last_week.tolist())
+        results_list.append(popular_review_last_month.tolist())
+        results_list.append(popular_user_last_month.tolist())
+        cat_result[keys] = results_list
+    return cat_result
+        # print(top_review_last_week)
+        # print()
+        # print(top_user_last_week)
+        # print()
+        # print(popular_review_last_month)
+        # print()
+        # print(popular_user_last_month)
+        # print()
 
-
+result = (CategoryWiseResult(files_list))
+with open("results.json", "w") as fp:
+    json.dump(result , fp, indent=4)
 
 # myclient = MongoClient()
 # mydb = myclient['real_reviews']
