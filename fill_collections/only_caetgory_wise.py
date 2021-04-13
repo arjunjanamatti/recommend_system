@@ -169,25 +169,26 @@ def CategoryWiseResult(files_list):
         results_list = []
         df_merge_cat = cat_dict[keys]
         top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month = AllTrendingResults(df_merge_cat)
-        print(f'Results of Category_id: {keys}')
         results_list.append(top_review_last_week.tolist())
         results_list.append(top_user_last_week.tolist())
         results_list.append(popular_review_last_month.tolist())
         results_list.append(popular_user_last_month.tolist())
         cat_result[keys] = results_list
     return cat_result
-        # print(top_review_last_week)
-        # print()
-        # print(top_user_last_week)
-        # print()
-        # print(popular_review_last_month)
-        # print()
-        # print(popular_user_last_month)
-        # print()
 
-result = (CategoryWiseResult(files_list))
-with open("results.json", "w") as fp:
-    json.dump(result , fp, indent=4)
+def CombinedResults(files_list):
+    df = MergedDataframe(files_list)
+    top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month = AllTrendingResults(
+        df)
+    return top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month
+    pass
+
+
+cat_result = (CategoryWiseResult(files_list))
+# with open("results.json", "w") as fp:
+#     json.dump(result , fp, indent=4)
+combo_result = CombinedResults(files_list)
+print(combo_result[0][:10])
 
 # myclient = MongoClient()
 # mydb = myclient['real_reviews']
