@@ -148,7 +148,6 @@ def TopTrendingResults(df_merge_cat, num_days, column_name):
         top_10_reviews_last_week = (top_10_last_week_df.sort_values(['ReviewViewCount'], ascending=False))
         if (week_prior < df_merge_cat['updated_dates'].min()):
             break
-
     return (top_10_reviews_last_week[column_name].unique())
 
 def AllTrendingResults(df_merge_cat):
@@ -169,11 +168,16 @@ def CategoryWiseResult(files_list):
         results_list = []
         df_merge_cat = cat_dict[keys]
         top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month = AllTrendingResults(df_merge_cat)
-        results_list.append(top_review_last_week.tolist())
-        results_list.append(top_user_last_week.tolist())
-        results_list.append(popular_review_last_month.tolist())
-        results_list.append(popular_user_last_month.tolist())
-        cat_result[keys] = results_list
+        # results_list.append(top_review_last_week.tolist())
+        # results_list.append(top_user_last_week.tolist())
+        # results_list.append(popular_review_last_month.tolist())
+        # results_list.append(popular_user_last_month.tolist())
+        # cat_result[keys] = results_list
+        cat_result[keys] = {}
+        cat_result[keys]['top_review_last_week'] = top_review_last_week.tolist()
+        cat_result[keys]['top_user_last_week'] = top_user_last_week.tolist()
+        cat_result[keys]['popular_review_last_month'] = popular_review_last_month.tolist()
+        cat_result[keys]['popular_user_last_month'] = popular_user_last_month.tolist()
     return cat_result
 
 def CombinedResults(files_list):

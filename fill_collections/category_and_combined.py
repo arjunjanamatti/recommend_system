@@ -8,18 +8,20 @@ from datetime import timedelta
 from math import *
 import random
 from flask import Flask, request
+import time
 
 files_list = ['reviews_1.json','likes_1.json']
 
 app = Flask(__name__)
 
 class trend_results:
-    def __init__(self, files_list):
-        self.files_list = files_list
-        pass
+    # def __init__(self, files_list):
+    #     self.files_list = files_list
+    #     pass
 
     def looping_json_files(self):
         list_1 = []
+        self.files_list = ['reviews_1.json', 'likes_1.json']
         for files in self.files_list:
             with open(files) as file:
                 data = json.load(file)
@@ -30,16 +32,16 @@ class trend_results:
         myclient = MongoClient(host=None, port=None)
         mydb = myclient['real_reviews']
         list_1 = self.looping_json_files()
-        tables_dictionary = {}
+        self.tables_dictionary = {}
         for index, file in enumerate(self.files_list):
             my_collection = mydb[file.split('.')[0]]
             list_data = my_collection.find()
             df = pd.DataFrame(list(list_data))
-            tables_dictionary[file.split('.')[0]] = df
-        return tables_dictionary
+            self.tables_dictionary[file.split('.')[0]] = df
+        return self.tables_dictionary
 
     def MergedDataframe(self):
-        self.tables_dictionary = self.GetTableDictionary()
+        self.GetTableDictionary()
         # transform the reviews_1 table to df_1 dataframe
         df_1 = self.tables_dictionary[self.files_list[0].split('.')[0]]
         # select reviews which are approved
@@ -69,8 +71,6 @@ class trend_results:
 
         self.df_merge_1.drop(labels=['createdAt_x', 'updatedAt_x'], inplace=True, axis=1)
         return self.df_merge_1
-
-
 
     def distance(self, lon1, lat1, lon2, lat2):
         x = (lon2 - lon1) * cos(0.5 * (lat2 + lat1))
@@ -113,8 +113,8 @@ class trend_results:
         df_last_week = df_merge_cat[
             (df_merge_cat['updated_dates'] <= today) & (df_merge_cat['updated_dates'] >= week_prior)]
         top_10_last_week_df = (df_last_week.groupby([column_name])['updated_dates'].count().reset_index().rename(
-            columns={'updated_dates': 'ReviewViewCount'}))
-        top_10_reviews_last_week = (top_10_last_week_df.sort_values(['ReviewViewCount'], ascending=False))
+            columns={'updated_dates': 'ReviewLikeCount'}))
+        top_10_reviews_last_week = (top_10_last_week_df.sort_values(['ReviewLikeCount'], ascending=False))
         week_num = num_days
         while (len(top_10_reviews_last_week[column_name].unique()) < 10):
             week_num += num_days
@@ -122,10 +122,11 @@ class trend_results:
             df_last_week = df_merge_cat[
                 (df_merge_cat['updated_dates'] <= today) & (df_merge_cat['updated_dates'] >= week_prior)]
             top_10_last_week_df = (df_last_week.groupby([column_name])['updated_dates'].count().reset_index().rename(
-                columns={'updated_dates': 'ReviewViewCount'}))
-            top_10_reviews_last_week = (top_10_last_week_df.sort_values(['ReviewViewCount'], ascending=False))
+                columns={'updated_dates': 'ReviewLikeCount'}))
+            top_10_reviews_last_week = (top_10_last_week_df.sort_values(['ReviewLikeCount'], ascending=False))
             if (week_prior < df_merge_cat['updated_dates'].min()):
                 break
+        return (top_10_reviews_last_week[column_name].unique())
 
     def AllTrendingResults(self, df_merge_cat):
         top_review_last_week = self.TopTrendingResults(df_merge_cat, 7, 'resourceId')
@@ -142,36 +143,51 @@ class trend_results:
             df_merge_cat = self.cat_dict[keys]
             top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month = self.AllTrendingResults(
                 df_merge_cat)
-            results_list.append(top_review_last_week.tolist())
-            results_list.append(top_user_last_week.tolist())
-            results_list.append(popular_review_last_month.tolist())
-            results_list.append(popular_user_last_month.tolist())
-            cat_result[keys] = results_list
+            # results_list.append(top_review_last_week.tolist())
+            # results_list.append(top_user_last_week.tolist())
+            # results_list.append(popular_review_last_month.tolist())
+            # results_list.append(popular_user_last_month.tolist())
+            # cat_result[keys] = results_list
+            cat_result[keys] = {}
+            cat_result[keys]['top_review_last_week'] = top_review_last_week.tolist()
+            cat_result[keys]['top_user_last_week'] = top_user_last_week.tolist()
+            cat_result[keys]['popular_review_last_month'] = popular_review_last_month.tolist()
+            cat_result[keys]['popular_user_last_month'] = popular_user_last_month.tolist()
+        # print(cat_result)
         return cat_result
 
     def CombinedResults(self):
         top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month = self.AllTrendingResults(
             self.df_merge_1)
-        return top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month
+        top_review_last_week = top_review_last_week.tolist()
+        top_user_last_week = top_user_last_week.tolist()
+        popular_review_last_month = popular_review_last_month.tolist()
+        popular_user_last_month = popular_user_last_month.tolist()
 
-@app.route('/trending', methods=['POST'])
-def Main():
+        overall_result = {}
+        overall_result['combinedResults'] = {}
+        overall_result['combinedResults']['top_review_last_week'] = top_review_last_week[:10]
+        overall_result['combinedResults']['top_user_last_week'] = top_user_last_week[:10]
+        overall_result['combinedResults']['popular_review_last_month'] = popular_review_last_month[:10]
+        overall_result['combinedResults']['popular_user_last_month'] = popular_user_last_month[:10]
+        return overall_result
+
+@app.route('/trending', methods=['GET', 'POST'])
+def main():
     if request.method == 'POST':
-        check = trend_results(files_list)
-        cat_result = check.CategoryWiseResult()
-        top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month = check.CombinedResults()
-        # text_result = check.TextResult()
-        return {"Categorical_trending_results": cat_result,
-                "Combined_top_trending_reviews": top_review_last_week,
-                'Combined_top_trending_users': top_user_last_week,
-                "Combined_most_popular_reviews": popular_review_last_month,
-                'Combined_most_popular_users': popular_user_last_month
-                }
-        # return {"imageBase64": base_encoded_list,
-        #         "Transcript_result": text_result}
+        result = trend_results()
+        cat_result = result.CategoryWiseResult()
+        overall_result = result.CombinedResults()
+        time.sleep(1.0)
+        # print(overall_result)
+        return {'Categorical results': cat_result,
+                'Overall results': overall_result}
 
 
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
+
+
+
