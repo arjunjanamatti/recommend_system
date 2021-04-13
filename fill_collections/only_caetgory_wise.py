@@ -151,50 +151,15 @@ def TopTrendingResults(df_merge_cat, week_num, column_name):
 
     return (top_10_reviews_last_week[column_name].unique())
 
+def AllTrendingResults(df_merge_cat):
+    top_review_last_week = TopTrendingResults(df_merge_cat, 7, 'resourceId')
+    top_user_last_week = TopTrendingResults(df_merge_cat, 7, 'fromUserId_x')
+    popular_review_last_week = TopTrendingResults(df_merge_cat, 30, 'resourceId')
+    popular_user_last_week = TopTrendingResults(df_merge_cat, 30, 'fromUserId_x')
+    return top_review_last_week, top_user_last_week, popular_review_last_week, popular_user_last_week
 
 
-def TopTrendingResults_1(df_merge_cat):
-    today = pd.to_datetime('today').floor('D')
-    week_num = 1
-    week_prior = today - timedelta(weeks=week_num)
-    df_last_week = df_merge_cat[
-        (df_merge_cat['updated_dates'] <= today) & (df_merge_cat['updated_dates'] >= week_prior)]
-    df_last_week.to_csv('df_last_week.csv')
-    top_10_last_week_df = (df_last_week.groupby(['resourceId'])['updated_dates'].count().reset_index().rename(
-        columns={'updated_dates': 'ReviewViewCount'}))
-    top_10_reviews_last_week = (top_10_last_week_df.sort_values(['ReviewViewCount'], ascending=False))[:10]
-    while (len(top_10_reviews_last_week['resourceId'].unique()) < 10):
-        week_num += 1
-        # print(week_num)/
-        week_prior = today - timedelta(weeks=week_num)
-        if (week_prior < df_merge_cat['updated_dates'].min()):
-            break
-        df_last_week = df_merge_cat[
-            (df_merge_cat['updated_dates'] <= today) & (df_merge_cat['updated_dates'] >= week_prior)]
-        top_10_last_week_df = (df_last_week.groupby(['resourceId'])['updated_dates'].count().reset_index().rename(
-            columns={'updated_dates': 'ReviewViewCount'}))
-        top_10_reviews_last_week = (top_10_last_week_df.sort_values(['ReviewViewCount'], ascending=False))
 
-    top_review_last_week = (top_10_reviews_last_week['resourceId'].unique())
-
-    week_num = 1
-    top_10_last_week_df = (df_last_week.groupby(['fromUserId_x'])['updated_dates'].count().reset_index().rename(
-        columns={'updated_dates': 'ReviewViewCount'}))
-    top_10_reviews_last_week = (top_10_last_week_df.sort_values(['ReviewViewCount'], ascending=False))[:10]
-    while (len(top_10_reviews_last_week['fromUserId_x'].unique()) < 10):
-        week_num += 1
-        # print(week_num)
-        week_prior = today - timedelta(weeks=week_num)
-        if (week_prior < df_merge_cat['updated_dates'].min()):
-            break
-        df_last_week = df_merge_cat[
-            (df_merge_cat['updated_dates'] <= today) & (df_merge_cat['updated_dates'] >= week_prior)]
-        top_10_last_week_df = (df_last_week.groupby(['fromUserId_x'])['updated_dates'].count().reset_index().rename(
-            columns={'updated_dates': 'ReviewViewCount'}))
-        top_10_reviews_last_week = (top_10_last_week_df.sort_values(['ReviewViewCount'], ascending=False))
-
-    top_users_last_week = (top_10_reviews_last_week['fromUserId_x'].unique())
-    return  top_review_last_week, top_users_last_week
 
 
 myclient = MongoClient()
