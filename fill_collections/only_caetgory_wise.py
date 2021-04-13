@@ -63,11 +63,11 @@ def GetTableDictionary(files_list):
 def MergedDataframe(files_list):
     tables_dictionary = GetTableDictionary(files_list)
     # transform the reviews_1 table to df_1 dataframe
-    df_1 = tables_dictionary['reviews_1']
+    df_1 = tables_dictionary[files_list[0].split('.')[0]]
     # select reviews which are approved
     df_1_approve = (df_1[df_1['isApprove'] == 'approved'])
     # transform the likes_1 table to df_1 dataframe
-    df_2 = tables_dictionary['likes_1']
+    df_2 = tables_dictionary[files_list[-1].split('.')[0]]
     # rename the column name in reviews_1 table to resourceId as per likes_1 table
     df_1_approve = df_1_approve.rename(columns={"_id": "resourceId"})
     # merge both the dataframes based on common column 'resourceId'
@@ -160,7 +160,7 @@ def AllTrendingResults(df_merge_cat):
 
 
 
-files_list = ['reviews_1.json','likes_1.json']
+
 
 def CategoryWiseResult(files_list):
     cat_dict = SubgroupCategoriesToDictionary(files_list)
@@ -183,13 +183,19 @@ def CombinedResults(files_list):
     return top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month
     pass
 
-
+files_list = ['reviews.json','likes.json']
 cat_result = (CategoryWiseResult(files_list))
+print('CATEGORICAL RESULT')
+print(cat_result)
+print()
 # with open("results.json", "w") as fp:
 #     json.dump(result , fp, indent=4)
 combo_result = CombinedResults(files_list)
-print(combo_result[0][:10])
-
+print('COMBINED RESULT')
+print(combo_result[0])
+print(combo_result[1])
+print(combo_result[2])
+print(combo_result[3])
 # myclient = MongoClient()
 # mydb = myclient['real_reviews']
 # list_1 = looping_json_files(files_list)
