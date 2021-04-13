@@ -7,7 +7,11 @@ import pandas as pd
 from datetime import timedelta
 from math import *
 import random
+from flask import Flask, request
 
+files_list = ['reviews_1.json','likes_1.json']
+
+app = Flask(__name__)
 
 class trend_results:
     def __init__(self, files_list):
@@ -48,23 +52,25 @@ class trend_results:
         df_merge = df_1_approve.merge(df_2, how='left', on='resourceId')
 
         # extract only required columns from the merged dataframe
-        df_merge_1 = df_merge[['resourceId', 'loc', 'createdAt_x', 'updatedAt_x', 'fromUserId_x', 'categoryId']]
+        self.df_merge_1 = df_merge[['resourceId', 'loc', 'createdAt_x', 'updatedAt_x', 'fromUserId_x', 'categoryId']]
         # longititude extraction from the loc
-        longitude = [_['coordinates'][0] for _ in df_merge_1['loc']]
+        longitude = [_['coordinates'][0] for _ in self.df_merge_1['loc']]
 
-        latitude = [_['coordinates'][1] for _ in df_merge_1['loc']]
-        df_merge_1['longitude'] = longitude
-        df_merge_1['latitude'] = latitude
-        df_merge_1.drop(labels='loc', inplace=True, axis=1)
-        created_dates = ([_.split('T')[0] for _ in df_merge_1['createdAt_x']])
-        updated_dates = ([_.split('T')[0] for _ in df_merge_1['updatedAt_x']])
-        df_merge_1['created_dates'] = created_dates
-        df_merge_1['updated_dates'] = updated_dates
-        df_merge_1['created_dates'] = pd.to_datetime(df_merge_1['created_dates'], dayfirst=True)
-        df_merge_1['updated_dates'] = pd.to_datetime(df_merge_1['updated_dates'], dayfirst=True)
+        latitude = [_['coordinates'][1] for _ in self.df_merge_1['loc']]
+        self.df_merge_1['longitude'] = longitude
+        self.df_merge_1['latitude'] = latitude
+        self.df_merge_1.drop(labels='loc', inplace=True, axis=1)
+        created_dates = ([_.split('T')[0] for _ in self.df_merge_1['createdAt_x']])
+        updated_dates = ([_.split('T')[0] for _ in self.df_merge_1['updatedAt_x']])
+        self.df_merge_1['created_dates'] = created_dates
+        self.df_merge_1['updated_dates'] = updated_dates
+        self.df_merge_1['created_dates'] = pd.to_datetime(self.df_merge_1['created_dates'], dayfirst=True)
+        self.df_merge_1['updated_dates'] = pd.to_datetime(self.df_merge_1['updated_dates'], dayfirst=True)
 
-        df_merge_1.drop(labels=['createdAt_x', 'updatedAt_x'], inplace=True, axis=1)
-        return df_merge_1
+        self.df_merge_1.drop(labels=['createdAt_x', 'updatedAt_x'], inplace=True, axis=1)
+        return self.df_merge_1
+
+
 
     def distance(self, lon1, lat1, lon2, lat2):
         x = (lon2 - lon1) * cos(0.5 * (lat2 + lat1))
@@ -72,27 +78,26 @@ class trend_results:
         return sqrt(x * x + y * y)
 
     def SubgroupCategoriesToDictionary(self):
-        df_merge_1 = self.MergedDataframe()
-        gb = (df_merge_1.groupby('categoryId'))
-        cat_dict = {}
+        self.MergedDataframe()
+        gb = (self.df_merge_1.groupby('categoryId'))
+        self.cat_dict = {}
         for cat in gb.groups:
-            cat_dict[cat] = gb.get_group(cat).reset_index()
-        return cat_dict
+            self.cat_dict[cat] = gb.get_group(cat).reset_index()
+        return self.cat_dict
 
     def TrendingNearReviews(self):
-        df_merge_cat = self.MergedDataframe()
-        index_list = list(df_merge_cat.index)
+        index_list = list(self.df_merge_1.index)
         random_index = random.choice(index_list)
-        user_rand, review_rand = str(df_merge_cat.iloc[random_index]['fromUserId_x']), str(
-            df_merge_cat.iloc[random_index]['resourceId'])
-        long_rand, lat_rand = float(df_merge_cat.iloc[random_index]['longitude']), float(
-            df_merge_cat.iloc[random_index]['latitude'])
+        user_rand, review_rand = str(self.df_merge_1.iloc[random_index]['fromUserId_x']), str(
+            self.df_merge_1.iloc[random_index]['resourceId'])
+        long_rand, lat_rand = float(self.df_merge_1.iloc[random_index]['longitude']), float(
+            self.df_merge_1.iloc[random_index]['latitude'])
         dist_list = []
-        for index, lat in enumerate(df_merge_cat.loc[:, 'latitude']):
-            dist_measured = self.distance(long_rand, lat_rand, df_merge_cat.loc[index, 'longitude'], lat)
+        for index, lat in enumerate(self.df_merge_1.loc[:, 'latitude']):
+            dist_measured = self.distance(long_rand, lat_rand, self.df_merge_1.loc[index, 'longitude'], lat)
             dist_list.append(dist_measured)
 
-        df_merge_cat_1 = df_merge_cat.copy()
+        df_merge_cat_1 = self.df_merge_1.copy()
         df_merge_cat_1['dist_list'] = dist_list
         df_merge_cat_1 = df_merge_cat_1.sort_values('dist_list')
         groupby_like_count = (df_merge_cat_1.groupby(['resourceId'])['updated_dates'].count().reset_index().rename(
@@ -102,4 +107,71 @@ class trend_results:
                                                                             ascending=[False, True])
         return (df_merge_cat_1_count_merge['resourceId'].unique())
 
-    pass
+    def TopTrendingResults(self,df_merge_cat, num_days, column_name):
+        today = pd.to_datetime('today').floor('D')
+        week_prior = today - timedelta(days=num_days)
+        df_last_week = df_merge_cat[
+            (df_merge_cat['updated_dates'] <= today) & (df_merge_cat['updated_dates'] >= week_prior)]
+        top_10_last_week_df = (df_last_week.groupby([column_name])['updated_dates'].count().reset_index().rename(
+            columns={'updated_dates': 'ReviewViewCount'}))
+        top_10_reviews_last_week = (top_10_last_week_df.sort_values(['ReviewViewCount'], ascending=False))
+        week_num = num_days
+        while (len(top_10_reviews_last_week[column_name].unique()) < 10):
+            week_num += num_days
+            week_prior = today - timedelta(days=week_num)
+            df_last_week = df_merge_cat[
+                (df_merge_cat['updated_dates'] <= today) & (df_merge_cat['updated_dates'] >= week_prior)]
+            top_10_last_week_df = (df_last_week.groupby([column_name])['updated_dates'].count().reset_index().rename(
+                columns={'updated_dates': 'ReviewViewCount'}))
+            top_10_reviews_last_week = (top_10_last_week_df.sort_values(['ReviewViewCount'], ascending=False))
+            if (week_prior < df_merge_cat['updated_dates'].min()):
+                break
+
+    def AllTrendingResults(self, df_merge_cat):
+        top_review_last_week = self.TopTrendingResults(df_merge_cat, 7, 'resourceId')
+        top_user_last_week = self.TopTrendingResults(df_merge_cat, 7, 'fromUserId_x')
+        popular_review_last_week = self.TopTrendingResults(df_merge_cat, 30, 'resourceId')
+        popular_user_last_week = self.TopTrendingResults(df_merge_cat, 30, 'fromUserId_x')
+        return top_review_last_week, top_user_last_week, popular_review_last_week, popular_user_last_week
+
+    def CategoryWiseResult(self):
+        self.SubgroupCategoriesToDictionary()
+        cat_result = {}
+        for keys in self.cat_dict.keys():
+            results_list = []
+            df_merge_cat = self.cat_dict[keys]
+            top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month = self.AllTrendingResults(
+                df_merge_cat)
+            results_list.append(top_review_last_week.tolist())
+            results_list.append(top_user_last_week.tolist())
+            results_list.append(popular_review_last_month.tolist())
+            results_list.append(popular_user_last_month.tolist())
+            cat_result[keys] = results_list
+        return cat_result
+
+    def CombinedResults(self):
+        top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month = self.AllTrendingResults(
+            self.df_merge_1)
+        return top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month
+
+@app.route('/trending', methods=['POST'])
+def Main():
+    if request.method == 'POST':
+        check = trend_results(files_list)
+        cat_result = check.CategoryWiseResult()
+        top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month = check.CombinedResults()
+        # text_result = check.TextResult()
+        return {"Categorical_trending_results": cat_result,
+                "Combined_top_trending_reviews": top_review_last_week,
+                'Combined_top_trending_users': top_user_last_week,
+                "Combined_most_popular_reviews": popular_review_last_month,
+                'Combined_most_popular_users': popular_user_last_month
+                }
+        # return {"imageBase64": base_encoded_list,
+        #         "Transcript_result": text_result}
+
+
+
+
+if __name__ == "__main__":
+    app.run()
