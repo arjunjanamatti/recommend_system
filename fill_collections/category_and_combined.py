@@ -66,4 +66,40 @@ class trend_results:
         df_merge_1.drop(labels=['createdAt_x', 'updatedAt_x'], inplace=True, axis=1)
         return df_merge_1
 
+    def distance(self, lon1, lat1, lon2, lat2):
+        x = (lon2 - lon1) * cos(0.5 * (lat2 + lat1))
+        y = (lat2 - lat1)
+        return sqrt(x * x + y * y)
+
+    def SubgroupCategoriesToDictionary(self):
+        df_merge_1 = self.MergedDataframe()
+        gb = (df_merge_1.groupby('categoryId'))
+        cat_dict = {}
+        for cat in gb.groups:
+            cat_dict[cat] = gb.get_group(cat).reset_index()
+        return cat_dict
+
+    def TrendingNearReviews(self):
+        df_merge_cat = self.MergedDataframe()
+        index_list = list(df_merge_cat.index)
+        random_index = random.choice(index_list)
+        user_rand, review_rand = str(df_merge_cat.iloc[random_index]['fromUserId_x']), str(
+            df_merge_cat.iloc[random_index]['resourceId'])
+        long_rand, lat_rand = float(df_merge_cat.iloc[random_index]['longitude']), float(
+            df_merge_cat.iloc[random_index]['latitude'])
+        dist_list = []
+        for index, lat in enumerate(df_merge_cat.loc[:, 'latitude']):
+            dist_measured = self.distance(long_rand, lat_rand, df_merge_cat.loc[index, 'longitude'], lat)
+            dist_list.append(dist_measured)
+
+        df_merge_cat_1 = df_merge_cat.copy()
+        df_merge_cat_1['dist_list'] = dist_list
+        df_merge_cat_1 = df_merge_cat_1.sort_values('dist_list')
+        groupby_like_count = (df_merge_cat_1.groupby(['resourceId'])['updated_dates'].count().reset_index().rename(
+            columns={'updated_dates': 'ReviewViewCount'}))
+        df_merge_cat_1_count_merge = (df_merge_cat_1.merge(groupby_like_count, on='resourceId'))
+        df_merge_cat_1_count_merge = df_merge_cat_1_count_merge.sort_values(by=['ReviewViewCount', 'dist_list'],
+                                                                            ascending=[False, True])
+        return (df_merge_cat_1_count_merge['resourceId'].unique())
+
     pass
