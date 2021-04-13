@@ -129,7 +129,31 @@ def TrendingNearReviews(df_merge_cat):
                                                                         ascending=[False, True])
     return (df_merge_cat_1_count_merge['resourceId'].unique())
 
-def TopTrendingResults(df_merge_cat):
+def TopTrendingResults(df_merge_cat, week_num, column_name):
+    today = pd.to_datetime('today').floor('D')
+    week_prior = today - timedelta(days=week_num)
+    df_last_week = df_merge_cat[
+        (df_merge_cat['updated_dates'] <= today) & (df_merge_cat['updated_dates'] >= week_prior)]
+    top_10_last_week_df = (df_last_week.groupby([column_name])['updated_dates'].count().reset_index().rename(
+        columns={'updated_dates': 'ReviewViewCount'}))
+    top_10_reviews_last_week = (top_10_last_week_df.sort_values(['ReviewViewCount'], ascending=False))
+    while (len(top_10_reviews_last_week['resourceId'].unique()) < 10):
+        week_num += 7
+        # print(week_num)/
+        week_prior = today - timedelta(weeks=week_num)
+        if (week_prior < df_merge_cat['updated_dates'].min()):
+            break
+        df_last_week = df_merge_cat[
+            (df_merge_cat['updated_dates'] <= today) & (df_merge_cat['updated_dates'] >= week_prior)]
+        top_10_last_week_df = (df_last_week.groupby([column_name])['updated_dates'].count().reset_index().rename(
+            columns={'updated_dates': 'ReviewViewCount'}))
+        top_10_reviews_last_week = (top_10_last_week_df.sort_values(['ReviewViewCount'], ascending=False))
+
+    return (top_10_reviews_last_week[column_name].unique())
+
+
+
+def TopTrendingResults_1(df_merge_cat):
     today = pd.to_datetime('today').floor('D')
     week_num = 1
     week_prior = today - timedelta(weeks=week_num)
