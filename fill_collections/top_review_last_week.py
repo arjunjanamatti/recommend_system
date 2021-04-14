@@ -46,6 +46,19 @@ def main_1():
     else:
         return {'No Result': 'please enter blank for combined result or the category number'}
 
+@app.route('/popular-review', methods=['GET', 'POST'])
+def main_2():
+    matching_key = request.args.get('option')
+    rev = top_popular_results()
+    _, top_user_last_week, _, _ = rev.result()
+    if matching_key == '':
+        return {'combined': top_user_last_week['combinedResults']}
+    elif matching_key != '':
+        return {'combined': top_user_last_week[matching_key]}
+    else:
+        return {'No Result': 'please enter blank for combined result or the category number'}
+
+
 if __name__ == '__main__':
     app.run(debug=True)
 
