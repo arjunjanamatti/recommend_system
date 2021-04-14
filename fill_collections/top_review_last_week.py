@@ -13,7 +13,7 @@ import time
 
 app = Flask(__name__)
 
-class popular_review_results:
+class top_review_results:
 
 
     def result(self):
@@ -22,10 +22,10 @@ class popular_review_results:
 
     pass
 
-@app.route('/popular-review', methods=['GET', 'POST'])
+@app.route('/top-review', methods=['GET', 'POST'])
 def main():
     matching_key = request.args.get('option')
-    rev = popular_review_results()
+    rev = top_review_results()
     top_review_last_week = rev.result()
     if matching_key == '':
         return {'combined': top_review_last_week['combinedResults']}
@@ -36,9 +36,7 @@ def main():
 
 if __name__ == '__main__':
     app.run(debug=True)
-    # print(main())
 
 
 
 
-    pass

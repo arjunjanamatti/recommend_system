@@ -15,6 +15,13 @@ files_list = ['reviews_1.json','likes_1.json']
 class trend_results:
     def __init__(self):
         self.top_review_last_week = {}
+        self.top_user_last_week = {}
+        self.popular_review_last_month = {}
+        self.popular_user_last_month = {}
+        #         overall_result['combinedResults']['top_user_last_week'] = top_user_last_week[:10]
+        #         overall_result['combinedResults']['popular_review_last_month'] = popular_review_last_month[:10]
+        #         overall_result['combinedResults']['popular_user_last_month'] = popular_user_last_month[:10]
+        #
         pass
 
     def looping_json_files(self):
