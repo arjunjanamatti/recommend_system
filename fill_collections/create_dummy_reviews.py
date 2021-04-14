@@ -28,50 +28,50 @@ with open('categories.json') as file:
 categores_id_list = []
 for id in data:
     categores_id_list.append(id['_id'])
-print(categores_id_list)
-
-user_id_list = []
-for i in range(30):
-    user_id = '5fdf6bbcfe08e8c0191a7805'
-    user_id_list.append(user_id[:20]+str(7805+i))
-    # new_dict = sample_dict.copy()
-    # # 'fromUserId': '5fdf6bbcfe08e8c0191a7805'
-    # new_dict['_id'] = new_dict['_id'][:19]+str(799386+i)
-    # new_dict['loc'] = {'coordinates':cordinates_nested[i], 'type': 'Point'}
-    # new_dict['rating'] = random.uniform(1,10)
-    # new_dict['createdAt'] = (randomDate("20-01-2021 13:30:00", "23-04-2021 04:50:34")).strftime('%d-%m-%YT%H:%M:%S')
-    # new_dict['updatedAt'] = (randomDate("20-01-2021 13:30:00", "23-04-2021 04:50:34")).strftime('%d-%m-%YT%H:%M:%S')
-    # # new_dict = sample_dict.copy()
-    # nested_dict.append(new_dict)
-
-for i in range(100):
-    new_dict = sample_dict.copy()
-    # 'fromUserId': '5fdf6bbcfe08e8c0191a7805'
-    new_dict['_id'] = new_dict['_id'][:19]+str(799386+i)
-    new_dict['loc'] = {'coordinates':cordinates_nested[i], 'type': 'Point'}
-    new_dict['rating'] = random.uniform(1,10)
-    new_dict['categoryId'] =  random.choice(categores_id_list)
-    new_dict['fromUserId'] = random.choice(user_id_list)
-    new_dict['createdAt'] = (randomDate("20-01-2021 13:30:00", "23-04-2021 04:50:34")).strftime('%d-%m-%YT%H:%M:%S')
-    new_dict['updatedAt'] = (randomDate("20-01-2021 13:30:00", "23-04-2021 04:50:34")).strftime('%d-%m-%YT%H:%M:%S')
-    # new_dict = sample_dict.copy()
-    nested_dict.append(new_dict)
-
-
-
-with open("reviews_1.json", "w") as fp:
-    json.dump(nested_dict , fp, indent=4)
-
-user_id = []
-with open("reviews_1.json") as file:
-    data = json.load(file)
-for dic in data:
-    user_id.append(dic['_id'])
-
-with open('resourceId.pickle', 'wb') as us:
-    pickle.dump(user_id, us)
-
-with open('resourceId.pickle', 'rb') as f:
-    mynewlist = pickle.load(f)
-print(mynewlist)
-
+print(len(categores_id_list))
+#
+# user_id_list = []
+# for i in range(30):
+#     user_id = '5fdf6bbcfe08e8c0191a7805'
+#     user_id_list.append(user_id[:20]+str(7805+i))
+#     # new_dict = sample_dict.copy()
+#     # # 'fromUserId': '5fdf6bbcfe08e8c0191a7805'
+#     # new_dict['_id'] = new_dict['_id'][:19]+str(799386+i)
+#     # new_dict['loc'] = {'coordinates':cordinates_nested[i], 'type': 'Point'}
+#     # new_dict['rating'] = random.uniform(1,10)
+#     # new_dict['createdAt'] = (randomDate("20-01-2021 13:30:00", "23-04-2021 04:50:34")).strftime('%d-%m-%YT%H:%M:%S')
+#     # new_dict['updatedAt'] = (randomDate("20-01-2021 13:30:00", "23-04-2021 04:50:34")).strftime('%d-%m-%YT%H:%M:%S')
+#     # # new_dict = sample_dict.copy()
+#     # nested_dict.append(new_dict)
+#
+# for i in range(100):
+#     new_dict = sample_dict.copy()
+#     # 'fromUserId': '5fdf6bbcfe08e8c0191a7805'
+#     new_dict['_id'] = new_dict['_id'][:19]+str(799386+i)
+#     new_dict['loc'] = {'coordinates':cordinates_nested[i], 'type': 'Point'}
+#     new_dict['rating'] = random.uniform(1,10)
+#     new_dict['categoryId'] =  random.choice(categores_id_list)
+#     new_dict['fromUserId'] = random.choice(user_id_list)
+#     new_dict['createdAt'] = (randomDate("20-01-2021 13:30:00", "23-04-2021 04:50:34")).strftime('%d-%m-%YT%H:%M:%S')
+#     new_dict['updatedAt'] = (randomDate("20-01-2021 13:30:00", "23-04-2021 04:50:34")).strftime('%d-%m-%YT%H:%M:%S')
+#     # new_dict = sample_dict.copy()
+#     nested_dict.append(new_dict)
+#
+#
+#
+# with open("reviews_1.json", "w") as fp:
+#     json.dump(nested_dict , fp, indent=4)
+#
+# user_id = []
+# with open("reviews_1.json") as file:
+#     data = json.load(file)
+# for dic in data:
+#     user_id.append(dic['_id'])
+#
+# with open('resourceId.pickle', 'wb') as us:
+#     pickle.dump(user_id, us)
+#
+# with open('resourceId.pickle', 'rb') as f:
+#     mynewlist = pickle.load(f)
+# print(mynewlist)
+#

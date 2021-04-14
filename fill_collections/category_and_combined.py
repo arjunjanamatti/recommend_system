@@ -21,7 +21,8 @@ class trend_results:
 
     def looping_json_files(self):
         list_1 = []
-        self.files_list = ['reviews_1.json', 'likes_1.json']
+        # self.files_list = ['reviews_1.json', 'likes_1.json']
+        self.files_list = ['reviews.json', 'likes.json']
         for files in self.files_list:
             with open(files) as file:
                 data = json.load(file)
@@ -178,7 +179,7 @@ def main():
         result = trend_results()
         cat_result = result.CategoryWiseResult()
         overall_result = result.CombinedResults()
-        time.sleep(1.0)
+        time.sleep(2.0)
         # print(overall_result)
         return {'Categorical results': cat_result,
                 'Overall results': overall_result}
