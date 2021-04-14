@@ -11,8 +11,34 @@ import random
 from flask import Flask, request
 import time
 
+app = Flask(__name__)
 
-cat_result, overall_result, top_review_last_week = main_result.main()
-print(cat_result)
-print(overall_result)
-print(top_review_last_week)
+class popular_review_results:
+
+
+    def result(self):
+        _, _, top_review_last_week = main_result.main()
+        return top_review_last_week
+
+    pass
+
+@app.route('/popular-review', methods=['GET', 'POST'])
+def main():
+    matching_key = request.args.get('option')
+    rev = popular_review_results()
+    top_review_last_week = rev.result()
+    if matching_key == '':
+        return {'combined': top_review_last_week['combinedResults']}
+    elif matching_key != '':
+        return {'combined': top_review_last_week[matching_key]}
+    else:
+        return {'No Result': 'please enter blank for combined result or the category number'}
+
+if __name__ == '__main__':
+    app.run(debug=True)
+    # print(main())
+
+
+
+
+    pass
