@@ -13,24 +13,36 @@ import time
 
 app = Flask(__name__)
 
-class top_review_results:
+class top_popular_results:
 
 
     def result(self):
-        _, _, top_review_last_week = main_result.main()
-        return top_review_last_week
+        top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month = main_result.main()
+        return top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month
 
     pass
 
 @app.route('/top-review', methods=['GET', 'POST'])
 def main():
     matching_key = request.args.get('option')
-    rev = top_review_results()
-    top_review_last_week = rev.result()
+    rev = top_popular_results()
+    top_review_last_week, _, _, _ = rev.result()
     if matching_key == '':
         return {'combined': top_review_last_week['combinedResults']}
     elif matching_key != '':
         return {'combined': top_review_last_week[matching_key]}
+    else:
+        return {'No Result': 'please enter blank for combined result or the category number'}
+
+@app.route('/top-user', methods=['GET', 'POST'])
+def main_1():
+    matching_key = request.args.get('option')
+    rev = top_popular_results()
+    _, top_user_last_week, _, _ = rev.result()
+    if matching_key == '':
+        return {'combined': top_user_last_week['combinedResults']}
+    elif matching_key != '':
+        return {'combined': top_user_last_week[matching_key]}
     else:
         return {'No Result': 'please enter blank for combined result or the category number'}
 
