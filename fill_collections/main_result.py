@@ -13,9 +13,9 @@ files_list = ['reviews_1.json','likes_1.json']
 
 
 class trend_results:
-    # def __init__(self, files_list):
-    #     self.files_list = files_list
-    #     pass
+    def __init__(self):
+        self.top_review_last_week = {}
+        pass
 
     def looping_json_files(self):
         list_1 = []
@@ -152,6 +152,7 @@ class trend_results:
             cat_result[keys]['top_user_last_week'] = top_user_last_week.tolist()
             cat_result[keys]['popular_review_last_month'] = popular_review_last_month.tolist()
             cat_result[keys]['popular_user_last_month'] = popular_user_last_month.tolist()
+            self.top_review_last_week[keys] = top_review_last_week.tolist()
         # print(cat_result)
         return cat_result
 
@@ -169,22 +170,23 @@ class trend_results:
         overall_result['combinedResults']['top_user_last_week'] = top_user_last_week[:10]
         overall_result['combinedResults']['popular_review_last_month'] = popular_review_last_month[:10]
         overall_result['combinedResults']['popular_user_last_month'] = popular_user_last_month[:10]
-        return overall_result
+        self.top_review_last_week['combinedResults'] = top_review_last_week[:10]
+        return overall_result, self.top_review_last_week
 
 # @app.route('/trending', methods=['GET', 'POST'])
 def main():
     # if request.method == 'POST':
     result = trend_results()
     cat_result = result.CategoryWiseResult()
-    overall_result = result.CombinedResults()
-    return cat_result, overall_result
+    overall_result, top_review_last_week = result.CombinedResults()
+    return cat_result, overall_result, top_review_last_week
 
 
 
 
 if __name__ == "__main__":
     # app.run(debug=True)
-    cat_result, overall_result = main()
+    cat_result, overall_result, top_review_last_week = main()
 
 
 
