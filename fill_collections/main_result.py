@@ -18,10 +18,6 @@ class trend_results:
         self.top_user_last_week = {}
         self.popular_review_last_month = {}
         self.popular_user_last_month = {}
-        #         overall_result['combinedResults']['top_user_last_week'] = top_user_last_week[:10]
-        #         overall_result['combinedResults']['popular_review_last_month'] = popular_review_last_month[:10]
-        #         overall_result['combinedResults']['popular_user_last_month'] = popular_user_last_month[:10]
-        #
         pass
 
     def looping_json_files(self):
@@ -160,6 +156,9 @@ class trend_results:
             cat_result[keys]['popular_review_last_month'] = popular_review_last_month.tolist()
             cat_result[keys]['popular_user_last_month'] = popular_user_last_month.tolist()
             self.top_review_last_week[keys] = top_review_last_week.tolist()
+            self.top_user_last_week[keys] = top_user_last_week.tolist()
+            self.popular_review_last_month[keys] = popular_review_last_month.tolist()
+            self.popular_user_last_month[keys] = popular_user_last_month.tolist()
         # print(cat_result)
         return cat_result
 
@@ -171,14 +170,17 @@ class trend_results:
         popular_review_last_month = popular_review_last_month.tolist()
         popular_user_last_month = popular_user_last_month.tolist()
 
-        overall_result = {}
-        overall_result['combinedResults'] = {}
-        overall_result['combinedResults']['top_review_last_week'] = top_review_last_week[:10]
-        overall_result['combinedResults']['top_user_last_week'] = top_user_last_week[:10]
-        overall_result['combinedResults']['popular_review_last_month'] = popular_review_last_month[:10]
-        overall_result['combinedResults']['popular_user_last_month'] = popular_user_last_month[:10]
+        # overall_result = {}
+        # overall_result['combinedResults'] = {}
+        # overall_result['combinedResults']['top_review_last_week'] = top_review_last_week[:10]
+        # overall_result['combinedResults']['top_user_last_week'] = top_user_last_week[:10]
+        # overall_result['combinedResults']['popular_review_last_month'] = popular_review_last_month[:10]
+        # overall_result['combinedResults']['popular_user_last_month'] = popular_user_last_month[:10]
         self.top_review_last_week['combinedResults'] = top_review_last_week[:10]
-        return overall_result, self.top_review_last_week
+        self.top_user_last_week['combinedResults'] = top_user_last_week[:10]
+        self.popular_review_last_month['combinedResults'] = popular_review_last_month[:10]
+        self.popular_user_last_month['combinedResults'] = popular_user_last_month[:10]
+        return self.top_review_last_week, self.top_user_last_week, self.popular_review_last_month, self.popular_user_last_month
 
 # @app.route('/trending', methods=['GET', 'POST'])
 def main():
