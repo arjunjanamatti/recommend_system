@@ -186,16 +186,16 @@ class trend_results:
 def main():
     # if request.method == 'POST':
     result = trend_results()
-    cat_result = result.CategoryWiseResult()
-    overall_result, top_review_last_week = result.CombinedResults()
-    return cat_result, overall_result, top_review_last_week
+    _ = result.CategoryWiseResult()
+    top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month = result.CombinedResults()
+    return top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month
 
 
 
 
 if __name__ == "__main__":
     # app.run(debug=True)
-    cat_result, overall_result, top_review_last_week = main()
+    top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month = main()
 
 
 
