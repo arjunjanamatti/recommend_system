@@ -12,5 +12,7 @@ from flask import Flask, request
 import time
 
 
-cat_result, overall_result = main_result.main()
-
+cat_result, overall_result, top_review_last_week = main_result.main()
+print(cat_result)
+print(overall_result)
+print(top_review_last_week)
