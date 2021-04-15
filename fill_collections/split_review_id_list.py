@@ -1,8 +1,16 @@
-import json
-ran_list = list(range(1,100))
 import pickle
 from itertools import islice
 from random import randint
+import pymongo
+from pymongo import MongoClient
+from pymongo.errors import ConnectionFailure
+from collections import defaultdict
+import json
+import pandas as pd
+from datetime import timedelta
+from math import *
+import random
+
 
 def random_chunk(li, min_chunk=10, max_chunk=11):
     it = iter(li)
@@ -30,3 +38,21 @@ print(products_list)
 
 with open("products_1.json", "w") as fp:
     json.dump(products_list , fp, indent=4)
+
+def SendJsonFilesToMongoDB(files_list):
+    'this function will send the json files to MongoDB'
+    try:
+        myclient = MongoClient()
+        mydb = myclient['real_reviews']
+        # collections is similar to tables in mongo dn
+        list_1 = looping_json_files(files_list)
+        for index, file in enumerate(files_list):
+            print(file)
+            print(file.split('.')[0])
+            my_collection = mydb[file.split('.')[0]]
+            my_collection.insert(doc_or_docs=list_1[index])
+
+        print('Data sent to the database')
+
+    except ConnectionFailure:
+        print('Failed to connect to mongoDB database')
