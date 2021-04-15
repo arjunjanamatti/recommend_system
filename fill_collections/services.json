@@ -1,0 +1,224 @@
+[
+  {
+    "_id": "5fe609f14ac6dc8ac6cd6650",
+    "tagIds": [
+      "5fe21192fe08e8c0191a7809"
+    ],
+    "isDeleted": false,
+    "isActive": true,
+    "isFeature": false,
+    "createdAt": "2020-12-25T15:40:44.762Z",
+    "updatedAt": "2021-03-04T15:08:28.266Z",
+    "name": "hair salon",
+    "description": "salon",
+    "slug": "hair_salon",
+    "categoryId": "6040f7b1ea9fe1b149832104",
+    "addedByUserId": "5fc7c1e7a3fb189c35bb8945",
+    "loc": {
+      "type": "Point",
+      "coordinates": [
+        99.22,
+        11.99
+      ]
+    },
+    "image": [],
+    "__v": 1,
+    "cons": [],
+    "pros": [],
+    "realScore": 0.5,
+    "userRating": 0.5
+  },
+  {
+    "_id": "6050ad0cb1a9eda7aba5a821",
+    "tagIds": [
+      "5fe20b0dfe08e8c0191a7808"
+    ],
+    "image": [
+      "file-1615893014983.jpg"
+    ],
+    "pros": [],
+    "cons": [],
+    "isDeleted": false,
+    "isActive": true,
+    "isFeature": false,
+    "userRating": 0.5,
+    "realScore": 0.5,
+    "name": "Food@@9950",
+    "description": "ABCFood@@9950",
+    "slug": "food9950",
+    "categoryId": "6040f7b1ea9fe1b149832104",
+    "coverImage": "file-1615893017296.jpg",
+    "addedByUserId": "5fdf6bbcfe08e8c0191a7805",
+    "loc": {
+      "type": "Point",
+      "coordinates": [
+        66.3,
+        33.63
+      ]
+    },
+    "createdAt": "2021-03-16T13:05:16.802Z",
+    "updatedAt": "2021-03-16T13:05:16.802Z",
+    "__v": 0
+  },
+  {
+    "_id": "6050af3687cfc9a96520739e",
+    "tagIds": [
+      "5fe20b0dfe08e8c0191a7808"
+    ],
+    "image": [
+      "file-1615893014983.jpg"
+    ],
+    "pros": [],
+    "cons": [],
+    "isDeleted": false,
+    "isActive": true,
+    "isFeature": false,
+    "userRating": 0.5,
+    "realScore": 0.5,
+    "name": "Foood@@9950",
+    "description": "ABCFood@@9950",
+    "categoryId": "6040f7b1ea9fe1b149832104",
+    "coverImage": "file-1615893017296.jpg",
+    "slug": "foood9950",
+    "addedByUserId": "5fdf6bbcfe08e8c0191a7805",
+    "loc": {
+      "type": "Point",
+      "coordinates": [
+        66.3,
+        33.63
+      ]
+    },
+    "createdAt": "2021-03-16T13:14:30.289Z",
+    "updatedAt": "2021-03-16T13:14:30.299Z",
+    "__v": 0
+  },
+  {
+    "_id": "6050b01587cfc9a96520739f",
+    "tagIds": [
+      "5fe20b0dfe08e8c0191a7808"
+    ],
+    "image": [
+      "file-1615893014983.jpg"
+    ],
+    "pros": [],
+    "cons": [],
+    "isDeleted": false,
+    "isActive": true,
+    "isFeature": false,
+    "userRating": 0.5,
+    "realScore": 0.5,
+    "name": "Fooood@@9950",
+    "description": "ABCFood@@9950",
+    "slug": "fooood9950",
+    "categoryId": "6040f7b1ea9fe1b149832104",
+    "coverImage": "file-1615893017296.jpg",
+    "addedByUserId": "5fdf6bbcfe08e8c0191a7805",
+    "loc": {
+      "type": "Point",
+      "coordinates": [
+        66.3,
+        33.63
+      ]
+    },
+    "createdAt": "2021-03-16T13:18:13.843Z",
+    "updatedAt": "2021-03-16T13:18:13.846Z",
+    "__v": 0
+  },
+  {
+    "_id": "6050b11e87cfc9a9652073a0",
+    "tagIds": [
+      "5fe20b0dfe08e8c0191a7808"
+    ],
+    "image": [
+      "file-1615893014983.jpg"
+    ],
+    "pros": [],
+    "cons": [],
+    "isDeleted": false,
+    "isActive": true,
+    "isFeature": false,
+    "userRating": 0.5,
+    "realScore": 0.5,
+    "name": "Food@@858550",
+    "description": "ABCFood@@9950",
+    "slug": "food858550",
+    "categoryId": "6040f7b1ea9fe1b149832104",
+    "coverImage": "file-1615893017296.jpg",
+    "addedByUserId": "5fc7c1e7a3fb189c35bb8945",
+    "loc": {
+      "type": "Point",
+      "coordinates": [
+        66.3,
+        33.63
+      ]
+    },
+    "createdAt": "2021-03-16T13:22:38.833Z",
+    "updatedAt": "2021-03-16T13:22:38.835Z",
+    "__v": 0
+  },
+  {
+    "_id": "6050b15b87cfc9a9652073a1",
+    "tagIds": [
+      "5fe21192fe08e8c0191a7809",
+      "5fe20afdfe08e8c0191a7807"
+    ],
+    "image": [
+      "file-1615901010650.jpg"
+    ],
+    "pros": [],
+    "cons": [],
+    "isDeleted": false,
+    "isActive": true,
+    "isFeature": false,
+    "userRating": 0.5,
+    "realScore": 0.5,
+    "name": "TAG!!@8855448",
+    "description": "TAG!!@8855448",
+    "slug": "tag8855448",
+    "categoryId": "6045a067ea9fe1b149832163",
+    "coverImage": "file-1615901012553.jpg",
+    "addedByUserId": "5fc7c1e7a3fb189c35bb8945",
+    "loc": {
+      "type": "Point",
+      "coordinates": [
+        66.3,
+        33.63
+      ]
+    },
+    "createdAt": "2021-03-16T13:23:39.783Z",
+    "updatedAt": "2021-03-16T13:23:39.786Z",
+    "__v": 0
+  },
+  {
+    "_id": "6050b1aa757e33aa30336fb5",
+    "tagIds": [
+      "5fe20b0dfe08e8c0191a7808"
+    ],
+    "image": [
+      "file-1615893014983.jpg"
+    ],
+    "pros": [],
+    "cons": [],
+    "isDeleted": false,
+    "isActive": true,
+    "isFeature": false,
+    "userRating": 0.5,
+    "realScore": 0.5,
+    "name": "Foooodo@@9950",
+    "description": "ABCFood@@9950",
+    "slug": "foooodo9950",
+    "categoryId": "6040f7b1ea9fe1b149832104",
+    "coverImage": "file-1615893017296.jpg",
+    "addedByUserId": "5fdf6bbcfe08e8c0191a7805",
+    "loc": {
+      "type": "Point",
+      "coordinates": [
+        66.3,
+        33.63
+      ]
+    },
+    "createdAt": "2021-03-16T13:24:58.796Z",
+    "updatedAt": "2021-03-16T13:24:58.806Z",
+    "__v": 0
+  }
+]
