@@ -247,16 +247,13 @@ def main_5():
     matching_key = request.args.get('longlat')
     # rev = top_popular_results()
     rev = trend_results()
-    long_rand, lat_rand = matching_key
+    # print(matching_key.split(',')[1:])
+    # print(float(str(matching_key.split(',')[0][1:])))
+    long_rand, lat_rand = float(str(matching_key.split(',')[0])), float(str(matching_key.split(',')[1]))
     trending_reviews_nearby = rev.TrendingNearReviews(long_rand, lat_rand)
-    return {'near_review_id': trending_reviews_nearby}
-    # _, _, _, popular_user_last_month = main()
-    # if matching_key == '':
-    #     return {'combined': popular_user_last_month['combinedResults']}
-    # elif matching_key != '':
-    #     return {'combined': popular_user_last_month[matching_key]}
-    # else:
-    #     return {'No Result': 'please enter blank for combined result or the category number'}
+    result = {}
+    result['near_review_id'] = trending_reviews_nearby.tolist()[:10]
+    return {'near_review_id': result}
 
 if __name__ == "__main__":
     app.run(debug=True)
