@@ -27,3 +27,6 @@ for index, pro in enumerate(products):
     pro['review_id_tags'] = review_id_tags[index]
     products_list.append(pro)
 print(products_list)
+
+with open("products_1.json", "w") as fp:
+    json.dump(products_list , fp, indent=4)
