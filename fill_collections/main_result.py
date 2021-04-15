@@ -89,13 +89,14 @@ class trend_results:
             self.cat_dict[cat] = gb.get_group(cat).reset_index()
         return self.cat_dict
 
-    def TrendingNearReviews(self):
-        index_list = list(self.df_merge_1.index)
-        random_index = random.choice(index_list)
-        user_rand, review_rand = str(self.df_merge_1.iloc[random_index]['fromUserId_x']), str(
-            self.df_merge_1.iloc[random_index]['resourceId'])
-        long_rand, lat_rand = float(self.df_merge_1.iloc[random_index]['longitude']), float(
-            self.df_merge_1.iloc[random_index]['latitude'])
+    def TrendingNearReviews(self, long_rand, lat_rand):
+        self.MergedDataframe()
+        # index_list = list(self.df_merge_1.index)
+        # random_index = random.choice(index_list)
+        # user_rand, review_rand = str(self.df_merge_1.iloc[random_index]['fromUserId_x']), str(
+        #     self.df_merge_1.iloc[random_index]['resourceId'])
+        # long_rand, lat_rand = float(self.df_merge_1.iloc[random_index]['longitude']), float(
+        #     self.df_merge_1.iloc[random_index]['latitude'])
         dist_list = []
         for index, lat in enumerate(self.df_merge_1.loc[:, 'latitude']):
             dist_measured = self.distance(long_rand, lat_rand, self.df_merge_1.loc[index, 'longitude'], lat)
@@ -237,10 +238,25 @@ def main_4():
     if matching_key == '':
         return {'combined': popular_user_last_month['combinedResults']}
     elif matching_key != '':
-        return {'combined': popular_user_last_month[matching_key]}
+        return {f'{matching_key}': popular_user_last_month[matching_key]}
     else:
         return {'No Result': 'please enter blank for combined result or the category number'}
 
+@app.route('/near-location', methods=['GET', 'POST'])
+def main_5():
+    matching_key = request.args.get('longlat')
+    # rev = top_popular_results()
+    rev = trend_results()
+    long_rand, lat_rand = matching_key
+    trending_reviews_nearby = rev.TrendingNearReviews(long_rand, lat_rand)
+    return {'near_review_id': trending_reviews_nearby}
+    # _, _, _, popular_user_last_month = main()
+    # if matching_key == '':
+    #     return {'combined': popular_user_last_month['combinedResults']}
+    # elif matching_key != '':
+    #     return {'combined': popular_user_last_month[matching_key]}
+    # else:
+    #     return {'No Result': 'please enter blank for combined result or the category number'}
 
 if __name__ == "__main__":
     app.run(debug=True)
