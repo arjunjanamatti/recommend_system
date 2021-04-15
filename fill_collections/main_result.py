@@ -194,9 +194,9 @@ def main():
     return top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month
 
 
-@app.route('/top-review', methods=['GET', 'POST'])
+@app.route('/trending-review', methods=['GET', 'POST'])
 def main_1():
-    matching_key = request.args.get('option')
+    matching_key = request.args.get('categoryid')
     # rev = top_popular_results()
     top_review_last_week, _, _, _ = main()
     if matching_key == '':
@@ -206,9 +206,9 @@ def main_1():
     else:
         return {'No Result': 'please enter blank for combined result or the category number'}
 
-@app.route('/top-user', methods=['GET', 'POST'])
+@app.route('/trending-user', methods=['GET', 'POST'])
 def main_2():
-    matching_key = request.args.get('option')
+    matching_key = request.args.get('categoryid')
     # rev = top_popular_results()
     _, top_user_last_week, _, _ = main()
     if matching_key == '':
@@ -220,7 +220,7 @@ def main_2():
 
 @app.route('/popular-review', methods=['GET', 'POST'])
 def main_3():
-    matching_key = request.args.get('option')
+    matching_key = request.args.get('categoryid')
     # rev = top_popular_results()
     _, _, popular_review_last_month, _ = main()
     if matching_key == '':
@@ -232,7 +232,7 @@ def main_3():
 
 @app.route('/popular-user', methods=['GET', 'POST'])
 def main_4():
-    matching_key = request.args.get('option')
+    matching_key = request.args.get('categoryid')
     # rev = top_popular_results()
     _, _, _, popular_user_last_month = main()
     if matching_key == '':
