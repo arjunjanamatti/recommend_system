@@ -39,6 +39,14 @@ print(products_list)
 with open("products_1.json", "w") as fp:
     json.dump(products_list , fp, indent=4)
 
+def looping_json_files(files_list):
+    list_1 = []
+    for files in files_list:
+        with open(files) as file:
+            data = json.load(file)
+            list_1.append(data)
+    return list_1
+
 def SendJsonFilesToMongoDB(files_list):
     'this function will send the json files to MongoDB'
     try:
@@ -56,3 +64,11 @@ def SendJsonFilesToMongoDB(files_list):
 
     except ConnectionFailure:
         print('Failed to connect to mongoDB database')
+
+files_list = ['products_1.json']
+
+# only first time use the below function
+try:
+    SendJsonFilesToMongoDB(files_list)
+except Exception as e:
+    print(e)
