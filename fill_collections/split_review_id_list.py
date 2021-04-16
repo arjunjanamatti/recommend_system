@@ -82,8 +82,8 @@ class trend_results:
 
     def looping_json_files(self):
         list_1 = []
-        # self.files_list = ['reviews_1.json', 'likes_1.json']
-        self.files_list = ['reviews.json', 'likes.json']
+        self.files_list = ['reviews_1.json', 'likes_1.json']
+        # self.files_list = ['reviews.json', 'likes.json']
         for files in self.files_list:
             with open(files) as file:
                 data = json.load(file)
@@ -259,6 +259,57 @@ if __name__ == "__main__":
     # app.run(debug=True)
     df_merge_1 = main()
     print(df_merge_1)
+    top_10_last_week_df = (df_merge_1.groupby(['resourceId'])['updated_dates'].count().reset_index().rename(
+        columns={'updated_dates': 'ReviewViewCount'}))
+    top_10_reviews_last_week = (top_10_last_week_df.sort_values(['ReviewViewCount'], ascending=False))
+    top_10_reviews_last_week.index = top_10_reviews_last_week['resourceId']
+    top_10_reviews_last_week = top_10_reviews_last_week.drop(['resourceId'], axis=1)
+    print(top_10_reviews_last_week)
+    print(int(top_10_reviews_last_week.loc['604cf485c4e5fa0b7f7799479']))
+
+    ##### GET DETAILS OF PRODUCTS TABLE
+    files_list = ['products_1.json']
+    def looping_json_files(files_list):
+        list_1 = []
+        for files in files_list:
+            with open(files) as file:
+                data = json.load(file)
+                list_1.append(data)
+        return list_1
+    myclient = MongoClient()
+    mydb = myclient['real_reviews']
+    list_1 = looping_json_files(files_list)
+    print(list_1)
+    tables_dictionary = {}
+    for index, file in enumerate(files_list):
+        print(file)
+        my_collection = mydb[file.split('.')[0]]
+
+        #     ### Find all the data
+        #     print()
+        #     print('Entire dataset: ')
+        list_data = my_collection.find()
+        df = pd.DataFrame(list(list_data))
+        tables_dictionary[file.split('.')[0]] = df
+    print(tables_dictionary)
+    # transform the reviews_1 table to df_1 dataframe
+    products_1_df = tables_dictionary['products_1']
+    print(products_1_df)
+    print()
+    print(products_1_df['review_id_tags'])
+    sum_ind_list = []
+    for l in products_1_df['review_id_tags']:
+        sum_ind = 0
+        for indices in l:
+            sum_ind += int(top_10_reviews_last_week.loc[indices])
+        # print(top_10_reviews_last_week[l])
+        sum_ind_list.append(sum_ind)
+    products_1_df['likes_sum'] = sum_ind_list
+    print(products_1_df[['review_id_tags', 'likes_sum']])
+    count = 0
+
+
+
 
 
 
