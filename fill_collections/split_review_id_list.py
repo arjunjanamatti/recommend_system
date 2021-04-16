@@ -134,6 +134,38 @@ class trend_results:
         self.df_merge_1.drop(labels=['createdAt_x', 'updatedAt_x'], inplace=True, axis=1)
         return self.df_merge_1
 
+    def TopProducts(self):
+        self.MergedDataframe()
+        files_list = ['products_1.json']
+
+        def looping_json_files(files_list):
+            list_1 = []
+            for files in files_list:
+                with open(files) as file:
+                    data = json.load(file)
+                    list_1.append(data)
+            return list_1
+
+        myclient = MongoClient()
+        mydb = myclient['real_reviews']
+        list_1 = looping_json_files(files_list)
+        tables_dictionary = {}
+        for index, file in enumerate(files_list):
+            my_collection = mydb[file.split('.')[0]]
+            list_data = my_collection.find()
+            df = pd.DataFrame(list(list_data))
+            tables_dictionary[file.split('.')[0]] = df
+        products_1_df = tables_dictionary['products_1']
+        sum_ind_list = []
+        for l in products_1_df['review_id_tags']:
+            sum_ind = 0
+            for indices in l:
+                sum_ind += int(top_10_reviews_last_week.loc[indices])
+            sum_ind_list.append(sum_ind)
+        products_1_df['likes_sum'] = sum_ind_list
+        products_1_df = products_1_df.sort_values(by=['likes_sum'], ascending=False)
+        return list(products_1_df['_id'][:10])
+
     def distance(self, lon1, lat1, lon2, lat2):
         x = (lon2 - lon1) * cos(0.5 * (lat2 + lat1))
         y = (lat2 - lat1)
@@ -279,34 +311,22 @@ if __name__ == "__main__":
     myclient = MongoClient()
     mydb = myclient['real_reviews']
     list_1 = looping_json_files(files_list)
-    print(list_1)
     tables_dictionary = {}
     for index, file in enumerate(files_list):
-        print(file)
         my_collection = mydb[file.split('.')[0]]
-
-        #     ### Find all the data
-        #     print()
-        #     print('Entire dataset: ')
         list_data = my_collection.find()
         df = pd.DataFrame(list(list_data))
         tables_dictionary[file.split('.')[0]] = df
-    print(tables_dictionary)
-    # transform the reviews_1 table to df_1 dataframe
     products_1_df = tables_dictionary['products_1']
-    print(products_1_df)
-    print()
-    print(products_1_df['review_id_tags'])
     sum_ind_list = []
     for l in products_1_df['review_id_tags']:
         sum_ind = 0
         for indices in l:
             sum_ind += int(top_10_reviews_last_week.loc[indices])
-        # print(top_10_reviews_last_week[l])
         sum_ind_list.append(sum_ind)
     products_1_df['likes_sum'] = sum_ind_list
-    print(products_1_df[['review_id_tags', 'likes_sum']])
-    count = 0
+    products_1_df = products_1_df.sort_values(by=['likes_sum'], ascending=False)
+
 
 
 
