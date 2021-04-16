@@ -72,6 +72,8 @@ import time
 # except Exception as e:
 #     print(e)
 
+app = Flask(__name__)
+
 class trend_results:
     def __init__(self):
         self.top_review_last_week = {}
@@ -138,6 +140,12 @@ class trend_results:
         self.MergedDataframe()
         files_list = ['products_1.json']
 
+        review_id_like_count_df = (self.df_merge_1.groupby(['resourceId'])['updated_dates'].count().reset_index().rename(
+            columns={'updated_dates': 'ReviewViewCount'}))
+        review_id_like_count_df = (review_id_like_count_df.sort_values(['ReviewViewCount'], ascending=False))
+        review_id_like_count_df.index = review_id_like_count_df['resourceId']
+        review_id_like_count_df = review_id_like_count_df.drop(['resourceId'], axis=1)
+
         def looping_json_files(files_list):
             list_1 = []
             for files in files_list:
@@ -160,7 +168,7 @@ class trend_results:
         for l in products_1_df['review_id_tags']:
             sum_ind = 0
             for indices in l:
-                sum_ind += int(top_10_reviews_last_week.loc[indices])
+                sum_ind += int(review_id_like_count_df.loc[indices])
             sum_ind_list.append(sum_ind)
         products_1_df['likes_sum'] = sum_ind_list
         products_1_df = products_1_df.sort_values(by=['likes_sum'], ascending=False)
@@ -275,57 +283,65 @@ class trend_results:
         self.popular_user_last_month['combinedResults'] = popular_user_last_month[:10]
         return self.top_review_last_week, self.top_user_last_week, self.popular_review_last_month, self.popular_user_last_month
 
-# @app.route('/trending', methods=['GET', 'POST'])
+@app.route('/trending', methods=['GET', 'POST'])
 def main():
     # if request.method == 'POST':
     result = trend_results()
-    df_merge_1 = result.MergedDataframe()
-    return df_merge_1
-    # _ = result.CategoryWiseResult()
-    # top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month = result.CombinedResults()
-    # return top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month
+    _ = result.CategoryWiseResult()
+    top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month = result.CombinedResults()
+    return top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month
 
-
+@app.route('/top-products', methods=['GET', 'POST'])
+def main_1():
+    matching_key = request.args.get('categoryid')
+    # rev = top_popular_results()
+    top_review_last_week, _, _, _ = main()
+    if matching_key == '':
+        return {'combined': top_review_last_week['combinedResults']}
+    elif matching_key != '':
+        return {'combined': top_review_last_week[matching_key]}
+    else:
+        return {'No Result': 'please enter blank for combined result or the category number'}
 
 if __name__ == "__main__":
-    # app.run(debug=True)
-    df_merge_1 = main()
-    print(df_merge_1)
-    top_10_last_week_df = (df_merge_1.groupby(['resourceId'])['updated_dates'].count().reset_index().rename(
-        columns={'updated_dates': 'ReviewViewCount'}))
-    top_10_reviews_last_week = (top_10_last_week_df.sort_values(['ReviewViewCount'], ascending=False))
-    top_10_reviews_last_week.index = top_10_reviews_last_week['resourceId']
-    top_10_reviews_last_week = top_10_reviews_last_week.drop(['resourceId'], axis=1)
-    print(top_10_reviews_last_week)
-    print(int(top_10_reviews_last_week.loc['604cf485c4e5fa0b7f7799479']))
-
-    ##### GET DETAILS OF PRODUCTS TABLE
-    files_list = ['products_1.json']
-    def looping_json_files(files_list):
-        list_1 = []
-        for files in files_list:
-            with open(files) as file:
-                data = json.load(file)
-                list_1.append(data)
-        return list_1
-    myclient = MongoClient()
-    mydb = myclient['real_reviews']
-    list_1 = looping_json_files(files_list)
-    tables_dictionary = {}
-    for index, file in enumerate(files_list):
-        my_collection = mydb[file.split('.')[0]]
-        list_data = my_collection.find()
-        df = pd.DataFrame(list(list_data))
-        tables_dictionary[file.split('.')[0]] = df
-    products_1_df = tables_dictionary['products_1']
-    sum_ind_list = []
-    for l in products_1_df['review_id_tags']:
-        sum_ind = 0
-        for indices in l:
-            sum_ind += int(top_10_reviews_last_week.loc[indices])
-        sum_ind_list.append(sum_ind)
-    products_1_df['likes_sum'] = sum_ind_list
-    products_1_df = products_1_df.sort_values(by=['likes_sum'], ascending=False)
+    app.run(debug=True)
+    # df_merge_1 = main()
+    # print(df_merge_1)
+    # top_10_last_week_df = (df_merge_1.groupby(['resourceId'])['updated_dates'].count().reset_index().rename(
+    #     columns={'updated_dates': 'ReviewViewCount'}))
+    # top_10_reviews_last_week = (top_10_last_week_df.sort_values(['ReviewViewCount'], ascending=False))
+    # top_10_reviews_last_week.index = top_10_reviews_last_week['resourceId']
+    # top_10_reviews_last_week = top_10_reviews_last_week.drop(['resourceId'], axis=1)
+    # print(top_10_reviews_last_week)
+    # print(int(top_10_reviews_last_week.loc['604cf485c4e5fa0b7f7799479']))
+    #
+    # ##### GET DETAILS OF PRODUCTS TABLE
+    # files_list = ['products_1.json']
+    # def looping_json_files(files_list):
+    #     list_1 = []
+    #     for files in files_list:
+    #         with open(files) as file:
+    #             data = json.load(file)
+    #             list_1.append(data)
+    #     return list_1
+    # myclient = MongoClient()
+    # mydb = myclient['real_reviews']
+    # list_1 = looping_json_files(files_list)
+    # tables_dictionary = {}
+    # for index, file in enumerate(files_list):
+    #     my_collection = mydb[file.split('.')[0]]
+    #     list_data = my_collection.find()
+    #     df = pd.DataFrame(list(list_data))
+    #     tables_dictionary[file.split('.')[0]] = df
+    # products_1_df = tables_dictionary['products_1']
+    # sum_ind_list = []
+    # for l in products_1_df['review_id_tags']:
+    #     sum_ind = 0
+    #     for indices in l:
+    #         sum_ind += int(top_10_reviews_last_week.loc[indices])
+    #     sum_ind_list.append(sum_ind)
+    # products_1_df['likes_sum'] = sum_ind_list
+    # products_1_df = products_1_df.sort_values(by=['likes_sum'], ascending=False)
 
 
 
