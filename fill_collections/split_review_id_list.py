@@ -288,20 +288,18 @@ def main():
     # if request.method == 'POST':
     result = trend_results()
     _ = result.CategoryWiseResult()
+    top_products = result.TopProducts()
     top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month = result.CombinedResults()
-    return top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month
+    return top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month, top_products
 
 @app.route('/top-products', methods=['GET', 'POST'])
 def main_1():
-    matching_key = request.args.get('categoryid')
+    # matching_key = request.args.get('categoryid')
     # rev = top_popular_results()
-    top_review_last_week, _, _, _ = main()
-    if matching_key == '':
-        return {'combined': top_review_last_week['combinedResults']}
-    elif matching_key != '':
-        return {'combined': top_review_last_week[matching_key]}
-    else:
-        return {'No Result': 'please enter blank for combined result or the category number'}
+    _, _, _, _, top_products = main()
+    result = {}
+    result['top_products_id'] = top_products[:10]
+    return {'top_products_id': result}
 
 if __name__ == "__main__":
     app.run(debug=True)
