@@ -236,7 +236,10 @@ def main_4():
     if matching_key == '':
         return {'combined': popular_user_last_month['combinedResults']}
     elif matching_key != '':
-        return {f'{matching_key}': popular_user_last_month[matching_key]}
+        try:
+            return {f'{matching_key}': popular_user_last_month[matching_key]}
+        except:
+            return {'combined': f'This category {matching_key} has no results'}
     else:
         return {'No Result': 'please enter blank for combined result or the category number'}
 
