@@ -214,6 +214,7 @@ class trend_results:
             df = pd.DataFrame(list(list_data))
             tables_dictionary[file.split('.')[0]] = df
         products_1_df = tables_dictionary['services_1']
+        products_1_df.to_csv('services_1.csv')
         sum_ind_list = []
         for l in products_1_df['review_id_tags']:
             sum_ind = 0
@@ -222,6 +223,7 @@ class trend_results:
             sum_ind_list.append(sum_ind)
         products_1_df['likes_sum'] = sum_ind_list
         products_1_df = products_1_df.sort_values(by=['likes_sum'], ascending=False)
+        products_1_df.to_csv('services_top.json')
         return list(products_1_df['_id'][:10])
 
     def distance(self, lon1, lat1, lon2, lat2):
@@ -333,3 +335,7 @@ class trend_results:
         self.popular_user_last_month['combinedResults'] = popular_user_last_month[:10]
         return self.top_review_last_week, self.top_user_last_week, self.popular_review_last_month, self.popular_user_last_month
 
+if __name__ == "__main__":
+    result = trend_results()
+    top_services = result.TopServices()
+    print(top_services)
