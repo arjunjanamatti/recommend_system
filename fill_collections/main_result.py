@@ -197,8 +197,7 @@ def main_1():
             return {'combined': top_review_last_week[matching_key]}
         except:
             return {'combined': f'This category {matching_key} has no results'}
-    else:
-        return {'No Result': 'please enter blank for combined result or the category number'}
+
 
 @app.route('/trending-user', methods=['GET', 'POST'])
 def main_2():
@@ -212,8 +211,6 @@ def main_2():
             return {'combined': top_user_last_week[matching_key]}
         except:
             return {'combined': f'This category {matching_key} has no results'}
-    else:
-        return {'No Result': 'please enter blank for combined result or the category number'}
 
 @app.route('/popular-review', methods=['GET', 'POST'])
 def main_3():
@@ -231,8 +228,7 @@ def main_3():
             return {'combined': popular_review_last_month[matching_key]}
         except:
             return {'combined': f'This category {matching_key} has no results'}
-    else:
-        return {'No Result': 'please enter blank for combined result or the category number'}
+
 
 @app.route('/popular-user', methods=['GET', 'POST'])
 def main_4():
