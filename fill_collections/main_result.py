@@ -193,7 +193,10 @@ def main_1():
     if matching_key == '':
         return {'combined': top_review_last_week['combinedResults']}
     elif matching_key != '':
-        return {'combined': top_review_last_week[matching_key]}
+        try:
+            return {'combined': top_review_last_week[matching_key]}
+        except:
+            return {'combined': f'This category {matching_key} has no results'}
     else:
         return {'No Result': 'please enter blank for combined result or the category number'}
 
@@ -205,7 +208,10 @@ def main_2():
     if matching_key == '':
         return {'combined': top_user_last_week['combinedResults']}
     elif matching_key != '':
-        return {'combined': top_user_last_week[matching_key]}
+        try:
+            return {'combined': top_user_last_week[matching_key]}
+        except:
+            return {'combined': f'This category {matching_key} has no results'}
     else:
         return {'No Result': 'please enter blank for combined result or the category number'}
 
