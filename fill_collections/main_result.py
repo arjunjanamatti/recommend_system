@@ -36,7 +36,8 @@ class trend_results:
         myclient = MongoClient(host=None, port=None)
         mydb = myclient['real_reviews']
         # list_1 = self.looping_json_files()
-        self.files_list = ['reviews_1.json', 'likes_1.json']
+        # self.files_list = ['reviews_1.json', 'likes_1.json']
+        self.files_list = ['reviews.json', 'likes.json']
         self.tables_dictionary = {}
         for index, file in enumerate(self.files_list):
             my_collection = mydb[file.split('.')[0]]
@@ -225,9 +226,16 @@ def main_3():
     # rev = top_popular_results()
     _, _, popular_review_last_month, _ = main()
     if matching_key == '':
-        return {'combined': popular_review_last_month['combinedResults']}
+        if popular_review_last_month['combinedResults']:
+            return {'combined': popular_review_last_month['combinedResults']}
+        else:
+            return {'combined': f'This category {matching_key} has no results'}
     elif matching_key != '':
-        return {'combined': popular_review_last_month[matching_key]}
+        try:
+            # popular_review_last_month[matching_key]:
+            return {'combined': popular_review_last_month[matching_key]}
+        except:
+            return {'combined': f'This category {matching_key} has no results'}
     else:
         return {'No Result': 'please enter blank for combined result or the category number'}
 
