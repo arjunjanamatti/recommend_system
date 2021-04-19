@@ -22,15 +22,15 @@ class trend_results:
         self.popular_user_last_month = {}
         pass
 
-    def looping_json_files(self):
-        list_1 = []
-        self.files_list = ['reviews_1.json', 'likes_1.json']
-        # self.files_list = ['reviews.json', 'likes.json']
-        for files in self.files_list:
-            with open(files) as file:
-                data = json.load(file)
-                list_1.append(data)
-        return list_1
+    # def looping_json_files(self):
+    #     list_1 = []
+    #     self.files_list = ['reviews_1.json', 'likes_1.json']
+    #     # self.files_list = ['reviews.json', 'likes.json']
+    #     for files in self.files_list:
+    #         with open(files) as file:
+    #             data = json.load(file)
+    #             list_1.append(data)
+    #     return list_1
 
     def GetTableDictionary(self):
         myclient = MongoClient(host=None, port=None)
