@@ -153,7 +153,6 @@ class trend_results:
             self.top_user_last_week[keys] = top_user_last_week.tolist()
             self.popular_review_last_month[keys] = popular_review_last_month.tolist()
             self.popular_user_last_month[keys] = popular_user_last_month.tolist()
-        # print(cat_result)
         return cat_result
 
     def CombinedResults(self):
@@ -188,7 +187,6 @@ def main():
 @app.route('/trending-review', methods=['GET', 'POST'])
 def main_1():
     matching_key = request.args.get('categoryid')
-    # rev = top_popular_results()
     top_review_last_week, _, _, _ = main()
     if matching_key == '':
         return {'combined': top_review_last_week['combinedResults']}
@@ -202,7 +200,6 @@ def main_1():
 @app.route('/trending-user', methods=['GET', 'POST'])
 def main_2():
     matching_key = request.args.get('categoryid')
-    # rev = top_popular_results()
     _, top_user_last_week, _, _ = main()
     if matching_key == '':
         return {'combined': top_user_last_week['combinedResults']}
@@ -215,7 +212,6 @@ def main_2():
 @app.route('/popular-review', methods=['GET', 'POST'])
 def main_3():
     matching_key = request.args.get('categoryid')
-    # rev = top_popular_results()
     _, _, popular_review_last_month, _ = main()
     if matching_key == '':
         if popular_review_last_month['combinedResults']:
