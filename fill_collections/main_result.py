@@ -24,8 +24,8 @@ class trend_results:
 
     def looping_json_files(self):
         list_1 = []
-        # self.files_list = ['reviews_1.json', 'likes_1.json']
-        self.files_list = ['reviews.json', 'likes.json']
+        self.files_list = ['reviews_1.json', 'likes_1.json']
+        # self.files_list = ['reviews.json', 'likes.json']
         for files in self.files_list:
             with open(files) as file:
                 data = json.load(file)
@@ -35,7 +35,8 @@ class trend_results:
     def GetTableDictionary(self):
         myclient = MongoClient(host=None, port=None)
         mydb = myclient['real_reviews']
-        list_1 = self.looping_json_files()
+        # list_1 = self.looping_json_files()
+        self.files_list = ['reviews_1.json', 'likes_1.json']
         self.tables_dictionary = {}
         for index, file in enumerate(self.files_list):
             my_collection = mydb[file.split('.')[0]]

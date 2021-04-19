@@ -223,7 +223,7 @@ class trend_results:
             sum_ind_list.append(sum_ind)
         products_1_df['likes_sum'] = sum_ind_list
         products_1_df = products_1_df.sort_values(by=['likes_sum'], ascending=False)
-        products_1_df.to_csv('services_top.json')
+        products_1_df.to_csv('services_top.csv')
         return list(products_1_df['_id'][:10])
 
     def distance(self, lon1, lat1, lon2, lat2):
