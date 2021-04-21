@@ -24,7 +24,6 @@ class trend_results:
     def GetTableDictionary(self):
         myclient = MongoClient(host=None, port=None)
         mydb = myclient['real_reviews']
-        # list_1 = self.looping_json_files()
         # self.files_list = ['reviews_1.json', 'likes_1.json']
         self.files_list = ['reviews.json', 'likes.json']
         self.tables_dictionary = {}
@@ -57,6 +56,8 @@ class trend_results:
         self.df_merge_1['longitude'] = longitude
         self.df_merge_1['latitude'] = latitude
         self.df_merge_1.drop(labels='loc', inplace=True, axis=1)
+        self.df_merge_1['createdAt_x'] = self.df_merge_1['createdAt_x'].apply(lambda x: str(x))
+        self.df_merge_1['updatedAt_x'] = self.df_merge_1['updatedAt_x'].apply(lambda x: str(x))
         created_dates = ([_.split('T')[0] for _ in self.df_merge_1['createdAt_x']])
         updated_dates = ([_.split('T')[0] for _ in self.df_merge_1['updatedAt_x']])
         self.df_merge_1['created_dates'] = created_dates
@@ -201,6 +202,7 @@ def main_1():
 def main_2():
     matching_key = request.args.get('categoryid')
     _, top_user_last_week, _, _ = main()
+    print(top_user_last_week)
     if matching_key == '':
         return {'combined': top_user_last_week['combinedResults']}
     elif matching_key != '':

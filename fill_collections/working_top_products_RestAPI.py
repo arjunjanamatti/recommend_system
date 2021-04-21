@@ -146,17 +146,9 @@ class trend_results:
         review_id_like_count_df.index = review_id_like_count_df['resourceId']
         review_id_like_count_df = review_id_like_count_df.drop(['resourceId'], axis=1)
 
-        def looping_json_files(files_list):
-            list_1 = []
-            for files in files_list:
-                with open(files) as file:
-                    data = json.load(file)
-                    list_1.append(data)
-            return list_1
-
         myclient = MongoClient()
         mydb = myclient['real_reviews']
-        list_1 = looping_json_files(files_list)
+        list_1 = self.looping_json_files(files_list)
         tables_dictionary = {}
         for index, file in enumerate(files_list):
             my_collection = mydb[file.split('.')[0]]
