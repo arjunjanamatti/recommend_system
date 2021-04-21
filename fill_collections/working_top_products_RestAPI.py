@@ -190,12 +190,6 @@ class trend_results:
 
     def TrendingNearReviews(self, long_rand, lat_rand):
         self.MergedDataframe()
-        # index_list = list(self.df_merge_1.index)
-        # random_index = random.choice(index_list)
-        # user_rand, review_rand = str(self.df_merge_1.iloc[random_index]['fromUserId_x']), str(
-        #     self.df_merge_1.iloc[random_index]['resourceId'])
-        # long_rand, lat_rand = float(self.df_merge_1.iloc[random_index]['longitude']), float(
-        #     self.df_merge_1.iloc[random_index]['latitude'])
         dist_list = []
         for index, lat in enumerate(self.df_merge_1.loc[:, 'latitude']):
             dist_measured = self.distance(long_rand, lat_rand, self.df_merge_1.loc[index, 'longitude'], lat)
@@ -247,11 +241,6 @@ class trend_results:
             df_merge_cat = self.cat_dict[keys]
             top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month = self.AllTrendingResults(
                 df_merge_cat)
-            # results_list.append(top_review_last_week.tolist())
-            # results_list.append(top_user_last_week.tolist())
-            # results_list.append(popular_review_last_month.tolist())
-            # results_list.append(popular_user_last_month.tolist())
-            # cat_result[keys] = results_list
             cat_result[keys] = {}
             cat_result[keys]['top_review_last_week'] = top_review_last_week.tolist()
             cat_result[keys]['top_user_last_week'] = top_user_last_week.tolist()
