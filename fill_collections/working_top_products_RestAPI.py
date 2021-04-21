@@ -271,13 +271,6 @@ class trend_results:
         top_user_last_week = top_user_last_week.tolist()
         popular_review_last_month = popular_review_last_month.tolist()
         popular_user_last_month = popular_user_last_month.tolist()
-
-        # overall_result = {}
-        # overall_result['combinedResults'] = {}
-        # overall_result['combinedResults']['top_review_last_week'] = top_review_last_week[:10]
-        # overall_result['combinedResults']['top_user_last_week'] = top_user_last_week[:10]
-        # overall_result['combinedResults']['popular_review_last_month'] = popular_review_last_month[:10]
-        # overall_result['combinedResults']['popular_user_last_month'] = popular_user_last_month[:10]
         self.top_review_last_week['combinedResults'] = top_review_last_week[:10]
         self.top_user_last_week['combinedResults'] = top_user_last_week[:10]
         self.popular_review_last_month['combinedResults'] = popular_review_last_month[:10]
@@ -295,8 +288,6 @@ def main():
 
 @app.route('/top-products', methods=['GET', 'POST'])
 def main_1():
-    # matching_key = request.args.get('categoryid')
-    # rev = top_popular_results()
     _, _, _, _, top_products = main()
     result = {}
     top_products = [str(top) for top in top_products]
