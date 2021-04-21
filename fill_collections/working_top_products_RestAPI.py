@@ -305,8 +305,8 @@ if __name__ == "__main__":
     top_10_reviews_last_week = (top_10_last_week_df.sort_values(['ReviewViewCount'], ascending=False))
     top_10_reviews_last_week.index = top_10_reviews_last_week['resourceId']
     top_10_reviews_last_week = top_10_reviews_last_week.drop(['resourceId'], axis=1)
-    print(top_10_reviews_last_week)
-    print(int(top_10_reviews_last_week.loc['604cf485c4e5fa0b7f7799479']))
+    # print(top_10_reviews_last_week)
+    # print(int(top_10_reviews_last_week.loc['604cf485c4e5fa0b7f7799479']))
 
     ##### GET DETAILS OF PRODUCTS TABLE
     files_list = ['products_1.json']
@@ -328,6 +328,9 @@ if __name__ == "__main__":
         tables_dictionary[file.split('.')[0]] = df
     products_1_df = tables_dictionary['products_1']
     sum_ind_list = []
+    # print(products_1_df)
+    products_1_df.to_csv('products_1.csv')
+    top_10_reviews_last_week.to_csv('top_10_reviews_last_week.csv')
     for l in products_1_df['review_id_tags']:
         sum_ind = 0
         for indices in l:
