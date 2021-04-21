@@ -336,6 +336,8 @@ if __name__ == "__main__":
     # review_count_array = top_10_reviews_last_week.to_numpy()
     # a = np.concatenate(((np.array(review_count_index)).reshape((-1,1)), review_count_array), axis = 1)
     # print(a)
+    # top_10_reviews_last_week = pd.read_csv('top_10_reviews_last_week.csv')
+    # products_1_df = pd.read_csv('products_1.csv')
     start_time = time.perf_counter()
     def try_func(list_1):
         sum_ind = 0
@@ -343,9 +345,9 @@ if __name__ == "__main__":
             sum_ind += int(top_10_reviews_last_week.loc[indices])
         return sum_ind
     products_1_df['likes_sum'] = products_1_df['review_id_tags'].apply(lambda x: try_func(x))
-    products_1_df = products_1_df.sort_values(by=['likes_sum'], ascending=False)
+    # products_1_df = products_1_df.sort_values(by=['likes_sum'], ascending=False)
     end_time = time.perf_counter()
-    print(f'Time with apply function {round(end_time-start_time)} seconds')
+    print(f'Time with apply function {(end_time-start_time)} seconds')
 
 
 
@@ -359,9 +361,9 @@ if __name__ == "__main__":
             sum_ind += int(top_10_reviews_last_week.loc[indices])
         sum_ind_list.append(sum_ind)
     products_1_df['likes_sum'] = sum_ind_list
-    products_1_df = products_1_df.sort_values(by=['likes_sum'], ascending=False)
+    # products_1_df = products_1_df.sort_values(by=['likes_sum'], ascending=False)
     end_time = time.perf_counter()
-    print(f'Time without apply function {round(end_time-start_time)} seconds')
+    print(f'Time without apply function {(end_time-start_time)} seconds')
 
 
 
