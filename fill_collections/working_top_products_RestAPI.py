@@ -139,7 +139,7 @@ class trend_results:
     def TopProducts(self):
         self.MergedDataframe()
         files_list = ['products_1.json']
-
+        # get the number of likes for each review from the dataframe
         review_id_like_count_df = (self.df_merge_1.groupby(['resourceId'])['updated_dates'].count().reset_index().rename(
             columns={'updated_dates': 'ReviewViewCount'}))
         review_id_like_count_df = (review_id_like_count_df.sort_values(['ReviewViewCount'], ascending=False))
@@ -158,6 +158,7 @@ class trend_results:
         products_1_df = tables_dictionary['products_1']
         sum_ind_list = []
         for l in products_1_df['review_id_tags']:
+            # loop through all the reviews inside the reviews array
             sum_ind = 0
             for indices in l:
                 sum_ind += int(review_id_like_count_df.loc[indices])
