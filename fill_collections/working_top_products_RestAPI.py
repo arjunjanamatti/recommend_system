@@ -156,14 +156,22 @@ class trend_results:
             df = pd.DataFrame(list(list_data))
             tables_dictionary[file.split('.')[0]] = df
         products_1_df = tables_dictionary['products_1']
-        sum_ind_list = []
-        for l in products_1_df['review_id_tags']:
-            # loop through all the reviews inside the reviews array
+        # sum_ind_list = []
+
+        def try_func(list_1):
             sum_ind = 0
-            for indices in l:
+            for indices in list_1:
                 sum_ind += int(review_id_like_count_df.loc[indices])
-            sum_ind_list.append(sum_ind)
-        products_1_df['likes_sum'] = sum_ind_list
+            return sum_ind
+
+        products_1_df['likes_sum'] = products_1_df['review_id_tags'].apply(lambda x: try_func(x))
+        # for l in products_1_df['review_id_tags']:
+        #     # loop through all the reviews inside the reviews array
+        #     sum_ind = 0
+        #     for indices in l:
+        #         sum_ind += int(review_id_like_count_df.loc[indices])
+        #     sum_ind_list.append(sum_ind)
+        # products_1_df['likes_sum'] = sum_ind_list
         products_1_df = products_1_df.sort_values(by=['likes_sum'], ascending=False)
         return list(products_1_df['_id'][:10])
 
@@ -295,75 +303,75 @@ def main_1():
     return {'top_products_id': result}
 
 if __name__ == "__main__":
-    # app.run(debug=True)
-    result = trend_results()
-    df_merge_1 = result.MergedDataframe()
-
-    # df_merge_1 = main()
-    # print(df_merge_1)
-    top_10_last_week_df = (df_merge_1.groupby(['resourceId'])['updated_dates'].count().reset_index().rename(
-        columns={'updated_dates': 'ReviewViewCount'}))
-    top_10_reviews_last_week = (top_10_last_week_df.sort_values(['ReviewViewCount'], ascending=False))
-    top_10_reviews_last_week.index = top_10_reviews_last_week['resourceId']
-    top_10_reviews_last_week = top_10_reviews_last_week.drop(['resourceId'], axis=1)
-    # print(top_10_reviews_last_week)
-    # print(int(top_10_reviews_last_week.loc['604cf485c4e5fa0b7f7799479']))
-
-    ##### GET DETAILS OF PRODUCTS TABLE
-    files_list = ['products_1.json']
-    def looping_json_files(files_list):
-        list_1 = []
-        for files in files_list:
-            with open(files) as file:
-                data = json.load(file)
-                list_1.append(data)
-        return list_1
-    myclient = MongoClient()
-    mydb = myclient['real_reviews']
-    list_1 = looping_json_files(files_list)
-    tables_dictionary = {}
-    for index, file in enumerate(files_list):
-        my_collection = mydb[file.split('.')[0]]
-        list_data = my_collection.find()
-        df = pd.DataFrame(list(list_data))
-        tables_dictionary[file.split('.')[0]] = df
-    products_1_df = tables_dictionary['products_1']
-    sum_ind_list = []
-    # # print(products_1_df)
-    # products_1_df.to_csv('products_1.csv')
-    # top_10_reviews_last_week.to_csv('top_10_reviews_last_week.csv')
-    # review_count_index = top_10_reviews_last_week.index.tolist()
-    # review_count_array = top_10_reviews_last_week.to_numpy()
-    # a = np.concatenate(((np.array(review_count_index)).reshape((-1,1)), review_count_array), axis = 1)
-    # print(a)
-    # top_10_reviews_last_week = pd.read_csv('top_10_reviews_last_week.csv')
-    # products_1_df = pd.read_csv('products_1.csv')
-    start_time = time.perf_counter()
-    def try_func(list_1):
-        sum_ind = 0
-        for indices in list_1:
-            sum_ind += int(top_10_reviews_last_week.loc[indices])
-        return sum_ind
-    products_1_df['likes_sum'] = products_1_df['review_id_tags'].apply(lambda x: try_func(x))
-    # products_1_df = products_1_df.sort_values(by=['likes_sum'], ascending=False)
-    end_time = time.perf_counter()
-    print(f'Time with apply function {(end_time-start_time)} seconds')
-
-
-
+    app.run(debug=True)
+    # result = trend_results()
+    # df_merge_1 = result.MergedDataframe()
     #
-    #     pass
+    # # df_merge_1 = main()
+    # # print(df_merge_1)
+    # top_10_last_week_df = (df_merge_1.groupby(['resourceId'])['updated_dates'].count().reset_index().rename(
+    #     columns={'updated_dates': 'ReviewViewCount'}))
+    # top_10_reviews_last_week = (top_10_last_week_df.sort_values(['ReviewViewCount'], ascending=False))
+    # top_10_reviews_last_week.index = top_10_reviews_last_week['resourceId']
+    # top_10_reviews_last_week = top_10_reviews_last_week.drop(['resourceId'], axis=1)
+    # # print(top_10_reviews_last_week)
+    # # print(int(top_10_reviews_last_week.loc['604cf485c4e5fa0b7f7799479']))
     #
-    start_time = time.perf_counter()
-    for l in products_1_df['review_id_tags']:
-        sum_ind = 0
-        for indices in l:
-            sum_ind += int(top_10_reviews_last_week.loc[indices])
-        sum_ind_list.append(sum_ind)
-    products_1_df['likes_sum'] = sum_ind_list
-    # products_1_df = products_1_df.sort_values(by=['likes_sum'], ascending=False)
-    end_time = time.perf_counter()
-    print(f'Time without apply function {(end_time-start_time)} seconds')
+    # ##### GET DETAILS OF PRODUCTS TABLE
+    # files_list = ['products_1.json']
+    # def looping_json_files(files_list):
+    #     list_1 = []
+    #     for files in files_list:
+    #         with open(files) as file:
+    #             data = json.load(file)
+    #             list_1.append(data)
+    #     return list_1
+    # myclient = MongoClient()
+    # mydb = myclient['real_reviews']
+    # list_1 = looping_json_files(files_list)
+    # tables_dictionary = {}
+    # for index, file in enumerate(files_list):
+    #     my_collection = mydb[file.split('.')[0]]
+    #     list_data = my_collection.find()
+    #     df = pd.DataFrame(list(list_data))
+    #     tables_dictionary[file.split('.')[0]] = df
+    # products_1_df = tables_dictionary['products_1']
+    # sum_ind_list = []
+    # # # print(products_1_df)
+    # # products_1_df.to_csv('products_1.csv')
+    # # top_10_reviews_last_week.to_csv('top_10_reviews_last_week.csv')
+    # # review_count_index = top_10_reviews_last_week.index.tolist()
+    # # review_count_array = top_10_reviews_last_week.to_numpy()
+    # # a = np.concatenate(((np.array(review_count_index)).reshape((-1,1)), review_count_array), axis = 1)
+    # # print(a)
+    # # top_10_reviews_last_week = pd.read_csv('top_10_reviews_last_week.csv')
+    # # products_1_df = pd.read_csv('products_1.csv')
+    # start_time = time.perf_counter()
+    # def try_func(list_1):
+    #     sum_ind = 0
+    #     for indices in list_1:
+    #         sum_ind += int(top_10_reviews_last_week.loc[indices])
+    #     return sum_ind
+    # products_1_df['likes_sum'] = products_1_df['review_id_tags'].apply(lambda x: try_func(x))
+    # # products_1_df = products_1_df.sort_values(by=['likes_sum'], ascending=False)
+    # end_time = time.perf_counter()
+    # print(f'Time with apply function {(end_time-start_time)} seconds')
+    #
+    #
+    #
+    # #
+    # #     pass
+    # #
+    # start_time = time.perf_counter()
+    # for l in products_1_df['review_id_tags']:
+    #     sum_ind = 0
+    #     for indices in l:
+    #         sum_ind += int(top_10_reviews_last_week.loc[indices])
+    #     sum_ind_list.append(sum_ind)
+    # products_1_df['likes_sum'] = sum_ind_list
+    # # products_1_df = products_1_df.sort_values(by=['likes_sum'], ascending=False)
+    # end_time = time.perf_counter()
+    # print(f'Time without apply function {(end_time-start_time)} seconds')
 
 
 
