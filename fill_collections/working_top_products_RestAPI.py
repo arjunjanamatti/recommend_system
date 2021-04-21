@@ -329,13 +329,14 @@ if __name__ == "__main__":
         tables_dictionary[file.split('.')[0]] = df
     products_1_df = tables_dictionary['products_1']
     sum_ind_list = []
-    # print(products_1_df)
-    products_1_df.to_csv('products_1.csv')
-    top_10_reviews_last_week.to_csv('top_10_reviews_last_week.csv')
-    review_count_index = top_10_reviews_last_week.index.tolist()
-    review_count_array = top_10_reviews_last_week.to_numpy()
-    a = np.concatenate(((np.array(review_count_index)).reshape((-1,1)), review_count_array), axis = 1)
-    print(a)
+    # # print(products_1_df)
+    # products_1_df.to_csv('products_1.csv')
+    # top_10_reviews_last_week.to_csv('top_10_reviews_last_week.csv')
+    # review_count_index = top_10_reviews_last_week.index.tolist()
+    # review_count_array = top_10_reviews_last_week.to_numpy()
+    # a = np.concatenate(((np.array(review_count_index)).reshape((-1,1)), review_count_array), axis = 1)
+    # print(a)
+    start_time = time.perf_counter()
     def try_func(list_1):
         sum_ind = 0
         for indices in list_1:
@@ -343,19 +344,24 @@ if __name__ == "__main__":
         return sum_ind
     products_1_df['likes_sum'] = products_1_df['review_id_tags'].apply(lambda x: try_func(x))
     products_1_df = products_1_df.sort_values(by=['likes_sum'], ascending=False)
+    end_time = time.perf_counter()
+    print(f'Time with apply function {round(end_time-start_time)} seconds')
 
 
 
     #
     #     pass
     #
-    # for l in products_1_df['review_id_tags']:
-    #     sum_ind = 0
-    #     for indices in l:
-    #         sum_ind += int(top_10_reviews_last_week.loc[indices])
-    #     sum_ind_list.append(sum_ind)
-    # products_1_df['likes_sum'] = sum_ind_list
-    # products_1_df = products_1_df.sort_values(by=['likes_sum'], ascending=False)
+    start_time = time.perf_counter()
+    for l in products_1_df['review_id_tags']:
+        sum_ind = 0
+        for indices in l:
+            sum_ind += int(top_10_reviews_last_week.loc[indices])
+        sum_ind_list.append(sum_ind)
+    products_1_df['likes_sum'] = sum_ind_list
+    products_1_df = products_1_df.sort_values(by=['likes_sum'], ascending=False)
+    end_time = time.perf_counter()
+    print(f'Time without apply function {round(end_time-start_time)} seconds')
 
 
 
