@@ -299,7 +299,8 @@ def main_1():
     # rev = top_popular_results()
     _, _, _, _, top_products = main()
     result = {}
-    result['top_products_id'] = top_products[:10]
+    top_products = [str(top) for top in top_products]
+    result['top_products_id'] = top_products
     return {'top_products_id': result}
 
 if __name__ == "__main__":
