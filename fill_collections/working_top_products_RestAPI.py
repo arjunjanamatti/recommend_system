@@ -148,7 +148,7 @@ class trend_results:
 
         myclient = MongoClient()
         mydb = myclient['real_reviews']
-        list_1 = self.looping_json_files(files_list)
+        # list_1 = self.looping_json_files(files_list)
         tables_dictionary = {}
         for index, file in enumerate(files_list):
             my_collection = mydb[file.split('.')[0]]
