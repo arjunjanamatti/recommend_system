@@ -7,6 +7,7 @@ import pandas as pd
 from datetime import timedelta
 from math import *
 import random
+import numpy as np
 from flask import Flask, request
 import time
 
@@ -331,13 +332,30 @@ if __name__ == "__main__":
     # print(products_1_df)
     products_1_df.to_csv('products_1.csv')
     top_10_reviews_last_week.to_csv('top_10_reviews_last_week.csv')
-    for l in products_1_df['review_id_tags']:
+    review_count_index = top_10_reviews_last_week.index.tolist()
+    review_count_array = top_10_reviews_last_week.to_numpy()
+    a = np.concatenate(((np.array(review_count_index)).reshape((-1,1)), review_count_array), axis = 1)
+    print(a)
+    def try_func(list_1):
         sum_ind = 0
-        for indices in l:
+        for indices in list_1:
             sum_ind += int(top_10_reviews_last_week.loc[indices])
-        sum_ind_list.append(sum_ind)
-    products_1_df['likes_sum'] = sum_ind_list
+        return sum_ind
+    products_1_df['likes_sum'] = products_1_df['review_id_tags'].apply(lambda x: try_func(x))
     products_1_df = products_1_df.sort_values(by=['likes_sum'], ascending=False)
+
+
+
+    #
+    #     pass
+    #
+    # for l in products_1_df['review_id_tags']:
+    #     sum_ind = 0
+    #     for indices in l:
+    #         sum_ind += int(top_10_reviews_last_week.loc[indices])
+    #     sum_ind_list.append(sum_ind)
+    # products_1_df['likes_sum'] = sum_ind_list
+    # products_1_df = products_1_df.sort_values(by=['likes_sum'], ascending=False)
 
 
 
