@@ -132,9 +132,9 @@ class trend_results:
         self.df_merge_1.drop(labels=['createdAt_x', 'updatedAt_x'], inplace=True, axis=1)
         return self.df_merge_1
 
-    def TopProducts(self):
+    def TopProducts(self, filename):
         self.MergedDataframe()
-        files_list = ['products_1.json']
+        files_list = [filename]
         # get the number of likes for each review from the dataframe
         review_id_like_count_df = (self.df_merge_1.groupby(['resourceId'])['updated_dates'].count().reset_index().rename(
             columns={'updated_dates': 'ReviewViewCount'}))
@@ -146,11 +146,11 @@ class trend_results:
         mydb = myclient['real_reviews']
         tables_dictionary = {}
         for index, file in enumerate(files_list):
-            my_collection = mydb[file.split('.')[0]]
+            my_collection = mydb[file]
             list_data = my_collection.find()
             df = pd.DataFrame(list(list_data))
-            tables_dictionary[file.split('.')[0]] = df
-        products_1_df = tables_dictionary['products_1']
+            tables_dictionary[file] = df
+        products_1_df = tables_dictionary[filename]
         # sum_ind_list = []
 
         def try_func(list_1):
