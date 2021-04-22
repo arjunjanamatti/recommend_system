@@ -273,10 +273,10 @@ def main():
 @app.route('/top-products', methods=['GET', 'POST'])
 def main_1():
     _, _, _, _, top_products = main()
-    result = {}
+    # result = {}
     top_products = [str(top) for top in top_products]
-    result['top_products_id'] = top_products
-    return {'top_products_id': result}
+    # result['top_products_id'] = top_products
+    return {'top_products_id': top_products}
 
 if __name__ == "__main__":
     app.run(debug=True)
