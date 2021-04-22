@@ -266,17 +266,26 @@ def main():
     # if request.method == 'POST':
     result = trend_results()
     _ = result.CategoryWiseResult()
-    top_products = result.TopProducts()
+    top_products = result.TopProducts(filename='products_1')
+    top_services = result.TopProducts(filename='services_1')
     top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month = result.CombinedResults()
-    return top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month, top_products
+    return top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month, top_products, top_services
 
 @app.route('/top-products', methods=['GET', 'POST'])
 def main_1():
-    _, _, _, _, top_products = main()
+    _, _, _, _, top_products, _ = main()
     # result = {}
     top_products = [str(top) for top in top_products]
     # result['top_products_id'] = top_products
     return {'top_products_id': top_products}
+
+@app.route('/top-services', methods=['GET', 'POST'])
+def main_2():
+    _, _, _, _, _, top_services = main()
+    # result = {}
+    top_services = [str(top) for top in top_services]
+    # result['top_products_id'] = top_products
+    return {'top_services_id': top_services}
 
 if __name__ == "__main__":
     app.run(debug=True)
