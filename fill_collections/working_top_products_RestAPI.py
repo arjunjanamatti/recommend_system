@@ -266,6 +266,8 @@ class trend_results:
     def DataForRecommendation(self):
         self.MergedDataframe()
         self.df_merge_1 = self.df_merge_1.drop(labels=['created_dates', 'updated_dates'])
+        self.df_merge_1 = self.df_merge_1.drop_duplicates()
+        self.df_merge_1.to_csv('df_merge_1.csv')
         pass
 
 @app.route('/trending', methods=['GET', 'POST'])
