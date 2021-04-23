@@ -114,7 +114,7 @@ class trend_results:
         df_merge = df_1_approve.merge(df_2, how='left', on='resourceId')
 
         # extract only required columns from the merged dataframe
-        self.df_merge_1 = df_merge[['resourceId', 'loc', 'createdAt_x', 'updatedAt_x', 'fromUserId_x', 'categoryId']]
+        self.df_merge_1 = df_merge[['resourceId', 'loc','rating', 'createdAt_x', 'updatedAt_x', 'fromUserId_x', 'categoryId']]
         # longititude extraction from the loc
         longitude = [_['coordinates'][0] for _ in self.df_merge_1['loc']]
 
@@ -130,6 +130,7 @@ class trend_results:
         self.df_merge_1['updated_dates'] = pd.to_datetime(self.df_merge_1['updated_dates'], dayfirst=True)
 
         self.df_merge_1.drop(labels=['createdAt_x', 'updatedAt_x'], inplace=True, axis=1)
+        print(self.df_merge_1.columns)
         return self.df_merge_1
 
     def TopProducts(self, filename):
@@ -139,11 +140,11 @@ class trend_results:
         review_id_like_count_df = (self.df_merge_1.groupby(['resourceId'])['updated_dates'].count().reset_index().rename(
             columns={'updated_dates': 'ReviewViewCount'}))
         review_id_like_count_df = (review_id_like_count_df.sort_values(['ReviewViewCount'], ascending=False))
-        a = pd.merge([self.df_merge_1, review_id_like_count_df], on='resourceId')
+        a = self.df_merge_1.merge(review_id_like_count_df, on='resourceId')
         a.to_csv('df_merge_1withlikecount.csv')
         review_id_like_count_df.index = review_id_like_count_df['resourceId']
         review_id_like_count_df = review_id_like_count_df.drop(['resourceId'], axis=1)
-        a = pd.merge([self.df_merge_1, review_id_like_count_df], on='resourceId')
+        # a = pd.merge([self.df_merge_1, review_id_like_count_df], on='resourceId')
         myclient = MongoClient()
         mydb = myclient['real_reviews']
         tables_dictionary = {}
