@@ -139,9 +139,11 @@ class trend_results:
         review_id_like_count_df = (self.df_merge_1.groupby(['resourceId'])['updated_dates'].count().reset_index().rename(
             columns={'updated_dates': 'ReviewViewCount'}))
         review_id_like_count_df = (review_id_like_count_df.sort_values(['ReviewViewCount'], ascending=False))
+        a = pd.merge([self.df_merge_1, review_id_like_count_df], on='resourceId')
+        a.to_csv('df_merge_1withlikecount.csv')
         review_id_like_count_df.index = review_id_like_count_df['resourceId']
         review_id_like_count_df = review_id_like_count_df.drop(['resourceId'], axis=1)
-
+        a = pd.merge([self.df_merge_1, review_id_like_count_df], on='resourceId')
         myclient = MongoClient()
         mydb = myclient['real_reviews']
         tables_dictionary = {}
