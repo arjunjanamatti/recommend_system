@@ -259,6 +259,7 @@ class trend_results:
         self.top_user_last_week['combinedResults'] = top_user_last_week[:10]
         self.popular_review_last_month['combinedResults'] = popular_review_last_month[:10]
         self.popular_user_last_month['combinedResults'] = popular_user_last_month[:10]
+        self.df_merge_1.to_csv('df_merge_1.csv')
         return self.top_review_last_week, self.top_user_last_week, self.popular_review_last_month, self.popular_user_last_month
 
 @app.route('/trending', methods=['GET', 'POST'])
