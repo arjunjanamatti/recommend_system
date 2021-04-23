@@ -3,7 +3,6 @@ import random
 import time
 from datetime import datetime
 import pickle
-from create_dummy_reviews import randomDate
 from pymongo import MongoClient
 import pandas as pd
 
@@ -21,7 +20,17 @@ sample_dict =   {
     "__v": 0
   }
 
-for i in range(10000):
+def randomDate(start, end):
+    frmt = '%d-%m-%Y %H:%M:%S'
+
+    stime = time.mktime(time.strptime(start, frmt))
+    etime = time.mktime(time.strptime(end, frmt))
+
+    ptime = stime + random.random() * (etime - stime)
+    dt = datetime.fromtimestamp(time.mktime(time.localtime(ptime)))
+    return dt
+
+for i in range(100000):
     new_dict = sample_dict.copy()
     new_dict['_id'] = new_dict['_id'][:23]+str(24+i)
     new_dict['resourceId'] = random.choice(resourceId)
@@ -30,8 +39,13 @@ for i in range(10000):
     # new_dict = sample_dict.copy()
     nested_dict.append(new_dict)
 
-with open("likes_1.json", "w") as fp:
+with open("likes_2.json", "w") as fp:
     json.dump(nested_dict , fp, indent=4)
 
-df = pd.read_json("likes_1.json")
+df = pd.read_json("likes_2.json")
 print(df['resourceId'].value_counts())
+
+from fill_collection import *
+
+files_list = ['likes_2.json']
+SendJsonFilesToMongoDB(files_list)
