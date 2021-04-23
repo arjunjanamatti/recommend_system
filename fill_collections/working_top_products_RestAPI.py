@@ -265,7 +265,7 @@ class trend_results:
 
     def DataForRecommendation(self):
         self.MergedDataframe()
-        self.df_merge_1 = self.df_merge_1.drop(labels=['created_dates', 'updated_dates'])
+        self.df_merge_1 = self.df_merge_1.drop(labels=['created_dates', 'updated_dates'], axis=1)
         self.df_merge_1 = self.df_merge_1.drop_duplicates()
         self.df_merge_1.to_csv('df_merge_1.csv')
         pass
@@ -277,6 +277,7 @@ def main():
     _ = result.CategoryWiseResult()
     top_products = result.TopProducts(filename='products_1')
     top_services = result.TopProducts(filename='services_1')
+    result.DataForRecommendation()
     top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month = result.CombinedResults()
     return top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month, top_products, top_services
 
