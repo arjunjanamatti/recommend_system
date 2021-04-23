@@ -264,6 +264,8 @@ class trend_results:
         return self.top_review_last_week, self.top_user_last_week, self.popular_review_last_month, self.popular_user_last_month
 
     def DataForRecommendation(self):
+        self.MergedDataframe()
+        self.df_merge_1 = self.df_merge_1.drop(labels=['created_dates', 'updated_dates'])
         pass
 
 @app.route('/trending', methods=['GET', 'POST'])
