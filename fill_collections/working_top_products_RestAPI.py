@@ -130,7 +130,6 @@ class trend_results:
         self.df_merge_1['updated_dates'] = pd.to_datetime(self.df_merge_1['updated_dates'], dayfirst=True)
 
         self.df_merge_1.drop(labels=['createdAt_x', 'updatedAt_x'], inplace=True, axis=1)
-        print(self.df_merge_1.columns)
         return self.df_merge_1
 
     def TopProducts(self, filename):
@@ -262,8 +261,10 @@ class trend_results:
         self.top_user_last_week['combinedResults'] = top_user_last_week[:10]
         self.popular_review_last_month['combinedResults'] = popular_review_last_month[:10]
         self.popular_user_last_month['combinedResults'] = popular_user_last_month[:10]
-        self.df_merge_1.to_csv('df_merge_1.csv')
         return self.top_review_last_week, self.top_user_last_week, self.popular_review_last_month, self.popular_user_last_month
+
+    def DataForRecommendation(self):
+        pass
 
 @app.route('/trending', methods=['GET', 'POST'])
 def main():
