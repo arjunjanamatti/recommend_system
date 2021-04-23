@@ -30,6 +30,8 @@ for id in data:
     categores_id_list.append(id['_id'])
 print(len(categores_id_list))
 
+
+
 user_id_list = []
 for i in range(30):
     user_id = '5fdf6bbcfe08e8c0191a7805'
@@ -75,3 +77,7 @@ with open('resourceId.pickle', 'rb') as f:
     mynewlist = pickle.load(f)
 print(mynewlist)
 
+from fill_collection import *
+
+files_list = ['reviews_2.json']
+SendJsonFilesToMongoDB(files_list)
