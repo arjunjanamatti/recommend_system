@@ -80,7 +80,7 @@ class trend_results:
 
     def looping_json_files(self):
         list_1 = []
-        self.files_list = ['reviews_1.json', 'likes_1.json']
+        self.files_list = ['reviews_2.json', 'likes_2.json']
         # self.files_list = ['reviews.json', 'likes.json']
         for files in self.files_list:
             with open(files) as file:
