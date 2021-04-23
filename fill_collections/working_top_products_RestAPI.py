@@ -265,7 +265,10 @@ class trend_results:
 
     def DataForRecommendation(self):
         self.MergedDataframe()
-        self.df_merge_1 = self.df_merge_1.drop(labels=['created_dates', 'updated_dates'], axis=1)
+        print(self.df_merge_1.columns)
+        self.df_merge_1 = self.df_merge_1.drop(labels=['created_dates'], axis=1)
+        self.df_merge_1 = self.df_merge_1.drop(labels=['updated_dates'], axis=1)
+        print(self.df_merge_1.columns)
         self.df_merge_1 = self.df_merge_1.drop_duplicates()
         self.df_merge_1.to_csv('df_merge_1.csv')
         pass
