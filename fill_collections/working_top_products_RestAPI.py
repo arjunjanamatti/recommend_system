@@ -269,8 +269,11 @@ class trend_results:
         self.df_merge_2 = self.df_merge_1.drop(labels=['created_dates'], axis=1)
         self.df_merge_2 = self.df_merge_2.drop(labels=['updated_dates'], axis=1)
         print(self.df_merge_2.columns)
-        self.df_merge_1 = self.df_merge_1.drop_duplicates()
-        self.df_merge_1.to_csv('df_merge_1.csv')
+        self.df_merge_2 = self.df_merge_2.drop_duplicates()
+        self.df_merge_2.to_csv('df_merge_2.csv')
+        # pivot table
+        features_df = self.df_merge_2.pivot_table(index='resourceId', columns='fromUserId_x',
+                                                                       values='Views').fillna(0.0)
         pass
 
 # @app.route('/trending', methods=['GET', 'POST'])
@@ -303,7 +306,7 @@ class trend_results:
 
 if __name__ == "__main__":
     result = trend_results()
-
+    result.DataForRecommendation()
     pass
     # app.run(debug=True)
     # result = trend_results()
