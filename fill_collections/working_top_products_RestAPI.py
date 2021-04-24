@@ -317,7 +317,11 @@ if __name__ == "__main__":
     review_id_like_count_df = (df_2.groupby(['resourceId'])['fromUserId_x'].count().reset_index().rename(
         columns={'fromUserId_x': 'ReviewViewCount'}))
     print(review_id_like_count_df)
-    a = self.df_merge_1.merge(review_id_like_count_df, on='resourceId')
+    df_2_merge = df_2.merge(review_id_like_count_df, on='resourceId')
+    df_2_merge = df_2_merge.drop(labels=['updated_dates', 'created_dates', 'longitude', 'latitude'], axis=1)
+    df_2_merge = df_2_merge.drop_duplicates().reset_index()
+    df_2_merge.to_csv('df_2_merge.csv')
+
     pass
     # app.run(debug=True)
     # result = trend_results()
