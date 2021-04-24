@@ -266,42 +266,46 @@ class trend_results:
     def DataForRecommendation(self):
         self.MergedDataframe()
         print(self.df_merge_1.columns)
-        self.df_merge_1 = self.df_merge_1.drop(labels=['created_dates'], axis=1)
-        self.df_merge_1 = self.df_merge_1.drop(labels=['updated_dates'], axis=1)
-        print(self.df_merge_1.columns)
+        self.df_merge_2 = self.df_merge_1.drop(labels=['created_dates'], axis=1)
+        self.df_merge_2 = self.df_merge_2.drop(labels=['updated_dates'], axis=1)
+        print(self.df_merge_2.columns)
         self.df_merge_1 = self.df_merge_1.drop_duplicates()
         self.df_merge_1.to_csv('df_merge_1.csv')
         pass
 
-@app.route('/trending', methods=['GET', 'POST'])
-def main():
-    # if request.method == 'POST':
-    result = trend_results()
-    _ = result.CategoryWiseResult()
-    top_products = result.TopProducts(filename='products_1')
-    top_services = result.TopProducts(filename='services_1')
-    result.DataForRecommendation()
-    top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month = result.CombinedResults()
-    return top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month, top_products, top_services
+# @app.route('/trending', methods=['GET', 'POST'])
+# def main():
+#     # if request.method == 'POST':
+#     result = trend_results()
+#     result.DataForRecommendation()
+#     _ = result.CategoryWiseResult()
+#     top_products = result.TopProducts(filename='products_1')
+#     top_services = result.TopProducts(filename='services_1')
+#     result.DataForRecommendation()
+#     top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month = result.CombinedResults()
+#     return top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month, top_products, top_services
 
-@app.route('/top-products', methods=['GET', 'POST'])
-def main_1():
-    _, _, _, _, top_products, _ = main()
-    # result = {}
-    top_products = [str(top) for top in top_products]
-    # result['top_products_id'] = top_products
-    return {'top_products_id': top_products}
-
-@app.route('/top-services', methods=['GET', 'POST'])
-def main_2():
-    _, _, _, _, _, top_services = main()
-    # result = {}
-    top_services = [str(top) for top in top_services]
-    # result['top_products_id'] = top_products
-    return {'top_services_id': top_services}
+# @app.route('/top-products', methods=['GET', 'POST'])
+# def main_1():
+#     _, _, _, _, top_products, _ = main()
+#     # result = {}
+#     top_products = [str(top) for top in top_products]
+#     # result['top_products_id'] = top_products
+#     return {'top_products_id': top_products}
+#
+# @app.route('/top-services', methods=['GET', 'POST'])
+# def main_2():
+#     _, _, _, _, _, top_services = main()
+#     # result = {}
+#     top_services = [str(top) for top in top_services]
+#     # result['top_products_id'] = top_products
+#     return {'top_services_id': top_services}
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    result = trend_results()
+
+    pass
+    # app.run(debug=True)
     # result = trend_results()
     # df_merge_1 = result.MergedDataframe()
     #
