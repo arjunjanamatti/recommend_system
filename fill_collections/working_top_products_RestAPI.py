@@ -270,8 +270,8 @@ class trend_results:
         self.df_merge_2 = self.df_merge_2.drop(labels=['updated_dates'], axis=1)
         print(self.df_merge_2.columns)
         self.df_merge_2 = self.df_merge_2.drop_duplicates()
-        self.df_merge_2.to_csv('df_merge_2.csv')
-        return self.df_merge_2
+        # self.df_merge_2.to_csv('df_merge_2.csv')
+        return self.df_merge_1
         # # # pivot table
         # # features_df = self.df_merge_2.pivot_table(index='resourceId', columns='fromUserId_x',
         # #                                                                values='Views').fillna(0.0)
@@ -314,6 +314,10 @@ class trend_results:
 if __name__ == "__main__":
     result = trend_results()
     df_2 = result.DataForRecommendation()
+    review_id_like_count_df = (df_2.groupby(['resourceId'])['fromUserId_x'].count().reset_index().rename(
+        columns={'fromUserId_x': 'ReviewViewCount'}))
+    print(review_id_like_count_df)
+    a = self.df_merge_1.merge(review_id_like_count_df, on='resourceId')
     pass
     # app.run(debug=True)
     # result = trend_results()
