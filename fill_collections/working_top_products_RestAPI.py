@@ -271,9 +271,16 @@ class trend_results:
         print(self.df_merge_2.columns)
         self.df_merge_2 = self.df_merge_2.drop_duplicates()
         self.df_merge_2.to_csv('df_merge_2.csv')
-        # pivot table
-        features_df = self.df_merge_2.pivot_table(index='resourceId', columns='fromUserId_x',
-                                                                       values='Views').fillna(0.0)
+        return self.df_merge_2
+        # # # pivot table
+        # # features_df = self.df_merge_2.pivot_table(index='resourceId', columns='fromUserId_x',
+        # #                                                                values='Views').fillna(0.0)
+        # # features_df.to_csv('features_df_pivot.csv')
+        # # get the number of likes for each review from the dataframe
+        # review_id_like_count_df = (self.df_merge_2.groupby(['resourceId']).count().reset_index().rename(
+        #     columns={'updated_dates': 'ReviewViewCount'}))
+        # review_id_like_count_df = (review_id_like_count_df.sort_values(['ReviewViewCount'], ascending=False))
+        # a = self.df_merge_1.merge(review_id_like_count_df, on='resourceId')
         pass
 
 # @app.route('/trending', methods=['GET', 'POST'])
@@ -306,7 +313,7 @@ class trend_results:
 
 if __name__ == "__main__":
     result = trend_results()
-    result.DataForRecommendation()
+    df_2 = result.DataForRecommendation()
     pass
     # app.run(debug=True)
     # result = trend_results()
