@@ -4,6 +4,7 @@ import pandas as pd
 from datetime import timedelta
 from math import *
 from flask import Flask, request
+import numpy as np
 import time
 
 
@@ -332,6 +333,21 @@ if __name__ == "__main__":
     features_matrix = csr_matrix(arg1=features_df)
     model_knn = NearestNeighbors(metric='cosine', algorithm='brute')
     model_knn.fit(features_matrix)
+
+
+    query_index = np.random.choice(features_matrix.shape[0])
+    previous_review_id = features_df.iloc[query_index, :].name
+    print(f'Name of the mobile: {previous_review_id}')
+
+    distances, indices = model_knn.kneighbors(features_df.iloc[query_index, :].values.reshape(1, -1),
+                                              n_neighbors=10)
+    for i, j in zip(distances[0], indices[0]):
+        if i == 0.0:
+            pass
+        else:
+            print(
+                f'Mobile model: {features_df.iloc[j, :].name} is similar to {previous_review_id} with distance of {i}')
+            print()
 
     pass
     # app.run(debug=True)
