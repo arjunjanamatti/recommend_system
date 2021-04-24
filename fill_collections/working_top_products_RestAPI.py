@@ -321,6 +321,17 @@ if __name__ == "__main__":
     df_2_merge = df_2_merge.drop(labels=['updated_dates', 'created_dates', 'longitude', 'latitude'], axis=1)
     df_2_merge = df_2_merge.drop_duplicates().reset_index()
     df_2_merge.to_csv('df_2_merge.csv')
+    # pivot table
+    features_df = df_2_merge.pivot_table(index='resourceId', columns='fromUserId_x',
+                                                                   values='ReviewViewCount').fillna(0.0)
+    features_df.to_csv('features_df_pivot.csv')
+    # will convert the above to array matrix
+    from scipy.sparse import csr_matrix
+    from sklearn.neighbors import NearestNeighbors
+
+    features_matrix = csr_matrix(arg1=features_df)
+    model_knn = NearestNeighbors(metric='cosine', algorithm='brute')
+    model_knn.fit(features_matrix)
 
     pass
     # app.run(debug=True)
