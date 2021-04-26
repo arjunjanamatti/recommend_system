@@ -342,8 +342,8 @@ if __name__ == "__main__":
 
     distances, indices = model_knn.kneighbors(features_df.iloc[query_index, :].values.reshape(1, -1),
                                               n_neighbors=900)
-    print(distances, indices)
-    for i, j in zip(distances[0], indices[0]):
+
+    for i, j in zip(distances[0][:10], indices[0][:10]):
         if i == 0.0:
             pass
         else:
@@ -366,9 +366,9 @@ if __name__ == "__main__":
 
     movie_title = features_df.columns
     movie_title_list = list(movie_title)
-    print(movie_title_list)
-    coffey_hands = movie_title_list.index("604cf485c4e5fa0b7f7799478")
+    coffey_hands = movie_title_list.index("604cf485c4e5fa0b7f7799387")
     corr_coffey_hands = corr[coffey_hands]
+    print('MATRIX FACTORIZATION RESULTS:')
     print(list(movie_title[(corr_coffey_hands >= 0.9)]))
 
     # files_list = ['reviews_2.json', 'likes_2.json']
