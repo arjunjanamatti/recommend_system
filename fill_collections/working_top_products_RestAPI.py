@@ -315,6 +315,7 @@ class trend_results:
 if __name__ == "__main__":
     result = trend_results()
     df_2 = result.DataForRecommendation()
+    print(df_2['fromUserId_y'].value_counts())
     review_id_like_count_df = (df_2.groupby(['resourceId'])['fromUserId_y'].count().reset_index().rename(
         columns={'fromUserId_y': 'ReviewViewCount'}))
     print(review_id_like_count_df)
@@ -365,6 +366,7 @@ if __name__ == "__main__":
 
     movie_title = features_df.columns
     movie_title_list = list(movie_title)
+    print(movie_title_list)
     coffey_hands = movie_title_list.index("604cf485c4e5fa0b7f7799478")
     corr_coffey_hands = corr[coffey_hands]
     print(list(movie_title[(corr_coffey_hands >= 0.9)]))
