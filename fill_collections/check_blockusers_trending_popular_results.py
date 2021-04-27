@@ -37,7 +37,7 @@ class trend_results:
             self.tables_dictionary[file.split('.')[0]] = df
         return self.tables_dictionary
 
-    def MergedDataframe(self):
+    def MergedDataframe(self, user_id):
         self.GetTableDictionary()
         # transform the reviews_1 table to df_1 dataframe
         df_1 = self.tables_dictionary[self.files_list[0].split('.')[0]]
@@ -67,12 +67,14 @@ class trend_results:
         self.df_merge_1['updated_dates'] = pd.to_datetime(self.df_merge_1['updated_dates'], dayfirst=True)
 
         self.df_merge_1.drop(labels=['createdAt_x', 'updatedAt_x'], inplace=True, axis=1)
+
+        if len(user_id) > 0:
+            self.df_merge_1 = self.df_merge_1[~self.df_merge_1.Team.str.contains(user_id)]
         return self.df_merge_1
 
     def BlockUser(self, user_id):
         self.MergedDataframe()
         self.df_merge_1 = self.df_merge_1[~self.df_merge_1.Team.str.contains(user_id)]
-
         pass
 
     def TopProducts(self, filename):
