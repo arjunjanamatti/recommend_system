@@ -69,6 +69,12 @@ class trend_results:
         self.df_merge_1.drop(labels=['createdAt_x', 'updatedAt_x'], inplace=True, axis=1)
         return self.df_merge_1
 
+    def BlockUser(self, user_id):
+        self.MergedDataframe()
+        self.df_merge_1 = self.df_merge_1[~self.df_merge_1.Team.str.contains(user_id)]
+
+        pass
+
     def TopProducts(self, filename):
         self.MergedDataframe()
         files_list = [filename]
