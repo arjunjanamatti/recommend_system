@@ -37,5 +37,10 @@ for val in try_dict.values():
         a = [blocked_id_list.append(x) for x in val]
 
 print(blocked_id_list)
+with open("blockusers.json", "w") as fp:
+    json.dump(sample_dict , fp, indent=4)
 
+from fill_collection import *
 
+files_list = ['blockusers.json']
+SendJsonFilesToMongoDB(files_list)
