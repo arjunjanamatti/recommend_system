@@ -54,6 +54,7 @@ class trend_results:
 
     def MergedDataframe(self, user_id):
         self.GetTableDictionary()
+        self.GetBlockUsersData()
         # transform the reviews_1 table to df_1 dataframe
         df_1 = self.tables_dictionary[self.files_list[0].split('.')[0]]
         # select reviews which are approved
@@ -84,7 +85,10 @@ class trend_results:
         self.df_merge_1.drop(labels=['createdAt_x', 'updatedAt_x'], inplace=True, axis=1)
 
         if len(user_id) > 0:
-            self.df_merge_1 = self.df_merge_1[~self.df_merge_1.fromUserId_x.str.contains(user_id)]
+            for val in self.try_dict:
+                if user_id in val:
+                    remove_id = str([v for v in val if v != '5fdf6bbcfe08e8c0191a7814'][-1])
+                    self.df_merge_1 = self.df_merge_1[~self.df_merge_1.fromUserId_x.str.contains(remove_id)]
         return self.df_merge_1
 
     # def BlockUser(self, user_id):

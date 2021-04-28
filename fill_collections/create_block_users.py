@@ -63,3 +63,7 @@ for new in block_users_dict_list:
 
 print(try_dict)
 
+for val in try_dict.values():
+    if '5fdf6bbcfe08e8c0191a7814' in val:
+        print([v for v in val if v != '5fdf6bbcfe08e8c0191a7814'][-1])
+    print(val)
