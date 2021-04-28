@@ -250,6 +250,6 @@ class trend_results:
 
 if __name__ == "__main__":
     result = trend_results()
-    user_id = '5fdf6bbcfe08e8c0191a7814'
+    user_id = '5fdf6bbcfe08e8c0191a7805'
     df_merge = result.MergedDataframe(user_id)
     df_merge.to_csv('df_merge.csv')
