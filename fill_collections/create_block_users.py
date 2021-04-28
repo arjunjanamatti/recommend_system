@@ -54,9 +54,12 @@ cur = coll.find()
 block_users_dict_list = [doc for doc in cur]
 print(block_users_dict_list)
 blocked_id_list = []
-for val in block_users_dict_list.values():
-    if "5fdf6bbcfe08e8c0191a7805" in val:
-        a = [blocked_id_list.append(x) for x in val]
 
-# try_dict = {}
-# for new in sample_dict:
+try_dict = {}
+for new in block_users_dict_list:
+    try_dict[new['_id']] = []
+    try_dict[new['_id']].append(new['blockUserId'])
+    try_dict[new['_id']].append(new['fromUserId'])
+
+print(try_dict)
+

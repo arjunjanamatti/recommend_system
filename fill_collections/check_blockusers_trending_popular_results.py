@@ -15,6 +15,9 @@ class trend_results:
         self.popular_user_last_month = {}
         pass
 
+    def GetBlockUsersData(self):
+        pass
+
     def looping_json_files(self):
         list_1 = []
         self.files_list = ['reviews_2.json', 'likes_2.json']
