@@ -72,13 +72,13 @@ class trend_results:
             self.df_merge_1 = self.df_merge_1[~self.df_merge_1.Team.str.contains(user_id)]
         return self.df_merge_1
 
-    def BlockUser(self, user_id):
-        self.MergedDataframe()
-        self.df_merge_1 = self.df_merge_1[~self.df_merge_1.Team.str.contains(user_id)]
-        pass
+    # def BlockUser(self, user_id):
+    #     self.MergedDataframe()
+    #     self.df_merge_1 = self.df_merge_1[~self.df_merge_1.Team.str.contains(user_id)]
+    #     pass
 
-    def TopProducts(self, filename):
-        self.MergedDataframe()
+    def TopProducts(self, filename, user_id):
+        self.MergedDataframe(user_id)
         files_list = [filename]
         # get the number of likes for each review from the dataframe
         review_id_like_count_df = (self.df_merge_1.groupby(['resourceId'])['updated_dates'].count().reset_index().rename(
@@ -122,16 +122,16 @@ class trend_results:
         y = (lat2 - lat1)
         return sqrt(x * x + y * y)
 
-    def SubgroupCategoriesToDictionary(self):
-        self.MergedDataframe()
+    def SubgroupCategoriesToDictionary(self,user_id):
+        self.MergedDataframe(user_id)
         gb = (self.df_merge_1.groupby('categoryId'))
         self.cat_dict = {}
         for cat in gb.groups:
             self.cat_dict[cat] = gb.get_group(cat).reset_index()
         return self.cat_dict
 
-    def TrendingNearReviews(self, long_rand, lat_rand):
-        self.MergedDataframe()
+    def TrendingNearReviews(self, long_rand, lat_rand, user_id):
+        self.MergedDataframe(user_id)
         dist_list = []
         for index, lat in enumerate(self.df_merge_1.loc[:, 'latitude']):
             dist_measured = self.distance(long_rand, lat_rand, self.df_merge_1.loc[index, 'longitude'], lat)
@@ -208,8 +208,8 @@ class trend_results:
         self.popular_user_last_month['combinedResults'] = popular_user_last_month[:10]
         return self.top_review_last_week, self.top_user_last_week, self.popular_review_last_month, self.popular_user_last_month
 
-    def DataForRecommendation(self):
-        self.MergedDataframe()
+    def DataForRecommendation(self, user_id):
+        self.MergedDataframe(user_id)
         print(self.df_merge_1.columns)
         self.df_merge_2 = self.df_merge_1.drop(labels=['created_dates'], axis=1)
         self.df_merge_2 = self.df_merge_2.drop(labels=['updated_dates'], axis=1)
@@ -227,3 +227,8 @@ class trend_results:
         # review_id_like_count_df = (review_id_like_count_df.sort_values(['ReviewViewCount'], ascending=False))
         # a = self.df_merge_1.merge(review_id_like_count_df, on='resourceId')
         pass
+
+
+if __name__ == "__main__":
+    result = trend_results()
+    user_id = '5fdf6bbcfe08e8c0191a7805'
