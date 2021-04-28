@@ -87,7 +87,7 @@ class trend_results:
         if len(user_id) > 0:
             for val in self.try_dict:
                 if user_id in val:
-                    remove_id = str([v for v in val if v != '5fdf6bbcfe08e8c0191a7814'][-1])
+                    remove_id = str([v for v in val if v != user_id][-1])
                     self.df_merge_1 = self.df_merge_1[~self.df_merge_1.fromUserId_x.str.contains(remove_id)]
         return self.df_merge_1
 
@@ -250,6 +250,6 @@ class trend_results:
 
 if __name__ == "__main__":
     result = trend_results()
-    user_id = '5fdf6bbcfe08e8c0191a7805'
+    user_id = '5fdf6bbcfe08e8c0191a7814'
     df_merge = result.MergedDataframe(user_id)
     df_merge.to_csv('df_merge.csv')
