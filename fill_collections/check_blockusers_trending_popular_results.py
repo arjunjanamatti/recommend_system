@@ -85,11 +85,9 @@ class trend_results:
         self.df_merge_1.drop(labels=['createdAt_x', 'updatedAt_x'], inplace=True, axis=1)
 
         if len(user_id) > 0:
-            print('inside if loop')
-            for val in self.try_dict:
+            for val in self.try_dict.values():
                 if user_id in val:
                     remove_id = str([v for v in val if v != user_id][-1])
-                    print(remove_id)
                     self.df_merge_1 = self.df_merge_1[~self.df_merge_1.fromUserId_x.str.contains(remove_id)]
         return self.df_merge_1
 
