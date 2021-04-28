@@ -69,7 +69,7 @@ class trend_results:
         self.df_merge_1.drop(labels=['createdAt_x', 'updatedAt_x'], inplace=True, axis=1)
 
         if len(user_id) > 0:
-            self.df_merge_1 = self.df_merge_1[~self.df_merge_1.Team.str.contains(user_id)]
+            self.df_merge_1 = self.df_merge_1[~self.df_merge_1.fromUserId_x.str.contains(user_id)]
         return self.df_merge_1
 
     # def BlockUser(self, user_id):
@@ -232,3 +232,5 @@ class trend_results:
 if __name__ == "__main__":
     result = trend_results()
     user_id = '5fdf6bbcfe08e8c0191a7805'
+    df_merge = result.MergedDataframe(user_id)
+    df_merge.to_csv('df_merge.csv')
