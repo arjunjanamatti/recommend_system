@@ -46,3 +46,17 @@ import pandas as pd
 # files_list = ['blockusers.json']
 # SendJsonFilesToMongoDB(files_list)
 
+### GET THE DATA FROM MONGODB TO DICTIONARY
+myclient = MongoClient(host=None, port=None)
+mydb = myclient['real_reviews']
+coll = mydb['blockusers']
+cur = coll.find()
+block_users_dict_list = [doc for doc in cur]
+print(block_users_dict_list)
+blocked_id_list = []
+for val in block_users_dict_list.values():
+    if "5fdf6bbcfe08e8c0191a7805" in val:
+        a = [blocked_id_list.append(x) for x in val]
+
+# try_dict = {}
+# for new in sample_dict:
