@@ -7,6 +7,8 @@ from flask import Flask, request
 import numpy as np
 import time
 
+app = Flask(__name__)
+
 class trend_results:
     def __init__(self):
         self.top_review_last_week = {}
@@ -247,6 +249,20 @@ class trend_results:
         # a = self.df_merge_1.merge(review_id_like_count_df, on='resourceId')
         pass
 
+@app.route('/test', methods=['GET', 'POST'])
+def main_1():
+    matching_key = request.args.get('categoryid')
+    user_id = request.args.get('userid')
+    # top_review_last_week, _, _, _ = main()
+    return {'matching_key': matching_key,
+            'user_id': user_id}
+    # if matching_key == '':
+    #     return {'combined': top_review_last_week['combinedResults']}
+    # elif matching_key != '':
+    #     try:
+    #         return {'combined': top_review_last_week[matching_key]}
+    #     except:
+    #         return {'combined': f'This category {matching_key} has no results'}
 
 if __name__ == "__main__":
     start_time = time.perf_counter()
@@ -256,3 +272,4 @@ if __name__ == "__main__":
     end_time = time.perf_counter()
     print(f'Total time = {end_time-start_time} seconds')
     df_merge.to_csv('df_merge.csv')
+    app.run(debug=True)
