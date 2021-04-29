@@ -97,7 +97,6 @@ class trend_results:
                 if user_id in val:
                     remove_id = str([v for v in val if v != user_id][-1])
                     self.df_merge_1 = self.df_merge_1[~self.df_merge_1.fromUserId_x.str.contains(remove_id)]
-        self.df_merge_1.to_csv('df_merge.csv')
         return self.df_merge_1
 
     def TopProducts(self, filename, user_id):
@@ -278,7 +277,6 @@ def main(user_id):
 def main_1():
     matching_key = request.args.get('categoryid')
     user_id = request.args.get('userid')
-    print('@DECORATOR',matching_key, user_id)
     try:
         top_review_last_week, _, _, _ = main(user_id)
 
@@ -296,55 +294,65 @@ def main_1():
 @app.route('/trending-user', methods=['GET', 'POST'])
 def main_2():
     matching_key = request.args.get('categoryid')
+    user_id = request.args.get('userid')
     # rev = top_popular_results()
-    _, top_user_last_week, _, _ = main()
-    print(top_user_last_week)
-    if matching_key == '':
-        return {'combined': top_user_last_week['combinedResults']}
-    elif matching_key != '':
-        try:
-            return {'combined': top_user_last_week[matching_key]}
-        except:
-            return {'combined': f'This category {matching_key} has no results'}
+    try:
+        _, top_user_last_week, _, _ = main(user_id)
+        if matching_key == '':
+            return {'combined': top_user_last_week['combinedResults']}
+        elif matching_key != '':
+            try:
+                return {'combined': top_user_last_week[matching_key]}
+            except:
+                return {'combined': f'This category {matching_key} has no results'}
+    except:
+        return {'combined': f'user_id: {user_id} does not exist in our records'}
 
 
 @app.route('/popular-review', methods=['GET', 'POST'])
 def main_3():
     matching_key = request.args.get('categoryid')
+    user_id = request.args.get('userid')
     # rev = top_popular_results()
-    _, _, popular_review_last_month, _ = main()
-    if matching_key == '':
-        return {'combined': popular_review_last_month['combinedResults']}
-    elif matching_key != '':
-        try:
-            return {'combined': popular_review_last_month[matching_key]}
-        except:
-            return {'combined': f'This category {matching_key} has no results'}
-
+    try:
+        _, _, popular_review_last_month, _ = main(user_id)
+        if matching_key == '':
+            return {'combined': popular_review_last_month['combinedResults']}
+        elif matching_key != '':
+            try:
+                return {'combined': popular_review_last_month[matching_key]}
+            except:
+                return {'combined': f'This category {matching_key} has no results'}
+    except:
+        return {'combined': f'user_id: {user_id} does not exist in our records'}
 
 @app.route('/popular-user', methods=['GET', 'POST'])
 def main_4():
     matching_key = request.args.get('categoryid')
+    user_id = request.args.get('userid')
     # rev = top_popular_results()
-    _, _, _, popular_user_last_month = main()
-    if matching_key == '':
-        return {'combined': popular_user_last_month['combinedResults']}
-    elif matching_key != '':
-        try:
-            return {f'{matching_key}': popular_user_last_month[matching_key]}
-        except:
-            return {'combined': f'This category {matching_key} has no results'}
-
+    try:
+        _, _, _, popular_user_last_month = main(user_id)
+        if matching_key == '':
+            return {'combined': popular_user_last_month['combinedResults']}
+        elif matching_key != '':
+            try:
+                return {f'{matching_key}': popular_user_last_month[matching_key]}
+            except:
+                return {'combined': f'This category {matching_key} has no results'}
+    except:
+        return {'combined': f'user_id: {user_id} does not exist in our records'}
 
 @app.route('/near-location', methods=['GET', 'POST'])
 def main_5():
     matching_key = request.args.get('longlat')
+    user_id = request.args.get('userid')
     # rev = top_popular_results()
     rev = trend_results()
     # print(matching_key.split(',')[1:])
     # print(float(str(matching_key.split(',')[0][1:])))
     long_rand, lat_rand = float(str(matching_key.split(',')[0])), float(str(matching_key.split(',')[1]))
-    trending_reviews_nearby = rev.TrendingNearReviews(long_rand, lat_rand)
+    trending_reviews_nearby = rev.TrendingNearReviews(long_rand, lat_rand, user_id)
     trending_reviews_nearby = [str(review) for review in trending_reviews_nearby]
     # result = {}
     # result['near_review_id'] = trending_reviews_nearby[:10]
