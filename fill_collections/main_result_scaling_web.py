@@ -96,7 +96,6 @@ class trend_results:
             for val in self.try_dict.values():
                 if user_id in val:
                     remove_id = str([v for v in val if v != user_id][-1])
-                    print('INSIDE IF LOOP',remove_id)
                     self.df_merge_1 = self.df_merge_1[~self.df_merge_1.fromUserId_x.str.contains(remove_id)]
         self.df_merge_1.to_csv('df_merge.csv')
         return self.df_merge_1
