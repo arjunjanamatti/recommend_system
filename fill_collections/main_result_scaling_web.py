@@ -49,7 +49,8 @@ class trend_results:
         myclient = MongoClient(host='localhost', port=27017)
         mydb = myclient['real_reviews']
         # list_1 = self.looping_json_files()
-        self.files_list = ['reviews.json', 'likes.json']
+        # self.files_list = ['reviews.json', 'likes.json']
+        self.files_list = ['reviews_1.json', 'likes_1.json']
         self.tables_dictionary = {}
         for index, file in enumerate(self.files_list):
             my_collection = mydb[file.split('.')[0]]
@@ -143,16 +144,16 @@ class trend_results:
         y = (lat2 - lat1)
         return sqrt(x * x + y * y)
 
-    def SubgroupCategoriesToDictionary(self):
-        self.MergedDataframe()
+    def SubgroupCategoriesToDictionary(self,user_id):
+        self.MergedDataframe(user_id)
         gb = (self.df_merge_1.groupby('categoryId'))
         self.cat_dict = {}
         for cat in gb.groups:
             self.cat_dict[cat] = gb.get_group(cat).reset_index()
         return self.cat_dict
 
-    def TrendingNearReviews(self, long_rand, lat_rand):
-        self.MergedDataframe()
+    def TrendingNearReviews(self, long_rand, lat_rand, user_id):
+        self.MergedDataframe(user_id)
         # index_list = list(self.df_merge_1.index)
         # random_index = random.choice(index_list)
         # user_rand, review_rand = str(self.df_merge_1.iloc[random_index]['fromUserId_x']), str(
@@ -202,8 +203,8 @@ class trend_results:
         popular_user_last_week = self.TopTrendingResults(df_merge_cat, 30, 'fromUserId_x')
         return top_review_last_week, top_user_last_week, popular_review_last_week, popular_user_last_week
 
-    def CategoryWiseResult(self):
-        self.SubgroupCategoriesToDictionary()
+    def CategoryWiseResult(self, user_id):
+        self.SubgroupCategoriesToDictionary(user_id)
         cat_result = {}
         for keys in self.cat_dict.keys():
             results_list = []
@@ -261,12 +262,12 @@ class trend_results:
         return self.top_review_last_week, self.top_user_last_week, self.popular_review_last_month, self.popular_user_last_month
 
 # @app.route('/trending', methods=['GET', 'POST'])
-def main():
+def main(user_id):
     # if request.method == 'POST':
     result = trend_results()
     # top_products = result.TopProducts('products')
     # top_services = result.TopProducts('services')
-    _ = result.CategoryWiseResult()
+    _ = result.CategoryWiseResult(user_id)
     top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month = result.CombinedResults()
     # return top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month, top_products, top_services
     return top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month
@@ -275,14 +276,18 @@ def main():
 @app.route('/trending-review', methods=['GET', 'POST'])
 def main_1():
     matching_key = request.args.get('categoryid')
-    top_review_last_week, _, _, _ = main()
-    if matching_key == '':
-        return {'combined': top_review_last_week['combinedResults']}
-    elif matching_key != '':
-        try:
-            return {'combined': top_review_last_week[matching_key]}
-        except:
-            return {'combined': f'This category {matching_key} has no results'}
+    user_id = request.args.get('userid')
+    try:
+        top_review_last_week, _, _, _ = main(user_id)
+        if matching_key == '':
+            return {'combined': top_review_last_week['combinedResults']}
+        elif matching_key != '':
+            try:
+                return {'combined': top_review_last_week[matching_key]}
+            except:
+                return {'combined': f'This category {matching_key} has no results'}
+    except:
+        return {'combined': f'user_id: {user_id} does not exist in our records'}
 
 
 @app.route('/trending-user', methods=['GET', 'POST'])
