@@ -196,8 +196,8 @@ class trend_results:
         popular_user_last_week = self.TopTrendingResults(df_merge_cat, 30, 'fromUserId_x')
         return top_review_last_week, top_user_last_week, popular_review_last_week, popular_user_last_week
 
-    def CategoryWiseResult(self):
-        self.SubgroupCategoriesToDictionary()
+    def CategoryWiseResult(self, user_id):
+        self.SubgroupCategoriesToDictionary(user_id)
         cat_result = {}
         for keys in self.cat_dict.keys():
             results_list = []
