@@ -99,6 +99,7 @@ class trend_results:
                     remove_id = str([v for v in val if v != user_id][-1])
                     print(user_id)
                     self.df_merge_1 = self.df_merge_1[~self.df_merge_1.fromUserId_x.str.contains(remove_id)]
+        self.df_merge_1.to_csv('df_merge.csv')
         return self.df_merge_1
 
     def TopProducts(self, filename, user_id):
