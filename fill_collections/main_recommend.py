@@ -104,16 +104,16 @@ class recommend_results:
 
         distances, indices = model_knn.kneighbors(features_df.iloc[query_index, :].values.reshape(1, -1),
                                                   n_neighbors=900)
-        review_id_recommend = []
+        review_id_recommend_cosine_similarity = []
         for i, j in zip(distances[0][:10], indices[0][:10]):
             if i == 0.0:
                 pass
             else:
-                review_id_recommend.append(features_df.iloc[j, :].name)
+                review_id_recommend_cosine_similarity.append(features_df.iloc[j, :].name)
                 print(
                     f'Mobile model: {features_df.iloc[j, :].name} is similar to {previous_review_id} with distance of {i}')
                 print()
-        return review_id_recommend
+        return review_id_recommend_cosine_similarity
         pass
 
     pass
