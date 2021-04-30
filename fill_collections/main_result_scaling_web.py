@@ -49,8 +49,8 @@ class trend_results:
         myclient = MongoClient(host='localhost', port=27017)
         mydb = myclient['real_reviews']
         # list_1 = self.looping_json_files()
-        # self.files_list = ['reviews.json', 'likes.json']
-        self.files_list = ['reviews_1.json', 'likes_1.json']
+        self.files_list = ['reviews.json', 'likes.json']
+        # self.files_list = ['reviews_1.json', 'likes_1.json']
         self.tables_dictionary = {}
         for index, file in enumerate(self.files_list):
             my_collection = mydb[file.split('.')[0]]
@@ -93,10 +93,14 @@ class trend_results:
 
         self.df_merge_1.drop(labels=['createdAt_x', 'updatedAt_x'], inplace=True, axis=1)
         if len(user_id) > 0:
+            print('INSIDE IF LOOP')
             for val in self.try_dict.values():
                 if user_id in val:
                     remove_id = str([v for v in val if v != user_id][-1])
+                    print(f'REMOVID: {remove_id}')
                     self.df_merge_1 = self.df_merge_1[~self.df_merge_1.fromUserId_x.str.contains(remove_id)]
+            self.df_merge_1.reset_index(inplace=True)
+        self.df_merge_1.to_csv('df_merge.csv')
         return self.df_merge_1
 
     def TopProducts(self, filename, user_id):
