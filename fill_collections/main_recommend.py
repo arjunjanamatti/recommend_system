@@ -78,5 +78,8 @@ class recommend_results:
         self.df_merge_1.to_csv('df_merge.csv')
         return self.df_merge_1
 
+    def GetRecommendations(self):
+        pass
+
     pass
 
