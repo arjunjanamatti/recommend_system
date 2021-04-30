@@ -85,11 +85,11 @@ class recommend_results:
         df_2_merge = df_2.merge(review_id_like_count_df, on='resourceId')
         df_2_merge = df_2_merge.drop(labels=['updated_dates', 'created_dates', 'longitude', 'latitude'], axis=1)
         df_2_merge = df_2_merge.drop_duplicates().reset_index()
-        df_2_merge.to_csv('df_2_merge.csv')
+        # df_2_merge.to_csv('df_2_merge.csv')
         # pivot table
         features_df = df_2_merge.pivot_table(index='resourceId', columns='fromUserId_y',
                                              values='ReviewViewCount').fillna(0.0)
-        features_df.to_csv('features_df_pivot.csv')
+        # features_df.to_csv('features_df_pivot.csv')
         # will convert the above to array matrix
         from scipy.sparse import csr_matrix
         from sklearn.neighbors import NearestNeighbors
