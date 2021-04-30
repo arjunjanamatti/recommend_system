@@ -78,7 +78,41 @@ class recommend_results:
         self.df_merge_1.to_csv('df_merge.csv')
         return self.df_merge_1
 
-    def GetRecommendations(self):
+    def GetRecommendations(self, user_id):
+        df_2 = self.MergedDataframe(user_id)
+        review_id_like_count_df = (df_2.groupby(['resourceId'])['fromUserId_y'].count().reset_index().rename(
+            columns={'fromUserId_y': 'ReviewViewCount'}))
+        df_2_merge = df_2.merge(review_id_like_count_df, on='resourceId')
+        df_2_merge = df_2_merge.drop(labels=['updated_dates', 'created_dates', 'longitude', 'latitude'], axis=1)
+        df_2_merge = df_2_merge.drop_duplicates().reset_index()
+        df_2_merge.to_csv('df_2_merge.csv')
+        # pivot table
+        features_df = df_2_merge.pivot_table(index='resourceId', columns='fromUserId_y',
+                                             values='ReviewViewCount').fillna(0.0)
+        features_df.to_csv('features_df_pivot.csv')
+        # will convert the above to array matrix
+        from scipy.sparse import csr_matrix
+        from sklearn.neighbors import NearestNeighbors
+
+        features_matrix = csr_matrix(arg1=features_df)
+        model_knn = NearestNeighbors(metric='cosine', algorithm='brute', radius=0.001)
+        model_knn.fit(features_matrix)
+
+        query_index = np.random.choice(features_matrix.shape[0])
+        previous_review_id = features_df.iloc[query_index, :].name
+        print(f'Name of the mobile: {previous_review_id}')
+
+        distances, indices = model_knn.kneighbors(features_df.iloc[query_index, :].values.reshape(1, -1),
+                                                  n_neighbors=900)
+
+        for i, j in zip(distances[0][:10], indices[0][:10]):
+            if i == 0.0:
+                pass
+            else:
+                print(
+                    f'Mobile model: {features_df.iloc[j, :].name} is similar to {previous_review_id} with distance of {i}')
+                print()
+
         pass
 
     pass
