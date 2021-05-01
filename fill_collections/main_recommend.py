@@ -27,7 +27,7 @@ class recommend_results:
         mydb = myclient['real_reviews']
         # list_1 = self.looping_json_files()
         # self.files_list = ['reviews.json', 'likes.json']
-        self.files_list = ['reviews_1.json', 'likes_1.json']
+        self.files_list = ['reviews_2.json', 'likes_2.json']
         self.tables_dictionary = {}
         for index, file in enumerate(self.files_list):
             my_collection = mydb[file.split('.')[0]]
@@ -85,11 +85,11 @@ class recommend_results:
         df_2_merge = df_2.merge(review_id_like_count_df, on='resourceId')
         df_2_merge = df_2_merge.drop(labels=['updated_dates', 'created_dates', 'longitude', 'latitude'], axis=1)
         df_2_merge = df_2_merge.drop_duplicates().reset_index()
-        # df_2_merge.to_csv('df_2_merge.csv')
+        df_2_merge.to_csv('df_2_merge.csv')
         # pivot table
         features_df = df_2_merge.pivot_table(index='resourceId', columns='fromUserId_y',
                                              values='ReviewViewCount').fillna(0.0)
-        # features_df.to_csv('features_df_pivot.csv')
+        features_df.to_csv('features_df_pivot.csv')
         # will convert the above to array matrix
         from scipy.sparse import csr_matrix
         from sklearn.neighbors import NearestNeighbors
@@ -101,18 +101,19 @@ class recommend_results:
         query_index = np.random.choice(features_matrix.shape[0])
         previous_review_id = features_df.iloc[query_index, :].name
         print(f'Name of the mobile: {previous_review_id}')
-
+        print(len(query_index))
         distances, indices = model_knn.kneighbors(features_df.iloc[query_index, :].values.reshape(1, -1),
-                                                  n_neighbors=900)
+                                                  n_neighbors=10)
         review_id_recommend_cosine_similarity = []
+        # print(distances)
         for i, j in zip(distances[0][:10], indices[0][:10]):
             if i == 0.0:
                 pass
             else:
                 review_id_recommend_cosine_similarity.append(features_df.iloc[j, :].name)
-                print(
-                    f'Mobile model: {features_df.iloc[j, :].name} is similar to {previous_review_id} with distance of {i}')
-                print()
+                # print(
+                #     f'Mobile model: {features_df.iloc[j, :].name} is similar to {previous_review_id} with distance of {i}')
+                # print()
         return review_id_recommend_cosine_similarity
 
 
@@ -120,5 +121,5 @@ if __name__ == '__main__':
     result = recommend_results()
     user_id = '5fdf6bbcfe08e8c0191a7805'
     recommend_list = result.GetRecommendations(user_id)
-    print(recommend_results)
+    print(recommend_list)
 
