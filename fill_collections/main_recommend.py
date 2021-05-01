@@ -26,8 +26,8 @@ class recommend_results:
         myclient = MongoClient(host='localhost', port=27017)
         mydb = myclient['real_reviews']
         # list_1 = self.looping_json_files()
-        self.files_list = ['reviews.json', 'likes.json']
-        # self.files_list = ['reviews_1.json', 'likes_1.json']
+        # self.files_list = ['reviews.json', 'likes.json']
+        self.files_list = ['reviews_1.json', 'likes_1.json']
         self.tables_dictionary = {}
         for index, file in enumerate(self.files_list):
             my_collection = mydb[file.split('.')[0]]
@@ -51,7 +51,7 @@ class recommend_results:
         df_merge = df_1_approve.merge(df_2, how='left', on='resourceId')
 
         # extract only required columns from the merged dataframe
-        self.df_merge_1 = df_merge[['resourceId', 'loc','rating', 'createdAt_x', 'updatedAt_x', 'fromUserId_y', 'categoryId']]
+        self.df_merge_1 = df_merge[['resourceId', 'loc','rating', 'createdAt_x', 'updatedAt_x','fromUserId_x' ,'fromUserId_y', 'categoryId']]
         # longititude extraction from the loc
         longitude = [_['coordinates'][0] for _ in self.df_merge_1['loc']]
 
@@ -114,7 +114,11 @@ class recommend_results:
                     f'Mobile model: {features_df.iloc[j, :].name} is similar to {previous_review_id} with distance of {i}')
                 print()
         return review_id_recommend_cosine_similarity
-        pass
 
-    pass
+
+if __name__ == '__main__':
+    result = recommend_results()
+    user_id = '5fdf6bbcfe08e8c0191a7805'
+    recommend_list = result.GetRecommendations(user_id)
+    print(recommend_results)
 
