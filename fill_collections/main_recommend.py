@@ -7,6 +7,7 @@ from flask import Flask, request
 import numpy as np
 import time
 
+app = Flask(__name__)
 
 class recommend_results:
     def GetBlockUsersData(self):
@@ -131,11 +132,19 @@ class recommend_results:
                     # print()
             return review_id_recommend_cosine_similarity
 
-
+@app.route('/recommend')
+def main_1():
+    user_id = request.args.get('userid')
+    result = recommend_results()
+    recommend_list = result.GetRecommendations(user_id)
+    return {'recommend_result': recommend_list}
+    pass
 
 if __name__ == '__main__':
-    result = recommend_results()
-    user_id = '5fdf6bbcfe08e8c0191a7805'
-    recommend_list = result.GetRecommendations(user_id)
-    print(recommend_list)
+    # result = recommend_results()
+    # # user_id = '5fdf6bbcfe08e8c0191a7805'
+    # user_id = ''
+    # recommend_list = result.GetRecommendations(user_id)
+    # print(recommend_list)
+    app.run(debug=True, port=5050)
 
