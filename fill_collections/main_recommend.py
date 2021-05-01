@@ -26,9 +26,8 @@ class recommend_results:
     def GetTableDictionary(self):
         myclient = MongoClient(host='localhost', port=27017)
         mydb = myclient['real_reviews']
-        # list_1 = self.looping_json_files()
-        self.files_list = ['reviews.json', 'likes.json']
-        # self.files_list = ['reviews_2.json', 'likes_2.json']
+        # self.files_list = ['reviews.json', 'likes.json']
+        self.files_list = ['reviews_2.json', 'likes_2.json']
         self.tables_dictionary = {}
         for index, file in enumerate(self.files_list):
             my_collection = mydb[file.split('.')[0]]
