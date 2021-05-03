@@ -79,6 +79,7 @@ class recommend_results:
         return self.df_merge_1
 
     def GetRecommendations(self, user_id):
+        global query_index
         df_2 = self.MergedDataframe(user_id)
         review_id_like_count_df = (df_2.groupby(['resourceId'])['fromUserId_y'].count().reset_index().rename(
             columns={'fromUserId_y': 'ReviewViewCount'}))
@@ -101,17 +102,21 @@ class recommend_results:
         # query_index = np.random.choice(features_matrix.shape[0])
         try:
             print('INSIDE Y')
-            if user_id in df_2_merge['fromUserId_y']:
+            if df_2_merge[df_2_merge['fromUserId_y'] == user_id] :
                 print('INSIDE Y IFFFF')
                 query_index = df_2_merge[df_2_merge.fromUserId_y == user_id].first_valid_index()
         except:
             print('INSIDE X')
             query_index = df_2_merge[df_2_merge.fromUserId_x == user_id].first_valid_index()
-        previous_review_id = features_df.iloc[query_index, :].name
+            print(query_index)
+        print(f'SIZE OF features_df: {features_df.shape}')
+        previous_review_id = df_2_merge.loc[query_index, 'fromUserId_x']
         print(f'Name of the mobile: {previous_review_id}')
+        # query_index = features_df[features_df['resourceId'] == previous_review_id].index
+        # print(query_index)
         print(features_matrix.shape[0])
         try:
-            distances, indices = model_knn.kneighbors(features_df.iloc[query_index, :].values.reshape(1, -1),
+            distances, indices = model_knn.kneighbors(features_df.loc[previous_review_id, :].values.reshape(1, -1),
                                                       n_neighbors=10)
             review_id_recommend_cosine_similarity = []
             # print(distances)
