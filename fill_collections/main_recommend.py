@@ -99,7 +99,14 @@ class recommend_results:
         model_knn.fit(features_matrix)
 
         # query_index = np.random.choice(features_matrix.shape[0])
-        query_index = df_2_merge[df_2_merge.fromUserId_y == user_id].first_valid_index()
+        try:
+            print('INSIDE Y')
+            if user_id in df_2_merge['fromUserId_y']:
+                print('INSIDE Y IFFFF')
+                query_index = df_2_merge[df_2_merge.fromUserId_y == user_id].first_valid_index()
+        except:
+            print('INSIDE X')
+            query_index = df_2_merge[df_2_merge.fromUserId_x == user_id].first_valid_index()
         previous_review_id = features_df.iloc[query_index, :].name
         print(f'Name of the mobile: {previous_review_id}')
         print(features_matrix.shape[0])
