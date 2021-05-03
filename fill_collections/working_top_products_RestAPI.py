@@ -341,39 +341,39 @@ if __name__ == "__main__":
 
 
     # query_index = np.random.choice(features_matrix.shape[0])
-    # previous_review_id = features_df.iloc[query_index, :].name
-    # print(f'Name of the mobile: {previous_review_id}')
-    #
-    # distances, indices = model_knn.kneighbors(features_df.iloc[query_index, :].values.reshape(1, -1),
-    #                                           n_neighbors=900)
-    #
-    # for i, j in zip(distances[0][:10], indices[0][:10]):
-    #     if i == 0.0:
-    #         pass
-    #     else:
-    #         print(
-    #             f'Mobile model: {features_df.iloc[j, :].name} is similar to {previous_review_id} with distance of {i}')
-    #         print()
-    #
-    # import sklearn
-    # from sklearn.decomposition import TruncatedSVD
-    #
-    # X = features_df.values.T
-    #
-    # SVD = TruncatedSVD(n_components=12, random_state=17)
-    # matrix = SVD.fit_transform(X)
-    #
-    # import warnings
-    #
-    # warnings.filterwarnings("ignore", category=RuntimeWarning)
-    # corr = np.corrcoef(matrix)
-    #
-    # movie_title = features_df.columns
-    # movie_title_list = list(movie_title)
-    # coffey_hands = movie_title_list.index("604cf485c4e5fa0b7f7799387")
-    # corr_coffey_hands = corr[coffey_hands]
-    # print('MATRIX FACTORIZATION RESULTS:')
-    # print(list(movie_title[(corr_coffey_hands >= 0.9)]))
+    previous_review_id = features_df.iloc[query_index, :].name
+    print(f'Name of the mobile: {previous_review_id}')
+
+    distances, indices = model_knn.kneighbors(features_df.iloc[query_index, :].values.reshape(1, -1),
+                                              n_neighbors=900)
+
+    for i, j in zip(distances[0][:10], indices[0][:10]):
+        if i == 0.0:
+            pass
+        else:
+            print(
+                f'Mobile model: {features_df.iloc[j, :].name} is similar to {previous_review_id} with distance of {i}')
+            print()
+
+    import sklearn
+    from sklearn.decomposition import TruncatedSVD
+
+    X = features_df.values.T
+
+    SVD = TruncatedSVD(n_components=12, random_state=17)
+    matrix = SVD.fit_transform(X)
+
+    import warnings
+
+    warnings.filterwarnings("ignore", category=RuntimeWarning)
+    corr = np.corrcoef(matrix)
+
+    movie_title = features_df.columns
+    movie_title_list = list(movie_title)
+    coffey_hands = movie_title_list.index("604cf485c4e5fa0b7f7799387")
+    corr_coffey_hands = corr[coffey_hands]
+    print('MATRIX FACTORIZATION RESULTS:')
+    print(list(movie_title[(corr_coffey_hands >= 0.9)]))
 
     # files_list = ['reviews_2.json', 'likes_2.json']
     # tables_dictionary = result.GetTableDictionary()
