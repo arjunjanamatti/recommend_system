@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request, redirect, url_for
+from flask import Flask, request, redirect, url_for, jsonify
 from werkzeug.utils import secure_filename
 
 # UPLOAD_FOLDER = 'saved_videos'
@@ -14,17 +14,17 @@ def makedir(file):
 
     pass
 
-@app.route('/savefile', methods=['GET', 'POST'])
+@app.route('/savefile', methods=['POST'])
 def upload_file():
-    if request.method == 'POST':
-        file = request.files['file']
-        print(file.filename)
-        foldername = file.filename
-        makedir(foldername.split('.')[0])
-        filename = secure_filename(file.filename)
-        file.save(foldername, filename)
-        return {'Result': "Uploaded file"}
-    pass
+    # if request.method == 'POST':
+    file = request.files['file']
+    filename = secure_filename(file.filename)
+    app.config['UPLOAD_FOLDER'] = '.'
+    file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+    resp = jsonify({'message': 'File successfully uploaded'})
+    return resp
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
