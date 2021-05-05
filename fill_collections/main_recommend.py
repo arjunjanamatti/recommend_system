@@ -101,14 +101,14 @@ class recommend_results:
 
         # query_index = np.random.choice(features_matrix.shape[0])
         try:
-            print('INSIDE Y')
+            # print('INSIDE Y')
             if df_2_merge[df_2_merge['fromUserId_y'] == user_id] :
-                print('INSIDE Y IFFFF')
+                # print('INSIDE Y IFFFF')
                 query_index = df_2_merge[df_2_merge.fromUserId_y == user_id].first_valid_index()
         except:
-            print('INSIDE X')
+            # print('INSIDE X')
             query_index = df_2_merge[df_2_merge.fromUserId_x == user_id].first_valid_index()
-            print(query_index)
+            # print(query_index)
             if query_index == None:
                 query_index = np.random.choice(features_matrix.shape[0])
         # print(f'SIZE OF features_df: {features_df.shape}')
@@ -116,7 +116,7 @@ class recommend_results:
         # print(f'Name of the mobile: {previous_review_id}')
         # query_index = features_df[features_df['resourceId'] == previous_review_id].index
         # print(query_index)
-        print(features_matrix.shape[0])
+        # print(features_matrix.shape[0])
         try:
             distances, indices = model_knn.kneighbors(features_df.loc[previous_review_id, :].values.reshape(1, -1),
                                                       n_neighbors=10)
