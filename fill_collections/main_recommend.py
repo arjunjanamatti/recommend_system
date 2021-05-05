@@ -109,9 +109,11 @@ class recommend_results:
             print('INSIDE X')
             query_index = df_2_merge[df_2_merge.fromUserId_x == user_id].first_valid_index()
             print(query_index)
-        print(f'SIZE OF features_df: {features_df.shape}')
+            if query_index == None:
+                query_index = np.random.choice(features_matrix.shape[0])
+        # print(f'SIZE OF features_df: {features_df.shape}')
         previous_review_id = df_2_merge.loc[query_index, 'fromUserId_x']
-        print(f'Name of the mobile: {previous_review_id}')
+        # print(f'Name of the mobile: {previous_review_id}')
         # query_index = features_df[features_df['resourceId'] == previous_review_id].index
         # print(query_index)
         print(features_matrix.shape[0])
