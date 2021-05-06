@@ -33,7 +33,13 @@ print(len(categores_id_list))
 title_list = ['samsung mobile review',
               'samsung mobile is awesome',
               'samsung mobiles are horrible',
-              ]
+              'samsung new camera is very good',
+              'samsung sound quality is very bad',
+              'sansung is as good as shit',
+              'mobile means samsung',
+              'one of the coolese mobiles is samsung',
+              'features in this samsung are unbeatable',
+              'samsung new model is waste of money']
 
 user_id_list = []
 for i in range(30):
