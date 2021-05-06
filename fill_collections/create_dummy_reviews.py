@@ -39,7 +39,30 @@ title_list = ['samsung mobile review',
               'mobile means samsung',
               'one of the coolese mobiles is samsung',
               'features in this samsung are unbeatable',
-              'samsung new model is waste of money']
+              'samsung new model is waste of money',
+
+              'nokia mobile review',
+              'nokia mobile is awesome',
+              'nokia mobiles are horrible',
+              'nokia new camera is very good',
+              'nokia sound quality is very bad',
+              'nokia is as good as shit',
+              'mobile means nokia',
+              'one of the coolese mobiles is nokia',
+              'features in this nokia are unbeatable',
+              'nokia new model is waste of money',
+
+              'nokia mobile review',
+              'nokia mobile is awesome',
+              'nokia mobiles are horrible',
+              'nokia new camera is very good',
+              'nokia sound quality is very bad',
+              'nokia is as good as shit',
+              'mobile means nokia',
+              'one of the coolese mobiles is nokia',
+              'features in this nokia are unbeatable',
+              'nokia new model is waste of money',
+              ]
 
 user_id_list = []
 for i in range(30):
