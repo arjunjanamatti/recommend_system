@@ -73,6 +73,28 @@ title_list = ['samsung mobile review',
               'one of the coolest mobiles is toshiba',
               'features in this toshiba are unbeatable',
               'toshiba new model is waste of money',
+
+              'acer mobile review',
+              'acer mobile is awesome',
+              'acer mobiles are horrible',
+              'acer new camera is very good',
+              'acer sound quality is very bad',
+              'acer is as good as shit',
+              'mobile means acer',
+              'one of the coolest mobiles is acer',
+              'features in this acer are unbeatable',
+              'acer new model is waste of money',
+
+              'vivo mobile review',
+              'vivo mobile is awesome',
+              'vivo mobiles are horrible',
+              'vivo new camera is very good',
+              'vivo sound quality is very bad',
+              'vivo is as good as shit',
+              'mobile means vivo',
+              'one of the coolest mobiles is vivo',
+              'features in this vivo are unbeatable',
+              'vivo new model is waste of money',
               ]
 
 user_id_list = []
