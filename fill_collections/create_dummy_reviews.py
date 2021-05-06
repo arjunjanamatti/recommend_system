@@ -31,7 +31,9 @@ for id in data:
 print(len(categores_id_list))
 
 title_list = ['samsung mobile review',
-              '']
+              'samsung mobile is awesome',
+              'samsung mobiles are horrible',
+              ]
 
 user_id_list = []
 for i in range(30):
