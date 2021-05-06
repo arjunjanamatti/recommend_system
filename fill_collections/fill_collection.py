@@ -74,7 +74,7 @@ def get_data():
     except ConnectionFailure:
         print('Failed to connect to mongo DB database')
 
-files_list = ['reviews_1.json','likes_1.json']
+files_list = ['all_data_files/reviews_1.json','all_data_files/likes_1.json']
 # main()
 # get_data()
 #
@@ -120,11 +120,11 @@ print(tables_dictionary)
 #
 
 # transform the reviews_1 table to df_1 dataframe
-df_1 = tables_dictionary['reviews_1']
+df_1 = tables_dictionary['all_data_files/reviews_1']
 # select reviews which are approved
 df_1_approve = (df_1[df_1['isApprove']=='approved'])
 # transform the likes_1 table to df_1 dataframe
-df_2 = tables_dictionary['likes_1']
+df_2 = tables_dictionary['all_data_files/likes_1']
 # rename the column name in reviews_1 table to resourceId as per likes_1 table
 df_1_approve=df_1_approve.rename(columns={"_id": "resourceId"})
 # merge both the dataframes based on common column 'resourceId'

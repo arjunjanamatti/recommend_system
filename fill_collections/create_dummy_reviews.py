@@ -23,7 +23,7 @@ for i in range(900):
     sample_dict['loc']['coordinates'][1] = sample_dict['loc']['coordinates'][1] + random.uniform(0.1, 1.2)
     cordinates_nested.append([sample_dict['loc']['coordinates'][0],sample_dict['loc']['coordinates'][1]])
 
-with open('categories.json') as file:
+with open('all_data_files/categories.json') as file:
     data = json.load(file)
 categores_id_list = []
 for id in data:
@@ -115,6 +115,7 @@ for i in range(900):
     new_dict = sample_dict.copy()
     # 'fromUserId': '5fdf6bbcfe08e8c0191a7805'
     new_dict['_id'] = new_dict['_id'][:19]+str(799386+i)
+    new_dict['title'] = random.choice(title_list)
     new_dict['loc'] = {'coordinates':cordinates_nested[i], 'type': 'Point'}
     new_dict['rating'] = random.uniform(1,10)
     new_dict['categoryId'] =  random.choice(categores_id_list)
