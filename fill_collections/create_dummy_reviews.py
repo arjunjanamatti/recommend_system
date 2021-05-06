@@ -30,7 +30,8 @@ for id in data:
     categores_id_list.append(id['_id'])
 print(len(categores_id_list))
 
-
+title_list = ['samsung mobile review',
+              '']
 
 user_id_list = []
 for i in range(30):

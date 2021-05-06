@@ -101,49 +101,32 @@ class recommend_results:
 
         # query_index = np.random.choice(features_matrix.shape[0])
         try:
-            # print('INSIDE Y')
             if df_2_merge[df_2_merge['fromUserId_y'] == user_id] :
-                # print('INSIDE Y IFFFF')
                 query_index = df_2_merge[df_2_merge.fromUserId_y == user_id].first_valid_index()
         except:
-            # print('INSIDE X')
             query_index = df_2_merge[df_2_merge.fromUserId_x == user_id].first_valid_index()
-            # print(query_index)
             if query_index == None:
                 query_index = np.random.choice(features_matrix.shape[0])
-        # print(f'SIZE OF features_df: {features_df.shape}')
         previous_review_id = df_2_merge.loc[query_index, 'fromUserId_x']
-        # print(f'Name of the mobile: {previous_review_id}')
-        # query_index = features_df[features_df['resourceId'] == previous_review_id].index
-        # print(query_index)
-        # print(features_matrix.shape[0])
         try:
             distances, indices = model_knn.kneighbors(features_df.loc[previous_review_id, :].values.reshape(1, -1),
                                                       n_neighbors=10)
             review_id_recommend_cosine_similarity = []
-            # print(distances)
             for i, j in zip(distances[0][:10], indices[0][:10]):
                 if i == 0.0:
                     pass
                 else:
                     review_id_recommend_cosine_similarity.append(features_df.iloc[j, :].name)
-                    # print(
-                    #     f'Mobile model: {features_df.iloc[j, :].name} is similar to {previous_review_id} with distance of {i}')
-                    # print()
             return review_id_recommend_cosine_similarity
         except:
             distances, indices = model_knn.kneighbors(features_df.iloc[query_index, :].values.reshape(1, -1),
                                                       n_neighbors=features_matrix.shape[0])
             review_id_recommend_cosine_similarity = []
-            # print(distances)
             for i, j in zip(distances[0], indices[0]):
                 if i == 0.0:
                     pass
                 else:
                     review_id_recommend_cosine_similarity.append(features_df.iloc[j, :].name)
-                    # print(
-                    #     f'Mobile model: {features_df.iloc[j, :].name} is similar to {previous_review_id} with distance of {i}')
-                    # print()
             return review_id_recommend_cosine_similarity
 
 @app.route('/recommend')
@@ -151,7 +134,7 @@ def main_1():
     user_id = request.args.get('userid')
     result = recommend_results()
     recommend_list = result.GetRecommendations(user_id)
-    return {'recommend_result': recommend_list}
+    return {'recommend_result': recommend_list[:10]}
     pass
 
 if __name__ == '__main__':
