@@ -83,11 +83,11 @@ class trend_results:
 
         self.df_merge_1.drop(labels=['createdAt_x', 'updatedAt_x'], inplace=True, axis=1)
 
-        self.df_merge_1 = self.df_merge_1.apply(lambda x:)
-        if len(search_text) > 0:
-            for tex in search_text:
-                self.df_merge_1 = self.df_merge_1[self.df_merge_1.title.str.contains(tex)]
-            pass
+        self.df_merge_1 = self.df_merge_1[self.df_merge_1.title.str.contains([tex for tex in search_text])]
+        # if len(search_text) > 0:
+        #     for tex in search_text:
+        #         self.df_merge_1 = self.df_merge_1[self.df_merge_1.title.str.contains(tex)]
+        #     pass
 
         if len(user_id) > 0:
             print('INSIDE IF LOOP')
