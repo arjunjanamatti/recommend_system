@@ -89,7 +89,7 @@ class trend_results:
         self.df_merge_1.drop(labels=['createdAt_x', 'updatedAt_x'], inplace=True, axis=1)
 
         if len(search_text) > 0:
-            self.df_merge_1 = self.df_merge_1[~self.df_merge_1.title.str.contains(search_text)]
+            self.df_merge_1 = self.df_merge_1[self.df_merge_1.title.str.contains(search_text)]
             pass
 
         if len(user_id) > 0:
@@ -275,6 +275,7 @@ if __name__ == "__main__":
     result = trend_results()
     user_id = '5fdf6bbcfe08e8c0191a7805'
     search_text = 'samsung'
+    search_text = list(search_text.split())
     df_merge = result.MergedDataframe(user_id, search_text)
     end_time = time.perf_counter()
     print(f'Total time = {end_time-start_time} seconds')
