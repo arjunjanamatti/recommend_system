@@ -49,7 +49,7 @@ class trend_results:
             self.tables_dictionary[file.split('.')[0]] = df
         return self.tables_dictionary
 
-    def MergedDataframe(self, user_id):
+    def MergedDataframe(self, user_id, search_text):
         self.GetTableDictionary()
         self.GetBlockUsersData()
         # transform the reviews_1 table to df_1 dataframe
