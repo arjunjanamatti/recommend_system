@@ -34,7 +34,7 @@ class trend_results:
 
     def looping_json_files(self):
         list_1 = []
-        self.files_list = ['reviews_2.json', 'likes_2.json']
+        self.files_list = ['reviews_2.json', 'all_data_files/likes_2.json']
         # self.files_list = ['reviews.json', 'likes.json']
         for files in self.files_list:
             with open(files) as file:
@@ -65,6 +65,8 @@ class trend_results:
         df_2 = self.tables_dictionary[self.files_list[-1].split('.')[0]]
         # rename the column name in reviews_1 table to resourceId as per likes_1 table
         df_1_approve = df_1_approve.rename(columns={"_id": "resourceId"})
+        print(df_1_approve.columns)
+        print(df_2.columns)
         # merge both the dataframes based on common column 'resourceId'
         df_merge = df_1_approve.merge(df_2, how='left', on='resourceId')
 
@@ -268,7 +270,8 @@ if __name__ == "__main__":
     start_time = time.perf_counter()
     result = trend_results()
     user_id = '5fdf6bbcfe08e8c0191a7805'
-    df_merge = result.MergedDataframe(user_id)
+    search_text = ''
+    df_merge = result.MergedDataframe(user_id, search_text)
     end_time = time.perf_counter()
     print(f'Total time = {end_time-start_time} seconds')
     df_merge.to_csv('df_merge.csv')
