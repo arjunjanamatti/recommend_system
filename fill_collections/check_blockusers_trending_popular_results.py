@@ -54,7 +54,7 @@ class trend_results:
             self.tables_dictionary[file.split('.')[0]] = df
         return self.tables_dictionary
 
-    def MergedDataframe(self, user_id):
+    def MergedDataframe(self, user_id, search_text):
         self.GetTableDictionary()
         self.GetBlockUsersData()
         # transform the reviews_1 table to df_1 dataframe
@@ -69,7 +69,7 @@ class trend_results:
         df_merge = df_1_approve.merge(df_2, how='left', on='resourceId')
 
         # extract only required columns from the merged dataframe
-        self.df_merge_1 = df_merge[['resourceId', 'loc','rating', 'createdAt_x', 'updatedAt_x', 'fromUserId_x', 'categoryId']]
+        self.df_merge_1 = df_merge[['resourceId', 'loc','rating', 'createdAt_x', 'updatedAt_x', 'fromUserId_x', 'categoryId', 'title']]
         # longititude extraction from the loc
         longitude = [_['coordinates'][0] for _ in self.df_merge_1['loc']]
 
@@ -272,4 +272,4 @@ if __name__ == "__main__":
     end_time = time.perf_counter()
     print(f'Total time = {end_time-start_time} seconds')
     df_merge.to_csv('df_merge.csv')
-    app.run(debug=True)
+    # app.run(debug=True)
