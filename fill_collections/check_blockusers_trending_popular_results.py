@@ -261,8 +261,8 @@ class trend_results:
 
 @app.route('/test', methods=['POST'])
 def main_1():
-    matching_key = request.form.get('categoryid', None)
-    user_id = request.form.get('userid', None)
+    matching_key = request.form.get('categoryid')
+    user_id = request.form.get('userid')
     # matching_key = request.args.get('categoryid', None)
     # user_id = request.args.get('userid', None)
     # search_text = request.form.get('searchtext')

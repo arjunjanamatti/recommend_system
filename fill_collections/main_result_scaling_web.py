@@ -299,10 +299,10 @@ def main_1():
         return {'combined': f'user_id: {user_id} does not exist in our records'}
 
 
-@app.route('/trending-user', methods=['GET', 'POST'])
+@app.route('/trending-user', methods=['POST'])
 def main_2():
-    matching_key = request.args.get('categoryid')
-    user_id = request.args.get('userid')
+    matching_key = request.form.get('categoryid')
+    user_id = request.form.get('userid')
     search_text = request.form.get('searchtext')
     # rev = top_popular_results()
     try:
@@ -318,10 +318,10 @@ def main_2():
         return {'combined': f'user_id: {user_id} does not exist in our records'}
 
 
-@app.route('/popular-review', methods=['GET', 'POST'])
+@app.route('/popular-review', methods=['POST'])
 def main_3():
-    matching_key = request.args.get('categoryid')
-    user_id = request.args.get('userid')
+    matching_key = request.form.get('categoryid')
+    user_id = request.form.get('userid')
     search_text = request.form.get('searchtext')
     print(f'matching_key: {matching_key}, user_id: {user_id}, search_text: {search_text}')
     # rev = top_popular_results()
@@ -337,10 +337,10 @@ def main_3():
     except:
         return {'combined': f'user_id: {user_id} does not exist in our records'}
 
-@app.route('/popular-user', methods=['GET', 'POST'])
+@app.route('/popular-user', methods=['POST'])
 def main_4():
-    matching_key = request.args.get('categoryid')
-    user_id = request.args.get('userid')
+    matching_key = request.form.get('categoryid')
+    user_id = request.form.get('userid')
     search_text = request.form.get('searchtext')
     # rev = top_popular_results()
     try:
@@ -355,10 +355,10 @@ def main_4():
     except:
         return {'combined': f'user_id: {user_id} does not exist in our records'}
 
-@app.route('/near-location', methods=['GET', 'POST'])
+@app.route('/near-location', methods=['POST'])
 def main_5():
-    matching_key = request.args.get('longlat')
-    user_id = request.args.get('userid')
+    matching_key = request.form.get('categoryid')
+    user_id = request.form.get('userid')
     search_text = request.form.get('searchtext')
     # rev = top_popular_results()
     rev = trend_results()
