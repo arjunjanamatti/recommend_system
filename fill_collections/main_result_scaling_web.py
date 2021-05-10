@@ -84,7 +84,7 @@ class trend_results:
         self.df_merge_1['updated_dates'] = pd.to_datetime(self.df_merge_1['updated_dates'], dayfirst=True)
 
         self.df_merge_1.drop(labels=['createdAt_x', 'updatedAt_x'], inplace=True, axis=1)
-        if len(search_text) > 0:
+        if search_text != None:
             contains = [self.df_merge_1['title'].str.contains(i) for i in search_text]
             self.df_merge_1 = self.df_merge_1[np.all(contains, axis=0)]
         print('SEARCHTEST FILTERING COMPLETED')
@@ -334,7 +334,8 @@ def main_3():
                 return {'combined': popular_review_last_month[matching_key]}
             except:
                 return {'combined': f'This category {matching_key} has no results'}
-    except:
+    except Exception as e:
+        print(f'Exception: {e}')
         return {'combined': f'user_id: {user_id} does not exist in our records'}
 
 @app.route('/popular-user', methods=['POST'])
