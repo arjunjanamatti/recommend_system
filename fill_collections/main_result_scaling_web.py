@@ -8,6 +8,7 @@ from datetime import timedelta
 from math import *
 import random
 from flask import Flask, request
+import numpy as np
 import time
 
 files_list = ['reviews_1.json','likes_1.json']
@@ -82,8 +83,9 @@ class trend_results:
         self.df_merge_1['updated_dates'] = pd.to_datetime(self.df_merge_1['updated_dates'], dayfirst=True)
 
         self.df_merge_1.drop(labels=['createdAt_x', 'updatedAt_x'], inplace=True, axis=1)
+        contains = [self.df_merge_1['title'].str.contains(i) for i in search_text]
+        self.df_merge_1 = self.df_merge_1[np.all(contains, axis=0)]
 
-        self.df_merge_1 = self.df_merge_1[self.df_merge_1.title.str.contains([tex for tex in search_text])]
         # if len(search_text) > 0:
         #     for tex in search_text:
         #         self.df_merge_1 = self.df_merge_1[self.df_merge_1.title.str.contains(tex)]
