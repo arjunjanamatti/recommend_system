@@ -263,9 +263,11 @@ class trend_results:
 def main_1():
     matching_key = request.args.get('categoryid')
     user_id = request.args.get('userid')
+    search_text = request.form.get('searchtext')
     # top_review_last_week, _, _, _ = main()
     return {'matching_key': matching_key,
-            'user_id': user_id}
+            'user_id': user_id,
+            'search_text': search_text}
     # if matching_key == '':
     #     return {'combined': top_review_last_week['combinedResults']}
     # elif matching_key != '':
@@ -284,4 +286,4 @@ if __name__ == "__main__":
     end_time = time.perf_counter()
     print(f'Total time = {end_time-start_time} seconds')
     df_merge.to_csv('df_merge.csv')
-    # app.run(debug=True)
+    app.run(debug=True)
