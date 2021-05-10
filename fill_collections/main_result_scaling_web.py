@@ -85,9 +85,9 @@ class trend_results:
 
         self.df_merge_1.drop(labels=['createdAt_x', 'updatedAt_x'], inplace=True, axis=1)
         if search_text != None:
+            print('INSIDE IF SEARCHTEXT LOOP')
             contains = [self.df_merge_1['title'].str.contains(i) for i in search_text]
             self.df_merge_1 = self.df_merge_1[np.all(contains, axis=0)]
-        print('SEARCHTEST FILTERING COMPLETED')
         # if len(search_text) > 0:
         #     for tex in search_text:
         #         self.df_merge_1 = self.df_merge_1[self.df_merge_1.title.str.contains(tex)]
@@ -278,13 +278,15 @@ def main(user_id, search_text):
     return top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month
 
 
-@app.route('/trending-review', methods=['POST'])
+@app.route('/trending-review', methods=['GET'])
 def main_1():
-    # matching_key = request.args.get('categoryid')
-    # user_id = request.args.get('userid')
-    matching_key = request.form.get('categoryid')
-    user_id = request.form.get('userid')
-    search_text = request.form.get('searchtext')
+    matching_key = request.args.get('categoryid')
+    user_id = request.args.get('userid')
+    search_text = request.args.get('searchtext', default = None)
+    # matching_key = request.form.get('categoryid')
+    # user_id = request.form.get('userid')
+    # search_text = request.form.get('searchtext')
+    print(search_text)
     try:
         top_review_last_week, _, _, _ = main(user_id, search_text)
 
