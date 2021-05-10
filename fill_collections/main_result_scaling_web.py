@@ -305,9 +305,11 @@ def main_1():
 
 @app.route('/trending-user', methods=['POST'])
 def main_2():
-    matching_key = request.form.get('categoryid')
-    user_id = request.form.get('userid')
-    search_text = request.form.get('searchtext')
+    matching_key = request.args.get('categoryid')
+    user_id = request.args.get('userid')
+    search_text = request.args.get('searchtext', default = None)
+    if search_text:
+        search_text = list(search_text.split())
     # rev = top_popular_results()
     try:
         _, top_user_last_week, _, _ = main(user_id, search_text)
@@ -324,10 +326,11 @@ def main_2():
 
 @app.route('/popular-review', methods=['POST'])
 def main_3():
-    matching_key = request.form.get('categoryid')
-    user_id = request.form.get('userid')
-    search_text = request.form.get('searchtext')
-    print(f'matching_key: {matching_key}, user_id: {user_id}, search_text: {search_text}')
+    matching_key = request.args.get('categoryid')
+    user_id = request.args.get('userid')
+    search_text = request.args.get('searchtext', default = None)
+    if search_text:
+        search_text = list(search_text.split())
     # rev = top_popular_results()
     try:
         _, _, popular_review_last_month, _ = main(user_id, search_text)
@@ -344,9 +347,11 @@ def main_3():
 
 @app.route('/popular-user', methods=['POST'])
 def main_4():
-    matching_key = request.form.get('categoryid')
-    user_id = request.form.get('userid')
-    search_text = request.form.get('searchtext')
+    matching_key = request.args.get('categoryid')
+    user_id = request.args.get('userid')
+    search_text = request.args.get('searchtext', default = None)
+    if search_text:
+        search_text = list(search_text.split())
     # rev = top_popular_results()
     try:
         _, _, _, popular_user_last_month = main(user_id, search_text)
@@ -362,9 +367,11 @@ def main_4():
 
 @app.route('/near-location', methods=['POST'])
 def main_5():
-    matching_key = request.form.get('categoryid')
-    user_id = request.form.get('userid')
-    search_text = request.form.get('searchtext')
+    matching_key = request.args.get('categoryid')
+    user_id = request.args.get('userid')
+    search_text = request.args.get('searchtext', default = None)
+    if search_text:
+        search_text = list(search_text.split())
     # rev = top_popular_results()
     rev = trend_results()
     # print(matching_key.split(',')[1:])
