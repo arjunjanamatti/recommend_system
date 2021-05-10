@@ -283,6 +283,7 @@ def main_1():
     matching_key = request.args.get('categoryid')
     user_id = request.args.get('userid')
     search_text = request.args.get('searchtext', default = None)
+    search_text = list(search_text.split())
     # matching_key = request.form.get('categoryid')
     # user_id = request.form.get('userid')
     # search_text = request.form.get('searchtext')
