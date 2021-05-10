@@ -259,10 +259,12 @@ class trend_results:
         # a = self.df_merge_1.merge(review_id_like_count_df, on='resourceId')
         pass
 
-@app.route('/test', methods=['GET', 'POST'])
+@app.route('/test', methods=['POST'])
 def main_1():
-    matching_key = request.args.get('categoryid', None)
-    user_id = request.args.get('userid', None)
+    matching_key = request.form.get('categoryid', None)
+    user_id = request.form.get('userid', None)
+    # matching_key = request.args.get('categoryid', None)
+    # user_id = request.args.get('userid', None)
     # search_text = request.form.get('searchtext')
     # top_review_last_week, _, _, _ = main()
     return {'matching_key': matching_key,

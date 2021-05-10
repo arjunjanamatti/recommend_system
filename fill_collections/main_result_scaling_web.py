@@ -93,7 +93,7 @@ class trend_results:
         #         self.df_merge_1 = self.df_merge_1[self.df_merge_1.title.str.contains(tex)]
         #     pass
 
-        if user_id != None:
+        if len(user_id) > 0:
             print('INSIDE IF LOOP')
             for val in self.try_dict.values():
                 if user_id in val:
@@ -278,10 +278,12 @@ def main(user_id, search_text):
     return top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month
 
 
-@app.route('/trending-review', methods=['GET', 'POST'])
+@app.route('/trending-review', methods=['POST'])
 def main_1():
-    matching_key = request.args.get('categoryid')
-    user_id = request.args.get('userid')
+    # matching_key = request.args.get('categoryid')
+    # user_id = request.args.get('userid')
+    matching_key = request.form.get('categoryid')
+    user_id = request.form.get('userid')
     search_text = request.form.get('searchtext')
     try:
         top_review_last_week, _, _, _ = main(user_id, search_text)
