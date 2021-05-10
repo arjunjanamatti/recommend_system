@@ -285,9 +285,6 @@ def main_1():
     search_text = request.args.get('searchtext', default = None)
     if search_text:
         search_text = list(search_text.split())
-    # matching_key = request.form.get('categoryid')
-    # user_id = request.form.get('userid')
-    # search_text = request.form.get('searchtext')
     print(search_text)
     try:
         top_review_last_week, _, _, _ = main(user_id, search_text)
