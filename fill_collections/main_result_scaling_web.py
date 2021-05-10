@@ -40,8 +40,8 @@ class trend_results:
         myclient = MongoClient(host='localhost', port=27017)
         mydb = myclient['real_reviews']
         # list_1 = self.looping_json_files()
-        self.files_list = ['reviews.json', 'likes.json']
-        # self.files_list = ['reviews_1.json', 'likes_1.json']
+        # self.files_list = ['reviews.json', 'likes.json']
+        self.files_list = ['reviews_2.json', 'likes_2.json']
         self.tables_dictionary = {}
         for index, file in enumerate(self.files_list):
             my_collection = mydb[file.split('.')[0]]
@@ -53,6 +53,7 @@ class trend_results:
     def MergedDataframe(self, user_id, search_text):
         self.GetTableDictionary()
         self.GetBlockUsersData()
+        print('TABLE AND BLOCKUSERS COMPLETE')
         # transform the reviews_1 table to df_1 dataframe
         df_1 = self.tables_dictionary[self.files_list[0].split('.')[0]]
         # select reviews which are approved
@@ -63,9 +64,9 @@ class trend_results:
         df_1_approve = df_1_approve.rename(columns={"_id": "resourceId"})
         # merge both the dataframes based on common column 'resourceId'
         df_merge = df_1_approve.merge(df_2, how='left', on='resourceId')
-
+        print('MERGING COMPLETED')
         # extract only required columns from the merged dataframe
-        self.df_merge_1 = df_merge[['resourceId', 'loc', 'createdAt_x', 'updatedAt_x', 'fromUserId_x', 'categoryId']]
+        self.df_merge_1 = df_merge[['resourceId','title', 'loc', 'createdAt_x', 'updatedAt_x', 'fromUserId_x', 'categoryId']]
         # longititude extraction from the loc
         longitude = [_['coordinates'][0] for _ in self.df_merge_1['loc']]
 
@@ -86,13 +87,13 @@ class trend_results:
         if len(search_text) > 0:
             contains = [self.df_merge_1['title'].str.contains(i) for i in search_text]
             self.df_merge_1 = self.df_merge_1[np.all(contains, axis=0)]
-
+        print('SEARCHTEST FILTERING COMPLETED')
         # if len(search_text) > 0:
         #     for tex in search_text:
         #         self.df_merge_1 = self.df_merge_1[self.df_merge_1.title.str.contains(tex)]
         #     pass
 
-        if len(user_id) > 0:
+        if user_id != None:
             print('INSIDE IF LOOP')
             for val in self.try_dict.values():
                 if user_id in val:
@@ -320,6 +321,7 @@ def main_3():
     matching_key = request.args.get('categoryid')
     user_id = request.args.get('userid')
     search_text = request.form.get('searchtext')
+    print(f'matching_key: {matching_key}, user_id: {user_id}, search_text: {search_text}')
     # rev = top_popular_results()
     try:
         _, _, popular_review_last_month, _ = main(user_id, search_text)

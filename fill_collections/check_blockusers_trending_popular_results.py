@@ -261,13 +261,13 @@ class trend_results:
 
 @app.route('/test', methods=['GET', 'POST'])
 def main_1():
-    matching_key = request.args.get('categoryid')
-    user_id = request.args.get('userid')
-    search_text = request.form.get('searchtext')
+    matching_key = request.args.get('categoryid', None)
+    user_id = request.args.get('userid', None)
+    # search_text = request.form.get('searchtext')
     # top_review_last_week, _, _, _ = main()
     return {'matching_key': matching_key,
-            'user_id': user_id,
-            'search_text': search_text}
+            'user_id': user_id}
+            # 'search_text': search_text}
     # if matching_key == '':
     #     return {'combined': top_review_last_week['combinedResults']}
     # elif matching_key != '':
