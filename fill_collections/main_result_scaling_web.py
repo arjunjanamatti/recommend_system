@@ -327,7 +327,6 @@ def main_3():
     search_text = request.args.get('searchtext', default = None)
     if search_text:
         search_text = list(search_text.split())
-    # rev = top_popular_results()
     try:
         _, _, popular_review_last_month, _ = main(user_id, search_text)
         if matching_key == '':
