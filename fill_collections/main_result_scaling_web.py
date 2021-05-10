@@ -83,8 +83,9 @@ class trend_results:
         self.df_merge_1['updated_dates'] = pd.to_datetime(self.df_merge_1['updated_dates'], dayfirst=True)
 
         self.df_merge_1.drop(labels=['createdAt_x', 'updatedAt_x'], inplace=True, axis=1)
-        contains = [self.df_merge_1['title'].str.contains(i) for i in search_text]
-        self.df_merge_1 = self.df_merge_1[np.all(contains, axis=0)]
+        if len(search_text) > 0:
+            contains = [self.df_merge_1['title'].str.contains(i) for i in search_text]
+            self.df_merge_1 = self.df_merge_1[np.all(contains, axis=0)]
 
         # if len(search_text) > 0:
         #     for tex in search_text:
@@ -280,8 +281,9 @@ def main(user_id, search_text):
 def main_1():
     matching_key = request.args.get('categoryid')
     user_id = request.args.get('userid')
+    search_text = request.form.get('searchtext')
     try:
-        top_review_last_week, _, _, _ = main(user_id)
+        top_review_last_week, _, _, _ = main(user_id, search_text)
 
         if matching_key == '':
             return {'combined': top_review_last_week['combinedResults']}
