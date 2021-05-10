@@ -278,7 +278,7 @@ def main(user_id, search_text):
     return top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month
 
 
-@app.route('/trending-review', methods=['GET'])
+@app.route('/trending-review', methods=['GET', 'POST'])
 def main_1():
     matching_key = request.args.get('categoryid')
     user_id = request.args.get('userid')
@@ -300,7 +300,7 @@ def main_1():
         return {'combined': f'user_id: {user_id} does not exist in our records'}
 
 
-@app.route('/trending-user', methods=['POST'])
+@app.route('/trending-user', methods=['GET', 'POST'])
 def main_2():
     matching_key = request.args.get('categoryid')
     user_id = request.args.get('userid')
@@ -320,7 +320,7 @@ def main_2():
         return {'combined': f'user_id: {user_id} does not exist in our records'}
 
 
-@app.route('/popular-review', methods=['POST'])
+@app.route('/popular-review', methods=['GET', 'POST'])
 def main_3():
     matching_key = request.args.get('categoryid')
     user_id = request.args.get('userid')
@@ -340,7 +340,7 @@ def main_3():
         print(f'Exception: {e}')
         return {'combined': f'user_id: {user_id} does not exist in our records'}
 
-@app.route('/popular-user', methods=['POST'])
+@app.route('/popular-user', methods=['GET', 'POST'])
 def main_4():
     matching_key = request.args.get('categoryid')
     user_id = request.args.get('userid')
@@ -359,7 +359,7 @@ def main_4():
     except:
         return {'combined': f'user_id: {user_id} does not exist in our records'}
 
-@app.route('/near-location', methods=['POST'])
+@app.route('/near-location', methods=['GET', 'POST'])
 def main_5():
     matching_key = request.args.get('categoryid')
     user_id = request.args.get('userid')
