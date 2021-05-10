@@ -102,8 +102,8 @@ class trend_results:
         self.df_merge_1.to_csv('df_merge.csv')
         return self.df_merge_1
 
-    def TopProducts(self, filename, user_id):
-        self.MergedDataframe(user_id)
+    def TopProducts(self, filename, user_id, search_text):
+        self.MergedDataframe(user_id, search_text)
         files_list = [filename]
         # get the number of likes for each review from the dataframe
         # print(self.df_merge_1)
@@ -147,16 +147,16 @@ class trend_results:
         y = (lat2 - lat1)
         return sqrt(x * x + y * y)
 
-    def SubgroupCategoriesToDictionary(self,user_id):
-        self.MergedDataframe(user_id)
+    def SubgroupCategoriesToDictionary(self,user_id, search_text):
+        self.MergedDataframe(user_id, search_text)
         gb = (self.df_merge_1.groupby('categoryId'))
         self.cat_dict = {}
         for cat in gb.groups:
             self.cat_dict[cat] = gb.get_group(cat).reset_index()
         return self.cat_dict
 
-    def TrendingNearReviews(self, long_rand, lat_rand, user_id):
-        self.MergedDataframe(user_id)
+    def TrendingNearReviews(self, long_rand, lat_rand, user_id, search_text):
+        self.MergedDataframe(user_id, search_text)
         # index_list = list(self.df_merge_1.index)
         # random_index = random.choice(index_list)
         # user_rand, review_rand = str(self.df_merge_1.iloc[random_index]['fromUserId_x']), str(
@@ -206,8 +206,8 @@ class trend_results:
         popular_user_last_week = self.TopTrendingResults(df_merge_cat, 30, 'fromUserId_x')
         return top_review_last_week, top_user_last_week, popular_review_last_week, popular_user_last_week
 
-    def CategoryWiseResult(self, user_id):
-        self.SubgroupCategoriesToDictionary(user_id)
+    def CategoryWiseResult(self, user_id, search_text):
+        self.SubgroupCategoriesToDictionary(user_id, search_text)
         cat_result = {}
         for keys in self.cat_dict.keys():
             results_list = []
@@ -265,12 +265,12 @@ class trend_results:
         return self.top_review_last_week, self.top_user_last_week, self.popular_review_last_month, self.popular_user_last_month
 
 # @app.route('/trending', methods=['GET', 'POST'])
-def main(user_id):
+def main(user_id, search_text):
     # if request.method == 'POST':
     result = trend_results()
     # top_products = result.TopProducts('products')
     # top_services = result.TopProducts('services')
-    _ = result.CategoryWiseResult(user_id)
+    _ = result.CategoryWiseResult(user_id, search_text)
     top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month = result.CombinedResults()
     # return top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month, top_products, top_services
     return top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month
