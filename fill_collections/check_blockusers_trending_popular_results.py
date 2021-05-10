@@ -87,11 +87,14 @@ class trend_results:
         self.df_merge_1['updated_dates'] = pd.to_datetime(self.df_merge_1['updated_dates'], dayfirst=True)
 
         self.df_merge_1.drop(labels=['createdAt_x', 'updatedAt_x'], inplace=True, axis=1)
+        contains = [self.df_merge_1['title'].str.contains(i) for i in search_text]
+        self.df_merge_1 = self.df_merge_1[np.all(contains, axis=0)]
+        # self.df_merge_1 = self.df_merge_1[self.df_merge_1.title.str.contains(search_text.all())]
 
-        if len(search_text) > 0:
-            for tex in search_text:
-                self.df_merge_1 = self.df_merge_1[self.df_merge_1.title.str.contains(tex)]
-            pass
+        # if len(search_text) > 0:
+        #     for tex in search_text:
+        #         self.df_merge_1 = self.df_merge_1[self.df_merge_1.title.str.contains(tex)]
+        #     pass
 
         if len(user_id) > 0:
             for val in self.try_dict.values():
