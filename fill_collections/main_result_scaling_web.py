@@ -300,9 +300,10 @@ def main_1():
 def main_2():
     matching_key = request.args.get('categoryid')
     user_id = request.args.get('userid')
+    search_text = request.form.get('searchtext')
     # rev = top_popular_results()
     try:
-        _, top_user_last_week, _, _ = main(user_id)
+        _, top_user_last_week, _, _ = main(user_id, search_text)
         if matching_key == '':
             return {'combined': top_user_last_week['combinedResults']}
         elif matching_key != '':
@@ -318,9 +319,10 @@ def main_2():
 def main_3():
     matching_key = request.args.get('categoryid')
     user_id = request.args.get('userid')
+    search_text = request.form.get('searchtext')
     # rev = top_popular_results()
     try:
-        _, _, popular_review_last_month, _ = main(user_id)
+        _, _, popular_review_last_month, _ = main(user_id, search_text)
         if matching_key == '':
             return {'combined': popular_review_last_month['combinedResults']}
         elif matching_key != '':
@@ -335,9 +337,10 @@ def main_3():
 def main_4():
     matching_key = request.args.get('categoryid')
     user_id = request.args.get('userid')
+    search_text = request.form.get('searchtext')
     # rev = top_popular_results()
     try:
-        _, _, _, popular_user_last_month = main(user_id)
+        _, _, _, popular_user_last_month = main(user_id, search_text)
         if matching_key == '':
             return {'combined': popular_user_last_month['combinedResults']}
         elif matching_key != '':
@@ -352,12 +355,13 @@ def main_4():
 def main_5():
     matching_key = request.args.get('longlat')
     user_id = request.args.get('userid')
+    search_text = request.form.get('searchtext')
     # rev = top_popular_results()
     rev = trend_results()
     # print(matching_key.split(',')[1:])
     # print(float(str(matching_key.split(',')[0][1:])))
     long_rand, lat_rand = float(str(matching_key.split(',')[0])), float(str(matching_key.split(',')[1]))
-    trending_reviews_nearby = rev.TrendingNearReviews(long_rand, lat_rand, user_id)
+    trending_reviews_nearby = rev.TrendingNearReviews(long_rand, lat_rand, user_id, search_text)
     trending_reviews_nearby = [str(review) for review in trending_reviews_nearby]
     # result = {}
     # result['near_review_id'] = trending_reviews_nearby[:10]
