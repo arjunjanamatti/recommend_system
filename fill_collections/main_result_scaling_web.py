@@ -297,7 +297,7 @@ def main_1():
             except:
                 return {'combined': f'This category {matching_key} has no results'}
     except:
-        return {'combined': f'user_id: {user_id} does not exist in our records'}
+        return {'combined': f'user_id: {user_id} and {search_text} does not exist in our records'}
 
 
 @app.route('/trending-user', methods=['GET', 'POST'])
@@ -317,7 +317,7 @@ def main_2():
             except:
                 return {'combined': f'This category {matching_key} has no results'}
     except:
-        return {'combined': f'user_id: {user_id} does not exist in our records'}
+        return {'combined': f'user_id: {user_id} and {search_text} does not exist in our records'}
 
 
 @app.route('/popular-review', methods=['GET', 'POST'])
@@ -338,7 +338,7 @@ def main_3():
                 return {'combined': f'This category {matching_key} has no results'}
     except Exception as e:
         print(f'Exception: {e}')
-        return {'combined': f'user_id: {user_id} does not exist in our records'}
+        return {'combined': f'user_id: {user_id} and {search_text} does not exist in our records'}
 
 @app.route('/popular-user', methods=['GET', 'POST'])
 def main_4():
@@ -357,7 +357,7 @@ def main_4():
             except:
                 return {'combined': f'This category {matching_key} has no results'}
     except:
-        return {'combined': f'user_id: {user_id} does not exist in our records'}
+        return {'combined': f'user_id: {user_id} and {search_text} does not exist in our records'}
 
 @app.route('/near-location', methods=['GET', 'POST'])
 def main_5():
