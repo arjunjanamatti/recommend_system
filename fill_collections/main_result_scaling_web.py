@@ -87,7 +87,6 @@ class trend_results:
         if search_text != None:
             print('INSIDE IF SEARCHTEXT LOOP')
             contains = [self.df_merge_1['title'].str.contains(i) for i in search_text]
-            print(f'Contains: {contains}')
             self.df_merge_1 = self.df_merge_1[np.all(contains, axis=0)]
         # if len(search_text) > 0:
         #     for tex in search_text:
