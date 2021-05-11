@@ -41,7 +41,7 @@ class trend_results:
         mydb = myclient['real_reviews']
         # list_1 = self.looping_json_files()
         # self.files_list = ['reviews.json', 'likes.json']
-        self.files_list = ['reviews_2.json', 'likes_2.json']
+        self.files_list = ['reviews_2.json', 'likes_2.json', 'products.json']
         self.tables_dictionary = {}
         for index, file in enumerate(self.files_list):
             my_collection = mydb[file.split('.')[0]]
@@ -60,7 +60,9 @@ class trend_results:
         df_1_approve = (df_1[df_1['isApprove'] == 'approved'])
         df_1_approve = (df_1_approve[df_1_approve['isDeleted'] == 'false'])
         # transform the likes_1 table to df_1 dataframe
-        df_2 = self.tables_dictionary[self.files_list[-1].split('.')[0]]
+        df_2 = self.tables_dictionary[self.files_list[1].split('.')[0]]
+        # transform the product table to df_1 dataframe
+        df_3 = self.tables_dictionary[self.files_list[-1].split('.')[0]]
         # rename the column name in reviews_1 table to resourceId as per likes_1 table
         df_1_approve = df_1_approve.rename(columns={"_id": "resourceId"})
         # merge both the dataframes based on common column 'resourceId'
