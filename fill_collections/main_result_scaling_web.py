@@ -302,7 +302,7 @@ def main_1():
             except:
                 return {'combined': f'This category {matching_key} has no results'}
     except:
-        return {'error': f'user_id: {user_id} and {search_text} does not exist in our records'}
+        return {'error': f'user_id: {user_id} or {search_text} does not exist in our records'}
 
 
 @app.route('/trending-user', methods=['GET', 'POST'])
@@ -322,7 +322,7 @@ def main_2():
             except:
                 return {'combined': f'This category {matching_key} has no results'}
     except:
-        return {'combined': f'user_id: {user_id} and {search_text} does not exist in our records'}
+        return {'error': f'user_id: {user_id} or {search_text} does not exist in our records'}
 
 
 @app.route('/popular-review', methods=['GET', 'POST'])
