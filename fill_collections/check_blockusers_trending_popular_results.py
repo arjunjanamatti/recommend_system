@@ -288,4 +288,4 @@ if __name__ == "__main__":
     end_time = time.perf_counter()
     print(f'Total time = {end_time-start_time} seconds')
     df_merge.to_csv('df_merge.csv')
-    app.run(debug=True)
+    # app.run(debug=True)
