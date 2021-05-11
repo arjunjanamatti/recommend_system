@@ -343,7 +343,7 @@ def main_3():
                 return {'combined': f'This category {matching_key} has no results'}
     except Exception as e:
         print(f'Exception: {e}')
-        return {'combined': f'user_id: {user_id} and {search_text} does not exist in our records'}
+        return {'error': f'user_id: {user_id} or {search_text} does not exist in our records'}
 
 @app.route('/popular-user', methods=['GET', 'POST'])
 def main_4():
