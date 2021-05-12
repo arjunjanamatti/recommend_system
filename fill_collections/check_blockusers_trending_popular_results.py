@@ -61,7 +61,7 @@ class trend_results:
         df_1 = self.tables_dictionary[self.files_list[0].split('.')[0]]
         # select reviews which are approved
         df_1_approve = (df_1[df_1['isApprove'] == 'approved'])
-        df_1_approve = (df_1_approve[df_1_approve['isDeleted'] == 'false'])
+        df_1_approve = (df_1_approve[df_1_approve['isDeleted'] == False])
         # transform the likes_1 table to df_1 dataframe
         df_2 = self.tables_dictionary[self.files_list[1].split('.')[0]]
         # # transform the product table to df_1 dataframe
@@ -73,7 +73,7 @@ class trend_results:
         # df_merge_1 = df_merge.merge(df_3, how='left', on='categoryId')
         print('MERGING COMPLETED')
         # extract only required columns from the merged dataframe
-        self.df_merge_1 = df_merge[['resourceId','title', 'loc', 'createdAt_x', 'updatedAt_x', 'fromUserId_x', 'categoryId']]
+        self.df_merge_1 = df_merge[['resourceId','title', 'loc', 'createdAt_x', 'updatedAt_x', 'fromUserId_x', 'categoryId', 'isDeleted']]
         # longititude extraction from the loc
         longitude = [_['coordinates'][0] for _ in self.df_merge_1['loc']]
 
