@@ -65,12 +65,12 @@ class trend_results:
         # transform the likes_1 table to df_1 dataframe
         df_2 = self.tables_dictionary[self.files_list[1].split('.')[0]]
         # # transform the product table to df_1 dataframe
-        # df_3 = self.tables_dictionary[self.files_list[-1].split('.')[0]]
+        df_3 = self.tables_dictionary[self.files_list[-1].split('.')[0]]
         # rename the column name in reviews_1 table to resourceId as per likes_1 table
         df_1_approve = df_1_approve.rename(columns={"_id": "resourceId"})
         # merge both the dataframes based on common column 'resourceId'
         df_merge = df_1_approve.merge(df_2, how='left', on='resourceId')
-        # df_merge_1 = df_merge.merge(df_3, how='left', on='categoryId')
+        df_merge_1 = df_merge.merge(df_3, how='left', on='categoryId')
         print('MERGING COMPLETED')
         # extract only required columns from the merged dataframe
         self.df_merge_1 = df_merge[['resourceId','title', 'loc', 'createdAt_x', 'updatedAt_x', 'fromUserId_x', 'categoryId', 'isDeleted']]
