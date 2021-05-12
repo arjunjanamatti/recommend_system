@@ -76,14 +76,14 @@ class trend_results:
         # extract only required columns from the merged dataframe
         # self.df_merge_1 = df_merge[['resourceId','title', 'loc', 'createdAt_x', 'updatedAt_x', 'fromUserId_x', 'categoryId', 'isDeleted']]
         self.df_merge_1 = df_merge_1[
-            ['resourceId', 'title', 'loc', 'createdAt_x', 'updatedAt_x', 'fromUserId_x', 'categoryId', 'name']]
+            ['resourceId', 'title', 'loc_x', 'createdAt_x', 'updatedAt_x', 'fromUserId_x', 'categoryId', 'name']]
         # longititude extraction from the loc
-        longitude = [_['coordinates'][0] for _ in self.df_merge_1['loc']]
+        longitude = [_['coordinates'][0] for _ in self.df_merge_1['loc_x']]
 
-        latitude = [_['coordinates'][1] for _ in self.df_merge_1['loc']]
+        latitude = [_['coordinates'][1] for _ in self.df_merge_1['loc_x']]
         self.df_merge_1['longitude'] = longitude
         self.df_merge_1['latitude'] = latitude
-        self.df_merge_1.drop(labels='loc', inplace=True, axis=1)
+        self.df_merge_1.drop(labels='loc_x', inplace=True, axis=1)
         created_dates = ([_.split('T')[0] for _ in self.df_merge_1['createdAt_x']])
         updated_dates = ([_.split('T')[0] for _ in self.df_merge_1['updatedAt_x']])
         self.df_merge_1['created_dates'] = created_dates
