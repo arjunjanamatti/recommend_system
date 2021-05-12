@@ -34,7 +34,7 @@ class trend_results:
 
     def looping_json_files(self):
         list_1 = []
-        self.files_list = ['reviews_2.json', 'likes_2.json']
+        self.files_list = ['reviews_2.json', 'likes_2.json', 'products_1.json']
         # self.files_list = ['reviews.json', 'likes.json']
         for files in self.files_list:
             with open(files) as file:
@@ -72,8 +72,11 @@ class trend_results:
         df_merge = df_1_approve.merge(df_2, how='left', on='resourceId')
         df_merge_1 = df_merge.merge(df_3, how='left', on='categoryId')
         print('MERGING COMPLETED')
+        print(df_merge_1.columns)
         # extract only required columns from the merged dataframe
-        self.df_merge_1 = df_merge[['resourceId','title', 'loc', 'createdAt_x', 'updatedAt_x', 'fromUserId_x', 'categoryId', 'isDeleted']]
+        # self.df_merge_1 = df_merge[['resourceId','title', 'loc', 'createdAt_x', 'updatedAt_x', 'fromUserId_x', 'categoryId', 'isDeleted']]
+        self.df_merge_1 = df_merge_1[
+            ['resourceId', 'title', 'loc', 'createdAt_x', 'updatedAt_x', 'fromUserId_x', 'categoryId', 'name']]
         # longititude extraction from the loc
         longitude = [_['coordinates'][0] for _ in self.df_merge_1['loc']]
 
