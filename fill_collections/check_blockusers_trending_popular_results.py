@@ -69,10 +69,10 @@ class trend_results:
         df_1_approve = df_1_approve.rename(columns={"_id": "resourceId"})
         # merge both the dataframes based on common column 'resourceId'
         df_merge = df_1_approve.merge(df_2, how='left', on='resourceId')
-        df_merge_1 = df_merge.merge(df_3, how='left', on='categoryId')
+        # df_merge_1 = df_merge.merge(df_3, how='left', on='categoryId')
         print('MERGING COMPLETED')
         # extract only required columns from the merged dataframe
-        self.df_merge_1 = df_merge_1[['resourceId','title', 'loc', 'createdAt_x', 'updatedAt_x', 'fromUserId_x', 'categoryId', 'name']]
+        self.df_merge_1 = df_merge[['resourceId','title', 'loc', 'createdAt_x', 'updatedAt_x', 'fromUserId_x', 'categoryId', 'name']]
         # longititude extraction from the loc
         longitude = [_['coordinates'][0] for _ in self.df_merge_1['loc']]
 
