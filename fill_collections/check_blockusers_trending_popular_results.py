@@ -34,7 +34,7 @@ class trend_results:
 
     def looping_json_files(self):
         list_1 = []
-        self.files_list = ['reviews_2.json', 'likes_2.json', 'products.json']
+        self.files_list = ['reviews_2.json', 'likes_2.json']
         # self.files_list = ['reviews.json', 'likes.json']
         for files in self.files_list:
             with open(files) as file:
@@ -63,8 +63,8 @@ class trend_results:
         df_1_approve = (df_1[df_1['isApprove'] == 'approved'])
         # transform the likes_1 table to df_1 dataframe
         df_2 = self.tables_dictionary[self.files_list[1].split('.')[0]]
-        # transform the product table to df_1 dataframe
-        df_3 = self.tables_dictionary[self.files_list[-1].split('.')[0]]
+        # # transform the product table to df_1 dataframe
+        # df_3 = self.tables_dictionary[self.files_list[-1].split('.')[0]]
         # rename the column name in reviews_1 table to resourceId as per likes_1 table
         df_1_approve = df_1_approve.rename(columns={"_id": "resourceId"})
         # merge both the dataframes based on common column 'resourceId'
@@ -72,7 +72,7 @@ class trend_results:
         # df_merge_1 = df_merge.merge(df_3, how='left', on='categoryId')
         print('MERGING COMPLETED')
         # extract only required columns from the merged dataframe
-        self.df_merge_1 = df_merge[['resourceId','title', 'loc', 'createdAt_x', 'updatedAt_x', 'fromUserId_x', 'categoryId', 'name']]
+        self.df_merge_1 = df_merge[['resourceId','title', 'loc', 'createdAt_x', 'updatedAt_x', 'fromUserId_x', 'categoryId']]
         # longititude extraction from the loc
         longitude = [_['coordinates'][0] for _ in self.df_merge_1['loc']]
 
