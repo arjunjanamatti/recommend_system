@@ -1,4 +1,4 @@
-
+import json
 import random
 import time
 from datetime import datetime
@@ -52,3 +52,7 @@ for i in range(900):
     new_dict['updatedAt'] = (randomDate("20-01-2021 13:30:00", "23-04-2021 04:50:34")).strftime('%d-%m-%YT%H:%M:%S')
     # new_dict = sample_dict.copy()
     nested_dict.append(new_dict)
+
+print(nested_dict)
+with open("business.json", "w") as fp:
+    json.dump(nested_dict , fp, indent=4)
