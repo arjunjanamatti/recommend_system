@@ -2,6 +2,7 @@ import json
 import random
 import time
 from datetime import datetime
+import pickle
 
 business_name_list = ['samsung', 'apple', 'oppo', 'toshiba', 'lenovo', 'acer', 'nokia', 'blackberry']
 
@@ -62,3 +63,10 @@ with open("business.json") as file:
     data = json.load(file)
 for dic in data:
     business_id.append(dic['_id'])
+
+with open('business_id.pickle', 'wb') as us:
+    pickle.dump(business_id, us)
+
+with open('business_id.pickle', 'rb') as f:
+    mynewlist = pickle.load(f)
+print(mynewlist)
