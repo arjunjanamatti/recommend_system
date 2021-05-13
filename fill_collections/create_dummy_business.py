@@ -43,29 +43,29 @@ def randomDate(start, end):
     dt = datetime.fromtimestamp(time.mktime(time.localtime(ptime)))
     return dt
 
-for i in range(900):
-    new_dict = sample_business.copy()
-    # 'fromUserId': '5fdf6bbcfe08e8c0191a7805'
-    new_dict['_id'] = new_dict['_id'][:19]+str(799386+i)
-    new_dict['name'] = random.choice(business_name_list)
-    new_dict['createdAt'] = (randomDate("20-01-2021 13:30:00", "23-04-2021 04:50:34")).strftime('%d-%m-%YT%H:%M:%S')
-    new_dict['updatedAt'] = (randomDate("20-01-2021 13:30:00", "23-04-2021 04:50:34")).strftime('%d-%m-%YT%H:%M:%S')
-    # new_dict = sample_dict.copy()
-    nested_dict.append(new_dict)
-
-print(nested_dict)
-with open("business.json", "w") as fp:
-    json.dump(nested_dict , fp, indent=4)
-
-business_id = []
-
-with open("business.json") as file:
-    data = json.load(file)
-for dic in data:
-    business_id.append(dic['_id'])
-
-with open('business_id.pickle', 'wb') as us:
-    pickle.dump(business_id, us)
+# for i in range(900):
+#     new_dict = sample_business.copy()
+#     # 'fromUserId': '5fdf6bbcfe08e8c0191a7805'
+#     new_dict['_id'] = new_dict['_id'][:19]+str(799386+i)
+#     new_dict['name'] = random.choice(business_name_list)
+#     new_dict['createdAt'] = (randomDate("20-01-2021 13:30:00", "23-04-2021 04:50:34")).strftime('%d-%m-%YT%H:%M:%S')
+#     new_dict['updatedAt'] = (randomDate("20-01-2021 13:30:00", "23-04-2021 04:50:34")).strftime('%d-%m-%YT%H:%M:%S')
+#     # new_dict = sample_dict.copy()
+#     nested_dict.append(new_dict)
+#
+# print(nested_dict)
+# with open("business.json", "w") as fp:
+#     json.dump(nested_dict , fp, indent=4)
+#
+# business_id = []
+#
+# with open("business.json") as file:
+#     data = json.load(file)
+# for dic in data:
+#     business_id.append(dic['_id'])
+#
+# with open('business_id.pickle', 'wb') as us:
+#     pickle.dump(business_id, us)
 
 try:
     with open('business_id.pickle', 'rb') as f:
