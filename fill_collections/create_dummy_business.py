@@ -42,7 +42,6 @@ def randomDate(start, end):
     dt = datetime.fromtimestamp(time.mktime(time.localtime(ptime)))
     return dt
 
-
 for i in range(900):
     new_dict = sample_business.copy()
     # 'fromUserId': '5fdf6bbcfe08e8c0191a7805'
@@ -56,3 +55,10 @@ for i in range(900):
 print(nested_dict)
 with open("business.json", "w") as fp:
     json.dump(nested_dict , fp, indent=4)
+
+business_id = []
+
+with open("business.json") as file:
+    data = json.load(file)
+for dic in data:
+    business_id.append(dic['_id'])
