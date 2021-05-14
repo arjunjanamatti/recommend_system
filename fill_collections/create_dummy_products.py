@@ -25,12 +25,16 @@ review_id_tags = list(random_chunk(resourceId))
 print(review_id_tags)
 print(len(review_id_tags))
 
+with open('business_id.pickle', 'rb') as f:
+    businessidlist = pickle.load(f)
+
 with open('products.json') as file:
     products = json.load(file)
 products_list = []
 print(len(products))
 for index, pro in enumerate(products):
     pro['review_id_tags'] = review_id_tags[index]
+    pro['businessId'] = random.choice(businessidlist)
     products_list.append(pro)
 print(products_list)
 
