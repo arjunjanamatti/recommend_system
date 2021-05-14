@@ -21,6 +21,9 @@ print(category_id_list)
 with open('categoryId.pickle', 'wb') as us:
     pickle.dump(category_id_list, us)
 
+with open('categoryId.pickle', 'rb') as f:
+    categoryIdlist = pickle.load(f)
+
 def random_chunk(li, min_chunk=10, max_chunk=11):
     it = iter(li)
     while True:
