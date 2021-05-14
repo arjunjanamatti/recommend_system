@@ -28,6 +28,7 @@ print(len(review_id_tags))
 with open('products.json') as file:
     products = json.load(file)
 products_list = []
+print(len(products))
 for index, pro in enumerate(products):
     pro['review_id_tags'] = review_id_tags[index]
     products_list.append(pro)
