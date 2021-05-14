@@ -9,6 +9,15 @@ from pymongo.errors import ConnectionFailure
 from itertools import islice
 from random import randint
 
+with open('categories.json') as file:
+    categories = json.load(file)
+
+category_id_list = []
+for cat in categories:
+    category_id_list.append(cat['_id'])
+
+print(category_id_list)
+
 def random_chunk(li, min_chunk=10, max_chunk=11):
     it = iter(li)
     while True:
