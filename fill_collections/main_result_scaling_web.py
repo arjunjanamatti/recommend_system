@@ -303,15 +303,9 @@ def main(user_id, search_text, self_check):
     # self_check = 'yes'
     if self_check == 'yes':
         self_reviews = result.SelfCheck(user_id)
-        print(f'self_reviews: {self_reviews}')
-        print()
         if len(self_reviews) > 0:
             self_reviews.append(user_id)
             for index, keys in enumerate(top_review_last_week.keys()):
-                print(keys, len(top_review_last_week[keys]), top_review_last_week[keys])
-                print(len(set(top_review_last_week[keys]).difference(self_reviews)), set(top_review_last_week[keys]).difference(self_reviews))
-                print(list(set(top_review_last_week[keys]).intersection(self_reviews)))
-                print()
                 top_review_last_week[keys] = list(set(top_review_last_week[keys]).intersection(self_reviews))
                 top_user_last_week[list(top_user_last_week.keys())[index]] = list(set(top_user_last_week[keys]).intersection(self_reviews))
                 popular_review_last_month[list(popular_review_last_month.keys())[index]] = list(set(popular_review_last_month[keys]).intersection(self_reviews))
