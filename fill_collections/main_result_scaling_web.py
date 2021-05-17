@@ -119,6 +119,14 @@ class trend_results:
         self.df_merge_1.to_csv('df_merge.csv')
         return self.df_merge_1
 
+    def SelfCheck(self, user_id):
+        self_check = 'yes'
+        df_merge_2 = self.df_merge_1[self.df_merge_1['fromUserId_x'] == user_id]
+        self_reviews = list(df_merge_2['resourceId'].unique())
+        return self_reviews
+
+        pass
+
     def TopProducts(self, filename, user_id, search_text):
         self.MergedDataframe(user_id, search_text)
         files_list = [filename]
