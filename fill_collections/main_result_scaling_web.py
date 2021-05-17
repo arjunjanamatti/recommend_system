@@ -121,11 +121,13 @@ class trend_results:
 
     def SelfCheck(self, user_id):
         self_check = 'yes'
-        df_merge_2 = self.df_merge_1[self.df_merge_1['fromUserId_x'] == user_id]
-        self_reviews = list(df_merge_2['resourceId'].unique())
-        return self_reviews
-
-        pass
+        combine_user_id = ' '.join(self.df_merge_1["fromUserId_x"])
+        if user_id in combine_user_id:
+            df_merge_2 = self.df_merge_1[self.df_merge_1['fromUserId_x'] == user_id]
+            self_reviews = list(df_merge_2['resourceId'].unique())
+            return self_reviews
+        else:
+            pass
 
     def TopProducts(self, filename, user_id, search_text):
         self.MergedDataframe(user_id, search_text)
@@ -298,6 +300,17 @@ def main(user_id, search_text):
     _ = result.CategoryWiseResult(user_id, search_text)
     top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month = result.CombinedResults()
     # return top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month, top_products, top_services
+    self_check = 'yes'
+    if self_check == 'yes':
+        self_reviews = result.SelfCheck(user_id)
+        print(f'self_reviews: {self_reviews}')
+        print()
+        if len(self_reviews) > 0:
+            for index, keys in enumerate(top_review_last_week.keys()):
+                print(keys, len(top_review_last_week[keys]), top_review_last_week[keys])
+                print(len(set(top_review_last_week[keys]).difference(self_reviews)), set(top_review_last_week[keys]).difference(self_reviews))
+                print()
+            pass
     return top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month
 
 
