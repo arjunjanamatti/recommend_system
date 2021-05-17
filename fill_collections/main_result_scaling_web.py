@@ -98,18 +98,24 @@ class trend_results:
         #     for tex in search_text:
         #         self.df_merge_1 = self.df_merge_1[self.df_merge_1.title.str.contains(tex)]
         #     pass
-
+        self_check = 'yes'
         if len(user_id) > 0:
             print('INSIDE IF LOOP')
-            df_merge_2 = self.df_merge_1[self.df_merge_1['fromUserId_x'] == user_id]
-            self.my_reviews = list(df_merge_2['resourceId'].unique())
-            print(self.my_reviews)
+
             for val in self.try_dict.values():
                 if user_id in val:
                     remove_id = str([v for v in val if v != user_id][-1])
                     print(f'REMOVID: {remove_id}')
                     self.df_merge_1 = self.df_merge_1[~self.df_merge_1.fromUserId_x.str.contains(remove_id)]
             self.df_merge_1.reset_index(inplace=True)
+            if self_check == 'yes':
+                combine_user_id = ' '.join(self.df_merge_1["fromUserId_x"])
+                if user_id in combine_user_id:
+                    self.df_merge_1 = self.df_merge_1[self.df_merge_1['fromUserId_x'] == user_id]
+                else:
+                    print('No data found')
+                    self.df_merge_1 = pd.DataFrame()
+                    # raise RuntimeError('Symbol doesn\'t exist')
         self.df_merge_1.to_csv('df_merge.csv')
         return self.df_merge_1
 
@@ -306,7 +312,11 @@ def main_1():
                 return {'combined': top_review_last_week[matching_key]}
             except:
                 return {'combined': f'This category {matching_key} has no results'}
-    except:
+
+    except KeyError:
+        return {'empty_result': []}
+    except Exception as e:
+        print(f'Exception: {type(e).__name__}')
         return {'error': f'user_id: {user_id} or {search_text} does not exist in our records'}
 
 
@@ -315,6 +325,7 @@ def main_2():
     matching_key = request.args.get('categoryid')
     user_id = request.args.get('userid')
     search_text = request.args.get('searchtext', default = None)
+    # self_check = request.args.get('self', default = None).
     if search_text:
         search_text = list(search_text.split())
     try:
