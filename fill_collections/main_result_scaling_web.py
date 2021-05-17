@@ -98,7 +98,7 @@ class trend_results:
         #     for tex in search_text:
         #         self.df_merge_1 = self.df_merge_1[self.df_merge_1.title.str.contains(tex)]
         #     pass
-        self_check = 'yes'
+        # self_check = 'yes'
         if len(user_id) > 0:
             print('INSIDE IF LOOP')
 
@@ -108,14 +108,14 @@ class trend_results:
                     print(f'REMOVID: {remove_id}')
                     self.df_merge_1 = self.df_merge_1[~self.df_merge_1.fromUserId_x.str.contains(remove_id)]
             self.df_merge_1.reset_index(inplace=True)
-            if self_check == 'yes':
-                combine_user_id = ' '.join(self.df_merge_1["fromUserId_x"])
-                if user_id in combine_user_id:
-                    self.df_merge_1 = self.df_merge_1[self.df_merge_1['fromUserId_x'] == user_id]
-                else:
-                    print('No data found')
-                    self.df_merge_1 = pd.DataFrame()
-                    # raise RuntimeError('Symbol doesn\'t exist')
+            # if self_check == 'yes':
+            #     combine_user_id = ' '.join(self.df_merge_1["fromUserId_x"])
+            #     if user_id in combine_user_id:
+            #         self.df_merge_1 = self.df_merge_1[self.df_merge_1['fromUserId_x'] == user_id]
+            #     else:
+            #         print('No data found')
+            #         self.df_merge_1 = pd.DataFrame()
+            #         # raise RuntimeError('Symbol doesn\'t exist')
         self.df_merge_1.to_csv('df_merge.csv')
         return self.df_merge_1
 
@@ -316,7 +316,7 @@ def main_1():
     except KeyError:
         return {'empty_result': []}
     except Exception as e:
-        print(f'Exception: {type(e).__name__}')
+        # print(f'Exception: {type(e).__name__}')
         return {'error': f'user_id: {user_id} or {search_text} does not exist in our records'}
 
 
