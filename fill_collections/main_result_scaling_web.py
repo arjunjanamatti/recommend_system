@@ -292,7 +292,7 @@ class trend_results:
         return self.top_review_last_week, self.top_user_last_week, self.popular_review_last_month, self.popular_user_last_month
 
 # @app.route('/trending', methods=['GET', 'POST'])
-def main(user_id, search_text):
+def main(user_id, search_text, self_check):
     # if request.method == 'POST':
     result = trend_results()
     # top_products = result.TopProducts('products')
@@ -300,16 +300,22 @@ def main(user_id, search_text):
     _ = result.CategoryWiseResult(user_id, search_text)
     top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month = result.CombinedResults()
     # return top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month, top_products, top_services
-    self_check = 'yes'
+    # self_check = 'yes'
     if self_check == 'yes':
         self_reviews = result.SelfCheck(user_id)
         print(f'self_reviews: {self_reviews}')
         print()
         if len(self_reviews) > 0:
+            self_reviews.append(user_id)
             for index, keys in enumerate(top_review_last_week.keys()):
                 print(keys, len(top_review_last_week[keys]), top_review_last_week[keys])
                 print(len(set(top_review_last_week[keys]).difference(self_reviews)), set(top_review_last_week[keys]).difference(self_reviews))
+                print(list(set(top_review_last_week[keys]).intersection(self_reviews)))
                 print()
+                top_review_last_week[keys] = list(set(top_review_last_week[keys]).intersection(self_reviews))
+                top_user_last_week[list(top_user_last_week.keys())[index]] = list(set(top_user_last_week[keys]).intersection(self_reviews))
+                popular_review_last_month[list(popular_review_last_month.keys())[index]] = list(set(popular_review_last_month[keys]).intersection(self_reviews))
+                popular_user_last_month[list(popular_user_last_month.keys())[index]] = list(set(popular_user_last_month[keys]).intersection(self_reviews))
             pass
     return top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month
 
@@ -319,12 +325,14 @@ def main_1():
     matching_key = request.args.get('categoryid')
     user_id = request.args.get('userid')
     search_text = request.args.get('searchtext', default = None)
-    search_text = search_text.lower()
+
+    self_check = request.args.get('self', default = None)
     if search_text:
+        search_text = search_text.lower()
         search_text = list(search_text.split())
     print(search_text)
     try:
-        top_review_last_week, _, _, _ = main(user_id, search_text)
+        top_review_last_week, _, _, _ = main(user_id, search_text, self_check)
 
         if matching_key == '':
             return {'combined': top_review_last_week['combinedResults']}
