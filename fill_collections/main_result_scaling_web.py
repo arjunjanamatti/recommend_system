@@ -53,7 +53,6 @@ class trend_results:
     def MergedDataframe(self, user_id, search_text):
         self.GetTableDictionary()
         self.GetBlockUsersData()
-        print('TABLE AND BLOCKUSERS COMPLETE')
         # transform the reviews_1 table to df_1 dataframe
         df_1 = self.tables_dictionary[self.files_list[0].split('.')[0]]
         # select reviews which are approved
@@ -68,9 +67,8 @@ class trend_results:
         # merge both the dataframes based on common column 'resourceId'
         df_merge = df_1_approve.merge(df_2, how='left', on='resourceId')
         # df_merge_1 = df_merge.merge(df_3, how='left', on='categoryId')
-        print('MERGING COMPLETED')
         # extract only required columns from the merged dataframe
-        self.df_merge_1 = df_merge[['resourceId','title', 'loc', 'createdAt_x', 'updatedAt_x', 'fromUserId_x', 'categoryId', 'title']]
+        self.df_merge_1 = df_merge[['resourceId','title', 'loc', 'createdAt_x', 'updatedAt_x', 'fromUserId_x', 'categoryId']]
         # longititude extraction from the loc
         longitude = [_['coordinates'][0] for _ in self.df_merge_1['loc']]
 
@@ -88,12 +86,9 @@ class trend_results:
         self.df_merge_1['updated_dates'] = pd.to_datetime(self.df_merge_1['updated_dates'], dayfirst=True)
 
         self.df_merge_1.drop(labels=['createdAt_x', 'updatedAt_x'], inplace=True, axis=1)
-        self.df_merge_1.to_csv('check_merge.csv')
         if search_text != None:
             print(f'INSIDE IF SEARCHTEXT LOOP: {search_text}')
             combine_title = ' '.join(self.df_merge_1["title"])
-            print(self.df_merge_1["title"])
-            print(combine_title)
             if [text for text in search_text if text in combine_title]:
                 contains = [self.df_merge_1['title'].str.contains(i) for i in search_text]
                 self.df_merge_1 = self.df_merge_1[np.all(contains, axis=0)]
