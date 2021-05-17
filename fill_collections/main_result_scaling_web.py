@@ -101,6 +101,9 @@ class trend_results:
 
         if len(user_id) > 0:
             print('INSIDE IF LOOP')
+            df_merge_2 = self.df_merge_1[self.df_merge_1['fromUserId_x'] == user_id]
+            self.my_reviews = list(df_merge_2['resourceId'].unique())
+            print(self.my_reviews)
             for val in self.try_dict.values():
                 if user_id in val:
                     remove_id = str([v for v in val if v != user_id][-1])
