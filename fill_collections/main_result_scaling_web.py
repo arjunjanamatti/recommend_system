@@ -120,13 +120,14 @@ class trend_results:
         return self.df_merge_1
 
     def SelfCheck(self, user_id):
+        empty_list = []
         combine_user_id = ' '.join(self.df_merge_1["fromUserId_x"])
         if user_id in combine_user_id:
             df_merge_2 = self.df_merge_1[self.df_merge_1['fromUserId_x'] == user_id]
             self_reviews = list(df_merge_2['resourceId'].unique())
             return self_reviews
         else:
-            pass
+            return empty_list
 
     def TopProducts(self, filename, user_id, search_text):
         self.MergedDataframe(user_id, search_text)
@@ -302,6 +303,7 @@ def main(user_id, search_text, self_check):
     # self_check = 'yes'
     if self_check == 'true':
         self_reviews = result.SelfCheck(user_id)
+        #[{"key":"userid","value":"5fdf6bbcfe08e8c0191a7829","equals":true,"description":"","enabled":true}]
         if len(self_reviews) > 0:
             self_reviews.append(user_id)
             for index, keys in enumerate(top_review_last_week.keys()):
@@ -309,7 +311,13 @@ def main(user_id, search_text, self_check):
                 top_user_last_week[list(top_user_last_week.keys())[index]] = list(set(top_user_last_week[keys]).intersection(self_reviews))
                 popular_review_last_month[list(popular_review_last_month.keys())[index]] = list(set(popular_review_last_month[keys]).intersection(self_reviews))
                 popular_user_last_month[list(popular_user_last_month.keys())[index]] = list(set(popular_user_last_month[keys]).intersection(self_reviews))
-            pass
+        else:
+            for index, keys in enumerate(top_review_last_week.keys()):
+                top_review_last_week[keys] = []
+                top_user_last_week[list(top_user_last_week.keys())[index]] = []
+                popular_review_last_month[list(popular_review_last_month.keys())[index]] = []
+                popular_user_last_month[list(popular_user_last_month.keys())[index]] = []
+
     return top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month
 
 
