@@ -67,7 +67,6 @@ class trend_results:
         df_1_approve = df_1_approve.rename(columns={"_id": "resourceId"})
         # merge both the dataframes based on common column 'resourceId'
         df_merge = df_1_approve.merge(df_2, how='left', on='resourceId')
-        print(df_merge.columns)
         # df_merge_1 = df_merge.merge(df_3, how='left', on='categoryId')
         print('MERGING COMPLETED')
         # extract only required columns from the merged dataframe
@@ -93,6 +92,7 @@ class trend_results:
         if search_text != None:
             print(f'INSIDE IF SEARCHTEXT LOOP: {search_text}')
             combine_title = ' '.join(self.df_merge_1["title"])
+            print(self.df_merge_1["title"])
             print(combine_title)
             if [text for text in search_text if text in combine_title]:
                 contains = [self.df_merge_1['title'].str.contains(i) for i in search_text]
