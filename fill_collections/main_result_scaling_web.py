@@ -303,7 +303,7 @@ def main(user_id, search_text, target_userid):
     top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month = result.CombinedResults()
     # return top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month, top_products, top_services
     # self_check = 'yes'
-    if len(target_userid) > 0:
+    if target_userid != None:
         self_reviews = result.TargetUserId(target_userid)
         #[{"key":"userid","value":"5fdf6bbcfe08e8c0191a7829","equals":true,"description":"","enabled":true}]
         # 605dd8c826e482412f150f3e
@@ -379,10 +379,11 @@ def main_3():
     matching_key = request.args.get('categoryid')
     user_id = request.args.get('userid')
     search_text = request.args.get('searchtext', default = None)
+    target_userid = request.args.get('targetuserid', default=None)
     if search_text:
         search_text = list(search_text.split())
     try:
-        _, _, popular_review_last_month, _ = main(user_id, search_text)
+        _, _, popular_review_last_month, _ = main(user_id, search_text,target_userid)
         if matching_key == '':
             return {'combined': popular_review_last_month['combinedResults']}
         elif matching_key != '':
