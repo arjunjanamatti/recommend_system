@@ -11,8 +11,8 @@ def GetSpeech(file_location, host):
     return result_dict['Video speech'], result_dict['Profane words']
 
 def UpdateKeys(id_list, file_location, host):
-    for id in id_list[:int(0.5 * len(id_list))]:
-        coll.update({'_id': f'{id}'}, {'$set': {'testing_new_key': f'{str(GetSpeech(file_location, host))}'}})
+    for id in id_list:
+        coll.update({'_id': f'{id}'}, {'$set': {'full_speech': f'{(GetSpeech(file_location, host))[0]}', 'profane_words': f'{(GetSpeech(file_location, host))[1]}'}})
     pass
 
 host = 'http://127.0.0.1:5050/text-speech'
@@ -33,8 +33,13 @@ print(reviews_list)
 for review in reviews_list[:2]:
     first_video_list = glob('{}/*'.format(f'{review}/video'))
     print(first_video_list[-1])
-    file_location = first_video_list
-    UpdateKeys(review_id_no_speech, file_location, host)
+    file_location = first_video_list[-1]
+    speech_text, profane_text = GetSpeech(file_location, host)
+    print(speech_text)
+    print(type(speech_text))
+    print(profane_text)
+    print(type(profane_text))
+    # UpdateKeys(review_id_no_speech, file_location, host)
 
 
 # file_location = 'C:/Users/Arjun Janamatti/PycharmProjects/try_recommend/fill_collections/arnold.mp4'
