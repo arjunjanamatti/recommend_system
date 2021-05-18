@@ -119,12 +119,12 @@ class trend_results:
         self.df_merge_1.to_csv('df_merge.csv')
         return self.df_merge_1
 
-    def SelfCheck(self, user_id):
+    def SelfCheck(self, target_userid):
         empty_list = []
         combine_user_id = ' '.join(map(str, self.df_merge_1["fromUserId_x"]))
-        if user_id in combine_user_id:
+        if target_userid in combine_user_id:
             self.df_merge_1['fromUserId_x'] = self.df_merge_1['fromUserId_x'].astype(str)
-            df_merge_2 = self.df_merge_1[self.df_merge_1['fromUserId_x'] == user_id]
+            df_merge_2 = self.df_merge_1[self.df_merge_1['fromUserId_x'] == target_userid]
             self_reviews = list(df_merge_2['resourceId'].unique())
             self_reviews = [str(review) for review in self_reviews]
             return self_reviews
@@ -294,7 +294,7 @@ class trend_results:
         return self.top_review_last_week, self.top_user_last_week, self.popular_review_last_month, self.popular_user_last_month
 
 # @app.route('/trending', methods=['GET', 'POST'])
-def main(user_id, search_text, self_check):
+def main(user_id, search_text, target_userid):
     # if request.method == 'POST':
     result = trend_results()
     # top_products = result.TopProducts('products')
@@ -303,7 +303,7 @@ def main(user_id, search_text, self_check):
     top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month = result.CombinedResults()
     # return top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month, top_products, top_services
     # self_check = 'yes'
-    if self_check == 'true':
+    if len(target_userid) > 0:
         self_reviews = result.SelfCheck(user_id)
         #[{"key":"userid","value":"5fdf6bbcfe08e8c0191a7829","equals":true,"description":"","enabled":true}]
         # 605dd8c826e482412f150f3e
@@ -330,13 +330,13 @@ def main_1():
     user_id = request.args.get('userid')
     search_text = request.args.get('searchtext', default = None)
 
-    self_check = request.args.get('targetuserid', default = None)
+    target_userid = request.args.get('targetuserid', default = None)
     if search_text:
         search_text = search_text.lower()
         search_text = list(search_text.split())
     print(search_text)
     try:
-        top_review_last_week, _, _, _ = main(user_id, search_text, self_check)
+        top_review_last_week, _, _, _ = main(user_id, search_text, target_userid)
 
         if matching_key == '':
             return {'combined': top_review_last_week['combinedResults']}
