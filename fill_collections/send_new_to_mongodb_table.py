@@ -1,5 +1,12 @@
 from pymongo import MongoClient
 
+def TrialFunctions():
+        return 10 + 20
+
+def UpdateKeys(id_list):
+        for id in id_list:
+                coll.update({'_id': f'{id}'}, {'$set': {'testing_new_key': f'{str(TrialFunctions())}'}})
+        pass
 
 myclient = MongoClient(host=None, port=None)
 mydb = myclient['real_reviews']
@@ -8,7 +15,7 @@ coll = mydb['reviews']
 # allkeyvalues = mongo_db.reviews.find({},{'testing_new_key': 1})
 allkeyvalues = coll.find({},{'testing_new_key': 1})
 for result in allkeyvalues:
-        if 'testing_new_key' in result.keys():
+        if 'testing_new_key' not in result.keys():
                 print(result)
                 print(result['_id'])
 
