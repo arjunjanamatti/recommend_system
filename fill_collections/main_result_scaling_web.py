@@ -306,7 +306,7 @@ def main(user_id, search_text, target_userid):
     if target_userid != None:
         self_reviews = result.TargetUserId(target_userid)
         #[{"key":"userid","value":"5fdf6bbcfe08e8c0191a7829","equals":true,"description":"","enabled":true}]
-        # 605dd8c826e482412f150f3e
+        # 604cf485c4e5fa0b7f7800173, 5fdf6bbcfe08e8c0191a7813
         if len(self_reviews) > 0:
             self_reviews.append(target_userid)
             for index, keys in enumerate(top_review_last_week.keys()):
