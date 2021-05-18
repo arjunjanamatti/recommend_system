@@ -121,10 +121,12 @@ class trend_results:
 
     def SelfCheck(self, user_id):
         empty_list = []
-        combine_user_id = ' '.join(self.df_merge_1["fromUserId_x"])
+        combine_user_id = ' '.join(map(str, self.df_merge_1["fromUserId_x"]))
         if user_id in combine_user_id:
+            self.df_merge_1['fromUserId_x'] = self.df_merge_1['fromUserId_x'].astype(str)
             df_merge_2 = self.df_merge_1[self.df_merge_1['fromUserId_x'] == user_id]
             self_reviews = list(df_merge_2['resourceId'].unique())
+            self_reviews = [str(review) for review in self_reviews]
             return self_reviews
         else:
             return empty_list
@@ -304,6 +306,7 @@ def main(user_id, search_text, self_check):
     if self_check == 'true':
         self_reviews = result.SelfCheck(user_id)
         #[{"key":"userid","value":"5fdf6bbcfe08e8c0191a7829","equals":true,"description":"","enabled":true}]
+        # 605dd8c826e482412f150f3e
         if len(self_reviews) > 0:
             self_reviews.append(user_id)
             for index, keys in enumerate(top_review_last_week.keys()):
