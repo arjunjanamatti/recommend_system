@@ -119,7 +119,7 @@ class trend_results:
         self.df_merge_1.to_csv('df_merge.csv')
         return self.df_merge_1
 
-    def SelfCheck(self, target_userid):
+    def TargetUserId(self, target_userid):
         empty_list = []
         combine_user_id = ' '.join(map(str, self.df_merge_1["fromUserId_x"]))
         if target_userid in combine_user_id:
@@ -304,11 +304,11 @@ def main(user_id, search_text, target_userid):
     # return top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month, top_products, top_services
     # self_check = 'yes'
     if len(target_userid) > 0:
-        self_reviews = result.SelfCheck(user_id)
+        self_reviews = result.TargetUserId(target_userid)
         #[{"key":"userid","value":"5fdf6bbcfe08e8c0191a7829","equals":true,"description":"","enabled":true}]
         # 605dd8c826e482412f150f3e
         if len(self_reviews) > 0:
-            self_reviews.append(user_id)
+            self_reviews.append(target_userid)
             for index, keys in enumerate(top_review_last_week.keys()):
                 top_review_last_week[keys] = list(set(top_review_last_week[keys]).intersection(self_reviews))
                 top_user_last_week[list(top_user_last_week.keys())[index]] = list(set(top_user_last_week[keys]).intersection(self_reviews))
