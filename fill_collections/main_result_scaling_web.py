@@ -330,7 +330,7 @@ def main_1():
     user_id = request.args.get('userid')
     search_text = request.args.get('searchtext', default = None)
 
-    self_check = request.args.get('self', default = None)
+    self_check = request.args.get('targetuserid', default = None)
     if search_text:
         search_text = search_text.lower()
         search_text = list(search_text.split())
@@ -358,7 +358,7 @@ def main_2():
     matching_key = request.args.get('categoryid')
     user_id = request.args.get('userid')
     search_text = request.args.get('searchtext', default = None)
-    self_check = request.args.get('self', default = None)
+    self_check = request.args.get('targetuserid', default = None)
     if search_text:
         search_text = list(search_text.split())
     try:
