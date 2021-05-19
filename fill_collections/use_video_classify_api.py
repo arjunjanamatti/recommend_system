@@ -19,27 +19,28 @@ host = 'http://127.0.0.1:5050/text-speech'
 myclient = MongoClient(host=None, port=None)
 mydb = myclient['real_reviews']
 coll = mydb['reviews']
-review_id_list = coll.find({},{'speech': 1})
+review_id_list = coll.find({},{'full_speech': 1})
 review_id_no_speech = []
 for result in review_id_list:
-    if 'speech' not in result:
+    if 'full_speech' not in result:
         review_id_no_speech.append(f'{result["_id"]}')
 
 
 reviews_location = 'C:/Users/Arjun Janamatti/Downloads/reviews'
 reviews_list = glob('{}/*'.format(reviews_location))
 print(reviews_list)
+print(review_id_no_speech)
 
-for review in reviews_list[:2]:
-    first_video_list = glob('{}/*'.format(f'{review}/video'))
-    print(first_video_list[-1])
-    file_location = first_video_list[-1]
-    speech_text, profane_text = GetSpeech(file_location, host)
-    print(speech_text)
-    print(type(speech_text))
-    print(profane_text)
-    print(type(profane_text))
-    UpdateKeys(review_id_no_speech, file_location, host)
+# for review in reviews_list[:2]:
+#     first_video_list = glob('{}/*'.format(f'{review}/video'))
+#     print(first_video_list[-1])
+#     file_location = first_video_list[-1]
+#     speech_text, profane_text = GetSpeech(file_location, host)
+#     print(speech_text)
+#     print(type(speech_text))
+#     print(profane_text)
+#     print(type(profane_text))
+#     UpdateKeys(review_id_no_speech, file_location, host)
 
 
 # file_location = 'C:/Users/Arjun Janamatti/PycharmProjects/try_recommend/fill_collections/arnold.mp4'
