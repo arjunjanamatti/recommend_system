@@ -19,7 +19,7 @@ class userapi:
         result_dict = json.loads(vids.text)
         return result_dict['Video speech'], result_dict['Profane words']
 
-    def UpdateKeys(id, speech_text, profane_text):
+    def UpdateKeys(self, id, speech_text, profane_text):
         # for id in id_list:
         coll.update({'_id': f'{id}'}, {'$set': {'full_speech': f'{speech_text}', 'profane_words': f'{profane_text}'}})
 
@@ -30,8 +30,8 @@ class userapi:
          if 'full_speech' not in result]
         return review_id_no_speech
 
-    def GetUpdatedReviewId(self, reviews_location, review_id_no_speech):
-        reviews_list = glob('{}/*'.format(reviews_location))
+    def GetUpdatedReviewId(self, review_id_no_speech):
+        reviews_list = glob('{}/*'.format(self.reviews_location))
         update_review_list = []
 
         for review in reviews_list:
@@ -40,6 +40,26 @@ class userapi:
                 update_review_list.append(review)
 
         return update_review_list
+
+    def GetResults(self):
+        review_id_no_speech = self.GetReviewsWithNoSpeech()
+        update_review_list = self.GetUpdatedReviewId(review_id_no_speech)
+        if len(update_review_list) > 0:
+            for review in update_review_list:
+                first_video_list = glob('{}/*'.format(f'{review}/video'))
+                print(first_video_list[-1])
+                file_location = first_video_list[-1]
+                speech_text, profane_text = self.GetSpeech()
+                print(speech_text)
+                print(type(speech_text))
+                print(profane_text)
+                print(type(profane_text))
+                review_id = review.split('\\')[-1]
+                self.UpdateKeys(review_id, speech_text, profane_text)
+                print(f'update on Review_id: {review_id} completed !!!')
+        else:
+            pass
+        pass
 
 
 
