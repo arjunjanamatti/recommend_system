@@ -119,9 +119,44 @@ class trend_results:
         self.df_merge_1.to_csv('df_merge.csv')
         return self.df_merge_1
 
-    def CategoryResults(self, user_id, search_text):
-        self.MergedDataframe(user_id, search_text)
-        categories_count_df = (self.df_merge_1.groupby(['categoryId'])['updated_dates'].count().reset_index().rename(
+    def CategoryResults(self):
+        self.GetTableDictionary()
+        # transform the reviews_1 table to df_1 dataframe
+        df_1 = self.tables_dictionary[self.files_list[0].split('.')[0]]
+        # select reviews which are approved
+        df_1_approve = (df_1[df_1['isApprove'] == 'approved'])
+        df_1_approve = (df_1_approve[df_1_approve['isDeleted'] == False])
+        # transform the likes_1 table to df_1 dataframe
+        df_2 = self.tables_dictionary[self.files_list[1].split('.')[0]]
+        # # transform the product table to df_1 dataframe
+        # df_3 = self.tables_dictionary[self.files_list[-1].split('.')[0]]
+        # rename the column name in reviews_1 table to resourceId as per likes_1 table
+        df_1_approve = df_1_approve.rename(columns={"_id": "resourceId"})
+        # merge both the dataframes based on common column 'resourceId'
+        df_merge = df_1_approve.merge(df_2, how='left', on='resourceId')
+        # df_merge_1 = df_merge.merge(df_3, how='left', on='categoryId')
+        # extract only required columns from the merged dataframe
+        df_merge_cat = df_merge[['resourceId','title', 'loc', 'createdAt_x', 'updatedAt_x', 'fromUserId_x', 'categoryId']]
+        # longititude extraction from the loc
+        longitude = [_['coordinates'][0] for _ in df_merge_cat['loc']]
+
+        latitude = [_['coordinates'][1] for _ in df_merge_cat['loc']]
+        df_merge_cat['longitude'] = longitude
+        df_merge_cat['latitude'] = latitude
+        df_merge_cat.drop(labels='loc', inplace=True, axis=1)
+        df_merge_cat['createdAt_x'] = df_merge_cat['createdAt_x'].apply(lambda x: str(x))
+        df_merge_cat['updatedAt_x'] = df_merge_cat['updatedAt_x'].apply(lambda x: str(x))
+        created_dates = ([_.split('T')[0] for _ in df_merge_cat['createdAt_x']])
+        updated_dates = ([_.split('T')[0] for _ in df_merge_cat['updatedAt_x']])
+        df_merge_cat['created_dates'] = created_dates
+        df_merge_cat['updated_dates'] = updated_dates
+        df_merge_cat['created_dates'] = pd.to_datetime(df_merge_cat['created_dates'], dayfirst=True)
+        df_merge_cat['updated_dates'] = pd.to_datetime(df_merge_cat['updated_dates'], dayfirst=True)
+
+        df_merge_cat.drop(labels=['createdAt_x', 'updatedAt_x'], inplace=True, axis=1)
+        df_merge_cat.reset_index(inplace=True)
+
+        categories_count_df = (df_merge_cat.groupby(['categoryId'])['updated_dates'].count().reset_index().rename(
             columns={'updated_dates': 'ReviewViewCount'}))
         categories_count_df = (categories_count_df.sort_values(['ReviewLikeCount'], ascending=False))
         return categories_count_df['categoryId'].unique()
@@ -431,14 +466,15 @@ def main_45():
     if search_text:
         search_text = list(search_text.split())
     try:
-        _, _, _, popular_user_last_month, _ = main(user_id, search_text, target_userid)
-        if matching_key == '':
-            return {'combined': popular_user_last_month['combinedResults']}
-        elif matching_key != '':
-            try:
-                return {f'{matching_key}': popular_user_last_month[matching_key]}
-            except:
-                return {'combined': f'This category {matching_key} has no results'}
+        _, _, _, _, category_trend = main(user_id, search_text, target_userid)
+        return {'category_trend_results': category_trend}
+        # if matching_key == '':
+        #     return {'combined': popular_user_last_month['combinedResults']}
+        # elif matching_key != '':
+        #     try:
+        #         return {f'{matching_key}': popular_user_last_month[matching_key]}
+        #     except:
+        #         return {'combined': f'This category {matching_key} has no results'}
     except:
         return {'error': f'user_id: {user_id} or {search_text} does not exist in our records'}
 
