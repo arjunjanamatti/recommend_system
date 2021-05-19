@@ -119,6 +119,13 @@ class trend_results:
         self.df_merge_1.to_csv('df_merge.csv')
         return self.df_merge_1
 
+    def CategoryResults(self, user_id, search_text):
+        self.MergedDataframe(user_id, search_text)
+        categories_count_df = (self.df_merge_1.groupby(['categoryId'])['updated_dates'].count().reset_index().rename(
+            columns={'updated_dates': 'ReviewViewCount'}))
+        categories_count_df = (categories_count_df.sort_values(['ReviewLikeCount'], ascending=False))
+        return categories_count_df['categoryId'].unique()
+
     def TargetUserId(self, target_userid):
         empty_list = []
         combine_user_id = ' '.join(map(str, self.df_merge_1["fromUserId_x"]))
