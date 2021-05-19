@@ -148,7 +148,7 @@ class trend_results:
         df_merge_cat.reset_index(inplace=True)
 
         categories_count_df = (df_merge_cat.groupby(['categoryId'])['updated_dates'].count().reset_index().rename(
-            columns={'updated_dates': 'ReviewViewCount'}))
+            columns={'updated_dates': 'ReviewLikeCount'}))
         categories_count_df = (categories_count_df.sort_values(['ReviewLikeCount'], ascending=False))
         return categories_count_df['categoryId'].unique()
 
@@ -452,8 +452,10 @@ def main_4():
 def main_45():
     result = trend_results()
     category_trend = result.CategoryResults()
+    new_dic = {}
+    new_dic['category_trend_results'] = category_trend[:50]
     try:
-        return {'category_trend_results': category_trend}
+        return {'category_trend_results': new_dic['category_trend_results']}
     except:
         return {'error': f'category results are not available'}
 
