@@ -128,22 +128,13 @@ class trend_results:
         df_1_approve = (df_1_approve[df_1_approve['isDeleted'] == False])
         # transform the likes_1 table to df_1 dataframe
         df_2 = self.tables_dictionary[self.files_list[1].split('.')[0]]
-        # # transform the product table to df_1 dataframe
-        # df_3 = self.tables_dictionary[self.files_list[-1].split('.')[0]]
         # rename the column name in reviews_1 table to resourceId as per likes_1 table
         df_1_approve = df_1_approve.rename(columns={"_id": "resourceId"})
         # merge both the dataframes based on common column 'resourceId'
         df_merge = df_1_approve.merge(df_2, how='left', on='resourceId')
         # df_merge_1 = df_merge.merge(df_3, how='left', on='categoryId')
         # extract only required columns from the merged dataframe
-        df_merge_cat = df_merge[['resourceId','title', 'loc', 'createdAt_x', 'updatedAt_x', 'fromUserId_x', 'categoryId']]
-        # longititude extraction from the loc
-        longitude = [_['coordinates'][0] for _ in df_merge_cat['loc']]
-
-        latitude = [_['coordinates'][1] for _ in df_merge_cat['loc']]
-        df_merge_cat['longitude'] = longitude
-        df_merge_cat['latitude'] = latitude
-        df_merge_cat.drop(labels='loc', inplace=True, axis=1)
+        df_merge_cat = df_merge[['resourceId','title', 'createdAt_x', 'updatedAt_x', 'categoryId']]
         df_merge_cat['createdAt_x'] = df_merge_cat['createdAt_x'].apply(lambda x: str(x))
         df_merge_cat['updatedAt_x'] = df_merge_cat['updatedAt_x'].apply(lambda x: str(x))
         created_dates = ([_.split('T')[0] for _ in df_merge_cat['createdAt_x']])
@@ -341,7 +332,7 @@ def main(user_id, search_text, target_userid):
     result = trend_results()
     # top_products = result.TopProducts('products')
     # top_services = result.TopProducts('services')
-    category_trend = result.CategoryResults(user_id, search_text)
+    category_trend = result.CategoryResults()
     _ = result.CategoryWiseResult(user_id, search_text)
     top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month = result.CombinedResults()
     # return top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month, top_products, top_services
@@ -459,24 +450,12 @@ def main_4():
 
 @app.route('/trending-category', methods=['GET', 'POST'])
 def main_45():
-    matching_key = request.args.get('categoryid')
-    user_id = request.args.get('userid')
-    search_text = request.args.get('searchtext', default = None)
-    target_userid = request.args.get('targetuserid', default=None)
-    if search_text:
-        search_text = list(search_text.split())
+    result = trend_results()
+    category_trend = result.CategoryResults()
     try:
-        _, _, _, _, category_trend = main(user_id, search_text, target_userid)
         return {'category_trend_results': category_trend}
-        # if matching_key == '':
-        #     return {'combined': popular_user_last_month['combinedResults']}
-        # elif matching_key != '':
-        #     try:
-        #         return {f'{matching_key}': popular_user_last_month[matching_key]}
-        #     except:
-        #         return {'combined': f'This category {matching_key} has no results'}
     except:
-        return {'error': f'user_id: {user_id} or {search_text} does not exist in our records'}
+        return {'error': f'category results are not available'}
 
 @app.route('/near-location', methods=['GET', 'POST'])
 def main_5():
