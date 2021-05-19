@@ -4,13 +4,23 @@ import json
 from glob import glob
 from pymongo import MongoClient
 
+class userapi:
+    def __init__(self, file_location, host):
+        self.myclient = MongoClient(host=None, port=None)
+        self.mydb = self.myclient['real_reviews']
+        self.coll = self.mydb['reviews']
+        self.file_location = file_location
+        self.host = host
+
+    pass
+
 def GetSpeech(file_location, host):
     my_file = {'file': open(os.path.realpath(file_location), 'rb')}
     vids = requests.post(host, files=my_file)
     result_dict = json.loads(vids.text)
     return result_dict['Video speech'], result_dict['Profane words']
 
-def UpdateKeys(id, file_location, host, speech_text, profane_text):
+def UpdateKeys(id, speech_text, profane_text):
     # for id in id_list:
     coll.update({'_id': f'{id}'}, {'$set': {'full_speech': f'{speech_text}', 'profane_words': f'{profane_text}'}})
     pass
