@@ -31,6 +31,16 @@ reviews_list = glob('{}/*'.format(reviews_location))
 print(reviews_list)
 print(review_id_no_speech)
 
+update_review_list = []
+
+for review in reviews_list:
+    review_id = review.split('\\')[-1]
+    print(review_id)
+    if review_id in review_id_no_speech:
+        update_review_list.append(review)
+
+print(update_review_list)
+
 # for review in reviews_list[:2]:
 #     first_video_list = glob('{}/*'.format(f'{review}/video'))
 #     print(first_video_list[-1])
