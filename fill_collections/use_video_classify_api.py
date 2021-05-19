@@ -10,9 +10,9 @@ def GetSpeech(file_location, host):
     result_dict = json.loads(vids.text)
     return result_dict['Video speech'], result_dict['Profane words']
 
-def UpdateKeys(id, file_location, host):
+def UpdateKeys(id, file_location, host, speech_text, profane_text):
     # for id in id_list:
-    coll.update({'_id': f'{id}'}, {'$set': {'full_speech': f'{(GetSpeech(file_location, host))[0]}', 'profane_words': f'{(GetSpeech(file_location, host))[1]}'}})
+    coll.update({'_id': f'{id}'}, {'$set': {'full_speech': f'{speech_text}', 'profane_words': f'{profane_text}'}})
     pass
 
 host = 'http://127.0.0.1:5050/text-speech'
@@ -28,29 +28,30 @@ for result in review_id_list:
 
 reviews_location = 'C:/Users/Arjun Janamatti/Downloads/reviews'
 reviews_list = glob('{}/*'.format(reviews_location))
-print(reviews_list)
-print(review_id_no_speech)
+# print(reviews_list)
+# print(review_id_no_speech)
 
 update_review_list = []
 
 for review in reviews_list:
     review_id = review.split('\\')[-1]
-    print(review_id)
+    # print(review_id)
     if review_id in review_id_no_speech:
         update_review_list.append(review)
 
-print(update_review_list)
+# print(update_review_list)
 
-# for review in reviews_list[:2]:
-#     first_video_list = glob('{}/*'.format(f'{review}/video'))
-#     print(first_video_list[-1])
-#     file_location = first_video_list[-1]
-#     speech_text, profane_text = GetSpeech(file_location, host)
-#     print(speech_text)
-#     print(type(speech_text))
-#     print(profane_text)
-#     print(type(profane_text))
-#     UpdateKeys(review_id_no_speech, file_location, host)
+for review in update_review_list:
+    first_video_list = glob('{}/*'.format(f'{review}/video'))
+    print(first_video_list[-1])
+    file_location = first_video_list[-1]
+    speech_text, profane_text = GetSpeech(file_location, host)
+    print(speech_text)
+    print(type(speech_text))
+    print(profane_text)
+    print(type(profane_text))
+    review_id = review.split('\\')[-1]
+    UpdateKeys(review_id, file_location, host, speech_text, profane_text)
 
 
 # file_location = 'C:/Users/Arjun Janamatti/PycharmProjects/try_recommend/fill_collections/arnold.mp4'
