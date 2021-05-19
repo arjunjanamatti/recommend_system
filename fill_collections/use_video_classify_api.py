@@ -15,6 +15,9 @@ def UpdateKeys(id, file_location, host, speech_text, profane_text):
     coll.update({'_id': f'{id}'}, {'$set': {'full_speech': f'{speech_text}', 'profane_words': f'{profane_text}'}})
     pass
 
+def GetReviewsWithNoSpeech():
+    pass
+
 host = 'http://127.0.0.1:5050/text-speech'
 myclient = MongoClient(host=None, port=None)
 mydb = myclient['real_reviews']
