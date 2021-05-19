@@ -16,7 +16,14 @@ def UpdateKeys(id, file_location, host, speech_text, profane_text):
     pass
 
 def GetReviewsWithNoSpeech():
-    pass
+    myclient = MongoClient(host=None, port=None)
+    mydb = myclient['real_reviews']
+    coll = mydb['reviews']
+    review_id_list = coll.find({}, {'full_speech': 1})
+    review_id_no_speech = []
+    [review_id_no_speech.append(f'{result["_id"]}') for result in review_id_list
+     if 'full_speech' not in result]
+    return review_id_no_speech
 
 host = 'http://127.0.0.1:5050/text-speech'
 myclient = MongoClient(host=None, port=None)
