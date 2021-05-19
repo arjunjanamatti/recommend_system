@@ -306,6 +306,7 @@ def main(user_id, search_text, target_userid):
     result = trend_results()
     # top_products = result.TopProducts('products')
     # top_services = result.TopProducts('services')
+    category_trend = result.CategoryResults(user_id, search_text)
     _ = result.CategoryWiseResult(user_id, search_text)
     top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month = result.CombinedResults()
     # return top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month, top_products, top_services
@@ -328,7 +329,7 @@ def main(user_id, search_text, target_userid):
                 popular_review_last_month[list(popular_review_last_month.keys())[index]] = []
                 popular_user_last_month[list(popular_user_last_month.keys())[index]] = []
 
-    return top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month
+    return top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month, category_trend
 
 
 @app.route('/trending-review', methods=['GET', 'POST'])
@@ -343,7 +344,7 @@ def main_1():
         search_text = list(search_text.split())
     print(search_text)
     try:
-        top_review_last_week, _, _, _ = main(user_id, search_text, target_userid)
+        top_review_last_week, _, _, _, _ = main(user_id, search_text, target_userid)
 
         if matching_key == '':
             return {'combined': top_review_last_week['combinedResults']}
@@ -369,7 +370,7 @@ def main_2():
     if search_text:
         search_text = list(search_text.split())
     try:
-        _, top_user_last_week, _, _ = main(user_id, search_text, self_check)
+        _, top_user_last_week, _, _, _ = main(user_id, search_text, self_check)
         if matching_key == '':
             return {'combined': top_user_last_week['combinedResults']}
         elif matching_key != '':
@@ -390,7 +391,7 @@ def main_3():
     if search_text:
         search_text = list(search_text.split())
     try:
-        _, _, popular_review_last_month, _ = main(user_id, search_text,target_userid)
+        _, _, popular_review_last_month, _, _ = main(user_id, search_text,target_userid)
         if matching_key == '':
             return {'combined': popular_review_last_month['combinedResults']}
         elif matching_key != '':
@@ -410,7 +411,27 @@ def main_4():
     if search_text:
         search_text = list(search_text.split())
     try:
-        _, _, _, popular_user_last_month = main(user_id, search_text)
+        _, _, _, popular_user_last_month, _ = main(user_id, search_text)
+        if matching_key == '':
+            return {'combined': popular_user_last_month['combinedResults']}
+        elif matching_key != '':
+            try:
+                return {f'{matching_key}': popular_user_last_month[matching_key]}
+            except:
+                return {'combined': f'This category {matching_key} has no results'}
+    except:
+        return {'error': f'user_id: {user_id} or {search_text} does not exist in our records'}
+
+@app.route('/trending-category', methods=['GET', 'POST'])
+def main_45():
+    matching_key = request.args.get('categoryid')
+    user_id = request.args.get('userid')
+    search_text = request.args.get('searchtext', default = None)
+    target_userid = request.args.get('targetuserid', default=None)
+    if search_text:
+        search_text = list(search_text.split())
+    try:
+        _, _, _, popular_user_last_month, _ = main(user_id, search_text, target_userid)
         if matching_key == '':
             return {'combined': popular_user_last_month['combinedResults']}
         elif matching_key != '':
