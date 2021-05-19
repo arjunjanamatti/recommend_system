@@ -52,6 +52,7 @@ for review in update_review_list:
     print(type(profane_text))
     review_id = review.split('\\')[-1]
     UpdateKeys(review_id, file_location, host, speech_text, profane_text)
+    print(f'update on Review_id: {review_id} completed !!!')
 
 
 # file_location = 'C:/Users/Arjun Janamatti/PycharmProjects/try_recommend/fill_collections/arnold.mp4'
