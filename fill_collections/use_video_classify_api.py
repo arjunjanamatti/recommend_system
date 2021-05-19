@@ -25,6 +25,18 @@ def GetReviewsWithNoSpeech():
      if 'full_speech' not in result]
     return review_id_no_speech
 
+def GetUpdatedReviewId(reviews_location):
+    reviews_list = glob('{}/*'.format(reviews_location))
+    update_review_list = []
+
+    for review in reviews_list:
+        review_id = review.split('\\')[-1]
+        if review_id in review_id_no_speech:
+            update_review_list.append(review)
+
+    return update_review_list
+    pass
+
 host = 'http://127.0.0.1:5050/text-speech'
 myclient = MongoClient(host=None, port=None)
 mydb = myclient['real_reviews']
