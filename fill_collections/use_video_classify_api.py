@@ -49,10 +49,12 @@ class userapi:
                 print(first_video_list[-1])
                 file_location = first_video_list[-1]
                 speech_text, profane_text = self.GetSpeech(file_location)
+                profane_text = ','.join(profane_text)
                 print(speech_text)
                 print(type(speech_text))
                 print(profane_text)
                 print(type(profane_text))
+
                 review_id = review.split('\\')[-1]
                 self.UpdateKeys(review_id, speech_text, profane_text)
                 print(f'update on Review_id: {review_id} completed !!!')
