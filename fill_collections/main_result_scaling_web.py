@@ -455,7 +455,7 @@ def main_45():
     new_dic = {}
     category_trend = list(category_trend)
     new_dic['category_trend_results'] = category_trend
-    print(new_dic['category_trend_results'])
+    # print(new_dic['category_trend_results'])
     try:
         return {'category_trend_results': new_dic['category_trend_results']}
     except:
