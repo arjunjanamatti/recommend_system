@@ -51,7 +51,7 @@ class trend_results:
             tables_dictionary[file.split('.')[0]] = df
         # transform the reviews_1 table to df_1 dataframe
         df_1 = tables_dictionary[files_list[0].split('.')[0]]
-        sort_dict = (df_1['resourceId'].value_counts()).to_dict()
+        sort_dict = (df_1['searchTerm'].value_counts()).to_dict()
         trending_list = list(sort_dict.keys())
         trending_list = [str(trend) for trend in trending_list]
         return trending_list
