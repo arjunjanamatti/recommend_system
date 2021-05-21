@@ -41,8 +41,10 @@ class trend_results:
         self.GetTableDictionary()
         # transform the reviews_1 table to df_1 dataframe
         df_1 = self.tables_dictionary[self.files_list[1].split('.')[0]]
-        sort_dict = (df['resourceId'].value_counts()).to_dict()
-        return sort_dict
+        sort_dict = (df_1['resourceId'].value_counts()).to_dict()
+        trending_list = list(sort_dict.keys())
+        trending_list = [str(trend) for trend in trending_list]
+        return trending_list
 
 
 if __name__ == '__main__':
