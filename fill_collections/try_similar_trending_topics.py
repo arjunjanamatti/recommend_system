@@ -35,3 +35,17 @@ class trend_results:
             df = pd.DataFrame(list(list_data))
             self.tables_dictionary[file.split('.')[0]] = df
         return self.tables_dictionary
+
+
+    def MergedDataframe(self):
+        self.GetTableDictionary()
+        # transform the reviews_1 table to df_1 dataframe
+        df_1 = self.tables_dictionary[self.files_list[0].split('.')[0]]
+        return df_1
+
+
+if __name__ == '__main__':
+    result = trend_results()
+    df = result.MergedDataframe()
+
+
