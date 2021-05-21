@@ -40,12 +40,21 @@ class trend_results:
     def MergedDataframe(self):
         self.GetTableDictionary()
         # transform the reviews_1 table to df_1 dataframe
-        df_1 = self.tables_dictionary[self.files_list[0].split('.')[0]]
+        df_1 = self.tables_dictionary[self.files_list[1].split('.')[0]]
         return df_1
 
 
 if __name__ == '__main__':
     result = trend_results()
     df = result.MergedDataframe()
+    print(df.columns)
+    print()
+    print(df['resourceId'].value_counts()[:5])
+    print()
+    try_dict = (df['resourceId'].value_counts()).to_dict()
+    print(try_dict)
+
+
+
 
 
