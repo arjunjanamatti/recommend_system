@@ -46,9 +46,21 @@ class trend_results:
         trending_list = [str(trend) for trend in trending_list]
         return trending_list
 
+@app.route('/trending-category', methods=['GET', 'POST'])
+def main_45():
+    result = trend_results()
+    topics_trend = result.MergedDataframe()
+    new_dic = {}
+    new_dic['topics_trend_results'] = topics_trend
+    # print(new_dic['category_trend_results'])
+    try:
+        return {'category_trend_results': new_dic['category_trend_results']}
+    except:
+        return {'error': f'category results are not available'}
 
 if __name__ == '__main__':
-    result = trend_results()
+    app.run(debug=True, port=7000)
+    # result = trend_results()
     # df = result.MergedDataframe()
     # print(df.columns)
     # print()
