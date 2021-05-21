@@ -21,18 +21,6 @@ class trend_results:
         self.popular_user_last_month = {}
         pass
 
-    def GetBlockUsersData(self):
-        myclient = MongoClient(host=None, port=None)
-        mydb = myclient['real_reviews']
-        coll = mydb['blockusers']
-        cur = coll.find()
-        block_users_dict_list = [doc for doc in cur]
-
-        self.try_dict = {}
-        for new in block_users_dict_list:
-            self.try_dict[new['_id']] = []
-            self.try_dict[new['_id']].append(new['blockUserId'])
-            self.try_dict[new['_id']].append(new['fromUserId'])
 
     def GetTableDictionary(self):
         myclient = MongoClient(host='localhost', port=27017)
