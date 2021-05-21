@@ -54,7 +54,7 @@ def main_45():
     new_dic['topics_trend_results'] = topics_trend
     # print(new_dic['category_trend_results'])
     try:
-        return {'category_trend_results': new_dic['category_trend_results']}
+        return {'category_trend_results': new_dic['topics_trend_results'][:50]}
     except:
         return {'error': f'category results are not available'}
 
