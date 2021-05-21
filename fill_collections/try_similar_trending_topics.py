@@ -37,19 +37,29 @@ class trend_results:
         return self.tables_dictionary
 
 
-    def MergedDataframe(self):
-        self.GetTableDictionary()
+    def TopicsTrending(self):
+        myclient = MongoClient(host='localhost', port=27017)
+        mydb = myclient['realreview']
+        # list_1 = self.looping_json_files()
+        # self.files_list = ['reviews.json', 'likes.json']
+        files_list = ['searchhistories.json']
+        tables_dictionary = {}
+        for index, file in enumerate(files_list):
+            my_collection = mydb[file.split('.')[0]]
+            list_data = my_collection.find()
+            df = pd.DataFrame(list(list_data))
+            tables_dictionary[file.split('.')[0]] = df
         # transform the reviews_1 table to df_1 dataframe
-        df_1 = self.tables_dictionary[self.files_list[1].split('.')[0]]
+        df_1 = tables_dictionary[files_list[0].split('.')[0]]
         sort_dict = (df_1['resourceId'].value_counts()).to_dict()
         trending_list = list(sort_dict.keys())
         trending_list = [str(trend) for trend in trending_list]
         return trending_list
 
-@app.route('/trending-category', methods=['GET', 'POST'])
+@app.route('/trending-topics', methods=['GET', 'POST'])
 def main_45():
     result = trend_results()
-    topics_trend = result.MergedDataframe()
+    topics_trend = result.TopicsTrending()
     new_dic = {}
     new_dic['topics_trend_results'] = topics_trend
     # print(new_dic['category_trend_results'])
