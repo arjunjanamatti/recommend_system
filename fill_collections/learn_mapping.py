@@ -24,10 +24,18 @@ def get_data_block_users(new):
 
 print(block_users_dict_list)
 print()
-# {key: value for (key, value) in iterable}
-print([{k:v for k,v in value.items()} for value in block_users_dict_list])
-print([{(try_dict[value['_id']].append(value['blockUserId'])) for k,v in value.items()} for value in block_users_dict_list])
-# try_dict = {k: f(v) for k, v in my_dictionary.items()}
+# # {key: value for (key, value) in iterable}
+# print([{k:v for k,v in value.items()} for value in block_users_dict_list])
+# print([{(try_dict[value['_id']].append(value['blockUserId'])) for k,v in value.items()} for value in block_users_dict_list])
+# # try_dict = {k: f(v) for k, v in my_dictionary.items()}
+import time
+
+start_time = time.perf_counter()
+
+reult_list = list(map(get_data_block_users, block_users_dict_list))
+print(reult_list[0])
+end_time = time.perf_counter()
+print(f'total_time = {end_time-start_time} seconds')
 
 import time
 
