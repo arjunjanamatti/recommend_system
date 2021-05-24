@@ -25,7 +25,8 @@ def get_data_block_users(new):
 print(block_users_dict_list)
 print()
 # {key: value for (key, value) in iterable}
-print([{try_dict['_id'].append(value['blockUserId'], value['fromUserId']) for k,v in value.items()} for value in block_users_dict_list])
+print([{k:v for k,v in value.items()} for value in block_users_dict_list])
+print([{(try_dict[value['_id']].append(value['blockUserId'])) for k,v in value.items()} for value in block_users_dict_list])
 # try_dict = {k: f(v) for k, v in my_dictionary.items()}
 
 import time
