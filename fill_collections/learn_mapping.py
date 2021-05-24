@@ -35,7 +35,8 @@ start_time = time.perf_counter()
 reult_list = list(map(get_data_block_users, block_users_dict_list))
 print(reult_list[0])
 end_time = time.perf_counter()
-print(f'total_time = {end_time-start_time} seconds')
+total_time_map = end_time-start_time
+print(f'total_time = {total_time_map} seconds')
 
 import time
 
@@ -48,5 +49,7 @@ for new in block_users_dict_list:
     try_dict_1[new['_id']].append(new['fromUserId'])
 
 end_time = time.perf_counter()
-print(f'total_time = {end_time-start_time} seconds')
+total_time_for = end_time-start_time
+print(f'total_time = {total_time_for} seconds')
+print(f'{total_time_map - total_time_for}')
 print(try_dict_1)

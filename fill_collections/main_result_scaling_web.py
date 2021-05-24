@@ -31,10 +31,19 @@ class trend_results:
         block_users_dict_list = [doc for doc in cur]
 
         self.try_dict = {}
-        for new in block_users_dict_list:
+
+        def get_data_block_users(new):
             self.try_dict[new['_id']] = []
             self.try_dict[new['_id']].append(new['blockUserId'])
             self.try_dict[new['_id']].append(new['fromUserId'])
+            return self.try_dict
+
+        reult_list = list(map(get_data_block_users, block_users_dict_list))
+        self.try_dict = reult_list [0]
+        # for new in block_users_dict_list:
+        #     self.try_dict[new['_id']] = []
+        #     self.try_dict[new['_id']].append(new['blockUserId'])
+        #     self.try_dict[new['_id']].append(new['fromUserId'])
 
     def GetTableDictionary(self):
         myclient = MongoClient(host='localhost', port=27017)
