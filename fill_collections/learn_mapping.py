@@ -22,7 +22,10 @@ def get_data_block_users(new):
     try_dict[new['_id']].append(new['fromUserId'])
     return try_dict
 
-print(dict(map(get_data_block_users, block_users_dict_list)))
+print(block_users_dict_list)
+print()
+print([[value.items()] for value in block_users_dict_list])
+# try_dict = {k: f(v) for k, v in my_dictionary.items()}
 
 try_dict_1 = {}
 for new in block_users_dict_list:
