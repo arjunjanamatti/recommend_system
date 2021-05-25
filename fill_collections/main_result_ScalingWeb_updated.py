@@ -19,7 +19,7 @@ class trend_results:
         self.mydb = self.myclient['real_reviews']
         pass
 
-    def MergeDataframeUpdate(self, category_id, user_id, search_text, target_userid):
+    def MergeDataframeUpdate(self, category_id, user_id, search_text):
         reviews = self.mydb['reviews_2']
         likes = self.mydb['likes_2']
         blockusers = self.mydb['blockusers']
@@ -120,6 +120,16 @@ class trend_results:
         x = (lon2 - lon1) * cos(0.5 * (lat2 + lat1))
         y = (lat2 - lat1)
         return sqrt(x * x + y * y)
+
+    def NearReviews(self, long_rand, lat_rand):
+        reviews = self.mydb['reviews']
+        reviews_filter = {"isApprove": 'approved', "isDeleted": False}
+        df_reviews = pd.DataFrame(list(reviews.find(reviews_filter, {'_id': 1, "loc": 1, 'updatedAt': 1, 'categoryId': 1})))
+        df_reviews['longitude'] = df_reviews['loc'].apply(lambda x: x['coordinates'][0])
+        df_reviews['latitude'] = df_reviews['loc'].apply(lambda x: x['coordinates'][1])
+        df_reviews['updated_dates'] = df_reviews['updatedAt'].apply(lambda x: str(x.split('T')[0]))
+        df_reviews['updated_dates'] = pd.to_datetime(df_reviews['updated_dates'], dayfirst=True)
+        pass
 
     def TopTrendingResults(self,df_merge_cat, num_days, column_name):
         today = pd.to_datetime('today').floor('D')
