@@ -76,7 +76,13 @@ class trend_results:
         block_list = list(map(get_data_block_users, block_users_dict_list))
         block_list = [(y) for x in block_list for y in x]
 
-        
+        ##### searchtext part
+        reviews_filter = {"isApprove": 'approved', "isDeleted": False,
+                          "title": {"$regex": f".*{search_text}.*"}} if search_text != None else {
+            "isApprove": 'approved', "isDeleted": False}
+
+        #### blockusers part
+        reviews_filter['fromUserId'] = {'$nin': block_list} if (len(user_id) > 0) else reviews_filter
 
         # extract fields where review is approved and not deleted, also selecting only required fields
         reviews_filter = {"isApprove": 'approved', "isDeleted": False,
