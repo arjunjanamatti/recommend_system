@@ -19,7 +19,7 @@ class trend_results:
         self.mydb = self.myclient['real_reviews']
         pass
 
-    def MergeDataframeUpdate(self, user_id, search_text, target_userid):
+    def MergeDataframeUpdate(self, user_id, search_text, target_userid, category_id):
         reviews = self.mydb['reviews_2']
         likes = self.mydb['likes_2']
         blockusers = self.mydb['blockusers']
@@ -28,26 +28,23 @@ class trend_results:
         cur = blockusers.find({}, {'blockUserId': 1, 'fromUserId': 1})
         block_users_dict_list = [doc for doc in cur]
         try_list = []
-
-        def get_data_block_users(new):
-            try_list.extend([new['blockUserId'], new['fromUserId']])
-            return try_list
-
-        block_list = list(map(get_data_block_users, block_users_dict_list))
+        block_list = [([new['blockUserId'], new['fromUserId']]) for new in block_users_dict_list]
         block_list = [(y) for x in block_list for y in x]
 
         ##### searchtext part
+        # extract fields where review is approved and not deleted, also selecting only required fields
         reviews_filter = {"isApprove": 'approved', "isDeleted": False,
                           "title": {"$regex": f".*{search_text}.*"}} if search_text != None else {
             "isApprove": 'approved', "isDeleted": False}
 
         #### blockusers part
-        reviews_filter['fromUserId'] = {'$nin': block_list} if (len(user_id) > 0) else reviews_filter
+        if len(user_id) > 0:
+            reviews_filter['fromUserId'] = {'$nin': block_list}
 
-        # extract fields where review is approved and not deleted, also selecting only required fields
-        reviews_filter = {"isApprove": 'approved', "isDeleted": False,
-                          "title": {"$regex": f".*{search_text}.*"}} if search_text != None else {
-            "isApprove": 'approved', "isDeleted": False}
+        ##### categoryid part
+        if len(category_id) > 0:
+            reviews_filter['categoryId'] = f'{category_id}'
+
 
         df_reviews = pd.DataFrame(list(reviews.find(reviews_filter, {'_id': 1, "loc": 1, "title": 1,
                                                                      'createdAt': 1, 'updatedAt': 1, 'fromUserId': 1,
@@ -72,10 +69,31 @@ class trend_results:
         y = (lat2 - lat1)
         return sqrt(x * x + y * y)
 
-    def SubgroupCategoriesToDictionary(self,user_id, search_text, target_userid):
-        self.MergeDataframeUpdate(user_id, search_text, target_userid)
-        gb = (self.df_merge.groupby('categoryId'))
-        self.cat_dict = {}
-        for cat in gb.groups:
-            self.cat_dict[cat] = gb.get_group(cat).reset_index()
-        return self.cat_dict
+    def TopTrendingResults(self,df_merge_cat, num_days, column_name):
+        today = pd.to_datetime('today').floor('D')
+        week_prior = today - timedelta(days=num_days)
+        df_last_week = df_merge_cat[
+            (df_merge_cat['updated_dates'] <= today) & (df_merge_cat['updated_dates'] >= week_prior)]
+        top_10_last_week_df = (df_last_week.groupby([column_name])['updated_dates'].count().reset_index().rename(
+            columns={'updated_dates': 'ReviewLikeCount'}))
+        top_10_reviews_last_week = (top_10_last_week_df.sort_values(['ReviewLikeCount'], ascending=False))
+        week_num = num_days
+        while (len(top_10_reviews_last_week[column_name].unique()) < 10):
+            week_num += num_days
+            week_prior = today - timedelta(days=week_num)
+            df_last_week = df_merge_cat[
+                (df_merge_cat['updated_dates'] <= today) & (df_merge_cat['updated_dates'] >= week_prior)]
+            top_10_last_week_df = (df_last_week.groupby([column_name])['updated_dates'].count().reset_index().rename(
+                columns={'updated_dates': 'ReviewLikeCount'}))
+            top_10_reviews_last_week = (top_10_last_week_df.sort_values(['ReviewLikeCount'], ascending=False))
+            if (week_prior < df_merge_cat['updated_dates'].min()):
+                break
+        return (top_10_reviews_last_week[column_name].unique())
+
+    def AllTrendingResults(self):
+        top_review_last_week = self.TopTrendingResults(self.df_merge, 7, 'resourceId')
+        top_user_last_week = self.TopTrendingResults(self.df_merge, 7, 'fromUserId')
+        popular_review_last_week = self.TopTrendingResults(self.df_merge, 30, 'resourceId')
+        popular_user_last_week = self.TopTrendingResults(self.df_merge, 30, 'fromUserId')
+        return top_review_last_week, top_user_last_week, popular_review_last_week, popular_user_last_week
+
