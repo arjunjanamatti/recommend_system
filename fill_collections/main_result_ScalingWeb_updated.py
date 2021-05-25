@@ -58,11 +58,24 @@ class trend_results:
         self.df_merge['latitude'] = self.df_merge['loc'].apply(lambda x: x['coordinates'][1])
         self.df_merge['created_dates'] = self.df_merge['createdAt'].apply(lambda x: str(x.split('T')[0]))
         self.df_merge['updated_dates'] = self.df_merge['updatedAt'].apply(lambda x: str(x.split('T')[0]))
+        self.df_merge['created_dates'] = pd.to_datetime(self.df_merge['created_dates'], dayfirst=True)
+        self.df_merge['updated_dates'] = pd.to_datetime(self.df_merge['updated_dates'], dayfirst=True)
         self.df_merge.drop(labels=['createdAt', 'updatedAt', 'loc', "_id"], inplace=True, axis=1)
         self.df_merge['resourceId'] = self.df_merge.index
         self.df_merge.reset_index(drop=True, inplace=True)
         targetuserid_reviewlist = list(reviews.find({'fromUserId': target_userid}, {'_id': 1}))
         self.targetuserid_reviewlist = [reviews['_id'] for reviews in targetuserid_reviewlist]
+
+    def TargetUserId(self, target_userid):
+        empty_list = []
+        reviews = self.mydb['reviews_2']
+        if target_userid != None:
+            targetuserid_reviewlist = list(reviews.find({'fromUserId': target_userid}, {'_id': 1}))
+            self.targetuserid_reviewlist = [reviews['_id'] for reviews in targetuserid_reviewlist]
+            return targetuserid_reviewlist
+        else:
+            return empty_list
+        pass
 
     def distance(self, lon1, lat1, lon2, lat2):
         x = (lon2 - lon1) * cos(0.5 * (lat2 + lat1))
@@ -90,10 +103,24 @@ class trend_results:
                 break
         return (top_10_reviews_last_week[column_name].unique())
 
-    def AllTrendingResults(self):
+    def AllTrendingResults(self, user_id, search_text, target_userid, category_id):
+        self.MergeDataframeUpdate(user_id, search_text, target_userid, category_id)
         top_review_last_week = self.TopTrendingResults(self.df_merge, 7, 'resourceId')
         top_user_last_week = self.TopTrendingResults(self.df_merge, 7, 'fromUserId')
         popular_review_last_week = self.TopTrendingResults(self.df_merge, 30, 'resourceId')
         popular_user_last_week = self.TopTrendingResults(self.df_merge, 30, 'fromUserId')
         return top_review_last_week, top_user_last_week, popular_review_last_week, popular_user_last_week
 
+def main(user_id, search_text, target_userid, category_id):
+    result = trend_results()
+    top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month = result.AllTrendingResults(user_id, search_text, target_userid, category_id)
+    print(top_review_last_week)
+
+if __name__ == '__main__':
+    import time
+    start_time = time.perf_counter()
+    user_id, search_text, target_userid, category_id = '', 'nokia', None, ''
+    result = main(user_id, search_text, target_userid, category_id)
+    end_time = time.perf_counter()
+    total_time = end_time - start_time
+    print(f'Total time: {total_time} seconds')
