@@ -126,7 +126,14 @@ myclient = MongoClient(host='localhost', port=27017)
 mydb = myclient['real_reviews']
 reviews = mydb['reviews_2']
 likes = mydb['likes_2']
-df_reviews = pd.DataFrame(list(reviews.find({"isApprove": 'approved', "isDeleted": False}, {'_id': 1, "loc": 1, "title": 1,
+# search_text = 'nokia'
+search_text = None
+reviews_filter = {"isApprove": 'approved', "isDeleted": False, "title": {"$regex": f".*{search_text}.*"}} if search_text!=None else {"isApprove": 'approved', "isDeleted": False}
+# if search_text != None:
+#     reviews_filter = {"isApprove": 'approved', "isDeleted": False, "title": {"$regex": f".*{search_text}.*"}}
+
+
+df_reviews = pd.DataFrame(list(reviews.find(reviews_filter, {'_id': 1, "loc": 1, "title": 1,
                            'createdAt': 1, 'updatedAt': 1, 'fromUserId': 1, 'categoryId': 1})))
 df_likes = pd.DataFrame(list(likes.find({}, {'_id':1, 'resourceId':1})))
 df_reviews.set_index('_id', inplace=True)

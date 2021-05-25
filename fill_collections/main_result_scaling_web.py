@@ -207,10 +207,10 @@ class trend_results:
 
     def TargetUserId(self, target_userid):
         empty_list = []
-        combine_user_id = ' '.join(map(str, self.df_merge_1["fromUserId_x"]))
+        combine_user_id = ' '.join(map(str, self.df_merge_1["fromUserId"]))
         if target_userid in combine_user_id:
-            self.df_merge_1['fromUserId_x'] = self.df_merge_1['fromUserId_x'].astype(str)
-            df_merge_2 = self.df_merge_1[self.df_merge_1['fromUserId_x'] == target_userid]
+            self.df_merge_1['fromUserId'] = self.df_merge_1['fromUserId'].astype(str)
+            df_merge_2 = self.df_merge_1[self.df_merge_1['fromUserId'] == target_userid]
             self_reviews = list(df_merge_2['resourceId'].unique())
             self_reviews = [str(review) for review in self_reviews]
             return self_reviews
@@ -263,7 +263,7 @@ class trend_results:
         return sqrt(x * x + y * y)
 
     def SubgroupCategoriesToDictionary(self,user_id, search_text):
-        self.MergedDataframe(user_id, search_text)
+        self.MergeDataframeUpdate(user_id, search_text)
         gb = (self.df_merge_1.groupby('categoryId'))
         self.cat_dict = {}
         for cat in gb.groups:
@@ -271,7 +271,7 @@ class trend_results:
         return self.cat_dict
 
     def TrendingNearReviews(self, long_rand, lat_rand, user_id, search_text):
-        self.MergedDataframe(user_id, search_text)
+        self.MergeDataframeUpdate(user_id, search_text)
         # index_list = list(self.df_merge_1.index)
         # random_index = random.choice(index_list)
         # user_rand, review_rand = str(self.df_merge_1.iloc[random_index]['fromUserId_x']), str(
