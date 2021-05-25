@@ -124,8 +124,26 @@ import time
 start_time = time.perf_counter()
 myclient = MongoClient(host='localhost', port=27017)
 mydb = myclient['real_reviews']
+blockusers = mydb['blockusers']
 reviews = mydb['reviews_2']
 likes = mydb['likes_2']
+
+##### blockusers part
+user_id = '5fdf6bbcfe08e8c0191a7805'
+cur = blockusers.find({}, {'_id':1, 'blockUserId': 1, 'fromUserId': 1})
+block_users_dict_list = [doc for doc in cur]
+
+try_dict = {}
+def get_data_block_users(new):
+    try_dict[new['_id']] = []
+    try_dict[new['_id']].append(new['blockUserId'])
+    try_dict[new['_id']].append(new['fromUserId'])
+    return try_dict
+
+
+reult_list = list(map(get_data_block_users, block_users_dict_list))
+print(try_dict)
+#### searchtext part
 # search_text = 'nokia'
 search_text = None
 reviews_filter = {"isApprove": 'approved', "isDeleted": False, "title": {"$regex": f".*{search_text}.*"}} if search_text!=None else {"isApprove": 'approved', "isDeleted": False}
