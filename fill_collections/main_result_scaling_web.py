@@ -68,8 +68,10 @@ class trend_results:
         # select reviews which are approved
         df_1_approve = (df_1[df_1['isApprove'] == 'approved'])
         df_1_approve = (df_1_approve[df_1_approve['isDeleted'] == False])
+        print(df_1_approve.columns)
         # transform the likes_1 table to df_1 dataframe
         df_2 = self.tables_dictionary[self.files_list[1].split('.')[0]]
+        print(df_2.columns)
         # # transform the product table to df_1 dataframe
         # df_3 = self.tables_dictionary[self.files_list[-1].split('.')[0]]
         # rename the column name in reviews_1 table to resourceId as per likes_1 table
