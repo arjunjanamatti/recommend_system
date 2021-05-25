@@ -170,7 +170,15 @@ df_merge['updated_dates'] = df_merge['updatedAt'].apply(lambda x: str(x.split('T
 df_merge.drop(labels=['createdAt', 'updatedAt', 'loc', "_id"], inplace=True, axis=1)
 df_merge['resourceId'] = df_merge.index
 df_merge.reset_index(drop=True, inplace=True)
+##### targetuserid part
+targetuserid = '5fdf6bbcfe08e8c0191a7830'
+targetuserid_list = list(reviews.find({'fromUserId': targetuserid}, {'_id': 1}))
+targetuserid_list = [reviews['_id'] for reviews in targetuserid_list]
+print(targetuserid_list)
 end_time = time.perf_counter()
 total_time = end_time - start_time
 print(f'Total time: {total_time} seconds')
+
+
+
 df_merge.to_csv('optimize_df_merge.csv')
