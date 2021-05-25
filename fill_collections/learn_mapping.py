@@ -126,8 +126,6 @@ myclient = MongoClient(host='localhost', port=27017)
 mydb = myclient['real_reviews']
 reviews = mydb['reviews_2']
 likes = mydb['likes_2']
-required_reviews_fields = {'_id': 1, "loc": 1, "isDeleted": 1, "isApprove": 1, "title": 1,
-                           'createdAt': 1, 'updatedAt': 1, 'fromUserId': 1, 'categoryId': 1}
 df_reviews = pd.DataFrame(list(reviews.find({"isApprove": 'approved', "isDeleted": False}, {'_id': 1, "loc": 1, "title": 1,
                            'createdAt': 1, 'updatedAt': 1, 'fromUserId': 1, 'categoryId': 1})))
 df_likes = pd.DataFrame(list(likes.find({}, {'_id':1, 'resourceId':1})))
@@ -138,8 +136,8 @@ df_merge['longitude'] = df_merge['loc'].apply(lambda x: x['coordinates'][0])
 df_merge['latitude'] = df_merge['loc'].apply(lambda x: x['coordinates'][1])
 df_merge['created_dates'] = df_merge['createdAt'].apply(lambda x: str(x.split('T')[0]))
 df_merge['updated_dates'] = df_merge['updatedAt'].apply(lambda x: str(x.split('T')[0]))
-df_merge.drop(labels=['createdAt', 'updatedAt', 'loc'], inplace=True, axis=1)
-df_merge = df_merge.rename(columns={"_id": "resourceId"})
+df_merge.drop(labels=['createdAt', 'updatedAt', 'loc', "_id"], inplace=True, axis=1)
+df_merge['resourceId'] = df_merge.index
 df_merge.reset_index(drop=True, inplace=True)
 end_time = time.perf_counter()
 total_time = end_time - start_time

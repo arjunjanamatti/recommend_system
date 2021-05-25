@@ -60,6 +60,15 @@ class trend_results:
         return self.tables_dictionary
 
     def MergeDataframeUpdate(self, user_id, search_text):
+        reviews = self.mydb['reviews_2']
+        likes = self.mydb['likes_2']
+        # extract fields where review is approved and not deleted, also selecting only required fields
+        df_reviews = pd.DataFrame(
+            list(reviews.find({"isApprove": 'approved', "isDeleted": False}, {'_id': 1, "loc": 1, "title": 1,
+                                                                              'createdAt': 1, 'updatedAt': 1,
+                                                                              'fromUserId': 1, 'categoryId': 1})))
+        # from likes table only review _id and resourceId field
+        df_likes = pd.DataFrame(list(likes.find({}, {'_id': 1, 'resourceId': 1})))
         pass
 
     def MergedDataframe(self, user_id, search_text):
