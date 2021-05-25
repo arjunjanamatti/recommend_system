@@ -33,11 +33,7 @@ class trend_results:
 
         ##### searchtext part
         # extract fields where review is approved and not deleted, also selecting only required fields
-        reviews_filter = {"isApprove": 'approved', "isDeleted": False,
-                          "title": {"$regex": f".*{search_text}.*"}} if search_text != None else {
-            "isApprove": 'approved', "isDeleted": False}
-
-
+        reviews_filter = {"isApprove": 'approved', "isDeleted": False}
 
         #### blockusers part
         if len(user_id) > 0:
@@ -59,6 +55,15 @@ class trend_results:
         df_reviews = pd.DataFrame(list(reviews.find(reviews_filter, {'_id': 1, "loc": 1, "title": 1,
                                                                      'createdAt': 1, 'updatedAt': 1, 'fromUserId': 1,
                                                                      'categoryId': 1})))
+
+        if search_text != None:
+            print(f'INSIDE IF SEARCHTEXT LOOP: {search_text}')
+            combine_title = ' '.join(df_reviews["title"])
+            if [text for text in search_text if text in combine_title]:
+                contains = [df_reviews['title'].str.contains(i) for i in search_text]
+                df_reviews = df_reviews[np.all(contains, axis=0)]
+            else:
+                raise
 
         # from likes table only review _id and resourceId field
         df_likes = pd.DataFrame(list(likes.find({}, {'_id': 1, 'resourceId': 1})))

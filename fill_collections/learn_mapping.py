@@ -119,6 +119,7 @@
 from pymongo import MongoClient
 import pandas as pd
 import time
+import numpy as np
 
 
 start_time = time.perf_counter()
@@ -129,17 +130,17 @@ reviews = mydb['reviews_2']
 likes = mydb['likes_2']
 
 ##### blockusers part
-user_id = '5fdf6bbcfe08e8c0191a'
+user_id = '5fdf6bbcfe08e8c0191a7830'
 # if reviews.find({'fromUserId': f'{user_id}'}):
 #     print(f'{user_id} is in the database')
 user_id_list = [rev['fromUserId'] for rev in list(reviews.find({}, {'fromUserId': 1}))]
-print(user_id_list)
+# print(user_id_list)
 if user_id in user_id_list:
     print(f'{user_id} is in the database')
 
 cur = blockusers.find({}, {'blockUserId': 1, 'fromUserId': 1})
 block_users_dict_list = [doc for doc in cur]
-print(block_users_dict_list)
+# print(block_users_dict_list)
 try_list = []
 # def get_data_block_users(new):
 #     # try_dict[new['_id']] = []
@@ -152,7 +153,7 @@ try_list = []
 
 reult_list = [([new['blockUserId'], new['fromUserId']]) for new in block_users_dict_list]
 # reult_list = list(map(get_data_block_users, block_users_dict_list))
-print(reult_list)
+# print(reult_list)
 reult_list = [(y) for x in reult_list for y in x]
 # user_id_lists = []
 # [(user_id_lists.extend(id)) for id in try_dict.values()
@@ -160,12 +161,17 @@ reult_list = [(y) for x in reult_list for y in x]
 # # user_id_lists = [(y) for x in user_id_lists for y in x]
 # print(user_id_lists)
 #### searchtext part
-# search_text = 'nokia'
-search_text = None
-reviews_filter = {"isApprove": 'approved', "isDeleted": False, "title": {"$regex": f".*{search_text}.*"}} if search_text!=None else {"isApprove": 'approved', "isDeleted": False}
+search_text = 'toshiba nokia'
+search_text = list(search_text.split())
+# # search_text = None
+# title_list = [rev['title'] for rev in list(reviews.find({}, {'title': 1}))]
+# print(f'search_text: {search_text}')
+# print(f'title_list: {title_list}')
+reviews_filter = {"isApprove": 'approved', "isDeleted": False}
+# reviews_filter = {"isApprove": 'approved', "isDeleted": False, "title": {"$regex": f".*{search_text}.*"}} if search_text!=None else {"isApprove": 'approved', "isDeleted": False}
 
 #### blockusers part
-print(reult_list)
+# print(reult_list)
 if len(user_id) > 0:
     reviews_filter['fromUserId'] = {'$nin': reult_list}
 
@@ -178,6 +184,13 @@ if len(category_id) > 0:
 print(reviews_filter)
 df_reviews = pd.DataFrame(list(reviews.find(reviews_filter, {'_id': 1, "loc": 1, "title": 1,
                            'createdAt': 1, 'updatedAt': 1, 'fromUserId': 1, 'categoryId': 1})))
+print(df_reviews.columns)
+if search_text != None:
+    print(f'INSIDE IF SEARCHTEXT LOOP: {search_text}')
+    combine_title = ' '.join(df_reviews["title"])
+    if [text for text in search_text if text in combine_title]:
+        contains = [df_reviews['title'].str.contains(i) for i in search_text]
+        df_reviews = df_reviews[np.all(contains, axis=0)]
 df_likes = pd.DataFrame(list(likes.find({}, {'_id':1, 'resourceId':1})))
 df_reviews.set_index('_id', inplace=True)
 df_likes.set_index('resourceId', inplace=True)
