@@ -91,6 +91,31 @@ class trend_results:
             return empty_list
         pass
 
+    def TopicsTrending(self):
+        search_history = self.mydb['searchhistories']
+        df_1 = pd.DataFrame(list(search_history.find({}, {"_id":1, "searchTerm": 1})))
+        sort_dict = (df_1['searchTerm'].value_counts()).to_dict()
+        trending_list = list(sort_dict.keys())
+        trending_list = [str(trend) for trend in trending_list]
+        return trending_list
+
+    def CategoriesTrending(self):
+        reviews = self.mydb['reviews_2']
+        likes = self.mydb['likes_2']
+        reviews_filter = {"isApprove": 'approved', "isDeleted": False}
+        df_reviews = pd.DataFrame(list(reviews.find(reviews_filter, {'_id': 1, 'updatedAt': 1, 'categoryId': 1})))
+        df_likes = pd.DataFrame(list(likes.find({}, {'_id': 1, 'resourceId': 1})))
+        df_reviews.set_index('_id', inplace=True)
+        df_likes.set_index('resourceId', inplace=True)
+        df_merge_cat = df_reviews.join(df_likes, how='left')
+        df_merge_cat['updated_dates'] = df_merge_cat['updatedAt'].apply(lambda x: str(x.split('T')[0]))
+        df_merge_cat['updated_dates'] = pd.to_datetime(df_merge_cat['updated_dates'], dayfirst=True)
+        categories_count_df = (df_merge_cat.groupby(['categoryId'])['updated_dates'].count().reset_index().rename(
+            columns={'updated_dates': 'ReviewLikeCount'}))
+        categories_count_df = (categories_count_df.sort_values(['ReviewLikeCount'], ascending=False))
+        return categories_count_df['categoryId'].unique()
+        pass
+
     def distance(self, lon1, lat1, lon2, lat2):
         x = (lon2 - lon1) * cos(0.5 * (lat2 + lat1))
         y = (lat2 - lat1)
