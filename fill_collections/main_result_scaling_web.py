@@ -62,6 +62,22 @@ class trend_results:
     def MergeDataframeUpdate(self, user_id, search_text):
         reviews = self.mydb['reviews_2']
         likes = self.mydb['likes_2']
+        blockusers = self.mydb['blockusers']
+
+        ##### Blockusersdata
+        cur = blockusers.find({}, {'blockUserId': 1, 'fromUserId': 1})
+        block_users_dict_list = [doc for doc in cur]
+        try_list = []
+
+        def get_data_block_users(new):
+            try_list.extend([new['blockUserId'], new['fromUserId']])
+            return try_list
+
+        block_list = list(map(get_data_block_users, block_users_dict_list))
+        block_list = [(y) for x in block_list for y in x]
+
+        
+
         # extract fields where review is approved and not deleted, also selecting only required fields
         reviews_filter = {"isApprove": 'approved', "isDeleted": False,
                           "title": {"$regex": f".*{search_text}.*"}} if search_text != None else {
