@@ -69,6 +69,16 @@ class trend_results:
                                                                               'fromUserId': 1, 'categoryId': 1})))
         # from likes table only review _id and resourceId field
         df_likes = pd.DataFrame(list(likes.find({}, {'_id': 1, 'resourceId': 1})))
+        df_reviews.set_index('_id', inplace=True)
+        df_likes.set_index('resourceId', inplace=True)
+        self.df_merge = df_reviews.join(df_likes, how='left')
+        self.df_merge['longitude'] = self.df_merge['loc'].apply(lambda x: x['coordinates'][0])
+        self.df_merge['latitude'] = self.df_merge['loc'].apply(lambda x: x['coordinates'][1])
+        self.df_merge['created_dates'] = self.df_merge['createdAt'].apply(lambda x: str(x.split('T')[0]))
+        self.df_merge['updated_dates'] = self.df_merge['updatedAt'].apply(lambda x: str(x.split('T')[0]))
+        self.df_merge.drop(labels=['createdAt', 'updatedAt', 'loc', "_id"], inplace=True, axis=1)
+        self.df_merge['resourceId'] = self.df_merge.index
+        self.df_merge.reset_index(drop=True, inplace=True)
         pass
 
     def MergedDataframe(self, user_id, search_text):
