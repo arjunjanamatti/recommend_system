@@ -37,24 +37,29 @@ class trend_results:
                           "title": {"$regex": f".*{search_text}.*"}} if search_text != None else {
             "isApprove": 'approved', "isDeleted": False}
 
+
+
         #### blockusers part
         if len(user_id) > 0:
-            try:
+            user_id_list = [rev['fromUserId'] for rev in list(reviews.find({}, {'fromUserId': 1}))]
+            if user_id in user_id_list:
                 reviews_filter['fromUserId'] = {'$nin': block_list}
-            except:
+            else:
                 raise
 
         ##### categoryid part
         if len(category_id) > 0:
-            try:
+            category_id_list = [rev['categoryId'] for rev in list(reviews.find({}, {'categoryId': 1}))]
+            if category_id in category_id_list:
                 reviews_filter['categoryId'] = f'{category_id}'
-            except:
+            else:
                 raise
 
-
+        print(f'reviews_filter: {reviews_filter}')
         df_reviews = pd.DataFrame(list(reviews.find(reviews_filter, {'_id': 1, "loc": 1, "title": 1,
                                                                      'createdAt': 1, 'updatedAt': 1, 'fromUserId': 1,
                                                                      'categoryId': 1})))
+
         # from likes table only review _id and resourceId field
         df_likes = pd.DataFrame(list(likes.find({}, {'_id': 1, 'resourceId': 1})))
         df_reviews.set_index('_id', inplace=True)
@@ -114,26 +119,26 @@ class trend_results:
             targetuserid_reviewlist = self.TargetUserId(target_userid)
             # print(f'lengh of targetuser id list: {len(targetuserid_reviewlist)}')
             if len(targetuserid_reviewlist) > 0:
-                return list(set(targetuserid_reviewlist).intersection((self.TopTrendingResults(self.df_merge, 7, 'resourceId'))))
+                return list(set(targetuserid_reviewlist).intersection((self.TopTrendingResults(self.df_merge, 7, 'resourceId'))[:50]))
             else:
                 empty_list = []
                 return empty_list
         else:
-            return self.TopTrendingResults(self.df_merge, 7, 'resourceId')
+            return self.TopTrendingResults(self.df_merge, 7, 'resourceId')[:50]
 
     def TopUsers(self, category_id, user_id, search_text, target_userid):
         self.MergeDataframeUpdate(category_id, user_id, search_text, target_userid)
-        return self.TopTrendingResults(self.df_merge, 7, 'fromUserId')
+        return self.TopTrendingResults(self.df_merge, 7, 'fromUserId')[:50]
 
     def PopularReviews(self, category_id, user_id, search_text, target_userid):
         self.MergeDataframeUpdate(category_id, user_id, search_text, target_userid)
         # return self.TopTrendingResults(self.df_merge, 30, 'resourceId')
         all_results = self.TopTrendingResults(self.df_merge, 30, 'resourceId')[:50]
-        # print(all_results)
+        print(all_results)
         if target_userid != None:
             targetuserid_reviewlist = self.TargetUserId(target_userid)
             # print(f'lengh of targetuser id list: {len(targetuserid_reviewlist)}')
-            # print(targetuserid_reviewlist)
+            print(targetuserid_reviewlist)
             if len(targetuserid_reviewlist) > 0:
                 return list(set(all_results).intersection(targetuserid_reviewlist))
             else:
@@ -235,6 +240,7 @@ def main_3():
     search_text = request.args.get('searchtext', default = None)
 
     target_userid = request.args.get('targetuserid', default = None)
+    print(f'user_id: {user_id}')
     if search_text:
         search_text = search_text.lower()
         # search_text = list(search_text.split())
