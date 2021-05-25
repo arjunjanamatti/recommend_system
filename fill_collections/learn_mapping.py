@@ -129,9 +129,6 @@ likes = mydb['likes_2']
 # search_text = 'nokia'
 search_text = None
 reviews_filter = {"isApprove": 'approved', "isDeleted": False, "title": {"$regex": f".*{search_text}.*"}} if search_text!=None else {"isApprove": 'approved', "isDeleted": False}
-# if search_text != None:
-#     reviews_filter = {"isApprove": 'approved', "isDeleted": False, "title": {"$regex": f".*{search_text}.*"}}
-
 
 df_reviews = pd.DataFrame(list(reviews.find(reviews_filter, {'_id': 1, "loc": 1, "title": 1,
                            'createdAt': 1, 'updatedAt': 1, 'fromUserId': 1, 'categoryId': 1})))
