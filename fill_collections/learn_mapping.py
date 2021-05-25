@@ -139,7 +139,8 @@ df_merge['latitude'] = df_merge['loc'].apply(lambda x: x['coordinates'][1])
 df_merge['created_dates'] = df_merge['createdAt'].apply(lambda x: str(x.split('T')[0]))
 df_merge['updated_dates'] = df_merge['updatedAt'].apply(lambda x: str(x.split('T')[0]))
 df_merge.drop(labels=['createdAt', 'updatedAt', 'loc'], inplace=True, axis=1)
-
+df_merge = df_merge.rename(columns={"_id": "resourceId"})
+df_merge.reset_index(drop=True, inplace=True)
 end_time = time.perf_counter()
 total_time = end_time - start_time
 print(f'Total time: {total_time} seconds')
