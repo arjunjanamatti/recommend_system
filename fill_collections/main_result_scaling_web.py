@@ -40,6 +40,7 @@ class trend_results:
 
         reult_list = list(map(get_data_block_users, block_users_dict_list))
         self.try_dict = reult_list [0]
+        print(self.try_dict)
         # for new in block_users_dict_list:
         #     self.try_dict[new['_id']] = []
         #     self.try_dict[new['_id']].append(new['blockUserId'])
@@ -490,17 +491,17 @@ def main_45():
     except:
         return {'error': f'category results are not available'}
 
-@app.route('/trending-topics', methods=['GET', 'POST'])
-def main_45():
-    result = trend_results()
-    topics_trend = result.TopicsTrending()
-    new_dic = {}
-    new_dic['topics_trend_results'] = topics_trend
-    # print(new_dic['category_trend_results'])
-    try:
-        return {'category_trend_results': new_dic['topics_trend_results'][:50]}
-    except:
-        return {'error': f'category results are not available'}
+# @app.route('/trending-topics', methods=['GET', 'POST'])
+# def main_45():
+#     result = trend_results()
+#     topics_trend = result.TopicsTrending()
+#     new_dic = {}
+#     new_dic['topics_trend_results'] = topics_trend
+#     # print(new_dic['category_trend_results'])
+#     try:
+#         return {'category_trend_results': new_dic['topics_trend_results'][:50]}
+#     except:
+#         return {'error': f'category results are not available'}
 
 @app.route('/near-location', methods=['GET', 'POST'])
 def main_5():
