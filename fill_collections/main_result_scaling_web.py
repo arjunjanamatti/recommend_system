@@ -21,12 +21,12 @@ class trend_results:
         self.top_user_last_week = {}
         self.popular_review_last_month = {}
         self.popular_user_last_month = {}
+        self.myclient = MongoClient(host=None, port=None)
+        self.mydb = self.myclient['real_reviews']
         pass
 
     def GetBlockUsersData(self):
-        myclient = MongoClient(host=None, port=None)
-        mydb = myclient['real_reviews']
-        coll = mydb['blockusers']
+        coll = self.mydb['blockusers']
         cur = coll.find()
         block_users_dict_list = [doc for doc in cur]
 
@@ -39,7 +39,6 @@ class trend_results:
             return self.try_dict
 
         reult_list = list(map(get_data_block_users, block_users_dict_list))
-        self.try_dict = reult_list [0]
         print(self.try_dict)
         # for new in block_users_dict_list:
         #     self.try_dict[new['_id']] = []
@@ -54,11 +53,14 @@ class trend_results:
         self.files_list = ['reviews_2.json', 'likes_2.json']
         self.tables_dictionary = {}
         for index, file in enumerate(self.files_list):
-            my_collection = mydb[file.split('.')[0]]
+            my_collection = self.mydb[file.split('.')[0]]
             list_data = my_collection.find()
             df = pd.DataFrame(list(list_data))
             self.tables_dictionary[file.split('.')[0]] = df
         return self.tables_dictionary
+
+    def MergeDataframeUpdate(self, user_id, search_text):
+        pass
 
     def MergedDataframe(self, user_id, search_text):
         self.GetTableDictionary()
