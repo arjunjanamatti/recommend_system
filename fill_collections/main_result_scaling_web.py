@@ -59,7 +59,7 @@ class trend_results:
             self.tables_dictionary[file.split('.')[0]] = df
         return self.tables_dictionary
 
-    def MergeDataframeUpdate(self, user_id, search_text):
+    def MergeDataframeUpdate(self, user_id, search_text, target_userid):
         reviews = self.mydb['reviews_2']
         likes = self.mydb['likes_2']
         blockusers = self.mydb['blockusers']
@@ -104,6 +104,11 @@ class trend_results:
         self.df_merge.drop(labels=['createdAt', 'updatedAt', 'loc', "_id"], inplace=True, axis=1)
         self.df_merge['resourceId'] = self.df_merge.index
         self.df_merge.reset_index(drop=True, inplace=True)
+        targetuserid_reviewlist = list(reviews.find({'fromUserId': target_userid}, {'_id': 1}))
+        self.targetuserid_reviewlist = [reviews['_id'] for reviews in targetuserid_reviewlist]
+        ##### targetuserid part
+
+
         pass
 
     def MergedDataframe(self, user_id, search_text):

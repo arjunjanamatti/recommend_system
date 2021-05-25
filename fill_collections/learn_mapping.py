@@ -172,9 +172,8 @@ df_merge['resourceId'] = df_merge.index
 df_merge.reset_index(drop=True, inplace=True)
 ##### targetuserid part
 targetuserid = '5fdf6bbcfe08e8c0191a7830'
-targetuserid_list = list(reviews.find({'fromUserId': targetuserid}, {'_id': 1}))
-targetuserid_list = [reviews['_id'] for reviews in targetuserid_list]
-print(targetuserid_list)
+targetuserid_reviewlist = list(reviews.find({'fromUserId': targetuserid}, {'_id': 1}))
+targetuserid_reviewlist = [reviews['_id'] for reviews in targetuserid_reviewlist]
 end_time = time.perf_counter()
 total_time = end_time - start_time
 print(f'Total time: {total_time} seconds')
