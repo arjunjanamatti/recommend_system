@@ -161,8 +161,10 @@ reult_list = [(y) for x in reult_list for y in x]
 # # user_id_lists = [(y) for x in user_id_lists for y in x]
 # print(user_id_lists)
 #### searchtext part
-search_text = 'toshiba'
-search_text = list(search_text.split())
+# search_text = 'toshiba'
+search_text = None
+if search_text != None:
+    search_text = list(search_text.split())
 # # search_text = None
 # title_list = [rev['title'] for rev in list(reviews.find({}, {'title': 1}))]
 # print(f'search_text: {search_text}')
@@ -176,14 +178,14 @@ if len(user_id) > 0:
     reviews_filter['fromUserId'] = {'$nin': reult_list}
 
 ##### categoryid part
-# category_id = '602cba1878d3fda29f33060a'
-category_id = ''
+category_id = '602cba1878d3fda29f33060a'
+# category_id = ''
 if len(category_id) > 0:
     reviews_filter['categoryId'] = f'{category_id}'
 
 print(reviews_filter)
 df_reviews = pd.DataFrame(list(reviews.find(reviews_filter, {'_id': 1, "loc": 1, "title": 1,
-                           'createdAt': 1, 'updatedAt': 1, 'fromUserId': 1, 'categoryId': 1})))
+                           'createdAt': 1, 'updatedAt': 1, 'fromUserId': 1, 'categoryId': f'{category_id}'})))
 print(df_reviews.columns)
 if search_text != None:
     print(f'INSIDE IF SEARCHTEXT LOOP: {search_text}')
