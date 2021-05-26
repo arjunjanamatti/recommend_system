@@ -153,7 +153,7 @@ class trend_results:
         return (top_10_reviews_last_week[column_name].unique())
 
     def TopReviews(self, category_id, user_id, search_text, target_userid):
-        self.MergeDataframeUpdate(category_id, user_id, search_text, target_userid)
+        self.MergeDataframeUpdate(category_id, user_id, search_text)
         # return self.TopTrendingResults(self.df_merge, 7, 'resourceId')
         if target_userid != None:
             targetuserid_reviewlist = self.TargetUserId(target_userid)
@@ -167,11 +167,11 @@ class trend_results:
             return self.TopTrendingResults(self.df_merge, 7, 'resourceId')[:50]
 
     def TopUsers(self, category_id, user_id, search_text, target_userid):
-        self.MergeDataframeUpdate(category_id, user_id, search_text, target_userid)
+        self.MergeDataframeUpdate(category_id, user_id, search_text)
         return self.TopTrendingResults(self.df_merge, 7, 'fromUserId')[:50]
 
     def PopularReviews(self, category_id, user_id, search_text, target_userid):
-        self.MergeDataframeUpdate(category_id, user_id, search_text, target_userid)
+        self.MergeDataframeUpdate(category_id, user_id, search_text)
         # return self.TopTrendingResults(self.df_merge, 30, 'resourceId')
         all_results = self.TopTrendingResults(self.df_merge, 30, 'resourceId')[:50]
         print(all_results)
@@ -188,7 +188,7 @@ class trend_results:
             return all_results
 
     def PopularUsers(self, category_id, user_id, search_text, target_userid):
-        self.MergeDataframeUpdate(category_id, user_id, search_text, target_userid)
+        self.MergeDataframeUpdate(category_id, user_id, search_text)
         return self.TopTrendingResults(self.df_merge, 30, 'fromUserId')
 
         # if (target_userid != None) & (len(targetuserid_reviewlist) > 0):
@@ -332,6 +332,31 @@ def main_4():
         # print(f'Exception: {type(e).__name__}')
         return {'error': f'user_id: {user_id} or {search_text} does not exist in our records'}
 
+@app.route('/trending-category', methods=['GET', 'POST'])
+def main_45():
+    result = trend_results()
+    category_trend = result.CategoriesTrending()
+    new_dic = {}
+    category_trend = list(category_trend)
+    category_trend = [str(cat) for cat in category_trend]
+    new_dic['category_trend_results'] = category_trend
+    # print(new_dic['category_trend_results'])
+    try:
+        return {'category_trend_results': new_dic['category_trend_results']}
+    except:
+        return {'error': f'category results are not available'}
+
+# @app.route('/trending-topics', methods=['GET', 'POST'])
+# def main_46():
+#     result = trend_results()
+#     topics_trend = result.TopicsTrending()
+#     new_dic = {}
+#     new_dic['topics_trend_results'] = topics_trend
+#     # print(new_dic['category_trend_results'])
+#     try:
+#         return {'category_trend_results': new_dic['topics_trend_results'][:50]}
+#     except:
+#         return {'error': f'category results are not available'}
 
 if __name__ == '__main__':
     import time
