@@ -339,7 +339,7 @@ def main_45():
     new_dic = {}
     category_trend = list(category_trend)
     category_trend = [str(cat) for cat in category_trend]
-    new_dic['category_trend_results'] = category_trend
+    new_dic['category_trend_results'] = category_trend[:50]
     # print(new_dic['category_trend_results'])
     try:
         return {'category_trend_results': new_dic['category_trend_results']}

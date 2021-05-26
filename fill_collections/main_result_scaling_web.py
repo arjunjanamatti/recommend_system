@@ -156,7 +156,7 @@ class trend_results:
                 contains = [self.df_merge_1['title'].str.contains(i) for i in search_text]
                 self.df_merge_1 = self.df_merge_1[np.all(contains, axis=0)]
             else:
-                raise
+                raise KeyError
         # if len(search_text) > 0:
         #     for tex in search_text:
         #         self.df_merge_1 = self.df_merge_1[self.df_merge_1.title.str.contains(tex)]
@@ -293,7 +293,7 @@ class trend_results:
         return sqrt(x * x + y * y)
 
     def SubgroupCategoriesToDictionary(self,user_id, search_text):
-        self.MergeDataframeUpdate(user_id, search_text)
+        self.MergedDataframe(user_id, search_text)
         gb = (self.df_merge_1.groupby('categoryId'))
         self.cat_dict = {}
         for cat in gb.groups:
@@ -301,7 +301,7 @@ class trend_results:
         return self.cat_dict
 
     def TrendingNearReviews(self, long_rand, lat_rand, user_id, search_text):
-        self.MergeDataframeUpdate(user_id, search_text)
+        self.MergedDataframe(user_id, search_text)
         # index_list = list(self.df_merge_1.index)
         # random_index = random.choice(index_list)
         # user_rand, review_rand = str(self.df_merge_1.iloc[random_index]['fromUserId_x']), str(
@@ -487,6 +487,8 @@ def main_2():
                 return {'combined': top_user_last_week[matching_key]}
             except:
                 return {'combined': f'This category {matching_key} has no results'}
+    except KeyError:
+        return {'empty_result': []}
     except:
         return {'error': f'user_id: {user_id} or {search_text} does not exist in our records'}
 
@@ -508,6 +510,8 @@ def main_3():
                 return {'combined': popular_review_last_month[matching_key]}
             except:
                 return {'combined': f'This category {matching_key} has no results'}
+    except KeyError:
+        return {'empty_result': []}
     except Exception as e:
         print(f'Exception: {e}')
         return {'error': f'user_id: {user_id} or {search_text} does not exist in our records'}
@@ -528,6 +532,8 @@ def main_4():
                 return {f'{matching_key}': popular_user_last_month[matching_key]}
             except:
                 return {'combined': f'This category {matching_key} has no results'}
+    except KeyError:
+        return {'empty_result': []}
     except:
         return {'error': f'user_id: {user_id} or {search_text} does not exist in our records'}
 
