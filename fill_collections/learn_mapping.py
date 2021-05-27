@@ -108,19 +108,19 @@ df_merge.drop(labels=['createdAt', 'updatedAt', 'loc', "_id"], inplace=True, axi
 df_merge['resourceId'] = df_merge.index
 df_merge.reset_index(drop=True, inplace=True)
 
-##### nearlocation part
-def distance(lon1, lat1, lon2, lat2):
-    x = (lon2 - lon1) * cos(0.5 * (lat2 + lat1))
-    y = (lat2 - lat1)
-    return sqrt(x * x + y * y)
-
-def f(lon1, lat1, x):
-    return distance(lon1, lat1, x['longitude'], x['latitude'])
-lon1, lat1 = -91.5, 35.0
-# print(df_merge.head())
-# print(distance(lon1, lat1, df_merge['longitude'][1], df_merge['latitude'][1]))
-# print(df_merge.apply(lambda x: f(lon1, lat1, x), axis = 1))
-df_merge['distance'] = df_merge.apply(lambda x: distance(lon1, lat1, x['longitude'], x['latitude']), axis=1)
+# ##### nearlocation part
+# def distance(lon1, lat1, lon2, lat2):
+#     x = (lon2 - lon1) * cos(0.5 * (lat2 + lat1))
+#     y = (lat2 - lat1)
+#     return sqrt(x * x + y * y)
+#
+# def f(lon1, lat1, x):
+#     return distance(lon1, lat1, x['longitude'], x['latitude'])
+# lon1, lat1 = -91.5, 35.0
+# # print(df_merge.head())
+# # print(distance(lon1, lat1, df_merge['longitude'][1], df_merge['latitude'][1]))
+# # print(df_merge.apply(lambda x: f(lon1, lat1, x), axis = 1))
+# df_merge['distance'] = df_merge.apply(lambda x: distance(lon1, lat1, x['longitude'], x['latitude']), axis=1)
 
 
 ##### targetuserid part
