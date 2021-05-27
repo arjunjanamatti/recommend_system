@@ -8,9 +8,23 @@ from datetime import timedelta
 from math import *
 import random
 from flask import Flask, request
-import time
+import time, logging
 
 app = Flask(__name__)
+
+try:
+    os.makedirs('LearnMappingLogs')
+except:
+    pass
+logname = 'LearnMappingLogs/loging.log'
+logging.basicConfig(filename=logname,
+                            filemode='a',
+                            format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
+                            datefmt='%H:%M:%S',
+                            level=logging.DEBUG)
+
+logger = logging.getLogger('urbanGUI')
+
 
 class trend_results:
     def __init__(self):
