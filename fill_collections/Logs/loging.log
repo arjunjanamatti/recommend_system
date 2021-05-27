@@ -1,2 +1,4 @@
 14:38:48,58 root INFO Running Urban Planning
 14:41:39,461 root INFO 5fdf6bbcfe08e8c0191a7805 is in the database
+14:46:00,605 root INFO 5fdf6bbcfe08e8c0191a7805 is in the database
+14:46:00,606 root INFO [{'_id': '6086ff261f6ee05e62e109c9', 'blockUserId': '5fe0d004fe08e8c0191a7806', 'fromUserId': '5fdf6bbcfe08e8c0191a7805'}, {'_id': '60a12c4697e73c6d94afc5e8', 'blockUserId': '605dd8c826e482412f150f3e', 'fromUserId': '5fdf6bbcfe08e8c0191a7805'}, {'_id': '60a298aafce44cff2a3b12c8', 'blockUserId': '609a25675d0c37c1bc198d51', 'fromUserId': '606df0ff039366aed09ab908'}, {'_id': '60a298b2fce44cff2a3b12c9', 'blockUserId': '609a28215d0c37c1bc198d53', 'fromUserId': '606df0ff039366aed09ab908'}, {'_id': '60a298e5fce44cff2a3b12cd', 'blockUserId': '609a28c75d0c37c1bc198d54', 'fromUserId': '606df0ff039366aed09ab908'}, {'_id': '60a917ed781fb21b0b12726c', 'blockUserId': '5fdf6bbcfe08e8c0191a7805', 'fromUserId': '606df0ff039366aed09ab908'}]
