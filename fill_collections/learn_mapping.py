@@ -121,6 +121,20 @@ import pandas as pd
 import time
 import numpy as np
 from math import *
+import logging, os
+
+try:
+    os.makedirs('Logs')
+except:
+    pass
+logname = 'Logs/loging.log'
+logging.basicConfig(filename=logname,
+                            filemode='a',
+                            format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
+                            datefmt='%H:%M:%S',
+                            level=logging.DEBUG)
+
+logger = logging.getLogger('urbanGUI')
 
 start_time = time.perf_counter()
 myclient = MongoClient(host='localhost', port=27017)
@@ -136,14 +150,20 @@ user_id = '5fdf6bbcfe08e8c0191a7805'
 user_id_list = [rev['fromUserId'] for rev in list(reviews.find({}, {'fromUserId': 1}))]
 # print(user_id_list)
 if user_id in user_id_list:
+    logging.info(f'{user_id} is in the database')
     print(f'{user_id} is in the database')
+else:
+    logging.info(f'{user_id} is NOT in the database')
+
+
 
 cur = blockusers.find({}, {'blockUserId': 1, 'fromUserId': 1})
 block_users_dict_list = [doc for doc in cur]
 block_list = [([new['blockUserId'], new['fromUserId']]) for new in block_users_dict_list]
 print(block_users_dict_list)
 print(block_list)
-print([bloc for bloc in block_list if user_id in bloc])
+# print([bloc for bloc in block_list if user_id in bloc])
+
 # # print(block_users_dict_list)
 # try_list = []
 # # def get_data_block_users(new):
