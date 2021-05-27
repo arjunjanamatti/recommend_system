@@ -130,7 +130,7 @@ reviews = mydb['reviews_2']
 likes = mydb['likes_2']
 
 ##### blockusers part
-user_id = '5fdf6bbcfe08e8c0191a7830'
+user_id = '5fdf6bbcfe08e8c0191a7805'
 # if reviews.find({'fromUserId': f'{user_id}'}):
 #     print(f'{user_id} is in the database')
 user_id_list = [rev['fromUserId'] for rev in list(reviews.find({}, {'fromUserId': 1}))]
@@ -143,6 +143,7 @@ block_users_dict_list = [doc for doc in cur]
 block_list = [([new['blockUserId'], new['fromUserId']]) for new in block_users_dict_list]
 print(block_users_dict_list)
 print(block_list)
+print([bloc for bloc in block_list if user_id in bloc])
 # # print(block_users_dict_list)
 # try_list = []
 # # def get_data_block_users(new):
