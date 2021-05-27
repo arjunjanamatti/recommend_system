@@ -196,6 +196,7 @@ def main():
     result = trend_results()
     _ = result.CategoryWiseResult()
     top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month = result.CombinedResults()
+    logging.info('Result is generated!!!')
     return top_review_last_week, top_user_last_week, popular_review_last_month, popular_user_last_month
 
 
