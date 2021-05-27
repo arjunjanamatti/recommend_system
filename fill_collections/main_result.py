@@ -8,15 +8,15 @@ from datetime import timedelta
 from math import *
 import random
 from flask import Flask, request
-import time, logging
+import time, logging, os
 
 app = Flask(__name__)
 
 try:
-    os.makedirs('LearnMappingLogs')
+    os.makedirs('MainResult')
 except:
     pass
-logname = 'LearnMappingLogs/loging.log'
+logname = 'MainResult/loging.log'
 logging.basicConfig(filename=logname,
                             filemode='a',
                             format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
