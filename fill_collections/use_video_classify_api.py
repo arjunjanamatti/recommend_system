@@ -1,5 +1,4 @@
 import requests
-import os
 import json
 from glob import glob
 from pymongo import MongoClient
@@ -56,18 +55,12 @@ class userapi:
 
     def RunApi(self, review):
         first_video_list = glob('{}/*'.format(f'{review}/video'))
-        print(first_video_list[-1])
         file_location = first_video_list[-1]
         speech_text, profane_text = self.GetSpeech(file_location)
         profane_text = ','.join(profane_text)
-        print(speech_text)
-        print(type(speech_text))
-        print(profane_text)
-        print(type(profane_text))
-
         review_id = review.split('\\')[-1]
         self.UpdateKeys(review_id, speech_text, profane_text)
-        print(f'update on Review_id: {review_id} completed !!!')
+        logging.info(f'update on Review_id: {review_id} completed !!!')
         pass
 
     def GetResults(self):
