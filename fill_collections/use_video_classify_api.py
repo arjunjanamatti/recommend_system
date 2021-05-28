@@ -40,6 +40,10 @@ class userapi:
 
         return update_review_list
 
+    def RunApi(self, file):
+        
+        pass
+
     def GetResults(self):
         review_id_no_speech = self.GetReviewsWithNoSpeech()
         update_review_list = self.GetUpdatedReviewId(review_id_no_speech)
@@ -71,7 +75,7 @@ class userapi:
 #     vids = requests.post(host, files=my_file)
 #     result_dict = json.loads(vids.text)
 #     return result_dict['Video speech'], result_dict['Profane words']
-# 
+#
 # def UpdateKeys(id, speech_text, profane_text):
 #     # for id in id_list:
 #     coll.update({'_id': f'{id}'}, {'$set': {'full_speech': f'{speech_text}', 'profane_words': f'{profane_text}'}})
