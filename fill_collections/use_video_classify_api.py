@@ -3,6 +3,7 @@ import json
 from glob import glob
 from pymongo import MongoClient
 import logging, os
+from operator import methodcaller
 
 try:
     os.makedirs('UseSpeechApiLogs')
@@ -70,24 +71,26 @@ class userapi:
         print(f'review_id_no_speech: {review_id_no_speech}')
         update_review_list = self.GetUpdatedReviewId(review_id_no_speech)
         print(f'update_review_list: {update_review_list}')
-        if len(update_review_list) > 0:
-            map(self.RunApi, update_review_list)
-            # for review in update_review_list:
-            #     first_video_list = glob('{}/*'.format(f'{review}/video'))
-            #     print(first_video_list[-1])
-            #     file_location = first_video_list[-1]
-            #     speech_text, profane_text = self.GetSpeech(file_location)
-            #     profane_text = ','.join(profane_text)
-            #     print(speech_text)
-            #     print(type(speech_text))
-            #     print(profane_text)
-            #     print(type(profane_text))
-            #
-            #     review_id = review.split('\\')[-1]
-            #     self.UpdateKeys(review_id, speech_text, profane_text)
-            #     print(f'update on Review_id: {review_id} completed !!!')
-        else:
-            pass
+        [self.RunApi(review) for review in update_review_list]
+        return update_review_list
+        # if len(self.update_review_list) > 0:
+        #     map(lambda x: self.RunApi(x), self.update_review_list)
+        #     # for review in update_review_list:
+        #     #     first_video_list = glob('{}/*'.format(f'{review}/video'))
+        #     #     print(first_video_list[-1])
+        #     #     file_location = first_video_list[-1]
+        #     #     speech_text, profane_text = self.GetSpeech(file_location)
+        #     #     profane_text = ','.join(profane_text)
+        #     #     print(speech_text)
+        #     #     print(type(speech_text))
+        #     #     print(profane_text)
+        #     #     print(type(profane_text))
+        #     #
+        #     #     review_id = review.split('\\')[-1]
+        #     #     self.UpdateKeys(review_id, speech_text, profane_text)
+        #     #     print(f'update on Review_id: {review_id} completed !!!')
+        # else:
+        #     pass
 
         pass
 
@@ -163,6 +166,7 @@ reviews_location = 'C:/Users/Arjun Janamatti/Downloads/reviews'
 try:
     update_result = userapi(host, reviews_location)
     update_result.GetResults()
+
 except Exception as e:
     print(e)
     logging.info(f'Exception: {type(e).__name__}')
