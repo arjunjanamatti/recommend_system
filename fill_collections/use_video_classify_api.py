@@ -3,6 +3,20 @@ import os
 import json
 from glob import glob
 from pymongo import MongoClient
+import logging, os
+
+try:
+    os.makedirs('UseSpeechApiLogs')
+except:
+    pass
+logname = 'UseSpeechApiLogs/loging.log'
+logging.basicConfig(filename=logname,
+                            filemode='a',
+                            format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
+                            datefmt='%H:%M:%S',
+                            level=logging.DEBUG)
+
+logger = logging.getLogger('urbanGUI')
 
 class userapi:
     def __init__(self, host, reviews_location):
