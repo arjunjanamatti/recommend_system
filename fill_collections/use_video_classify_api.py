@@ -40,28 +40,41 @@ class userapi:
 
         return update_review_list
 
-    def RunApi(self, file):
-        
+    def RunApi(self, review):
+        first_video_list = glob('{}/*'.format(f'{review}/video'))
+        print(first_video_list[-1])
+        file_location = first_video_list[-1]
+        speech_text, profane_text = self.GetSpeech(file_location)
+        profane_text = ','.join(profane_text)
+        print(speech_text)
+        print(type(speech_text))
+        print(profane_text)
+        print(type(profane_text))
+
+        review_id = review.split('\\')[-1]
+        self.UpdateKeys(review_id, speech_text, profane_text)
+        print(f'update on Review_id: {review_id} completed !!!')
         pass
 
     def GetResults(self):
         review_id_no_speech = self.GetReviewsWithNoSpeech()
         update_review_list = self.GetUpdatedReviewId(review_id_no_speech)
         if len(update_review_list) > 0:
-            for review in update_review_list:
-                first_video_list = glob('{}/*'.format(f'{review}/video'))
-                print(first_video_list[-1])
-                file_location = first_video_list[-1]
-                speech_text, profane_text = self.GetSpeech(file_location)
-                profane_text = ','.join(profane_text)
-                print(speech_text)
-                print(type(speech_text))
-                print(profane_text)
-                print(type(profane_text))
-
-                review_id = review.split('\\')[-1]
-                self.UpdateKeys(review_id, speech_text, profane_text)
-                print(f'update on Review_id: {review_id} completed !!!')
+            map(self.RunApi, update_review_list)
+            # for review in update_review_list:
+            #     first_video_list = glob('{}/*'.format(f'{review}/video'))
+            #     print(first_video_list[-1])
+            #     file_location = first_video_list[-1]
+            #     speech_text, profane_text = self.GetSpeech(file_location)
+            #     profane_text = ','.join(profane_text)
+            #     print(speech_text)
+            #     print(type(speech_text))
+            #     print(profane_text)
+            #     print(type(profane_text))
+            #
+            #     review_id = review.split('\\')[-1]
+            #     self.UpdateKeys(review_id, speech_text, profane_text)
+            #     print(f'update on Review_id: {review_id} completed !!!')
         else:
             pass
         pass
