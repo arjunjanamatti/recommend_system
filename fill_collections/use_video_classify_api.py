@@ -54,8 +54,10 @@ class userapi:
         return update_review_list
 
     def RunApi(self, review):
+        print('INSIDE')
         first_video_list = glob('{}/*'.format(f'{review}/video'))
         file_location = first_video_list[-1]
+        print(f'file_location: {file_location}')
         speech_text, profane_text = self.GetSpeech(file_location)
         profane_text = ','.join(profane_text)
         review_id = review.split('\\')[-1]
@@ -64,30 +66,29 @@ class userapi:
         pass
 
     def GetResults(self):
-        try:
-            review_id_no_speech = self.GetReviewsWithNoSpeech()
-            update_review_list = self.GetUpdatedReviewId(review_id_no_speech)
-            if len(update_review_list) > 0:
-                map(self.RunApi, update_review_list)
-                # for review in update_review_list:
-                #     first_video_list = glob('{}/*'.format(f'{review}/video'))
-                #     print(first_video_list[-1])
-                #     file_location = first_video_list[-1]
-                #     speech_text, profane_text = self.GetSpeech(file_location)
-                #     profane_text = ','.join(profane_text)
-                #     print(speech_text)
-                #     print(type(speech_text))
-                #     print(profane_text)
-                #     print(type(profane_text))
-                #
-                #     review_id = review.split('\\')[-1]
-                #     self.UpdateKeys(review_id, speech_text, profane_text)
-                #     print(f'update on Review_id: {review_id} completed !!!')
-            else:
-                pass
-        except Exception as ex:
-            print(ex)
-            raise
+        review_id_no_speech = self.GetReviewsWithNoSpeech()
+        print(f'review_id_no_speech: {review_id_no_speech}')
+        update_review_list = self.GetUpdatedReviewId(review_id_no_speech)
+        print(f'update_review_list: {update_review_list}')
+        if len(update_review_list) > 0:
+            map(self.RunApi, update_review_list)
+            # for review in update_review_list:
+            #     first_video_list = glob('{}/*'.format(f'{review}/video'))
+            #     print(first_video_list[-1])
+            #     file_location = first_video_list[-1]
+            #     speech_text, profane_text = self.GetSpeech(file_location)
+            #     profane_text = ','.join(profane_text)
+            #     print(speech_text)
+            #     print(type(speech_text))
+            #     print(profane_text)
+            #     print(type(profane_text))
+            #
+            #     review_id = review.split('\\')[-1]
+            #     self.UpdateKeys(review_id, speech_text, profane_text)
+            #     print(f'update on Review_id: {review_id} completed !!!')
+        else:
+            pass
+
         pass
 
 
