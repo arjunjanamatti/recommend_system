@@ -66,38 +66,38 @@ class userapi:
 
     pass
 
-def GetSpeech(file_location, host):
-    my_file = {'file': open(os.path.realpath(file_location), 'rb')}
-    vids = requests.post(host, files=my_file)
-    result_dict = json.loads(vids.text)
-    return result_dict['Video speech'], result_dict['Profane words']
-
-def UpdateKeys(id, speech_text, profane_text):
-    # for id in id_list:
-    coll.update({'_id': f'{id}'}, {'$set': {'full_speech': f'{speech_text}', 'profane_words': f'{profane_text}'}})
-    pass
-
-def GetReviewsWithNoSpeech():
-    myclient = MongoClient(host=None, port=None)
-    mydb = myclient['real_reviews']
-    coll = mydb['reviews']
-    review_id_list = coll.find({}, {'full_speech': 1})
-    review_id_no_speech = []
-    [review_id_no_speech.append(f'{result["_id"]}') for result in review_id_list
-     if 'full_speech' not in result]
-    return review_id_no_speech
-
-def GetUpdatedReviewId(reviews_location, review_id_no_speech):
-    reviews_list = glob('{}/*'.format(reviews_location))
-    update_review_list = []
-
-    for review in reviews_list:
-        review_id = review.split('\\')[-1]
-        if review_id in review_id_no_speech:
-            update_review_list.append(review)
-
-    return update_review_list
-    pass
+# def GetSpeech(file_location, host):
+#     my_file = {'file': open(os.path.realpath(file_location), 'rb')}
+#     vids = requests.post(host, files=my_file)
+#     result_dict = json.loads(vids.text)
+#     return result_dict['Video speech'], result_dict['Profane words']
+# 
+# def UpdateKeys(id, speech_text, profane_text):
+#     # for id in id_list:
+#     coll.update({'_id': f'{id}'}, {'$set': {'full_speech': f'{speech_text}', 'profane_words': f'{profane_text}'}})
+#     pass
+#
+# def GetReviewsWithNoSpeech():
+#     myclient = MongoClient(host=None, port=None)
+#     mydb = myclient['real_reviews']
+#     coll = mydb['reviews']
+#     review_id_list = coll.find({}, {'full_speech': 1})
+#     review_id_no_speech = []
+#     [review_id_no_speech.append(f'{result["_id"]}') for result in review_id_list
+#      if 'full_speech' not in result]
+#     return review_id_no_speech
+#
+# def GetUpdatedReviewId(reviews_location, review_id_no_speech):
+#     reviews_list = glob('{}/*'.format(reviews_location))
+#     update_review_list = []
+#
+#     for review in reviews_list:
+#         review_id = review.split('\\')[-1]
+#         if review_id in review_id_no_speech:
+#             update_review_list.append(review)
+#
+#     return update_review_list
+#     pass
 
 # host = 'http://127.0.0.1:5050/text-speech'
 # myclient = MongoClient(host=None, port=None)
