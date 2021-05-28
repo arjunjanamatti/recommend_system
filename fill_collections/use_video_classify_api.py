@@ -34,7 +34,7 @@ class userapi:
 
     def UpdateKeys(self, id, speech_text, profane_text):
         # for id in id_list:
-        self.coll.update({'_id': f'{id}'}, {'$set': {'full_speech': f'{speech_text}', 'profane_words': f'{profane_text}'}})
+        self.coll.update_one({'_id': f'{id}'}, {'$set': {'full_speech': f'{speech_text}', 'profane_words': f'{profane_text}'}})
 
     def GetReviewsWithNoSpeech(self):
         review_id_list = self.coll.find({}, {'full_speech': 1})
@@ -55,10 +55,8 @@ class userapi:
         return update_review_list
 
     def RunApi(self, review):
-        print('INSIDE')
         first_video_list = glob('{}/*'.format(f'{review}/video'))
         file_location = first_video_list[-1]
-        print(f'file_location: {file_location}')
         speech_text, profane_text = self.GetSpeech(file_location)
         profane_text = ','.join(profane_text)
         review_id = review.split('\\')[-1]
@@ -68,9 +66,7 @@ class userapi:
 
     def GetResults(self):
         review_id_no_speech = self.GetReviewsWithNoSpeech()
-        print(f'review_id_no_speech: {review_id_no_speech}')
         update_review_list = self.GetUpdatedReviewId(review_id_no_speech)
-        print(f'update_review_list: {update_review_list}')
         [self.RunApi(review) for review in update_review_list]
         return update_review_list
         # if len(self.update_review_list) > 0:
