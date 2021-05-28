@@ -64,26 +64,30 @@ class userapi:
         pass
 
     def GetResults(self):
-        review_id_no_speech = self.GetReviewsWithNoSpeech()
-        update_review_list = self.GetUpdatedReviewId(review_id_no_speech)
-        if len(update_review_list) > 0:
-            map(self.RunApi, update_review_list)
-            # for review in update_review_list:
-            #     first_video_list = glob('{}/*'.format(f'{review}/video'))
-            #     print(first_video_list[-1])
-            #     file_location = first_video_list[-1]
-            #     speech_text, profane_text = self.GetSpeech(file_location)
-            #     profane_text = ','.join(profane_text)
-            #     print(speech_text)
-            #     print(type(speech_text))
-            #     print(profane_text)
-            #     print(type(profane_text))
-            #
-            #     review_id = review.split('\\')[-1]
-            #     self.UpdateKeys(review_id, speech_text, profane_text)
-            #     print(f'update on Review_id: {review_id} completed !!!')
-        else:
-            pass
+        try:
+            review_id_no_speech = self.GetReviewsWithNoSpeech()
+            update_review_list = self.GetUpdatedReviewId(review_id_no_speech)
+            if len(update_review_list) > 0:
+                map(self.RunApi, update_review_list)
+                # for review in update_review_list:
+                #     first_video_list = glob('{}/*'.format(f'{review}/video'))
+                #     print(first_video_list[-1])
+                #     file_location = first_video_list[-1]
+                #     speech_text, profane_text = self.GetSpeech(file_location)
+                #     profane_text = ','.join(profane_text)
+                #     print(speech_text)
+                #     print(type(speech_text))
+                #     print(profane_text)
+                #     print(type(profane_text))
+                #
+                #     review_id = review.split('\\')[-1]
+                #     self.UpdateKeys(review_id, speech_text, profane_text)
+                #     print(f'update on Review_id: {review_id} completed !!!')
+            else:
+                pass
+        except Exception as ex:
+            print(ex)
+            raise
         pass
 
 
@@ -155,9 +159,12 @@ class userapi:
 
 host = 'http://127.0.0.1:5050/text-speech'
 reviews_location = 'C:/Users/Arjun Janamatti/Downloads/reviews'
-
-update_result = userapi(host, reviews_location)
-update_result.GetResults()
+try:
+    update_result = userapi(host, reviews_location)
+    update_result.GetResults()
+except Exception as e:
+    print(e)
+    logging.info(f'Exception: {type(e).__name__}')
 
 # if len(update_review_list) > 0:
 #     for review in update_review_list:
