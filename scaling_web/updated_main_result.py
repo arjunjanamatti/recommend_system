@@ -84,7 +84,6 @@ class trend_results:
 
         # from views table only review_id and resourceId field
         df_views = pd.DataFrame(list(views.find({'resourceType' : "REVIEW"}, {'_id': 1, 'resourceId': 1})))
-        print(f'Shape of df_views dataframe: {len(df_views)}')
         df_views.set_index('resourceId', inplace=True)
         df_merge = self.df_merge.copy()
         df_merge.set_index('resourceId', inplace=True)
@@ -380,5 +379,6 @@ class trend_results:
 
 if __name__ == '__main__':
     result = trend_results()
-    result.MergeDataframeUpdate()
+    top_reviews = result.TopReviews(category_id='', user_id='', search_text = None, target_userid = None)
+    print(top_reviews)
     # app.run(debug=True, port=5000)
