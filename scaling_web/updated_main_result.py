@@ -77,7 +77,7 @@ class trend_results:
         # self.df_merge['updated_dates'] = self.df_merge['updatedAt'].apply(lambda x: str(x.split('T')[0]))
         self.df_merge['created_dates'] = pd.to_datetime(self.df_merge['created_dates'], dayfirst=True)
         # self.df_merge['updated_dates'] = pd.to_datetime(self.df_merge['updated_dates'], dayfirst=True)
-        self.df_merge.drop(labels=['createdAt', 'updatedAt', "_id"], inplace=True, axis=1)
+        self.df_merge.drop(labels=['createdAt', "_id"], inplace=True, axis=1)
         self.df_merge['resourceId'] = self.df_merge.index
         self.df_merge.reset_index(drop=True, inplace=True)
         self.df_merge.to_csv('df_merge.csv')
@@ -96,6 +96,7 @@ class trend_results:
         self.df_merge_1['updated_dates'] = self.df_merge_1['updatedAt'].apply(lambda x: str(x.split('T')[0]))
         self.df_merge_1['updated_dates'] = pd.to_datetime(self.df_merge_1['updated_dates'], dayfirst=True)
         self.df_merge_1.reset_index(drop=True, inplace=True)
+        self.df_merge_1.drop(labels=['updatedAt', "_id"], inplace=True, axis=1)
         self.df_merge_1.to_csv('df_merge_1.csv')
 
         # setting the _id column back, since we need it for ReviewsResult columnname
@@ -155,6 +156,7 @@ class trend_results:
             if category_id in self.category_id_list:
                 df_reviews = df_reviews[df_reviews['categoryId'] == str(category_id)]
                 if len(df_reviews) == 0:
+                    print('category problem')
                     raise KeyError
                 else:
                     category_id_reviews = list(df_reviews[columnname])
@@ -170,6 +172,7 @@ class trend_results:
                 blocklist = [bloc for bloc in blocklist if bloc != user_id]
                 df_reviews = df_reviews[~df_reviews['fromUserId'].isin(blocklist)]
                 if len(df_reviews) == 0:
+                    print('user_id problem')
                     raise KeyError
                 else:
                     userid_reviews = list(df_reviews[columnname])
@@ -183,6 +186,7 @@ class trend_results:
                 contains = [df_reviews['title'].str.contains(i) for i in search_text]
                 df_reviews = df_reviews[np.all(contains, axis=0)]
                 if len(df_reviews) == 0:
+                    print('search text problem')
                     raise KeyError
                 else:
                     search_text_reviews = list(df_reviews[columnname])
@@ -196,6 +200,7 @@ class trend_results:
                 # df_reviews = df_reviews[~df_reviews['fromUserId'].isin(self.block_list)]
                 df_reviews = df_reviews[df_reviews['fromUserId'] == target_userid]
                 if len(df_reviews) == 0:
+                    print('target_userid problem')
                     raise KeyError
                 else:
                     targetuserid_reviewlist = list(df_reviews[columnname])
