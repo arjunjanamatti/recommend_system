@@ -70,6 +70,7 @@ class trend_results:
         df_likes.set_index('resourceId', inplace=True)
         # df_likes['_id'] = df_likes['_id'].astype(str)
 
+
         self.df_merge = self.df_reviews.join(df_likes, how='left')
         self.df_merge.dropna(inplace=True)
         self.df_merge['created_dates'] = self.df_merge['createdAt'].apply(lambda x: str(x.split('T')[0]))
@@ -79,6 +80,16 @@ class trend_results:
         self.df_merge.drop(labels=['createdAt', 'updatedAt', "_id"], inplace=True, axis=1)
         self.df_merge['resourceId'] = self.df_merge.index
         self.df_merge.reset_index(drop=True, inplace=True)
+        self.df_merge.to_csv('df_merge.csv')
+
+        # from views table only review_id and resourceId field
+        df_views = pd.DataFrame(list(views.find({'resourceType' : "REVIEW"}, {'_id': 1, 'resourceId': 1})))
+        df_views.set_index('resourceId', inplace=True)
+
+        # merge reviews and likes merged one to views one
+        self.df_merge_1 = self.df_reviews.join(df_views, how='left')
+        self.df_merge_1.to_csv('df_merge_1.csv')
+
         # setting the _id column back, since we need it for ReviewsResult columnname
         self.df_reviews['_id'] = self.df_reviews.index
         self.df_reviews.reset_index(drop=True, inplace=True)
@@ -363,6 +374,5 @@ class trend_results:
 
 if __name__ == '__main__':
     result = trend_results()
-    merged_df = result.MergeDataframeUpdate()
-    merged_df.to_csv('merged_df.csv')
+    result.MergeDataframeUpdate()
     # app.run(debug=True, port=5000)
