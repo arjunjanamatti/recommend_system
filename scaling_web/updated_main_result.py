@@ -46,7 +46,7 @@ class trend_results:
         reviews_filter = {"isApprove": 'approved', "isDeleted": False, "categoryId": {"$exists": True}}
 
         self.df_reviews = pd.DataFrame(list(reviews.find(reviews_filter, {'_id': 1, "title": 1,
-                                                                     'createdAt': 1, 'updatedAt': 1, 'fromUserId': 1,
+                                                                     'createdAt': 1, 'fromUserId': 1,
                                                                      'categoryId': 1})))
         # convert all columns to string and make title phrases lower
         self.df_reviews['_id'] = self.df_reviews['_id'].astype(str)
@@ -74,16 +74,16 @@ class trend_results:
         self.df_merge = self.df_reviews.join(df_likes, how='left')
         self.df_merge.dropna(inplace=True)
         self.df_merge['created_dates'] = self.df_merge['createdAt'].apply(lambda x: str(x.split('T')[0]))
-        self.df_merge['updated_dates'] = self.df_merge['updatedAt'].apply(lambda x: str(x.split('T')[0]))
+        # self.df_merge['updated_dates'] = self.df_merge['updatedAt'].apply(lambda x: str(x.split('T')[0]))
         self.df_merge['created_dates'] = pd.to_datetime(self.df_merge['created_dates'], dayfirst=True)
-        self.df_merge['updated_dates'] = pd.to_datetime(self.df_merge['updated_dates'], dayfirst=True)
+        # self.df_merge['updated_dates'] = pd.to_datetime(self.df_merge['updated_dates'], dayfirst=True)
         self.df_merge.drop(labels=['createdAt', 'updatedAt', "_id"], inplace=True, axis=1)
         self.df_merge['resourceId'] = self.df_merge.index
         self.df_merge.reset_index(drop=True, inplace=True)
         self.df_merge.to_csv('df_merge.csv')
 
         # from views table only review_id and resourceId field
-        df_views = pd.DataFrame(list(views.find({'resourceType' : "REVIEW"}, {'_id': 1, 'resourceId': 1})))
+        df_views = pd.DataFrame(list(views.find({'resourceType' : "REVIEW"}, {'_id': 1, 'resourceId': 1, "updatedAt": 1})))
         df_views.set_index('resourceId', inplace=True)
         df_merge = self.df_merge.copy()
         df_merge.set_index('resourceId', inplace=True)
