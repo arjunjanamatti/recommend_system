@@ -34,6 +34,7 @@ class trend_results:
     def MergeDataframeUpdate(self):
         reviews = self.mydb['reviews']
         likes = self.mydb['likes']
+        views = self.mydb['views']
         blockusers = self.mydb['blockusers']
 
         ##### Blockusersdata
@@ -219,146 +220,149 @@ class trend_results:
                                                'fromUserId')
         return actual_popularusers
 
-
-@app.route('/trending-review', methods=['GET', 'POST'])
-def main_1():
-    category_id = request.args.get('categoryid')
-    user_id = request.args.get('userid')
-    search_text = request.args.get('searchtext', default = None)
-    target_userid = request.args.get('targetuserid', default = None)
-    if search_text:
-        search_text = search_text.lower()
-        search_text = list(search_text.split())
-    try:
-        result = trend_results()
-        top_review_last_week = result.TopReviews(category_id, user_id, search_text, target_userid)
-        top_review_last_week = [str(top) for top in top_review_last_week][:50]
-        if category_id == '':
-            return {'combined': top_review_last_week}
-        elif category_id != '':
-            try:
-                return {'combined': top_review_last_week}
-            except:
-                return {'combined': f'This category {category_id} has no results'}
-    except KeyError:
-        return {'empty_result': []}
-    except Exception as e:
-        # print(f'Exception: {type(e).__name__}')
-        # logging.info(f'Exception: {type(e).__name__} has occured for Trending reviews with category_id: {category_id}, user_id: {user_id}, search_text: {search_text}, target_userid:{target_userid}')
-        return {'error': f'user_id: {user_id} or {search_text} does not exist in our records'}
-
-
-@app.route('/trending-user', methods=['GET', 'POST'])
-def main_2():
-    category_id = request.args.get('categoryid')
-    user_id = request.args.get('userid')
-    search_text = request.args.get('searchtext', default = None)
-    target_userid = request.args.get('targetuserid', default = None)
-    if search_text:
-        search_text = search_text.lower()
-        search_text = list(search_text.split())
-    print(search_text)
-    try:
-        result = trend_results()
-        top_user_last_week = result.TopUsers(category_id, user_id, search_text, target_userid)
-        top_user_last_week = [str(top) for top in top_user_last_week][:50]
-        if category_id == '':
-            return {'combined': top_user_last_week}
-        elif category_id != '':
-            try:
-                return {'combined': top_user_last_week}
-            except:
-                return {'combined': f'This category {category_id} has no results'}
-    except KeyError:
-        return {'empty_result': []}
-    except Exception as e:
-        # logging.info(f'Exception: {type(e).__name__} has occured for Trending users with category_id: {category_id}, user_id: {user_id}, search_text: {search_text}, target_userid:{target_userid}')
-        return {'error': f'user_id: {user_id} or {search_text} does not exist in our records'}
-
-
-@app.route('/popular-review', methods=['GET', 'POST'])
-def main_3():
-    category_id = request.args.get('categoryid')
-    user_id = request.args.get('userid')
-    search_text = request.args.get('searchtext', default = None)
-    target_userid = request.args.get('targetuserid', default = None)
-    print(f'user_id: {user_id}')
-    if search_text:
-        search_text = search_text.lower()
-        search_text = list(search_text.split())
-    print(search_text)
-    try:
-        result = trend_results()
-        popular_review_last_month = result.PopularReviews(category_id, user_id, search_text, target_userid)
-        popular_review_last_month = [str(top) for top in popular_review_last_month][:50]
-        if category_id == '':
-            return {'combined': popular_review_last_month}
-        elif category_id != '':
-            try:
-                return {'combined': popular_review_last_month}
-            except Exception as e:
-                print(f'Exception: {e}')
-                return {'combined': f'This category {category_id} has no results'}
-    except KeyError:
-        return {'empty_result': []}
-    except Exception as e:
-        # logging.info(f'Exception: {type(e).__name__} has occured for Popular reviews with category_id: {category_id}, user_id: {user_id}, search_text: {search_text}, target_userid:{target_userid}')
-        return {'error': f'user_id: {user_id} or {search_text} does not exist in our records'}
-
-@app.route('/popular-user', methods=['GET', 'POST'])
-def main_4():
-    category_id = request.args.get('categoryid')
-    user_id = request.args.get('userid')
-    search_text = request.args.get('searchtext', default = None)
-    target_userid = request.args.get('targetuserid', default = None)
-    if search_text:
-        search_text = search_text.lower()
-        search_text = list(search_text.split())
-    print(search_text)
-    try:
-        result = trend_results()
-        popular_user_last_month = result.PopularUsers(category_id, user_id, search_text, target_userid)
-        popular_user_last_month = [str(top) for top in popular_user_last_month][:50]
-        if category_id == '':
-            return {'combined': popular_user_last_month}
-        elif category_id != '':
-            try:
-                return {f'{category_id}': popular_user_last_month}
-            except:
-                return {'combined': f'This category {category_id} has no results'}
-    except KeyError:
-        return {'empty_result': []}
-    except Exception as e:
-        # logging.info(f'Exception: {type(e).__name__} has occured for Popular users with category_id: {category_id}, user_id: {user_id}, search_text: {search_text}, target_userid:{target_userid}')
-        return {'error': f'user_id: {user_id} or {search_text} does not exist in our records'}
-
-@app.route('/trending-category', methods=['GET', 'POST'])
-def main_45():
-    result = trend_results()
-    category_trend = result.CategoriesTrending()
-    new_dic = {}
-    category_trend = list(category_trend)
-    category_trend = [str(cat) for cat in category_trend]
-    new_dic['category_trend_results'] = category_trend[:50]
-    # print(new_dic['category_trend_results'])
-    try:
-        return {'category_trend_results': new_dic['category_trend_results']}
-    except Exception as e:
-        # logging.info(f'Trending category results not available due to {type(e).__name__}')
-        return {'error': f'category results are not available'}
-
-@app.route('/trending-topics', methods=['GET', 'POST'])
-def main_46():
-    result = trend_results()
-    topics_trend = result.TopicsTrending()
-    new_dic = {}
-    new_dic['topics_trend_results'] = topics_trend
-    # print(new_dic['category_trend_results'])
-    try:
-        return {'topics_trend_results': new_dic['topics_trend_results'][:50]}
-    except Exception as e:
-        # logging.info(f'Trending topics results not available due to {type(e).__name__}')
-        return {'error': f'topic results are not available'}
+#
+# @app.route('/trending-review', methods=['GET', 'POST'])
+# def main_1():
+#     category_id = request.args.get('categoryid')
+#     user_id = request.args.get('userid')
+#     search_text = request.args.get('searchtext', default = None)
+#     target_userid = request.args.get('targetuserid', default = None)
+#     if search_text:
+#         search_text = search_text.lower()
+#         search_text = list(search_text.split())
+#     try:
+#         result = trend_results()
+#         top_review_last_week = result.TopReviews(category_id, user_id, search_text, target_userid)
+#         top_review_last_week = [str(top) for top in top_review_last_week][:50]
+#         if category_id == '':
+#             return {'combined': top_review_last_week}
+#         elif category_id != '':
+#             try:
+#                 return {'combined': top_review_last_week}
+#             except:
+#                 return {'combined': f'This category {category_id} has no results'}
+#     except KeyError:
+#         return {'empty_result': []}
+#     except Exception as e:
+#         # print(f'Exception: {type(e).__name__}')
+#         # logging.info(f'Exception: {type(e).__name__} has occured for Trending reviews with category_id: {category_id}, user_id: {user_id}, search_text: {search_text}, target_userid:{target_userid}')
+#         return {'error': f'user_id: {user_id} or {search_text} does not exist in our records'}
+#
+#
+# @app.route('/trending-user', methods=['GET', 'POST'])
+# def main_2():
+#     category_id = request.args.get('categoryid')
+#     user_id = request.args.get('userid')
+#     search_text = request.args.get('searchtext', default = None)
+#     target_userid = request.args.get('targetuserid', default = None)
+#     if search_text:
+#         search_text = search_text.lower()
+#         search_text = list(search_text.split())
+#     print(search_text)
+#     try:
+#         result = trend_results()
+#         top_user_last_week = result.TopUsers(category_id, user_id, search_text, target_userid)
+#         top_user_last_week = [str(top) for top in top_user_last_week][:50]
+#         if category_id == '':
+#             return {'combined': top_user_last_week}
+#         elif category_id != '':
+#             try:
+#                 return {'combined': top_user_last_week}
+#             except:
+#                 return {'combined': f'This category {category_id} has no results'}
+#     except KeyError:
+#         return {'empty_result': []}
+#     except Exception as e:
+#         # logging.info(f'Exception: {type(e).__name__} has occured for Trending users with category_id: {category_id}, user_id: {user_id}, search_text: {search_text}, target_userid:{target_userid}')
+#         return {'error': f'user_id: {user_id} or {search_text} does not exist in our records'}
+#
+#
+# @app.route('/popular-review', methods=['GET', 'POST'])
+# def main_3():
+#     category_id = request.args.get('categoryid')
+#     user_id = request.args.get('userid')
+#     search_text = request.args.get('searchtext', default = None)
+#     target_userid = request.args.get('targetuserid', default = None)
+#     print(f'user_id: {user_id}')
+#     if search_text:
+#         search_text = search_text.lower()
+#         search_text = list(search_text.split())
+#     print(search_text)
+#     try:
+#         result = trend_results()
+#         popular_review_last_month = result.PopularReviews(category_id, user_id, search_text, target_userid)
+#         popular_review_last_month = [str(top) for top in popular_review_last_month][:50]
+#         if category_id == '':
+#             return {'combined': popular_review_last_month}
+#         elif category_id != '':
+#             try:
+#                 return {'combined': popular_review_last_month}
+#             except Exception as e:
+#                 print(f'Exception: {e}')
+#                 return {'combined': f'This category {category_id} has no results'}
+#     except KeyError:
+#         return {'empty_result': []}
+#     except Exception as e:
+#         # logging.info(f'Exception: {type(e).__name__} has occured for Popular reviews with category_id: {category_id}, user_id: {user_id}, search_text: {search_text}, target_userid:{target_userid}')
+#         return {'error': f'user_id: {user_id} or {search_text} does not exist in our records'}
+#
+# @app.route('/popular-user', methods=['GET', 'POST'])
+# def main_4():
+#     category_id = request.args.get('categoryid')
+#     user_id = request.args.get('userid')
+#     search_text = request.args.get('searchtext', default = None)
+#     target_userid = request.args.get('targetuserid', default = None)
+#     if search_text:
+#         search_text = search_text.lower()
+#         search_text = list(search_text.split())
+#     print(search_text)
+#     try:
+#         result = trend_results()
+#         popular_user_last_month = result.PopularUsers(category_id, user_id, search_text, target_userid)
+#         popular_user_last_month = [str(top) for top in popular_user_last_month][:50]
+#         if category_id == '':
+#             return {'combined': popular_user_last_month}
+#         elif category_id != '':
+#             try:
+#                 return {f'{category_id}': popular_user_last_month}
+#             except:
+#                 return {'combined': f'This category {category_id} has no results'}
+#     except KeyError:
+#         return {'empty_result': []}
+#     except Exception as e:
+#         # logging.info(f'Exception: {type(e).__name__} has occured for Popular users with category_id: {category_id}, user_id: {user_id}, search_text: {search_text}, target_userid:{target_userid}')
+#         return {'error': f'user_id: {user_id} or {search_text} does not exist in our records'}
+#
+# @app.route('/trending-category', methods=['GET', 'POST'])
+# def main_45():
+#     result = trend_results()
+#     category_trend = result.CategoriesTrending()
+#     new_dic = {}
+#     category_trend = list(category_trend)
+#     category_trend = [str(cat) for cat in category_trend]
+#     new_dic['category_trend_results'] = category_trend[:50]
+#     # print(new_dic['category_trend_results'])
+#     try:
+#         return {'category_trend_results': new_dic['category_trend_results']}
+#     except Exception as e:
+#         # logging.info(f'Trending category results not available due to {type(e).__name__}')
+#         return {'error': f'category results are not available'}
+#
+# @app.route('/trending-topics', methods=['GET', 'POST'])
+# def main_46():
+#     result = trend_results()
+#     topics_trend = result.TopicsTrending()
+#     new_dic = {}
+#     new_dic['topics_trend_results'] = topics_trend
+#     # print(new_dic['category_trend_results'])
+#     try:
+#         return {'topics_trend_results': new_dic['topics_trend_results'][:50]}
+#     except Exception as e:
+#         # logging.info(f'Trending topics results not available due to {type(e).__name__}')
+#         return {'error': f'topic results are not available'}
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    result = trend_results()
+    merged_df = result.MergeDataframeUpdate()
+    merged_df.to_csv('merged_df.csv')
+    # app.run(debug=True, port=5000)
