@@ -52,7 +52,7 @@ class trend_results:
         self.df_reviews['_id'] = self.df_reviews['_id'].astype(str)
         self.df_reviews['title'] = self.df_reviews['title'].apply(lambda x: str(x).lower())
         self.df_reviews['createdAt'] = self.df_reviews['createdAt'].astype(str)
-        self.df_reviews['updatedAt'] = self.df_reviews['updatedAt'].astype(str)
+        # self.df_reviews['updatedAt'] = self.df_reviews['updatedAt'].astype(str)
         self.df_reviews['fromUserId'] = self.df_reviews['fromUserId'].astype(str)
         self.df_reviews['categoryId'] = self.df_reviews['categoryId'].astype(str)
 
@@ -92,6 +92,9 @@ class trend_results:
         self.df_merge_1 = df_merge.join(df_views, how='left')
         self.df_merge_1.drop(labels=["_id"], inplace=True, axis=1)
         self.df_merge_1['resourceId'] = self.df_merge_1.index
+        self.df_merge_1['updatedAt'] = self.df_merge_1['updatedAt'].astype(str)
+        self.df_merge_1['updated_dates'] = self.df_merge_1['updatedAt'].apply(lambda x: str(x.split('T')[0]))
+        self.df_merge_1['updated_dates'] = pd.to_datetime(self.df_merge_1['updated_dates'], dayfirst=True)
         self.df_merge_1.reset_index(drop=True, inplace=True)
         self.df_merge_1.to_csv('df_merge_1.csv')
 
