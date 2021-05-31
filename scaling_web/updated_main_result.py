@@ -90,7 +90,6 @@ class trend_results:
 
         # merge reviews and likes merged one to views one
         self.df_merge_1 = df_merge.join(df_views, how='left')
-        self.df_merge_1.drop(labels=["_id"], inplace=True, axis=1)
         self.df_merge_1['resourceId'] = self.df_merge_1.index
         self.df_merge_1['updatedAt'] = self.df_merge_1['updatedAt'].astype(str)
         self.df_merge_1['updated_dates'] = self.df_merge_1['updatedAt'].apply(lambda x: str(x.split('T')[0]))
