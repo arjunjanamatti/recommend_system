@@ -84,10 +84,16 @@ class trend_results:
 
         # from views table only review_id and resourceId field
         df_views = pd.DataFrame(list(views.find({'resourceType' : "REVIEW"}, {'_id': 1, 'resourceId': 1})))
+        print(f'Shape of df_views dataframe: {len(df_views)}')
         df_views.set_index('resourceId', inplace=True)
+        df_merge = self.df_merge.copy()
+        df_merge.set_index('resourceId', inplace=True)
 
         # merge reviews and likes merged one to views one
-        self.df_merge_1 = self.df_reviews.join(df_views, how='left')
+        self.df_merge_1 = df_merge.join(df_views, how='left')
+        self.df_merge_1.drop(labels=["_id"], inplace=True, axis=1)
+        self.df_merge_1['resourceId'] = self.df_merge_1.index
+        self.df_merge_1.reset_index(drop=True, inplace=True)
         self.df_merge_1.to_csv('df_merge_1.csv')
 
         # setting the _id column back, since we need it for ReviewsResult columnname
@@ -203,7 +209,7 @@ class trend_results:
 
     def TopReviews(self, category_id, user_id, search_text, target_userid):
         self.MergeDataframeUpdate()
-        actual_topreviews = (self.TopTrendingResults(self.df_merge, 7, 'resourceId'))[:50]
+        actual_topreviews = (self.TopTrendingResults(self.df_merge_1, 7, 'resourceId'))[:50]
         actual_topreviews = self.ReviewsResult(category_id, user_id, search_text, target_userid, actual_topreviews, '_id')
         return actual_topreviews
 
@@ -211,7 +217,7 @@ class trend_results:
 
     def TopUsers(self, category_id, user_id, search_text, target_userid):
         self.MergeDataframeUpdate()
-        actual_topusers =  self.TopTrendingResults(self.df_merge, 7, 'fromUserId')[:50]
+        actual_topusers =  self.TopTrendingResults(self.df_merge_1, 7, 'fromUserId')[:50]
         actual_topusers = self.ReviewsResult(category_id, user_id, search_text, target_userid, actual_topusers,
                                                'fromUserId')
         return actual_topusers
@@ -219,14 +225,14 @@ class trend_results:
 
     def PopularReviews(self, category_id, user_id, search_text, target_userid):
         self.MergeDataframeUpdate()
-        actual_popularreviews = self.TopTrendingResults(self.df_merge, 30, 'resourceId')[:50]
+        actual_popularreviews = self.TopTrendingResults(self.df_merge_1, 30, 'resourceId')[:50]
         actual_popularreviews = self.ReviewsResult(category_id, user_id, search_text, target_userid, actual_popularreviews, '_id')
         return actual_popularreviews
 
 
     def PopularUsers(self, category_id, user_id, search_text, target_userid):
         self.MergeDataframeUpdate()
-        actual_popularusers = self.TopTrendingResults(self.df_merge, 30, 'fromUserId')
+        actual_popularusers = self.TopTrendingResults(self.df_merge_1, 30, 'fromUserId')
         actual_popularusers = self.ReviewsResult(category_id, user_id, search_text, target_userid, actual_popularusers,
                                                'fromUserId')
         return actual_popularusers
