@@ -128,6 +128,9 @@ class trend_results:
         return categories_count_df['categoryId'].unique()
         pass
 
+    def TopBusinesses(self):
+        pass
+
     def TopTrendingResults(self,df_merge_cat, num_days, column_name):
         today = pd.to_datetime('today').floor('D')
         week_prior = today - timedelta(days=num_days)
