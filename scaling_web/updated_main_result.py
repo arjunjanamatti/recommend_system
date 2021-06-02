@@ -6,11 +6,11 @@ import numpy as np
 import logging, os
 
 try:
-    os.makedirs('Logs')
+    os.makedirs('TrendingScriptLogs')
 except:
     pass
 
-logname = './Logs/loging.log'
+logname = './TrendingScriptLogs/loging.log'
 logging.basicConfig(filename=logname,
                             filemode='a',
                             format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
@@ -284,7 +284,6 @@ def main_2():
     if search_text:
         search_text = search_text.lower()
         search_text = list(search_text.split())
-    print(search_text)
     try:
         result = trend_results()
         top_user_last_week = result.TopUsers(category_id, user_id, search_text, target_userid)
@@ -309,11 +308,9 @@ def main_3():
     user_id = request.args.get('userid')
     search_text = request.args.get('searchtext', default = None)
     target_userid = request.args.get('targetuserid', default = None)
-    print(f'user_id: {user_id}')
     if search_text:
         search_text = search_text.lower()
         search_text = list(search_text.split())
-    print(search_text)
     try:
         result = trend_results()
         popular_review_last_month = result.PopularReviews(category_id, user_id, search_text, target_userid)

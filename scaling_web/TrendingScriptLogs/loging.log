@@ -1,0 +1,7 @@
+15:17:36,974 werkzeug INFO  * Restarting with stat
+15:17:38,50 werkzeug WARNING  * Debugger is active!
+15:17:38,63 werkzeug INFO  * Debugger PIN: 988-337-134
+15:17:38,76 werkzeug INFO  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+15:17:45,608 werkzeug INFO 127.0.0.1 - - [02/Jun/2021 15:17:45] "[37mGET /trending-user?categoryid=&userid= HTTP/1.1[0m" 200 -
+15:21:21,657 werkzeug INFO  * Detected change in 'C:\\Users\\Arjun Janamatti\\PycharmProjects\\try_recommend\\scaling_web\\updated_main_result.py', reloading
+15:21:21,762 werkzeug INFO  * Restarting with stat
