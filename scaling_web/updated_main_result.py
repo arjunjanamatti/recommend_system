@@ -128,17 +128,6 @@ class trend_results:
         return categories_count_df['categoryId'].unique()
         pass
 
-    def TopBusinesses(self):
-        self.MergeDataframeUpdate()
-        business = self.mydb['businesses']
-        df_business = pd.DataFrame(list(business.find({"isActive": True, "isDeleted": False}, {'_id': 1, 'name': 1})))
-        products = self.mydb['products']
-        df_products = pd.DataFrame(list(products.find({"isActive": True, "isDeleted": False}, {'_id': 1, 'categoryId': 1})))
-        services = self.mydb['services']
-        df_services = pd.DataFrame(list(services.find({"isActive": True, "isDeleted": False}, {'_id': 1, 'categoryId': 1})))
-        df_concat_products_services = pd.concat([products, services])
-        # df_business_merge_concat =
-        pass
 
     def TopTrendingResults(self,df_merge_cat, num_days, column_name):
         today = pd.to_datetime('today').floor('D')
