@@ -265,7 +265,7 @@ def main_1():
                 return {'combined': top_review_last_week}
             except:
                 return {'combined': f'This category {category_id} has no results'}
-        app.logger.info(f'category_id: {category_id}, user_id: {user_id}, search_text: {search_text} & taret_userid: {target_userid} are valid!!!')
+        app.logger.info(f'Script is working with required results !!!')
     except KeyError:
         return {'empty_result': []}
     except Exception as e:
