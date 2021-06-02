@@ -321,7 +321,6 @@ def main_3():
             try:
                 return {'combined': popular_review_last_month}
             except Exception as e:
-                print(f'Exception: {e}')
                 return {'combined': f'This category {category_id} has no results'}
     except KeyError:
         return {'empty_result': []}
