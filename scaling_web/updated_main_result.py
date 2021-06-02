@@ -5,19 +5,19 @@ from flask import Flask, request
 import numpy as np
 import logging, os
 
-# try:
-#     os.makedirs('Logs')
-# except:
-#     pass
-#
-# logname = './Logs/loging.log'
-# logging.basicConfig(filename=logname,
-#                             filemode='a',
-#                             format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
-#                             datefmt='%H:%M:%S',
-#                             level=logging.DEBUG)
-#
-# logger = logging.getLogger('urbanGUI')
+try:
+    os.makedirs('Logs')
+except:
+    pass
+
+logname = './Logs/loging.log'
+logging.basicConfig(filename=logname,
+                            filemode='a',
+                            format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
+                            datefmt='%H:%M:%S',
+                            level=logging.DEBUG)
+
+logger = logging.getLogger('urbanGUI')
 
 app = Flask(__name__)
 
@@ -265,10 +265,12 @@ def main_1():
                 return {'combined': top_review_last_week}
             except:
                 return {'combined': f'This category {category_id} has no results'}
+        app.logger.info(f'category_id: {category_id}, user_id: {user_id}, search_text: {search_text} & taret_userid: {target_userid} are valid!!!')
     except KeyError:
         return {'empty_result': []}
     except Exception as e:
         # print(f'Exception: {type(e).__name__}')
+        app.logger.info(f'Exception: {type(e).__name__} is there')
         # logging.info(f'Exception: {type(e).__name__} has occured for Trending reviews with category_id: {category_id}, user_id: {user_id}, search_text: {search_text}, target_userid:{target_userid}')
         return {'error': f'user_id: {user_id} or {search_text} does not exist in our records'}
 
