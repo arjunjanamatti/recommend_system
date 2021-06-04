@@ -152,6 +152,10 @@ class trend_results:
 
     def ReviewsResult(self, category_id, user_id, search_text, target_userid, actual_topreviews, columnname):
         df_reviews = self.df_reviews.copy()
+        users_present = self.mydb['users']
+        cur = users_present.find({}, {'_id': 1})
+        users_present = [doc for doc in cur]
+        users_present = [str(new['_id']) for new in users_present]
         if len(category_id) > 0:
             if category_id in self.category_id_list:
                 df_reviews = df_reviews[df_reviews['categoryId'] == str(category_id)]
