@@ -183,6 +183,8 @@ class trend_results:
                     actual_topreviews = list(set(userid_reviews).intersection(actual_topreviews))
                     # print(f'userid_reviews: {userid_reviews}')
                     # print(f'After user_id: {actual_topreviews}')
+            elif user_id in users_present:
+                pass
             else:
                 raise
         if search_text != None:
