@@ -4,6 +4,7 @@ from glob import glob
 from pymongo import MongoClient
 import logging, os
 from operator import methodcaller
+import asyncio
 
 try:
     os.makedirs('UseSpeechApiLogs')
@@ -32,9 +33,12 @@ class userapi:
         result_dict = json.loads(vids.text)
         return result_dict['Video speech'], result_dict['Profane words']
 
-    def UpdateKeys(self, id, speech_text, profane_text):
+    async def UpdateKeys(self, id, speech_text, profane_text):
         # for id in id_list:
         self.coll.update_one({'_id': f'{id}'}, {'$set': {'full_speech': f'{speech_text}', 'profane_words': f'{profane_text}'}})
+        await asyncio.sleep(0.00000001)
+        self.coll.update_one({'_id': f'{id}'},
+                             {'$set': {'full_speech_1': f'{speech_text}', 'profane_words_1': f'{profane_text}'}})
 
     def GetReviewsWithNoSpeech(self):
         review_id_list = self.coll.find({}, {'full_speech': 1})
